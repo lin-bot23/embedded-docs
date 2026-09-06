@@ -17,7 +17,7 @@ Block Sparse Attention 节点将块稀疏注意力机制应用于 ComfyUI 模型
 | `dense_blocks` | 表示始终运行密集注意力的 Transformer 块的字符串。 | STRING | 否 | 默认："" |
 | `min_tokens` | 模型使用密集注意力的序列中令牌的最小数量。 | INT | 否 | 默认：12288，最小：0，最大：1 << 20，步长：512 |
 | `extra_tokens` | 每个查询块在其所选块之外关注的额外最高分令牌数量。 | INT | 否 | 默认：256，最小：0，最大：256，步长：64 |
-| `sink_conditioning` | 用于 sink condition 的小型 Max-H3 条件行。 | COMBO | 否 | 选项：exact_kv，exact_kv_and_rows，off |
+| `sink_conditioning` | 用于 sink conditioning 的 MiniMax-H3 条件行。 | COMBO | 否 | 选项：exact_kv，exact_kv_and_rows，off |
 | `verbose` | 是否启用详细日志记录。 | BOOLEAN | 否 | 默认：False |
 
 ## 输出
@@ -35,7 +35,7 @@ Block Sparse Attention 节点将块稀疏注意力机制应用于 ComfyUI 模型
 - `dense_blocks` 参数允许您指定始终运行密集注意力的 Transformer 块。
 - `min_tokens` 参数设置模型使用密集注意力的序列中令牌的最小数量。
 - `extra_tokens` 参数允许您指定每个查询块在其所选块之外关注的额外最高分令牌数量。
-- `sink_conditioning` 参数确定用于 sink condition 的小型 Max-H3 条件行。
+- `sink_conditioning` 参数确定用于 sink conditioning 的 MiniMax-H3 条件行。
 - `verbose` 参数启用详细日志记录。
 
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/BlockSparseAttention/zh.md)
