@@ -1,36 +1,41 @@
 # Tripo: Texto para Modelo
 
-Gera modelos 3D de forma síncrona com base em um prompt de texto usando a API da Tripo. Este nó recebe uma descrição textual e cria um modelo 3D com propriedades opcionais de textura e material.
-
 ## Entradas
 
-| Parâmetro | Descrição | Tipo de Dado | Obrigatório | Faixa |
-| --- | --- | --- | --- | --- |
-| `prompt` | Descrição textual para gerar o modelo 3D (entrada multilinha) | STRING | Sim | - |
-| `prompt_negativo` | Descrição textual do que evitar no modelo gerado (entrada multilinha) | STRING | Não | - |
-| `versão_do_modelo` | Versão do modelo Tripo a ser usada para geração (padrão: v2.5-20250123) | COMBO | Não | Múltiplas opções disponíveis |
-| `estilo` | Configuração de estilo para o modelo gerado (padrão: "Nenhum") | COMBO | Não | Múltiplas opções disponíveis |
-| `textura` | Se deve gerar texturas para o modelo (padrão: Verdadeiro) | BOOLEAN | Não | - |
-| `pbr` | Se deve gerar materiais PBR (Renderização Baseada em Física) (padrão: Verdadeiro) | BOOLEAN | Não | - |
-| `semente_da_imagem` | Semente aleatória para geração de imagem (padrão: 42) | INT | Não | - |
-| `semente_do_modelo` | Semente aleatória para geração do modelo (padrão: 42) | INT | Não | - |
-| `semente_da_textura` | Semente aleatória para geração de textura (padrão: 42) | INT | Não | - |
-| `qualidade_da_textura` | Nível de qualidade para geração de textura (padrão: "padrão") | COMBO | Não | "padrão"<br>"detalhado" |
-| `limite_de_faces` | Número máximo de faces no modelo gerado, -1 para sem limite (padrão: -1) | INT | Não | -1 a 2000000 |
-| `quad` | Se deve gerar geometria baseada em quads em vez de triângulos (padrão: Falso) | BOOLEAN | Não | - |
-| `qualidade_da_geometria` | Nível de qualidade para geração de geometria (padrão: "padrão") | COMBO | Não | "padrão"<br>"detalhado" |
+| Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
+|-----------|-------------|-----------|----------|-------|
+| `prompt` | Descrição textual do modelo 3D a ser gerado (multilinha). Este parâmetro é obrigatório e não pode estar vazio. | STRING | Sim | - |
+| `negative_prompt` | Descrição textual do que evitar no modelo gerado (multilinha). Até 255 caracteres. Enviado para a API apenas quando não estiver vazio. | STRING | Não | Até 255 caracteres |
+| `model_version` | Versão do modelo Tripo a ser usada para a geração (padrão: v3.1-20260211). | COMBO | Não | Múltiplas opções disponíveis |
+| `style` | Estilo aplicado ao modelo gerado (padrão: Nenhum). Não mais suportado pela Tripo e ignorado; mantido para fluxos de trabalho mais antigos. | COMBO | Não | Múltiplas opções disponíveis |
+| `texture` | Se gerar mapas de textura. Desligado retorna geometria nua e ignora `pbr` (padrão: Sim). | BOOLEAN | Não | Sim / Não |
+| `pbr` | Se gerar mapas de material PBR (cor base, metálico, rugosidade, normal). Requer `texture`; forçado para desligado quando `texture` está desligado (padrão: Sim). | BOOLEAN | Não | Sim / Não |
+| `image_seed` | Semente usada para a etapa de geração de imagem (padrão: 42). | INT | Não | 0 a 2147483647 |
+| `model_seed` | Semente usada para a etapa de geração de modelo (padrão: 42). | INT | Não | 0 a 2147483647 |
+| `texture_seed` | Semente usada para a etapa de geração de textura (padrão: 42). | INT | Não | 0 a 2147483647 |
+| `texture_quality` | Qualidade dos mapas de textura gerados. detailed = texturas HD, extreme = texturas Ultra 8K (padrão: standard). | COMBO | Não | "standard"<br>"detailed"<br>"extreme" |
+| `face_limit` | Número máximo de faces. -1 permite que a Tripo escolha adaptivamente (aproximadamente 1,4M faces na versão v3.x padrão, 2M na detalhada). A Tripo limita silenciosamente: v2.5 em 500.000, malhas quadrangulares em 150.000. (padrão: -1) | INT | Não | -1 a 2000000 |
+| `quad` | Saída de malha quadrangular. A Tripo fornece malhas quadrangulares em FBX, então o resultado é entregue na saída FBX e a saída GLB permanece vazia. (padrão: Falso) | BOOLEAN | Não | Sim / Não |
+| `geometry_quality` | Qualidade da geometria gerada (padrão: standard). | COMBO | Não | "standard"<br>"detailed" |
+| `smart_low_poly` | Malha low-poly com拓扑 estilo manual limpa e bem construída (500-20.000 faces, quadrangular 500-10.000). Melhor para sujeitos simples; os complexos podem falhar. (padrão: Falso) | BOOLEAN | Não | Sim / Não |
+| `auto_size` | Escalar modelos texturizados para o tamanho real do mundo em metros. A Tripo armazena o tamanho como a transformação da cena do modelo e cozinha-o quando o modelo é convertido, rigado ou retargetado; ignorado sem textura. (padrão: Sim) | BOOLEAN | Não | Sim / Não |
 
-**Nota:** O parâmetro `prompt` é obrigatório e não pode estar vazio. Se nenhum prompt for fornecido, o nó gerará um erro.
+**Notas:**
+- O parâmetro `prompt` é obrigatório: um prompt vazio faz com que o nó gere um erro.
+- `pbr` requer `texture`. Quando `texture` está desligado, o nó força `pbr` para desligado e ignora seu valor. `auto_size` também não tem efeito sem `texture`.
+- Quando `smart_low_poly` está ativado e `face_limit` é definido para um valor diferente de -1, o limite de faces deve estar entre 500 e 20.000 para saída triangular, ou entre 500 e 10.000 quando `quad` está ativado; caso contrário, o nó gera um erro.
+- Quando `quad` está ativado, a malha quadrangular gerada é entregue como FBX, então a saída FBX é preenchida e a saída GLB permanece vazia.
 
 ## Saídas
 
-| Nome da Saída | Descrição | Tipo de Dado |
-| --- | --- | --- |
-| `arquivo_do_modelo` | O arquivo do modelo 3D gerado (apenas para compatibilidade reversa) | STRING |
-| `task_id_do_modelo` | O identificador único da tarefa para o processo de geração do modelo | MODEL_TASK_ID |
-| `GLB` | O modelo 3D gerado no formato GLB | FILE3DGLB |
+| Nome da Saída | Descrição | Tipo de Dados |
+|-------------|-------------|-----------|
+| `model_file` | O arquivo do modelo 3D gerado, mantido apenas para compatibilidade reversa. | STRING |
+| `model task_id` | O identificador único da tarefa para o processo de geração do modelo. | MODEL_TASK_ID |
+| `GLB` | O modelo 3D gerado no formato GLB. Fica vazio quando `quad` está ativado. | FILE3DGLB |
+| `FBX` | O modelo 3D gerado no formato FBX. Somente preenchido quando `quad` está ativado. | FILE3DFBX |
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoTextToModelNode/pt-BR.md)
 
 ---
-**Source fingerprint (SHA-256):** `f73316e0a50adfb6fe22ca6a20a2a5b36a6597abf0f4ddae9183d9e4a45cb46d`
+**Source fingerprint (SHA-256):** `3f4bc09d125fedb6c30968f31804cfc7ec6d2f068a7c28d90b006137803020b0`

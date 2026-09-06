@@ -1,22 +1,22 @@
 # Cargar video
 
-El nodo de Carga de Video carga archivos de video desde el directorio de entrada y los pone a disposición para su procesamiento en el flujo de trabajo. Lee archivos de video de la carpeta de entrada designada y los genera como datos de video que pueden conectarse a otros nodos de procesamiento de video.
+El nodo Load Video carga archivos de video desde el directorio de entrada y los pone a disposición para su procesamiento en el flujo de trabajo. Lee archivos de video desde la carpeta de entrada designada y los emite como datos de video que pueden conectarse a otros nodos de procesamiento de video.
 
 ## Entradas
 
-| Parámetro | Descripción | Tipo de Dato | Requerido | Rango |
+| Parámetro | Descripción | Tipo de datos | Requerido | Rango |
 | --- | --- | --- | --- | --- |
-| `archivo` | El archivo de video a cargar desde el directorio de entrada. La lista desplegable se completa dinámicamente con todos los archivos de video encontrados en la carpeta de entrada de ComfyUI. | STRING | Sí | Múltiples opciones disponibles |
+| `file` | El archivo de video que se cargará desde el directorio de entrada. La lista desplegable se completa dinámicamente con todos los archivos de video encontrados en la carpeta de entrada de ComfyUI, y se pueden subir nuevos archivos de video directamente a través del selector de archivos. | COMBO | Sí | Varias opciones disponibles (todos los archivos de video en el directorio de entrada) |
 
-**Nota:** Las opciones disponibles para el parámetro `file` se completan dinámicamente a partir de los archivos de video presentes en el directorio de entrada. Solo se muestran los archivos de video con tipos de contenido compatibles. También puedes cargar un nuevo archivo de video directamente a través del selector de archivos del nodo.
+**Nota:** Las opciones disponibles para el parámetro `file` se completan dinámicamente a partir de los archivos de video presentes en el directorio de entrada. Solo se muestran los archivos de video con tipos de contenido compatibles. También puedes subir un nuevo archivo de video directamente a través de la interfaz del selector de archivos del nodo. Si un archivo de video previamente seleccionado ya no se encuentra, el nodo informa de un error de archivo no válido.
 
 ## Salidas
 
-| Nombre de Salida | Descripción | Tipo de Dato |
+| Nombre de salida | Descripción | Tipo de datos |
 | --- | --- | --- |
-| `video` | Los datos de video cargados que pueden pasarse a otros nodos de procesamiento de video para su posterior manipulación o análisis. | VIDEO |
+| `video` | Los datos de video cargados que se pueden pasar a otros nodos de procesamiento de video para su posterior manipulación o análisis. | VIDEO |
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LoadVideo/es.md)
 
 ---
-**Source fingerprint (SHA-256):** `e3d18eb43cba34734761b5b147d9fee91fe3ca99db21f9e19a130efc3349cecb`
+**Source fingerprint (SHA-256):** `dcdd252792ade2a106c11826bbe7344011f0bc08506b80d634043a4dc156e076`

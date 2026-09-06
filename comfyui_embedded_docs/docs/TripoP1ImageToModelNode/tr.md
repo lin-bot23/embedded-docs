@@ -1,31 +1,47 @@
 # Tripo P1: Görüntüden Modele
 
-## Genel Bakış
-
-Bu düğüm, Tripo P1 API'sini kullanarak tek bir 2D görüntüyü 3D modele dönüştürür. Düşük poligonlu, oyunlara hazır ağlar (mesh) oluşturmak için optimize edilmiştir.
+Tripo P1: Image to Model, Tripo P1 API'sini kullanarak tek bir 2D görüntüyü 3D modele dönüştürür. Düşük poligonlu, oyuna hazır mesh'ler üretmek için optimize edilmiştir ve yalnızca geometri içeren bir mesh ile PBR haritalı dokulu bir model arasında seçim yapmanızı sağlar. Tamamlanan model GLB dosyası olarak döndürülür.
 
 ## Girdiler
 
+### Ortak Girdiler
+
+Bu parametreler her zaman kullanılabilir.
+
 | Parametre | Açıklama | Veri Türü | Zorunlu | Aralık |
-| --- | --- | --- | --- | --- |
-| `görüntü` | 3D modele dönüştürülecek giriş görüntüsü. | IMAGE | Evet | - |
-| `çıktı_modu` | Çıktı modunu ve kalite ayarlarını belirten bir sözlük. Bu parametre, oluşturulan modelin türünü ve doku kalitesini kontrol eder. Mevcut seçenekler `_build_p1_output_mode` yardımcı fonksiyonu tarafından tanımlanır ve `texture_quality` ("standard", "high", "ultra" gibi) ile `image_alignment` ayarlarını içerir. | DICT | Evet | Açıklamaya bakın |
-| `görüntü_oto_düzeltme_aktif` | Daha iyi üretim kalitesi için giriş görüntüsünü ön işleme tabi tutar. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
-| `yüz_sınırı` | Oluşturulan ağdaki yüz sayısını sınırlar. -1 değeri sınırlama olmadığı anlamına gelir. (varsayılan: -1) | INT | Hayır | - |
-| `model_tohumu` | Tekrarlanabilir model üretimi için tohum değeri. Sağlanmazsa rastgele bir tohum kullanılır. (varsayılan: None) | INT | Hayır | - |
-| `oto_boyut` | Oluşturulan model için en uygun boyutu otomatik olarak belirler. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
-| `uv_dışa_aktar` | Modelle birlikte UV koordinatlarını dışa aktarır. (varsayılan: True) | BOOLEAN | Hayır | True<br>False |
-| `geometriyi_sıkıştır` | Dosya boyutunu küçültmek için geometri verilerini sıkıştırır. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
+|-----------|-------------|-----------|----------|-------|
+| `output_mode` | Sonucun türünü seçer. "Geometry only" dokusuz bir mesh döndürür; "Textured" renk ve PBR haritaları ekler ve ek doku ayarlarını ortaya çıkarır. | DYNAMIC_COMBO | Evet | `"Geometry only"`<br>`"Textured"` |
+| `image` | 3D modeli oluşturmak için kullanılan kaynak 2D görüntü. Düğüm tek bir görüntü gerektirir ve hiçbir görüntü sağlanmazsa hata verir. | IMAGE | Evet | - |
+| `enable_image_autofix` | Daha iyi üretim kalitesi için girdi görüntüsünü ön işler. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
+| `face_limit` | Hedef yüz sayısı, 48-20000. -1 değeri Tripo'nun uyarlamalı seçim yapmasını sağlar. (varsayılan: -1) | INT | Hayır | -1 ile 20000 |
+| `model_seed` | Sonuçların yeniden üretilebilmesi için geometri üretiminde kullanılan tohum değeri. (varsayılan: 42) | INT | Hayır | 0 ile 2147483647 |
+| `auto_size` | Çıktıyı gerçek dünya metrelerine yaklaşık olarak ölçekler. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
+| `export_uv` | Üretim sırasında UV açılımı (unwrap) uygular. Yalnızca geometri içeren işlemleri hızlandırmak için kapatın. (varsayılan: True) | BOOLEAN | Hayır | True<br>False |
+| `compress_geometry` | meshopt geometri sıkıştırması (EXT_meshopt_compression) uygular. Dosyalar daha küçük olur ancak ComfyUI'nin 3D önizlemesi bunları görüntüleyemez; düzenlemeden önce sıkıştırmayı çözün. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
+
+### Dokulu Girdiler
+
+Bu parametreler `output_mode` "Textured" olarak ayarlandığında görünür. "Geometry only" modunda ek parametre yoktur.
+
+| Parametre | Açıklama | Veri Türü | Zorunlu | Aralık |
+|-----------|-------------|-----------|----------|-------|
+| `pbr` | PBR haritalarını dahil eder. Açıkken temel doku da zorunlu olarak açılır. (varsayılan: True) | BOOLEAN | Hayır | True<br>False |
+| `texture_quality` | Doku çözünürlük düzeyi. "detailed" = HD dokular, "extreme" = 8K Ultra dokular. (varsayılan: "standard") | COMBO | Hayır | `"standard"`<br>`"detailed"`<br>`"extreme"` |
+| `texture_alignment` | Kaynak görüntüye görsel sadakati mi, yoksa mesh geometrisiyle uyumu mu önceliklendireceğini belirler. (varsayılan: "original_image") | COMBO | Hayır | `"original_image"`<br>`"geometry"` |
+| `orientation` | Çıktıyı kaynak görüntüye uyacak şekilde döndürür. Yalnızca dokulu modda geçerlidir. (varsayılan: "default") | COMBO | Hayır | `"default"`<br>`"align_image"` |
+| `texture_seed` | Dokulu sonuçların yeniden üretilebilmesi için doku üretiminde kullanılan tohum değeri. (varsayılan: 42) | INT | Hayır | 0 ile 2147483647 |
+
+Not: `output_mode` "Geometry only" olduğunda bu istek için dokulama devre dışıdır. "Textured" modunda her zaman renkli bir doku istenir; `pbr` kapatıldığında PBR haritaları kaldırılır ancak temel renk dokusu korunur, `pbr` açıldığında ise temel doku da zorunlu olarak açılır.
 
 ## Çıktılar
 
 | Çıktı Adı | Açıklama | Veri Türü |
-| --- | --- | --- |
-| `model_dosyası` | Oluşturulan 3D modelin dosya yolu. Bu çıktı yalnızca geriye dönük uyumluluk için sağlanmıştır. | STRING |
-| `model_task_id` | Model oluşturma isteği için benzersiz görev kimliği. | MODEL_TASK_ID |
+|-------------|-------------|-----------|
+| `model_file` | Oluşturulan 3D model sonucu. Yalnızca geriye dönük uyumluluk için saklanır. | STRING |
+| `model task_id` | Tripo API tarafından tamamlanan üretim işi için döndürülen benzersiz görev kimliği. | MODEL_TASK_ID |
 | `GLB` | GLB formatında oluşturulan 3D model. | FILE3DGLB |
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1ImageToModelNode/tr.md)
 
 ---
-**Source fingerprint (SHA-256):** `2ac611603dd6eb88700a8105c19f97a8c4eefe5f4efb23d8854ccc27af590626`
+**Source fingerprint (SHA-256):** `db5dc76518a4efcd28d388dc00ad0810f619481482f20fa456c4ff2478192aa3`

@@ -1,27 +1,23 @@
 # HiDream-O1 Referans Görselleri
 
-## Genel Bakış
-
-Referans görüntülerini hem pozitif hem negatif koşullamaya ekleyin. Bu düğüm, 1 ila 10 referans görüntüsü sağlamanıza olanak tanır; tek bir görüntü talimat tabanlı düzenleme için kullanılırken, birden fazla görüntü (2-10) özne odaklı kişiselleştirmeyi etkinleştirir.
-
 ## Girdiler
 
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 | --- | --- | --- | --- | --- |
-| `pozitif` | Referans görüntülerin ekleneceği pozitif koşullama. | CONDITIONING | Evet | - |
-| `negatif` | Referans görüntülerin ekleneceği negatif koşullama. | CONDITIONING | Evet | - |
-| `görseller` | Referans görüntüleri. 1 görüntü = talimat düzenleme; 2-10 görüntü = çoklu referans. | IMAGE | Evet | 1 ile 10 images |
+| `positive` | Referans görüntülerin ekleneceği pozitif conditioning. | CONDITIONING | Evet | - |
+| `negative` | Referans görüntülerin ekleneceği negatif conditioning. | CONDITIONING | Evet | - |
+| `images` | Referans görüntüler sayısal soket sırasına göre kullanılır. Görüntüler sağlandığında, hem pozitif hem de negatif conditioning'e eklenir. | IMAGE | Hayır | 0 ila 100 görüntü (`image_1` - `image_100`) |
 
-**`images` parametresi hakkında not:** Bu, 1 ila 10 görüntü kabul eden otomatik büyüyen (autogrow) bir girdidir. Görüntüler `image_1` ile `image_10` arasında etiketlenir. En az 1 görüntü sağlamalısınız. Görüntü sayısı çalışma modunu belirler: tek bir görüntü düzenleme talimatları için kullanılırken, birden fazla görüntü (2-10) özne odaklı kişiselleştirme için kullanılır.
+**`images` parametresi hakkında not:** Bu, `image_1`'den `image_100`'e kadar numaralandırılmış soketler sağlayan otomatik büyüyen bir girdidir. Görüntüler sayısal soket sırasına göre kullanılır. Girdi isteğe bağlıdır: hiçbir referans görüntüsü bağlanmazsa, düğüm `positive` ve `negative` conditioning'i değiştirmeden döndürür. Görüntüler bağlandığında, aynı referans görüntü seti her iki çıktıya da eklenir ve negatif conditioning, görüntüler eklenmeden önce negatif olarak işaretlenir.
 
 ## Çıktılar
 
 | Çıktı Adı | Açıklama | Veri Türü |
 | --- | --- | --- |
-| `pozitif` | Referans görüntülerin eklendiği pozitif koşullama. | CONDITIONING |
-| `negatif` | Referans görüntülerin eklendiği negatif koşullama. | CONDITIONING |
+| `positive` | Referans görüntülerin eklendiği pozitif conditioning. | CONDITIONING |
+| `negative` | Referans görüntülerin eklendiği negatif conditioning. | CONDITIONING |
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/HiDreamO1ReferenceImages/tr.md)
 
 ---
-**Source fingerprint (SHA-256):** `f05f6be19df8b8697a98507163e8f60fd0cf2048c81f92597d2ae0a3395b8c6d`
+**Source fingerprint (SHA-256):** `07f9f0ea19957523e95d04b9086dc994807bb0cd5262fe798dc784c1ecb4920d`

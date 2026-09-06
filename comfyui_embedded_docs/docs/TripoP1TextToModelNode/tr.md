@@ -1,32 +1,46 @@
 # Tripo P1: Metinden Modele
 
-## Genel Bakış
-
-Bu düğüm, Tripo P1 API'sini kullanarak bir metin açıklamasından 3B model oluşturur. Düşük poli sayılı, oyuna hazır, kararlı topolojiye sahip ağlar oluşturmak için optimize edilmiştir ve gerçek zamanlı uygulamalar için uygundur.
+Bu düğüm, Tripo P1 API'sini kullanarak bir metin açıklamasından 3B model üretir. Düşük poligonlu, oyuna hazır ve kararlı topolojiye sahip modeller oluşturmak için optimize edilmiştir; bu da onu gerçek zamanlı uygulamalar için uygun kılar.
 
 ## Girdiler
 
+### Ortak Girdiler
+
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
-| --- | --- | --- | --- | --- |
-| `istem` | Oluşturmak istediğiniz 3B modelin metin açıklaması. | STRING | Evet | 1024 karaktere kadar |
-| `negatif_istem` | Oluşturulan modelde istemediğiniz şeylerin metin açıklaması. | STRING | Hayır | 255 karaktere kadar |
-| `çıktı_modu` | Çıktı modelinin kalitesini ve doku ayarlarını kontrol eder. Bu parametre aşağıdaki anahtarlara sahip bir sözlüktür:<br><br>`texture_quality`: STRING, Aralık: `"standard"`<br>`pbr`: BOOLEAN, varsayılan: True<br>`texture`: BOOLEAN, varsayılan: True<br>`subdivision`: INT, varsayılan: 0, Aralık: 0 ile 2 arası<br>`texture_size`: INT, varsayılan: 2048, Aralık: 512 ile 4096 arası (2'nin katı olmalıdır)<br>`texture_format`: STRING, Aralık: `"png"`<br>`texture_clean`: BOOLEAN, varsayılan: False<br>`texture_seamless`: BOOLEAN, varsayılan: False<br><br>Varsayılan: `{"texture_quality": "standard", "pbr": True, "texture": True, "subdivision": 0, "texture_size": 2048, "texture_format": "png", "texture_clean": False, "texture_seamless": False}` | DICT | Evet | Açıklamaya bakın |
-| `görüntü_tohumu` | Görüntü oluşturma için rastgeleliği kontrol etmek amacıyla kullanılan bir tohum değeri. Varsayılan: 42. | INT | Hayır |  |
-| `yüz_sınırı` | Oluşturulan ağ için maksimum yüz sayısı. -1 değeri sınır olmadığı anlamına gelir. Varsayılan: -1. | INT | Hayır |  |
-| `model_tohumu` | Model oluşturma için rastgeleliği kontrol etmek amacıyla kullanılan bir tohum değeri. | INT | Hayır |  |
-| `otomatik_boyut` | Etkinleştirilirse, düğüm otomatik olarak en uygun model boyutunu belirler. Varsayılan: False. | BOOLEAN | Hayır |  |
-| `uv_dışa_aktar` | Etkinleştirilirse, model doku haritalaması için UV koordinatlarını içerir. Varsayılan: True. | BOOLEAN | Hayır |  |
-| `geometriyi_sıkıştır` | Etkinleştirilirse, dosya boyutunu azaltmak için geometri sıkıştırılır. Varsayılan: False. | BOOLEAN | Hayır |  |
+|-----------|-------------|-----------|----------|-------|
+| `output_mode` | Oluşturulan modelin yalnızca geometri mi yoksa renk/PBR dokuları mı içereceğini kontrol eder. "Textured" seçildiğinde aşağıya doku girdileri eklenir. "Geometry only" dokusuz bir ağ döndürür; "Textured" ise renk/PBR haritaları ekler. | DYNAMIC_COMBO | Evet | `"Geometry only"`<br>`"Textured"` |
+| `prompt` | Oluşturmak istediğiniz 3B modelin metin açıklaması. En fazla 1024 karakter. | STRING | Evet | Up to 1024 characters |
+| `negative_prompt` | Oluşturulan modelde istemediklerinizi tanımlayan metin açıklaması. En fazla 255 karakter. | STRING | Hayır | Up to 255 characters |
+| `image_seed` | Görüntü üretimi için kullanılan ve rastgeleliği kontrol eden tohum değeri. Varsayılan: 42. | INT | Hayır | 0 ile 2147483647 |
+| `face_limit` | Hedef yüz sayısı, 48-20000. -1 değeri Tripo'nun uyarlanabilir şekilde seçmesini sağlar. Varsayılan: -1. | INT | Hayır | -1 ile 20000 |
+| `model_seed` | Model üretimi için kullanılan ve rastgeleliği kontrol eden tohum değeri. Varsayılan: 42. | INT | Hayır | 0 ile 2147483647 |
+| `auto_size` | Çıktıyı yaklaşık gerçek dünya metrelerine ölçekler. Varsayılan: False. | BOOLEAN | Hayır | True / False |
+| `export_uv` | Üretim sırasında UV açılımı yapar. Yalnızca geometri çalıştırmalarında hız için kapatın. Varsayılan: True. | BOOLEAN | Hayır | True / False |
+| `compress_geometry` | meshopt geometri sıkıştırması uygular (EXT_meshopt_compression). Daha küçük dosyalar elde edilir, ancak ComfyUI'nin 3B önizlemesi bunları görüntüleyemez; düzenlemeden önce sıkıştırmayı açın. Varsayılan: False. | BOOLEAN | Hayır | True / False |
+
+### Yalnızca Geometri Girdileri
+
+`output_mode` parametresi `"Geometry only"` olarak ayarlandığında ek girdi bulunmaz. Bu modda doku ile ilgili parametreler Tripo'ya gönderilmez.
+
+### Dokulu Girdiler
+
+Bu girdiler yalnızca `output_mode` parametresi `"Textured"` olarak ayarlandığında görünür.
+
+| Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
+|-----------|-------------|-----------|----------|-------|
+| `pbr` | PBR haritalarını dahil eder. Açıkken temel doku da zorunlu olarak açılır. Varsayılan: True. | BOOLEAN | Evet | True / False |
+| `texture_quality` | Doku kalitesi ön ayarı. detailed = HD dokular, extreme = 8K Ultra dokular. Varsayılan: "standard". | COMBO | Evet | `"standard"`<br>`"detailed"`<br>`"extreme"` |
+| `texture_seed` | Doku üretimi için kullanılan ve rastgeleliği kontrol eden tohum değeri. Varsayılan: 42. | INT | Evet | 0 ile 2147483647 |
 
 ## Çıktılar
 
 | Çıktı Adı | Açıklama | Veri Türü |
-| --- | --- | --- |
-| `model_dosyası` | Oluşturulan 3B modelin dosya yolu (yalnızca geriye dönük uyumluluk için). | STRING |
-| `model_görev_id` | Model oluşturma isteği için benzersiz görev kimliği. | MODEL_TASK_ID |
-| `GLB` | GLB formatında oluşturulan 3B model. | FILE3DGLB |
+|-------------|-------------|-----------|
+| `model_file` | Oluşturulan 3B modelin dosya yolu; yalnızca geriye dönük uyumluluk için korunur. | STRING |
+| `model task_id` | Model oluşturma isteği için benzersiz görev kimliği. | MODEL_TASK_ID |
+| `GLB` | GLB biçiminde oluşturulan 3B model. | FILE3DGLB |
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1TextToModelNode/tr.md)
 
 ---
-**Source fingerprint (SHA-256):** `154e75209d65c823d5681b74cd12fe7b2ed37d7b94bf51cac86f343c68f85722`
+**Source fingerprint (SHA-256):** `63781a990f892e6b1f241179039d1fb24778ba7aa7dccda7d14557cbf190b712`

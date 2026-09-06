@@ -1,25 +1,25 @@
 # MaskPreview
 
-MaskPreview 節點會直接在 ComfyUI 介面中顯示遮罩資料的視覺預覽，而不會將其儲存到輸出目錄。這可讓您在流程中的任何時間點檢查確切的遮罩值。
+MaskPreview 節點會直接在 ComfyUI 介面中顯示遮罩資料的視覺預覽，而不需要將其儲存到輸出目錄。這讓您可以在工作流程中的任何位置檢查遮罩，同時遮罩也會原封不動地通過此節點，以便後續繼續使用。
 
 ## 輸入
 
-| 參數 | 說明 | 資料類型 | 必填 | 範圍 |
+| 參數 | 說明 | 資料類型 | 必要 | 範圍 |
 |-----------|-------------|-----------|----------|-------|
-| `遮罩` | 要預覽的遮罩資料 | MASK | 是 | - |
-| `filename_prefix` | 預覽檔案名稱的前綴（預設值："ComfyUI"） | STRING | 否 | - |
-| `prompt` | 用於中繼資料的提示資訊（自動提供） | PROMPT | 否 | - |
-| `extra_pnginfo` | 用於中繼資料的額外 PNG 資訊（自動提供） | EXTRA_PNGINFO | 否 | - |
+| `mask` | 要預覽的遮罩資料 | MASK | 是 | - |
+| `filename_prefix` | 用於預覽的檔名前綴（預設值："ComfyUI"） | STRING | 否 | - |
+| `prompt` | 用於中繼資料的提示資訊（由系統自動提供） | PROMPT | 否 | - |
+| `extra_pnginfo` | 用於中繼資料的額外 PNG 資訊（由系統自動提供） | EXTRA_PNGINFO | 否 | - |
 
-`prompt` 和 `extra_pnginfo` 輸入是隱藏的，會由 ComfyUI 系統自動提供；您不需要手動連接它們。
+只有 `mask` 是唯一需要連接的可見輸入。`filename_prefix`、`prompt` 和 `extra_pnginfo` 參數由系統提供：`filename_prefix` 會使用其預設值，而 `prompt` 與 `extra_pnginfo` 則是隱藏參數，由 ComfyUI 執行環境自動提供。
 
 ## 輸出
 
-| 輸出名稱 | 說明 | 資料類型 |
+| 輸出名 | 說明 | 資料類型 |
 |-------------|-------------|-----------|
-| `mask` | 已預覽的遮罩資料，原樣返回以在流程中進一步使用 | MASK |
+| `mask` | 與預覽時相同的遮罩資料，未經修改地回傳，以便在工作流程中的其他位置使用 | MASK |
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/MaskPreview/zh-TW.md)
 
 ---
-**Source fingerprint (SHA-256):** `3d4ecb8cd90c3ecbe9d3cff8f782062c582c7190d9f0e0ed069cba114d4beac5`
+**Source fingerprint (SHA-256):** `fb7abe8cb6b5ac8a6a38e88ef90a146d16caf41d24c5de95309a94bc3c371d75`

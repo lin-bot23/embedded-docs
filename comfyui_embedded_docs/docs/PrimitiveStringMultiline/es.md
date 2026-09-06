@@ -1,12 +1,12 @@
 # Cadena (Multilínea)
 
-El nodo `PrimitiveStringMultiline` proporciona un campo de entrada de texto multilínea para introducir y pasar valores de cadena a lo largo de tu flujo de trabajo. Acepta entradas de texto con múltiples líneas y devuelve el mismo valor de cadena sin modificaciones. Este nodo es útil cuando necesitas introducir contenido de texto más extenso o texto formateado que abarca varias líneas.
+El nodo Text (Multiline) proporciona un campo de entrada de texto multilínea para introducir y pasar valores de cadena a través de su flujo de trabajo. Acepta texto que abarca múltiples líneas y produce el mismo valor de cadena sin cambios. Este nodo es útil cuando se necesita proporcionar contenido de texto más extenso o texto multilínea con formato.
 
 ## Entradas
 
-| Parámetro | Descripción | Tipo de datos | Obligatorio | Rango |
+| Parámetro | Descripción | Tipo de datos | Requerido | Rango |
 | --- | --- | --- | --- | --- |
-| `valor` | El valor de texto de entrada que puede abarcar varias líneas | STRING | Sí | N/D |
+| `value` | El valor de entrada de texto que puede abarcar múltiples líneas | STRING | Sí | N/A |
 
 ## Salidas
 
@@ -17,4 +17,4 @@ El nodo `PrimitiveStringMultiline` proporciona un campo de entrada de texto mult
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/PrimitiveStringMultiline/es.md)
 
 ---
-**Source fingerprint (SHA-256):** `c94ea034591b8b98630b1ee831d65a156f59cf3b84dc2837046f67fdf78f8c15`
+**Source fingerprint (SHA-256):** `7e50ab0c4adfb68b3fe2ad4e31f9dec059224555d68cd53335f89ff0b83a83b6`

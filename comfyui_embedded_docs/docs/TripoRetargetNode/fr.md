@@ -1,28 +1,30 @@
 # Tripo : Modèle squeletté redirigé
 
-Voici la traduction en français de la documentation du nœud TripoRetargetNode :
-
-Le TripoRetargetNode applique des animations prédéfinies à des modèles de personnages 3D en réaffectant les données de mouvement. Il prend un modèle 3D préalablement riggé et applique l'une des plusieurs animations prédéfinies, générant un fichier de modèle 3D animé en sortie. Le nœud communique avec l'API Tripo pour traiter l'opération de réaffectation d'animation.
-
 ## Entrées
 
 | Paramètre | Description | Type de données | Requis | Plage |
-| --- | --- | --- | --- | --- |
-| `ID_tâche_modèle_original` | L'ID de tâche du modèle 3D riggé précédemment traité auquel appliquer l'animation | RIG_TASK_ID | Oui | - |
-| `animation` | L'animation prédéfinie à appliquer au modèle 3D. Les options incluent les animations humanoïdes (idle, walk, run, dive, climb, jump, slash, shoot, hurt, fall, turn) et les animations de créatures (quadruped walk, hexapod walk, octopod walk, serpentine march, aquatic march). | STRING | Oui | "preset:idle"<br>"preset:walk"<br>"preset:run"<br>"preset:dive"<br>"preset:climb"<br>"preset:jump"<br>"preset:slash"<br>"preset:shoot"<br>"preset:hurt"<br>"preset:fall"<br>"preset:turn"<br>"preset:quadruped:walk"<br>"preset:hexapod:walk"<br>"preset:octopod:walk"<br>"preset:serpentine:march"<br>"preset:aquatic:march" |
-| `auth_token_comfy_org` | Jeton d'authentification pour l'accès à l'API Comfy.org (paramètre caché) | AUTH_TOKEN_COMFY_ORG | Non | - |
-| `api_key_comfy_org` | Clé API pour l'accès au service Comfy.org (paramètre caché) | API_KEY_COMFY_ORG | Non | - |
-| `unique_id` | Identifiant unique pour le suivi de l'opération (paramètre caché) | UNIQUE_ID | Non | - |
+|-----------|-------------|----------------|--------|-------|
+| `original_model_task_id` | L’identifiant de tâche du modèle 3D préalablement riggé à retargeter. La tâche référencée doit être une tâche de rig ; un rig réalisé avec la spécification Mixamo sur la version de modèle v1.0 ne peut pas être utilisé pour le retarget. | RIG_TASK_ID | Oui | - |
+| `animation` | L’animation prédéfinie à appliquer au modèle riggé. Les animations `preset:*` fonctionnent avec les deux modèles de rig ; les animations `preset:biped:*` nécessitent un rig réalisé avec la version de modèle v1.0-20240301. | COMBO | Oui | `"preset:idle"`<br>`"preset:walk"`<br>`"preset:run"`<br>`"preset:dive"`<br>`"preset:climb"`<br>`"preset:jump"`<br>`"preset:slash"`<br>`"preset:shoot"`<br>`"preset:hurt"`<br>`"preset:fall"`<br>`"preset:turn"`<br>`"preset:quadruped:walk"`<br>`"preset:hexapod:walk"`<br>`"preset:octopod:walk"`<br>`"preset:serpentine:march"`<br>`"preset:aquatic:march"`<br>plus d’autres options `"preset:biped:*"` affichées dans l’interface |
+| `out_format` | Format du fichier de sortie ; le résultat arrive sur la sortie correspondante. (défaut : glb) | COMBO | Non | `"glb"`<br>`"fbx"` |
+| `export_with_geometry` | Inclure le maillage dans l’export ; si désactivé, seul le squelette animé est exporté. (défaut : True) | BOOLEAN | Non | True<br>False |
+| `animate_in_place` | Jouer l’animation sur place, sans déplacement de la racine. (défaut : False) | BOOLEAN | Non | True<br>False |
+| `auth_token_comfy_org` | Jeton d’authentification pour l’accès à l’API Comfy.org (paramètre masqué). | AUTH_TOKEN_COMFY_ORG | Non | - |
+| `api_key_comfy_org` | Clé API pour l’accès au service Comfy.org (paramètre masqué). | API_KEY_COMFY_ORG | Non | - |
+| `unique_id` | Identifiant unique pour le suivi de l’opération (paramètre masqué). | UNIQUE_ID | Non | - |
+
+Remarque : Les animations du groupe `preset:*` fonctionnent avec les deux modèles de rig, tandis que les animations du groupe `preset:biped:*` nécessitent un rig réalisé avec la version de modèle v1.0-20240301. Si le rig référencé a été créé avec la spécification Mixamo et une version de modèle commençant par `v1.0`, l’appel de retarget échoue avec une erreur.
 
 ## Sorties
 
-| Nom de la sortie | Description | Type de données |
-| --- | --- | --- |
-| `retarget task_id` | Le fichier de modèle 3D animé généré (uniquement pour la rétrocompatibilité) | STRING |
-| `retarget task_id` | L'ID de tâche pour le suivi de l'opération de réaffectation | RETARGET_TASK_ID |
-| `GLB` | Le modèle 3D animé au format GLB | FILE3DGLB |
+| Nom de sortie | Description | Type de données |
+|---------------|-------------|-----------------|
+| `model_file` | Le fichier de modèle 3D animé généré (uniquement pour la rétrocompatibilité). | STRING |
+| `retarget task_id` | L’identifiant de tâche pour le suivi de l’opération de retarget. | RETARGET_TASK_ID |
+| `GLB` | Le modèle 3D animé au format GLB. Renseigné lorsque `out_format` est `glb`. | FILE3DGLB |
+| `FBX` | Le modèle 3D animé au format FBX. Renseigné lorsque `out_format` est `fbx`. | FILE3DFBX |
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoRetargetNode/fr.md)
 
 ---
-**Source fingerprint (SHA-256):** `304326afdc1fa3e8c3593f151f771f93520e061802c831838c58ebc401b9e9e2`
+**Source fingerprint (SHA-256):** `e5417a8fa584285ba9e57526e65b091c2383374c70364df9053777a3ce09541a`

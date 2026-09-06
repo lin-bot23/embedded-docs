@@ -1,51 +1,53 @@
-# RemeshMesh
+# Remesh Mesh (Narrow-Band DC)
 
-Remesh Mesh reconstrói uma malha com uma tesselação limpa e uniforme, amostrando um campo de distância de faixa estreita ao redor da superfície original e extraindo-o com Dual Contouring. Isso normaliza topologias bagunçadas, não-manifold ou com autointersecções, e deve ser executado antes do Decimate Mesh para atingir uma contagem exata de faces. O processamento é executado no dispositivo de computação ativo e a malha de saída permanece soldada.
+## Reestruturação de Malha
+
+A reestruturação de malha (Remesh Mesh) recria uma malha com uma tesselação limpa e uniforme, através da amostragem de um campo de distância estreito ao redor da superfície original e da extração com Contorno Duplo (Dual Contouring). Isso normaliza topologias bagunçadas, não-manifold ou auto-intersecantes e deve ser executada antes de Decimar Malha (Decimate Mesh) para alcançar um número exato de faces. O processamento é executado no dispositivo de computação ativo e a malha de saída permanece soldada.
 
 ## Entradas
 
-### Entradas comuns
+### Entradas Comuns
 
 | Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
 |-----------|-------------|-----------|----------|-------|
-| `malha` | A malha de entrada a ser remalhada. | MESH | Sim | — |
-| `resolução` | Resolução da grade de voxels (densidade da saída). 256 ~ 100 mil faces, 512 ~ 1 milhão. Para uma contagem exata de faces, siga com o Decimate Mesh. (padrão: 512) | INT | Sim | 32 - 2048 |
-| `sign_mode` | Modo de distância assinada usado para extração de superfície. "udf" é robusto a entradas bagunçadas/não-manifold; "sdf" produz uma superfície única limpa com recuperação de arestas vivas via QEF (Quadratic Error Function), mas requer orientação consistente. Selecionar um modo revela suas subopções específicas. (padrão: "udf") | DYNAMIC_COMBO | Sim | "udf"<br>"sdf" |
-| `banda` | Largura da faixa estreita em unidades de voxel. No modo UDF, também desloca a superfície. (avançado, padrão: 1.0) | FLOAT | Sim | 0.5 - 4.0 |
-| `project_back` | Interpola linearmente os vértices em direção à superfície original (0 = DC puro, 1 = ajustado). (avançado, padrão: 0.0) | FLOAT | Sim | 0.0 - 1.0 |
-| `fix_poles` | Colapsa pares de vértices de valência 3 (artefato de junção T do DC). (avançado, padrão: false) | BOOLEAN | Sim | true / false |
-| `smooth_iters` | Iterações de suavização de Taubin (0 = desativado). 2-3 limpa artefatos de escada típicos do DC; valores maiores suavizam demais as arestas do QEF. (padrão: 0) | INT | Sim | 0 - 20 |
-| `drop_small_components` | Remove componentes abaixo desta fração da contagem de faces do maior componente. 0 desativa. (avançado, padrão: 0.01) | FLOAT | Sim | 0.0 - 0.5 |
-| `precluster_max_verts` | Limita a contagem de vértices de entrada antes das consultas de campo; entradas acima disso são decimadas por agrupamento até esse valor primeiro. Evita falta de memória (OOM) em malhas enormes. (avançado, padrão: 20.000.000) | INT | Sim | 0 - 100,000,000 |
+| `mesh` | A malha de entrada a ser reestruturada. | MESH | Sim | — |
+| `resolution` | Resolução da grade de voxel (densidade de saída). 256 ~ 100k faces, 512 ~ 1M. Para um número exato de faces, siga com Decimar Malha. (padrão: 512) | INT | Sim | 32 - 2048 |
+| `sign_mode` | Modo de extração de superfície. "udf" é robusto a entradas bagunçadas/não-manifold; "sdf" gera uma superfície limpa e única com recuperação de características afiadas usando QEF (Função de Erro Quadrática), mas requer reviravolta consistente. A seleção de um modo revela suas opções específicas. (padrão: "udf") | COMBO DINÂMICO | Sim | "udf"<br>"sdf" |
+| `band` | Largura da banda estreita em unidades de voxel. No modo UDF também desloca a superfície. (avançado, padrão: 1.0) | FLOAT | Sim | 0.5 - 4.0 |
+| `project_back` | Interpola linearmente os vértices em direção à superfície original (0 = pura DC, 1 = ajustada). (avançado, padrão: 0.0) | FLOAT | Sim | 0.0 - 1.0 |
+| `fix_poles` | Colapsa pares de vértices de valência 3 (artefato de entroncamento DC). (avançado, padrão: falso) | BOOLEAN | Sim | verdadeiro / falso |
+| `smooth_iters` | Iterações de suavização de Taubin (0 = desligado). 2-3 limpa artefatos de escada DC; valores mais altos podem suavizar excessivamente os bordas QEF. (padrão: 0) | INT | Sim | 0 - 20 |
+| `drop_small_components` | Descarta componentes abaixo dessa fração do número de faces da maior. 0 desativa. (avançado, padrão: 0.01) | FLOAT | Sim | 0.0 - 0.5 |
+| `precluster_max_verts` | Limita o número de vértices de entrada antes das consultas de campo; entradas acima desse valor são decimadas para ele primeiro. Previne OOM em malhas enormes. (avançado, padrão: 20,000,000) | INT | Sim | 0 - 100,000,000 |
 
-### Entradas do modo "udf"
+### Entradas do Modo "udf"
 
-Estes parâmetros aparecem quando `sign_mode` está definido como `"udf"`.
-
-| Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
-|-----------|-------------|-----------|----------|-------|
-| `qef` | Posicionamento de vértices duais via QEF (Quadratic Error Function) para arestas mais nítidas. (padrão: false) | BOOLEAN | Não | true / false |
-| `drop_inverted_components` | Remove componentes fechados com normal invertida (volume negativo) — a casca interna do UDF. (padrão: false) | BOOLEAN | Não | true / false |
-| `drop_enclosed_components` | Remove componentes dentro da caixa delimitadora (bbox) do maior componente que falham no raycast de ponto-na-malha. Desative para peças aninhadas legítimas. (padrão: false) | BOOLEAN | Não | true / false |
-
-### Entradas do modo "sdf"
-
-Estes parâmetros aparecem quando `sign_mode` está definido como `"sdf"`.
+Esses parâmetros aparecem quando `sign_mode` é definido como `"udf"`.
 
 | Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
 |-----------|-------------|-----------|----------|-------|
-| `qef` | Posicionamento de vértices duais via QEF (Quadratic Error Function) (recupera arestas vivas) versus centróide de cruzamento de aresta. (padrão: true) | BOOLEAN | Não | true / false |
-| `manifold` | Dual Contouring manifold: 1-4 vértices duais por voxel para casos de múltiplas folhas. Mais lento. (padrão: false) | BOOLEAN | Não | true / false |
+| `qef` | Posicionamento de vértice dual usando QEF (Função de Erro Quadrática) para bordas mais afiadas. (padrão: falso) | BOOLEAN | Não | verdadeiro / falso |
+| `drop_inverted_components` | Descarta componentes com volume negativo (normal interna invertida) — a casca interna do UDF. (padrão: falso) | BOOLEAN | Não | verdadeiro / falso |
+| `drop_enclosed_components` | Descarta componentes dentro do bbox da maior que falham no raio de ponto na malha. Desative para partes legítimas aninhadas. (padrão: falso) | BOOLEAN | Não | verdadeiro / falso |
 
-Nota: A opção `qef` tem um padrão diferente dependendo do modo selecionado — false no modo "udf", true no modo "sdf". Quando `precluster_max_verts` é maior que 0 e a malha de entrada tem mais vértices que esse valor, a malha é decimada por agrupamento até esse alvo antes das consultas de campo. Após o processamento, o nó exibe no próprio nó a variação da contagem de faces entre entrada e saída (por exemplo, "faces: 1.23M → 200K (-84%)").
+### Entradas do Modo "sdf"
+
+Esses parâmetros aparecem quando `sign_mode` é definido como `"sdf"`.
+
+| Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
+|-----------|-------------|-----------|----------|-------|
+| `qef` | Posicionamento de vértice dual usando QEF (Função de Erro Quadrática) para recuperação de características afiadas em vez do centroide de cruzamento de borda. (padrão: verdadeiro) | BOOLEAN | Não | verdadeiro / falso |
+| `manifold` | Contorno Duplo Manifold: 1-4 vértices duplos/voxel para casos de múltiplas folhas. Mais lento. (padrão: falso) | BOOLEAN | Não | verdadeiro / falso |
+
+Nota: A opção `qef` tem um padrão diferente dependendo do modo selecionado — falso no modo "udf", verdadeiro no modo "sdf". Quando `precluster_max_verts` é maior que 0 e a malha de entrada tem mais vértices do que esse valor, a malha é decimada para esse valor-alvo antes das consultas de campo. Após o processamento, o nó exibe a mudança no número de faces de entrada para saída no nó (por exemplo, "faces: 1.23M → 200K (-84%)").
 
 ## Saídas
 
 | Nome da Saída | Descrição | Tipo de Dados |
 |-------------|-------------|-----------|
-| `malha` | A malha remalhada com tesselação uniforme e topologia soldada. As cores de vértice são preservadas quando presentes na entrada; UVs, normais e tangentes não são transferidos. | MESH |
+| `mesh` | A malha reestruturada com tesselação uniforme e topologia soldada. As cores dos vértices são preservadas quando presentes na entrada; qualquer UV, normais e tangentes não são transferidos. | MESH |
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/RemeshMesh/pt-BR.md)
 
 ---
-**Source fingerprint (SHA-256):** `33b9603aad2aa8f4122dab75aa9d60caa0ab7ed81300461f3b773bb997251d99`
+**Source fingerprint (SHA-256):** `aa9b7e4465196fab81a4a484ca9dd03d999b4621a611aed2b39d618e53702a06`

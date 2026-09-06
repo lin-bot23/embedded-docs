@@ -1,22 +1,24 @@
 # Anahtar
 
+Switch düğümü, boolean bir koşula dayalı olarak iki olası girdi arasında seçim yapar. `switch` etkinleştirildiğinde (true), `on_true` girdisini çıktıya iletir; devre dışı bırakıldığında (false) ise `on_false` girdisini iletir. Yalnızca seçilen dal değerlendirilir, bu nedenle diğer girdinin bağlı olması gerekmez.
+
 ## Girdiler
 
-| Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
+| Parametre | Açıklama | Veri Tipi | Zorunlu | Aralık |
 | --- | --- | --- | --- | --- |
-| `anahtar` | Hangi girdinin iletileceğini belirleyen bir boolean koşuldur. Etkin olduğunda (true), `on_true` girdisi seçilir. Devre dışı olduğunda (false), `on_false` girdisi seçilir. | BOOLEAN | Evet |  |
-| `yanlışta` | `switch` devre dışıyken (false) çıktıya iletilecek veridir. Bu girdi yalnızca `switch` false olduğunda gereklidir. | MATCH_TYPE | Hayır |  |
-| `doğruda` | `switch` etkinken (true) çıktıya iletilecek veridir. Bu girdi yalnızca `switch` true olduğunda gereklidir. | MATCH_TYPE | Hayır |  |
+| `switch` | Hangi girdinin iletileceğini belirleyen boolean koşul. Etkinleştirildiğinde (true), `on_true` girdisi seçilir. Devre dışı bırakıldığında (false), `on_false` girdisi seçilir. | BOOLEAN | Evet |  |
+| `on_false` | `switch` devre dışıyken (false) çıktıya iletilecek veri. Bu girdi yalnızca `switch` false olduğunda gereklidir. | MATCH_TYPE | Hayır |  |
+| `on_true` | `switch` etkinken (true) çıktıya iletilecek veri. Bu girdi yalnızca `switch` true olduğunda gereklidir. | MATCH_TYPE | Hayır |  |
 
-**Girdi Gereksinimleri Notu:** `on_false` ve `on_true` girdileri koşullu olarak gereklidir. Düğüm, `on_true` girdisini yalnızca `switch` true olduğunda, `on_false` girdisini ise yalnızca `switch` false olduğunda isteyecektir. Her iki girdi de aynı veri türünde olmalı ve çıktı veri türüyle eşleşmelidir.
+**Girdi Gereksinimleri Notu:** `on_false` ve `on_true` girdileri koşullu olarak zorunludur. Düğüm, `on_true` girdisini yalnızca `switch` true olduğunda; `on_false` girdisini ise yalnızca `switch` false olduğunda ister. Her iki girdi de aynı veri tipinde olmalı ve çıktı veri tipiyle eşleşmelidir. Seçilen girdi bağlı değilse, düğüm değer üretmez.
 
 ## Çıktılar
 
-| Çıktı Adı | Açıklama | Veri Türü |
+| Çıktı Adı | Açıklama | Veri Tipi |
 | --- | --- | --- |
-| `çıktı` | Seçilen veridir. `switch` true olduğunda `on_true` girdisinden, `switch` false olduğunda `on_false` girdisinden alınan değerdir. | MATCH_TYPE |
+| `output` | Seçilen veri. `switch` true olduğunda `on_true` girdisinden, `switch` false olduğunda ise `on_false` girdisinden alınan değerdir. | MATCH_TYPE |
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ComfySwitchNode/tr.md)
 
 ---
-**Source fingerprint (SHA-256):** `d0adda02e7f997f27182cb26e11e934660ae5bd80f3091bed2fed7c981632ce5`
+**Source fingerprint (SHA-256):** `42c442efeda0197d950702c52647233dee1a30216fb07e1ce4bc844784a6c5f2`

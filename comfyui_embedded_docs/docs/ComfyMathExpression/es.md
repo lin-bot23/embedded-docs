@@ -1,28 +1,31 @@
 # Expresión matemática
 
-El nodo ComfyMathExpression evalúa una fórmula matemática utilizando un conjunto de valores de entrada. Puedes escribir una expresión usando nombres de variables (como `a`, `b`, `c`), y el nodo calculará el resultado. Admite la adición dinámica de tantos valores de entrada como sean necesarios para tu cálculo.
+El nodo ComfyMathExpression evalúa una fórmula matemática que se escribe como texto. La fórmula puede hacer referencia a los valores de entrada del nodo mediante nombres de letra como `a`, `b`, `c`, y se pueden agregar tantos valores de entrada como sea necesario a través del grupo ampliable `values`. El resultado del cálculo se devuelve simultáneamente como un número de coma flotante, un número entero y un valor booleano.
 
 ## Entradas
 
-| Parámetro | Descripción | Tipo de dato | Obligatorio | Rango |
-| --- | --- | --- | --- | --- |
-| `expresión` | La fórmula matemática a evaluar. Puedes usar nombres de variables que correspondan a los valores de entrada (predeterminado: "a + b"). | STRING | Sí | N/A |
-| `valores` | Un conjunto de entradas numéricas o booleanas que se pueden agregar dinámicamente. A cada entrada se le asigna una letra del alfabeto (a, b, c, ...) para usarse como variable en la expresión. | FLOAT, INT, BOOLEAN | No | N/A |
+| Parámetro | Descripción | Tipo de datos | Obligatorio | Rango |
+|-----------|-------------|---------------|-------------|-------|
+| `expression` | La fórmula matemática a evaluar, escrita como texto (por ejemplo, `a + b`), que utiliza los nombres de letra de los valores de entrada como variables. Entrada multilínea. (valor por defecto: "a + b") | STRING | Sí | N/A |
+| `values` | Grupo ampliable de valores de entrada que proporciona las variables para la expresión. Cada valor agregado al grupo recibe automáticamente el siguiente nombre de letra minúscula a partir de `a` (`a`, `b`, `c`, ...), y ese nombre puede usarse luego dentro de `expression`. Cada elemento acepta un número (INT o FLOAT) o un valor booleano (TRUE/FALSE). | FLOAT, INT, BOOLEAN | Sí | 1 a 26 valores, nombrados de `a` a `z` |
 
-**Restricciones de los parámetros:**
-*   El parámetro `expression` no puede estar vacío ni contener solo espacios en blanco.
-*   La expresión debe evaluarse a un resultado numérico finito (INT o FLOAT). Los valores booleanos u otros resultados no numéricos generarán un error.
-*   Los valores de entrada para el parámetro `values` pueden ser números (INT o FLOAT) o valores booleanos (VERDADERO/FALSO).
+### Notas y restricciones
+
+- `expression` no puede estar vacía ni contener solo espacios en blanco.
+- La expresión debe dar como resultado un valor numérico (INT o FLOAT). Si el resultado es de otro tipo, como texto, el nodo genera un error.
+- El resultado numérico debe ser finito y convertible a un número de coma flotante (FLOAT). Los resultados demasiado grandes o no finitos provocan un error.
+- El conjunto completo de valores de entrada también está disponible dentro de la expresión bajo el nombre de variable `values` (como una lista), por lo que expresiones como `sum(values)` son posibles.
+- Las siguientes funciones matemáticas están disponibles dentro de la expresión: `sum`, `min`, `max`, `abs`, `round`, `pow`, `sqrt`, `ceil`, `floor`, `log`, `log2`, `log10`, `sin`, `cos`, `tan`, `int`, `float`.
 
 ## Salidas
 
-| Nombre de salida | Descripción | Tipo de dato |
-| --- | --- | --- |
-| `FLOAT` | El resultado de la expresión matemática como número de punto flotante. | FLOAT |
-| `BOOL` | El resultado de la expresión matemática como número entero. | INT |
-| `BOOL` | El resultado de la expresión matemática como valor booleano. | BOOLEAN |
+| Nombre de salida | Descripción | Tipo de datos |
+|------------------|-------------|---------------|
+| `FLOAT` | El resultado de la expresión como número de coma flotante. | FLOAT |
+| `INT` | El resultado de la expresión convertido a un número entero, con la parte decimal truncada. | INT |
+| `BOOL` | El resultado convertido a un valor booleano: TRUE cuando el resultado numérico no es cero, FALSE cuando es cero. | BOOLEAN |
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ComfyMathExpression/es.md)
 
 ---
-**Source fingerprint (SHA-256):** `962f82684d9dc58a67a57e6738d6d2ed457d7f30288cedb21fd46b5c655c1708`
+**Source fingerprint (SHA-256):** `4c77e9834fe7341143352f95ed8808dc81def3361b197c67e33a531bb3696d71`
