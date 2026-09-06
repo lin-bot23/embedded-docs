@@ -6,7 +6,7 @@
 
 | 參數 | 描述 | 資料類型 | 必要 | 範圍 |
 |-----------|-------------|-----------|----------|-------|
-| `samples` | 要解碼的潛在樣本，包含樣本張量與稀疏座標資料。潛在字典也可能包含選用欄位：用於批次形狀的 `coord_counts`、用於控制網格解析度的 `coord_resolution`，以及用於座標方向的 `model_frame`。 | LATENT | 是 | None |
+| `樣本` | 要解碼的潛在樣本，包含樣本張量與稀疏座標資料。潛在字典也可能包含選用欄位：用於批次形狀的 `coord_counts`、用於控制網格解析度的 `coord_resolution`，以及用於座標方向的 `model_frame`。 | LATENT | 是 | None |
 | `vae` | 用於將形狀潛在解碼為網格的 VAE 模型。 | VAE | 是 | None |
 
 ### 關於 `samples` 的說明
@@ -20,8 +20,8 @@
 
 | 輸出名 | 描述 | 資料類型 |
 |-------------|-------------|-----------|
-| `mesh` | 解碼後的 3D 網格，包含頂點位置與面索引。解碼多個形狀時，若所有形狀皆相同，網格會以單一堆疊張量回傳，否則以打包的可變大小批次回傳。 | MESH |
-| `shape_subdivides` | 解碼過程每個階段所產生的形狀細分資料。 | SHAPE_SUBDIVIDES |
+| `網格` | 解碼後的 3D 網格，包含頂點位置與面索引。解碼多個形狀時，若所有形狀皆相同，網格會以單一堆疊張量回傳，否則以打包的可變大小批次回傳。 | MESH |
+| `形狀細分` | 解碼過程每個階段所產生的形狀細分資料。 | SHAPE_SUBDIVIDES |
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/VaeDecodeShapeTrellis/zh-TW.md)
 

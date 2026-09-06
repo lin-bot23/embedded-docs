@@ -6,8 +6,8 @@ El nodo TripoRetargetNode aplica una animación preestablecida a un modelo 3D ex
 
 | Parámetro | Descripción | Tipo de datos | Requerido | Rango |
 |-----------|-------------|---------------|-----------|-------|
-| `original_model_task_id` | El ID de tarea del modelo 3D que ya tiene rig y al que se aplicará el retargeting. La tarea referenciada debe ser una tarea de rig; un rig creado con la especificación Mixamo en la versión de modelo v1.0 no puede utilizarse para retargeting. | RIG_TASK_ID | Sí | - |
-| `animation` | El preset de animación que se aplicará al modelo con rig. Las animaciones `preset:*` funcionan con ambos modelos con rig; las animaciones `preset:biped:*` requieren un rig creado con la versión de modelo v1.0-20240301. | COMBO | Sí | `"preset:idle"`<br>`"preset:walk"`<br>`"preset:run"`<br>`"preset:dive"`<br>`"preset:climb"`<br>`"preset:jump"`<br>`"preset:slash"`<br>`"preset:shoot"`<br>`"preset:hurt"`<br>`"preset:fall"`<br>`"preset:turn"`<br>`"preset:quadruped:walk"`<br>`"preset:hexapod:walk"`<br>`"preset:octopod:walk"`<br>`"preset:serpentine:march"`<br>`"preset:aquatic:march"`<br>más opciones `"preset:biped:*"` que se muestran en la interfaz |
+| `ID_de_tarea_del_modelo_original` | El ID de tarea del modelo 3D que ya tiene rig y al que se aplicará el retargeting. La tarea referenciada debe ser una tarea de rig; un rig creado con la especificación Mixamo en la versión de modelo v1.0 no puede utilizarse para retargeting. | RIG_TASK_ID | Sí | - |
+| `animación` | El preset de animación que se aplicará al modelo con rig. Las animaciones `preset:*` funcionan con ambos modelos con rig; las animaciones `preset:biped:*` requieren un rig creado con la versión de modelo v1.0-20240301. | COMBO | Sí | `"preset:idle"`<br>`"preset:walk"`<br>`"preset:run"`<br>`"preset:dive"`<br>`"preset:climb"`<br>`"preset:jump"`<br>`"preset:slash"`<br>`"preset:shoot"`<br>`"preset:hurt"`<br>`"preset:fall"`<br>`"preset:turn"`<br>`"preset:quadruped:walk"`<br>`"preset:hexapod:walk"`<br>`"preset:octopod:walk"`<br>`"preset:serpentine:march"`<br>`"preset:aquatic:march"`<br>más opciones `"preset:biped:*"` que se muestran en la interfaz |
 | `out_format` | Formato de archivo de salida; el resultado llega por la salida correspondiente. (por defecto: glb) | COMBO | No | `"glb"`<br>`"fbx"` |
 | `export_with_geometry` | Incluir la malla en la exportación; si está desactivado, exporta solo el esqueleto animado. (por defecto: True) | BOOLEAN | No | True<br>False |
 | `animate_in_place` | Reproducir la animación en el lugar, sin desplazamiento de la raíz. (por defecto: False) | BOOLEAN | No | True<br>False |
@@ -21,8 +21,8 @@ Nota: Las animaciones del grupo `preset:*` funcionan con ambos modelos con rig, 
 
 | Nombre de salida | Descripción | Tipo de datos |
 |------------------|-------------|---------------|
-| `model_file` | El archivo de modelo 3D animado generado (solo por compatibilidad con versiones anteriores). | STRING |
-| `retarget task_id` | El ID de tarea para el seguimiento de la operación de retargeting. | RETARGET_TASK_ID |
+| `id_de_tarea_de_reorientación` | El archivo de modelo 3D animado generado (solo por compatibilidad con versiones anteriores). | STRING |
+| `reasignar task_id` | El ID de tarea para el seguimiento de la operación de retargeting. | RETARGET_TASK_ID |
 | `GLB` | El modelo 3D animado en formato GLB. Se completa cuando `out_format` es glb. | FILE3DGLB |
 | `FBX` | El modelo 3D animado en formato FBX. Se completa cuando `out_format` es fbx. | FILE3DFBX |
 

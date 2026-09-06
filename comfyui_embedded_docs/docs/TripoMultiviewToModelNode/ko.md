@@ -6,20 +6,20 @@
 
 | 매개변수 | 설명 | 데이터 타입 | 필수 | 범위 |
 |-----------|-------------|-----------|----------|-------|
-| `image` | 객체의 정면 뷰 이미지입니다. | IMAGE | 예 | - |
-| `image_left` | 객체의 좌측 뷰 이미지입니다. | IMAGE | 아니요 | - |
-| `image_back` | 객체의 후면 뷰 이미지입니다. | IMAGE | 아니요 | - |
-| `image_right` | 객체의 우측 뷰 이미지입니다. | IMAGE | 아니요 | - |
-| `model_version` | 생성에 사용할 모델 버전입니다. | COMBO | 아니요 | Multiple options available |
-| `orientation` | 3D 모델의 방향 설정입니다(기본값: `"default"`). | COMBO | 아니요 | Multiple options available |
-| `texture` | 텍스처 맵을 생성합니다. Off로 설정하면 텍스처가 없는 지오메트리만 반환하고 pbr을 무시합니다. (기본값: True) | BOOLEAN | 아니요 | - |
-| `pbr` | PBR 재질 맵(기본 색상, 금속성, 거칠기, 법선)입니다. texture가 필요합니다. (기본값: True) | BOOLEAN | 아니요 | - |
-| `model_seed` | 모델 생성용 난수 시드입니다(기본값: 42). | INT | 아니요 | 0 ~ 2,147,483,647 |
-| `texture_seed` | 텍스처 생성용 난수 시드입니다(기본값: 42). | INT | 아니요 | 0 ~ 2,147,483,647 |
-| `texture_quality` | 텍스처 생성 품질 수준입니다(기본값: `"standard"`). `"detailed"`는 HD 텍스처, `"extreme"`은 8K 울트라 텍스처입니다. | COMBO | 아니요 | `"standard"`<br>`"detailed"`<br>`"extreme"` |
-| `texture_alignment` | 모델에 텍스처를 정렬하는 데 사용되는 방법입니다(기본값: `"original_image"`). | COMBO | 아니요 | `"original_image"`<br>`"geometry"` |
-| `face_limit` | 최대 면 수입니다. -1로 설정하면 Tripo가 적응형으로 선택합니다(v3.x standard에서 약 140만 개 면, detailed에서 200만 개 면). Tripo는 경고 없이 상한을 적용합니다: v2.5는 500,000개, 쿼드 메시는 150,000개입니다. (기본값: -1) | INT | 아니요 | -1 ~ 2,000,000 |
-| `quad` | 쿼드 메시 출력입니다. Tripo는 쿼드 메시를 FBX로 전달하므로 결과가 FBX 출력으로 전달되며 GLB 출력은 비어 있습니다. (기본값: False) | BOOLEAN | 아니요 | - |
+| `이미지` | 객체의 정면 뷰 이미지입니다. | IMAGE | 예 | - |
+| `왼쪽 이미지` | 객체의 좌측 뷰 이미지입니다. | IMAGE | 아니요 | - |
+| `뒷면 이미지` | 객체의 후면 뷰 이미지입니다. | IMAGE | 아니요 | - |
+| `오른쪽 이미지` | 객체의 우측 뷰 이미지입니다. | IMAGE | 아니요 | - |
+| `모델 버전` | 생성에 사용할 모델 버전입니다. | COMBO | 아니요 | Multiple options available |
+| `방향` | 3D 모델의 방향 설정입니다(기본값: `"default"`). | COMBO | 아니요 | Multiple options available |
+| `텍스처` | 텍스처 맵을 생성합니다. Off로 설정하면 텍스처가 없는 지오메트리만 반환하고 pbr을 무시합니다. (기본값: True) | BOOLEAN | 아니요 | - |
+| `PBR` | PBR 재질 맵(기본 색상, 금속성, 거칠기, 법선)입니다. texture가 필요합니다. (기본값: True) | BOOLEAN | 아니요 | - |
+| `모델 시드` | 모델 생성용 난수 시드입니다(기본값: 42). | INT | 아니요 | 0 ~ 2,147,483,647 |
+| `텍스처 시드` | 텍스처 생성용 난수 시드입니다(기본값: 42). | INT | 아니요 | 0 ~ 2,147,483,647 |
+| `텍스처 품질` | 텍스처 생성 품질 수준입니다(기본값: `"standard"`). `"detailed"`는 HD 텍스처, `"extreme"`은 8K 울트라 텍스처입니다. | COMBO | 아니요 | `"standard"`<br>`"detailed"`<br>`"extreme"` |
+| `텍스처 정렬` | 모델에 텍스처를 정렬하는 데 사용되는 방법입니다(기본값: `"original_image"`). | COMBO | 아니요 | `"original_image"`<br>`"geometry"` |
+| `얼굴 제한` | 최대 면 수입니다. -1로 설정하면 Tripo가 적응형으로 선택합니다(v3.x standard에서 약 140만 개 면, detailed에서 200만 개 면). Tripo는 경고 없이 상한을 적용합니다: v2.5는 500,000개, 쿼드 메시는 150,000개입니다. (기본값: -1) | INT | 아니요 | -1 ~ 2,000,000 |
+| `쿼드` | 쿼드 메시 출력입니다. Tripo는 쿼드 메시를 FBX로 전달하므로 결과가 FBX 출력으로 전달되며 GLB 출력은 비어 있습니다. (기본값: False) | BOOLEAN | 아니요 | - |
 | `geometry_quality` | 지오메트리 생성 품질 수준입니다(기본값: `"standard"`). | COMBO | 아니요 | `"standard"`<br>`"detailed"` |
 | `smart_low_poly` | 깔끔하고 수작업으로 제작한 듯한 토폴로지를 갖춘 저폴리 메시입니다(면 500~20,000개, 쿼드 500~10,000개). 단순한 객체에 가장 적합하며, 복잡한 객체는 실패할 수 있습니다. (기본값: False) | BOOLEAN | 아니요 | - |
 | `auto_size` | 텍스처가 적용된 모델을 실제 세계 크기(미터)로 조정합니다. Tripo는 이 크기를 모델의 씬 트랜스폼으로 저장하고, 모델이 변환, 리깅 또는 리타겟팅될 때 이를 적용합니다. 텍스처가 없으면 무시됩니다. (기본값: False) | BOOLEAN | 아니요 | - |
@@ -30,8 +30,8 @@
 
 | 출력 이름 | 설명 | 데이터 타입 |
 |-------------|-------------|-----------|
-| `model_file` | 생성된 3D 모델의 파일 경로 또는 식별자입니다(하위 호환 전용). | STRING |
-| `model task_id` | 모델 생성 과정을 추적하기 위한 작업 식별자입니다. | MODEL_TASK_ID |
+| `모델 파일` | 생성된 3D 모델의 파일 경로 또는 식별자입니다(하위 호환 전용). | STRING |
+| `모델 task_id` | 모델 생성 과정을 추적하기 위한 작업 식별자입니다. | MODEL_TASK_ID |
 | `GLB` | GLB 형식으로 생성된 3D 모델 파일입니다. `quad`가 활성화된 경우 비어 있습니다. | FILE3DGLB |
 | `FBX` | FBX 형식으로 생성된 3D 모델 파일입니다. `quad`가 활성화된 경우에만 값이 채워집니다. | FILE3DFBX |
 

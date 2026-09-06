@@ -6,9 +6,9 @@ Switch 节点根据布尔条件在两个可能的输入之间进行选择。当 
 
 | 参数 | 描述 | 数据类型 | 必填 | 范围 |
 | --- | --- | --- | --- | --- |
-| `switch` | 决定传递哪个输入的布尔条件。启用（true）时选择 `on_true` 输入；禁用（false）时选择 `on_false` 输入。 | BOOLEAN | 是 |  |
-| `on_false` | 当 `switch` 禁用（false）时传递到输出的数据。仅当 `switch` 为 false 时才需要此输入。 | MATCH_TYPE | 否 |  |
-| `on_true` | 当 `switch` 启用（true）时传递到输出的数据。仅当 `switch` 为 true 时才需要此输入。 | MATCH_TYPE | 否 |  |
+| `切换` | 决定传递哪个输入的布尔条件。启用（true）时选择 `on_true` 输入；禁用（false）时选择 `on_false` 输入。 | BOOLEAN | 是 |  |
+| `为假时` | 当 `switch` 禁用（false）时传递到输出的数据。仅当 `switch` 为 false 时才需要此输入。 | MATCH_TYPE | 否 |  |
+| `为真时` | 当 `switch` 启用（true）时传递到输出的数据。仅当 `switch` 为 true 时才需要此输入。 | MATCH_TYPE | 否 |  |
 
 **输入要求说明：** `on_false` 和 `on_true` 输入是条件必填的。节点仅在 `switch` 为 true 时要求 `on_true` 输入，并且仅在 `switch` 为 false 时要求 `on_false` 输入。两个输入必须具有相同的数据类型，并且必须与输出的数据类型一致。如果所选输入未连接，节点将不输出任何值。
 
@@ -16,7 +16,7 @@ Switch 节点根据布尔条件在两个可能的输入之间进行选择。当 
 
 | 输出名称 | 描述 | 数据类型 |
 | --- | --- | --- |
-| `output` | 被选中的数据。当 `switch` 为 true 时，它是来自 `on_true` 输入的值；当 `switch` 为 false 时，它是来自 `on_false` 输入的值。 | MATCH_TYPE |
+| `输出` | 被选中的数据。当 `switch` 为 true 时，它是来自 `on_true` 输入的值；当 `switch` 为 false 时，它是来自 `on_false` 输入的值。 | MATCH_TYPE |
 
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ComfySwitchNode/zh.md)
 

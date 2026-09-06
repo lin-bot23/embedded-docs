@@ -8,16 +8,16 @@
 
 | 參數 | 說明 | 資料類型 | 必填 | 範圍 |
 |-----------|-------------|-----------|----------|-------|
-| `image` | 正面視圖（0°）。必填。 | IMAGE | 是 | - |
-| `image_left` | 左側視圖（90°），即主體左側。 | IMAGE | 否 | - |
-| `image_back` | 背面視圖（180°）。 | IMAGE | 否 | - |
-| `image_right` | 右側視圖（270°），即主體右側。 | IMAGE | 否 | - |
-| `output_mode` | 選擇要生成的模型類型。"Geometry only" 會傳回未經紋理處理的網格；"Textured" 則會加入顏色／PBR 貼圖。 | DYNAMIC_COMBO | 是 | "Geometry only"<br>"Textured" |
-| `face_limit` | 目標面數，範圍 48-20000。-1 讓 Tripo 自適應選擇。（預設值：-1） | INT | 否 | -1 至 20000 |
-| `model_seed` | 用於可重現模型生成的種子。（預設值：42） | INT | 否 | 0 至 2147483647 |
-| `auto_size` | 將輸出縮放到接近真實世界公尺數。（預設值：False） | BOOLEAN | 否 | True<br>False |
-| `export_uv` | 在生成期間執行 UV 拆解。若為僅幾何執行，關閉可加快速度。（預設值：True） | BOOLEAN | 否 | True<br>False |
-| `compress_geometry` | 套用 meshopt 幾何壓縮（EXT_meshopt_compression）。檔案較小，但 ComfyUI 的 3D 預覽無法顯示；編輯前需先解壓縮。（預設值：False） | BOOLEAN | 否 | True<br>False |
+| `圖片` | 正面視圖（0°）。必填。 | IMAGE | 是 | - |
+| `左側圖片` | 左側視圖（90°），即主體左側。 | IMAGE | 否 | - |
+| `背面圖片` | 背面視圖（180°）。 | IMAGE | 否 | - |
+| `右側圖片` | 右側視圖（270°），即主體右側。 | IMAGE | 否 | - |
+| `輸出模式` | 選擇要生成的模型類型。"Geometry only" 會傳回未經紋理處理的網格；"Textured" 則會加入顏色／PBR 貼圖。 | DYNAMIC_COMBO | 是 | "Geometry only"<br>"Textured" |
+| `面數上限` | 目標面數，範圍 48-20000。-1 讓 Tripo 自適應選擇。（預設值：-1） | INT | 否 | -1 至 20000 |
+| `模型種子` | 用於可重現模型生成的種子。（預設值：42） | INT | 否 | 0 至 2147483647 |
+| `自動尺寸` | 將輸出縮放到接近真實世界公尺數。（預設值：False） | BOOLEAN | 否 | True<br>False |
+| `匯出 UV` | 在生成期間執行 UV 拆解。若為僅幾何執行，關閉可加快速度。（預設值：True） | BOOLEAN | 否 | True<br>False |
+| `壓縮幾何` | 套用 meshopt 幾何壓縮（EXT_meshopt_compression）。檔案較小，但 ComfyUI 的 3D 預覽無法顯示；編輯前需先解壓縮。（預設值：False） | BOOLEAN | 否 | True<br>False |
 
 ### 僅幾何輸入
 
@@ -41,8 +41,8 @@
 
 | 輸出名 | 說明 | 資料類型 |
 |-------------|-------------|-----------|
-| `model_file` | 生成的 GLB 模型檔案名稱（僅供向後相容使用）。 | STRING |
-| `model_task_id` | 此模型生成要求的唯一任務 ID。 | MODEL_TASK_ID |
+| `模型檔案` | 生成的 GLB 模型檔案名稱（僅供向後相容使用）。 | STRING |
+| `模型任務 ID` | 此模型生成要求的唯一任務 ID。 | MODEL_TASK_ID |
 | `GLB` | 以 GLB 格式生成的 3D 模型。 | FILE3DGLB |
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1MultiviewToModelNode/zh-TW.md)

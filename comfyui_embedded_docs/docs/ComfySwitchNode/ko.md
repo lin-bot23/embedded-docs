@@ -6,9 +6,9 @@ Switch 노드는 부울(boolean) 조건에 따라 두 개의 입력 중 하나�
 
 | 매개변수 | 설명 | 데이터 타입 | 필수 | 범위 |
 | --- | --- | --- | --- | --- |
-| `switch` | 출력으로 전달할 입력을 결정하는 부울 조건입니다. `switch`가 활성화(true)되면 `on_true` 입력이 선택되고, 비활성화(false)되면 `on_false` 입력이 선택됩니다. | BOOLEAN | 예 |  |
-| `on_false` | `switch`가 비활성화(false)일 때 출력으로 전달되는 데이터입니다. 이 입력은 `switch`가 false일 때만 필요합니다. | MATCH_TYPE | 아니요 |  |
-| `on_true` | `switch`가 활성화(true)일 때 출력으로 전달되는 데이터입니다. 이 입력은 `switch`가 true일 때만 필요합니다. | MATCH_TYPE | 아니요 |  |
+| `스위치` | 출력으로 전달할 입력을 결정하는 부울 조건입니다. `switch`가 활성화(true)되면 `on_true` 입력이 선택되고, 비활성화(false)되면 `on_false` 입력이 선택됩니다. | BOOLEAN | 예 |  |
+| `거짓일 때` | `switch`가 비활성화(false)일 때 출력으로 전달되는 데이터입니다. 이 입력은 `switch`가 false일 때만 필요합니다. | MATCH_TYPE | 아니요 |  |
+| `참일 때` | `switch`가 활성화(true)일 때 출력으로 전달되는 데이터입니다. 이 입력은 `switch`가 true일 때만 필요합니다. | MATCH_TYPE | 아니요 |  |
 
 **입력 요구 사항에 대한 참고 사항:** `on_false` 및 `on_true` 입력은 조건부로 필요합니다. 이 노드는 `switch`가 true일 때만 `on_true` 입력을 요청하고, `switch`가 false일 때만 `on_false` 입력을 요청합니다. 두 입력은 동일한 데이터 타입이어야 하며 출력 데이터 타입과도 일치해야 합니다. 선택된 입력이 연결되어 있지 않으면 노드는 값을 출력하지 않습니다.
 
@@ -16,7 +16,7 @@ Switch 노드는 부울(boolean) 조건에 따라 두 개의 입력 중 하나�
 
 | 출력 이름 | 설명 | 데이터 타입 |
 | --- | --- | --- |
-| `output` | 선택된 데이터입니다. `switch`가 true일 때는 `on_true` 입력의 값이고, `switch`가 false일 때는 `on_false` 입력의 값입니다. | MATCH_TYPE |
+| `출력` | 선택된 데이터입니다. `switch`가 true일 때는 `on_true` 입력의 값이고, `switch`가 false일 때는 `on_false` 입력의 값입니다. | MATCH_TYPE |
 
 > 이 문서는 AI에 의해 생성되었습니다. 오류를 발견하거나 개선 제안이 있으시면 기여해 주세요! [GitHub에서 편집](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ComfySwitchNode/ko.md)
 

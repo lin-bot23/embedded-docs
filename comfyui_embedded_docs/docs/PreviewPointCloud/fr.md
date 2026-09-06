@@ -6,12 +6,12 @@ Le nœud Preview Point Cloud vous permet de visualiser un fichier de nuage de po
 
 | Paramètre | Description | Type de données | Requis | Plage |
 |-----------|-------------|-----------------|--------|-------|
-| `model_3d` | Fichier de nuage de points (.ply) | FILE3D | Oui | - |
-| `model_3d_info` | Informations sur le modèle 3D | LOAD3DMODELINFO | Non | - |
-| `viewport_state` | État actuel de la fenêtre 3D | LOAD3D | Oui | - |
-| `camera_info` | Informations de caméra pour la vue 3D | LOAD3DCAMERA | Non | - |
-| `width` | Largeur de la fenêtre d’aperçu (défaut : 1024) | INT | Oui | 1 à 4096 |
-| `height` | Hauteur de la fenêtre d’aperçu (défaut : 1024) | INT | Oui | 1 à 4096 |
+| `modèle_3d` | Fichier de nuage de points (.ply) | FILE3D | Oui | - |
+| `info_modèle_3d` | Informations sur le modèle 3D | LOAD3DMODELINFO | Non | - |
+| `état_vue` | État actuel de la fenêtre 3D | LOAD3D | Oui | - |
+| `info_caméra` | Informations de caméra pour la vue 3D | LOAD3DCAMERA | Non | - |
+| `largeur` | Largeur de la fenêtre d’aperçu (défaut : 1024) | INT | Oui | 1 à 4096 |
+| `hauteur` | Hauteur de la fenêtre d’aperçu (défaut : 1024) | INT | Oui | 1 à 4096 |
 
 Remarque : `model_3d_info` et `camera_info` sont des entrées avancées facultatives. Lorsqu’elles ne sont pas connectées, le nœud utilise les valeurs correspondantes stockées dans `viewport_state`. Le fichier de nuage de points est écrit dans le répertoire temporaire de ComfyUI plutôt que dans le répertoire de sortie. Ce nœud est un nœud de sortie (terminal), il est donc principalement utilisé pour afficher l’aperçu dans l’interface.
 
@@ -19,11 +19,11 @@ Remarque : `model_3d_info` et `camera_info` sont des entrées avancées facultat
 
 | Nom de sortie | Description | Type de données |
 |---------------|-------------|-----------------|
-| `model_3d` | Les données du modèle de nuage de points | FILE3D |
-| `model_3d_info` | Informations sur le modèle 3D | LOAD3DMODELINFO |
-| `camera_info` | Informations de caméra pour la vue 3D | LOAD3DCAMERA |
-| `width` | Largeur de la fenêtre d’aperçu | INT |
-| `height` | Hauteur de la fenêtre d’aperçu | INT |
+| `modèle_3d` | Les données du modèle de nuage de points | FILE3D |
+| `info_modèle_3d` | Informations sur le modèle 3D | LOAD3DMODELINFO |
+| `info_caméra` | Informations de caméra pour la vue 3D | LOAD3DCAMERA |
+| `largeur` | Largeur de la fenêtre d’aperçu | INT |
+| `hauteur` | Hauteur de la fenêtre d’aperçu | INT |
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/PreviewPointCloud/fr.md)
 

@@ -6,7 +6,7 @@ Este nodo decodifica representaciones latentes de forma de Trellis2 en una malla
 
 | Parámetro | Descripción | Tipo de dato | Requerido | Rango |
 |-----------|-------------|--------------|-----------|-------|
-| `samples` | Las muestras latentes a decodificar, incluido el tensor de muestras y los datos de coordenadas dispersas. El diccionario latente también puede contener campos opcionales: `coord_counts` para formas por lotes, `coord_resolution` para controlar la resolución de la malla y `model_frame` para la orientación de las coordenadas. | LATENT | Sí | None |
+| `muestras` | Las muestras latentes a decodificar, incluido el tensor de muestras y los datos de coordenadas dispersas. El diccionario latente también puede contener campos opcionales: `coord_counts` para formas por lotes, `coord_resolution` para controlar la resolución de la malla y `model_frame` para la orientación de las coordenadas. | LATENT | Sí | None |
 | `vae` | El modelo VAE utilizado para decodificar el latente de forma en una malla. | VAE | Sí | None |
 
 ### Notas sobre `samples`
@@ -20,7 +20,7 @@ Este nodo decodifica representaciones latentes de forma de Trellis2 en una malla
 
 | Nombre de salida | Descripción | Tipo de dato |
 |------------------|-------------|--------------|
-| `mesh` | La malla 3D decodificada, que contiene posiciones de vértices e índices de caras. Al decodificar múltiples formas, las mallas se devuelven como un solo tensor apilado si todas comparten la misma forma, o como un lote empaquetado de tamaño variable en caso contrario. | MESH |
+| `malla` | La malla 3D decodificada, que contiene posiciones de vértices e índices de caras. Al decodificar múltiples formas, las mallas se devuelven como un solo tensor apilado si todas comparten la misma forma, o como un lote empaquetado de tamaño variable en caso contrario. | MESH |
 | `shape_subdivides` | Datos de subdivisión de forma producidos en cada etapa del proceso de decodificación. | SHAPE_SUBDIVIDES |
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/VaeDecodeShapeTrellis/es.md)

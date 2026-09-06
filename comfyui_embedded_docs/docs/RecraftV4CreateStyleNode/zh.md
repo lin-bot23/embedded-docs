@@ -6,8 +6,8 @@
 
 | 参数 | 描述 | 数据类型 | 必需 | 范围 |
 |-----------|-------------|-----------|----------|-------|
-| `model` | 要为其创建风格的模型。Standard 和 Pro 共享同一个风格池：栅格风格适用于每个 Recraft V4 和 V4.1 栅格模型，矢量风格（*_vector）适用于每个 V4 和 V4.1 矢量模型。 | COMBO | 是 | "recraftv4_styles"<br>"recraftv4_styles_vector"<br>"recraftv4_styles_pro"<br>"recraftv4_styles_pro_vector" |
-| `images` | 定义风格的参考图像。相似的参考图像可提高匹配精度，多样的参考图像可扩大匹配范围。可增长插槽：连接 1 到 10 张图像（`image_1` 至 `image_10`）。 | IMAGE | 是 | 1 到 10 images |
+| `模型` | 要为其创建风格的模型。Standard 和 Pro 共享同一个风格池：栅格风格适用于每个 Recraft V4 和 V4.1 栅格模型，矢量风格（*_vector）适用于每个 V4 和 V4.1 矢量模型。 | COMBO | 是 | "recraftv4_styles"<br>"recraftv4_styles_vector"<br>"recraftv4_styles_pro"<br>"recraftv4_styles_pro_vector" |
+| `图像` | 定义风格的参考图像。相似的参考图像可提高匹配精度，多样的参考图像可扩大匹配范围。可增长插槽：连接 1 到 10 张图像（`image_1` 至 `image_10`）。 | IMAGE | 是 | 1 到 10 images |
 
 ### 备注
 

@@ -6,8 +6,8 @@ ComfyMathExpression 节点会对您以文本形式书写的数学公式进行计
 
 | 参数 | 描述 | 数据类型 | 必需 | 范围 |
 |-----------|-------------|-----------|----------|-------|
-| `expression` | 要计算的数学公式，以文本形式书写（例如 `a + b`），使用输入值的字母名称作为变量。支持多行输入。（默认值："a + b"） | STRING | 是 | N/A |
-| `values` | 可增长的输入值组，为表达式提供变量。添加到该组的每个值都会自动按顺序获得从 `a` 开始的小写字母名称（`a`、`b`、`c`, ...），该名称随后即可在 `expression` 中使用。每个条目接受一个数字（INT 或 FLOAT）或一个布尔值（TRUE/FALSE）。 | FLOAT, INT, BOOLEAN | 是 | 1 到 26 values, named `a` to `z` |
+| `表达式` | 要计算的数学公式，以文本形式书写（例如 `a + b`），使用输入值的字母名称作为变量。支持多行输入。（默认值："a + b"） | STRING | 是 | N/A |
+| `数值` | 可增长的输入值组，为表达式提供变量。添加到该组的每个值都会自动按顺序获得从 `a` 开始的小写字母名称（`a`、`b`、`c`, ...），该名称随后即可在 `expression` 中使用。每个条目接受一个数字（INT 或 FLOAT）或一个布尔值（TRUE/FALSE）。 | FLOAT, INT, BOOLEAN | 是 | 1 到 26 values, named `a` to `z` |
 
 ### 备注与限制
 
@@ -23,7 +23,7 @@ ComfyMathExpression 节点会对您以文本形式书写的数学公式进行计
 |-------------|-------------|-----------|
 | `FLOAT` | 表达式的计算结果，以浮点数形式返回。 | FLOAT |
 | `INT` | 表达式的计算结果转换为整数，小数部分被截断。 | INT |
-| `BOOL` | 将结果转换为布尔值：当数值结果不为零时为 TRUE，为零时为 FALSE。 | BOOLEAN |
+| `布尔值` | 将结果转换为布尔值：当数值结果不为零时为 TRUE，为零时为 FALSE。 | BOOLEAN |
 
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ComfyMathExpression/zh.md)
 

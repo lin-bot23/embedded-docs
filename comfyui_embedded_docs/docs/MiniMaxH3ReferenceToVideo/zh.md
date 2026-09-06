@@ -9,15 +9,15 @@ MiniMax H3 Reference to Video 节点会创建 MiniMax H3 参考转视频生成�
 | `clip` | 用于对提示词进行分词，并将参考媒体编码为 conditioning token 的 CLIP 模型。 | CLIP | 是 | |
 | `vae` | 用于编码参考图像和参考视频帧的视频 VAE。若未提供，参考图像/参考视频只能作为文本编码器的 conditioning 使用。 | VAE | 否 | |
 | `audio_vae` | 用于编码参考音频的音频 VAE。音频会按音频 VAE 的采样率（默认为 32 kHz）重新采样。若未提供，参考音频只能作为文本编码器的 conditioning 使用。 | VAE | 否 | |
-| `prompt` | 视频的文本提示词。可通过 `<Picture i>`、`<Video k>`、`<Audio j>` 标记引用参考媒体（每种类型从 1 开始编号）。支持多行和动态提示词。 | STRING | 是 | |
-| `width` | 生成视频的宽度，单位为像素（默认值：1344）。 | INT | 是 | 32 到 16384 (步长 32) |
-| `height` | 生成视频的高度，单位为像素（默认值：768）。 | INT | 是 | 32 到 16384 (步长 32) |
-| `length` | 以 24 fps 计算的帧数；124 帧约为 5 秒，训练范围约为 124–362 帧（默认值：124）。 | INT | 是 | 5 到 3600 (步长 17) |
-| `ref_image_size` | 参考图像的缩放方式。`match` 会在保持宽高比的前提下将每张参考图像仅缩小到生成图像对应的像素面积；`max` 使用参考流程的 2048px 短边，以获得最佳身份保真度。参考 token 会贯穿整个采样过程，因此 `max` 可能慢数倍（默认值：`match`）。 | COMBO | 是 | `"match"`<br>`"max"` |
-| `ref_images` | 可增长插槽：最多可连接 9 张参考图像（`ref_image_1` ... `ref_image_9`）。参考图像若短边大于 2048px，会缩小到 2048px 短边；绝不放大。 | IMAGE | 否 | 0 到 9 |
-| `ref_videos` | 可增长插槽：最多可连接 3 个参考视频（`ref_video_1` ... `ref_video_3`）。参考视频为 24 fps，时长 2–15 秒。 | IMAGE | 否 | 0 到 3 |
-| `ref_video_audios` | 可增长插槽：最多可连接 3 条音轨（`ref_video_audio_1` ... `ref_video_audio_3`）。音轨与对应编号的参考视频配套使用。 | AUDIO | 否 | 0 到 3 |
-| `ref_audios` | 可增长插槽：最多可连接 3 个独立的参考音频片段（`ref_audio_1` ... `ref_audio_3`）。 | AUDIO | 否 | 0 到 3 |
+| `提示词` | 视频的文本提示词。可通过 `<Picture i>`、`<Video k>`、`<Audio j>` 标记引用参考媒体（每种类型从 1 开始编号）。支持多行和动态提示词。 | STRING | 是 | |
+| `宽度` | 生成视频的宽度，单位为像素（默认值：1344）。 | INT | 是 | 32 到 16384 (步长 32) |
+| `高度` | 生成视频的高度，单位为像素（默认值：768）。 | INT | 是 | 32 到 16384 (步长 32) |
+| `长度` | 以 24 fps 计算的帧数；124 帧约为 5 秒，训练范围约为 124–362 帧（默认值：124）。 | INT | 是 | 5 到 3600 (步长 17) |
+| `参考图像尺寸` | 参考图像的缩放方式。`match` 会在保持宽高比的前提下将每张参考图像仅缩小到生成图像对应的像素面积；`max` 使用参考流程的 2048px 短边，以获得最佳身份保真度。参考 token 会贯穿整个采样过程，因此 `max` 可能慢数倍（默认值：`match`）。 | COMBO | 是 | `"match"`<br>`"max"` |
+| `参考图像` | 可增长插槽：最多可连接 9 张参考图像（`ref_image_1` ... `ref_image_9`）。参考图像若短边大于 2048px，会缩小到 2048px 短边；绝不放大。 | IMAGE | 否 | 0 到 9 |
+| `参考视频` | 可增长插槽：最多可连接 3 个参考视频（`ref_video_1` ... `ref_video_3`）。参考视频为 24 fps，时长 2–15 秒。 | IMAGE | 否 | 0 到 3 |
+| `参考视频音频` | 可增长插槽：最多可连接 3 条音轨（`ref_video_audio_1` ... `ref_video_audio_3`）。音轨与对应编号的参考视频配套使用。 | AUDIO | 否 | 0 到 3 |
+| `参考音频` | 可增长插槽：最多可连接 3 个独立的参考音频片段（`ref_audio_1` ... `ref_audio_3`）。 | AUDIO | 否 | 0 到 3 |
 
 注意：
 
@@ -30,7 +30,7 @@ MiniMax H3 Reference to Video 节点会创建 MiniMax H3 参考转视频生成�
 
 | 输出名 | 描述 | 数据类型 |
 |-------------|-------------|-----------|
-| `positive` | 包含编码后提示词的 conditioning。若提供了参考媒体及相应的 VAE，则还包含编码后的参考图像、参考视频和参考音频内容，供 MiniMax H3 模型使用。 | CONDITIONING |
+| `正向` | 包含编码后提示词的 conditioning。若提供了参考媒体及相应的 VAE，则还包含编码后的参考图像、参考视频和参考音频内容，供 MiniMax H3 模型使用。 | CONDITIONING |
 | `latent` | 具有请求的 `width`、`height` 和 `length`（帧数）的空音视频 latent。 | LATENT |
 
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/MiniMaxH3ReferenceToVideo/zh.md)

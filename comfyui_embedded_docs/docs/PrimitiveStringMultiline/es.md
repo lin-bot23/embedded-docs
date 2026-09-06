@@ -6,7 +6,7 @@ El nodo Text (Multiline) proporciona un campo de entrada de texto multilínea pa
 
 | Parámetro | Descripción | Tipo de datos | Requerido | Rango |
 | --- | --- | --- | --- | --- |
-| `value` | El valor de entrada de texto que puede abarcar múltiples líneas | STRING | Sí | N/A |
+| `valor` | El valor de entrada de texto que puede abarcar múltiples líneas | STRING | Sí | N/A |
 
 ## Salidas
 

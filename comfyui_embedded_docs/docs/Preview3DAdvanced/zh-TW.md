@@ -10,8 +10,8 @@
 | `model_3d_info` | 選用的模型資訊中繼資料。進階選項。 | LOAD3DMODELINFO | 否 | - |
 | `viewport_state` | 目前的視埠狀態，包含相機與模型資訊。 | LOAD3D | 是 | - |
 | `camera_info` | 3D 視圖的選用相機設定。進階選項。 | LOAD3DCAMERA | 否 | - |
-| `width` | 預覽的寬度（像素）。預設值：1024。 | INT | 是 | 1 至 4096 |
-| `height` | 預覽的高度（像素）。預設值：1024。 | INT | 是 | 1 至 4096 |
+| `寬度` | 預覽的寬度（像素）。預設值：1024。 | INT | 是 | 1 至 4096 |
+| `高度` | 預覽的高度（像素）。預設值：1024。 | INT | 是 | 1 至 4096 |
 
 注意：當 `camera_info` 或 `model_3d_info` 未連接時，其值將在可行時從 `viewport_state` 取得。若 `viewport_state` 不含相機資訊，則 `camera_info` 為 None。若 `viewport_state` 沒有模型資訊，則 `model_3d_info` 預設為空清單。若 `viewport_state` 不是字典，則將其視為空。
 
@@ -19,11 +19,11 @@
 
 | 輸出名 | 描述 | 資料類型 |
 |-------------|-------------|-----------|
-| `model_3d` | 從輸入傳遞的 3D 模型檔案。 | FILE3D |
-| `model_3d_info` | 來自輸入或視埠狀態的模型資訊中繼資料。 | LOAD3DMODELINFO |
-| `camera_info` | 來自輸入或視埠狀態的相機設定。 | LOAD3DCAMERA |
-| `width` | 預覽的寬度（像素）。 | INT |
-| `height` | 預覽的高度（像素）。 | INT |
+| `model_file` | 從輸入傳遞的 3D 模型檔案。 | FILE3D |
+| `camera_info` | 來自輸入或視埠狀態的模型資訊中繼資料。 | LOAD3DMODELINFO |
+| `model_3d_info` | 來自輸入或視埠狀態的相機設定。 | LOAD3DCAMERA |
+| `寬度` | 預覽的寬度（像素）。 | INT |
+| `高度` | 預覽的高度（像素）。 | INT |
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Preview3DAdvanced/zh-TW.md)
 

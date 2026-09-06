@@ -6,8 +6,8 @@ El nodo ComfyMathExpression evalúa una fórmula matemática que se escribe como
 
 | Parámetro | Descripción | Tipo de datos | Obligatorio | Rango |
 |-----------|-------------|---------------|-------------|-------|
-| `expression` | La fórmula matemática a evaluar, escrita como texto (por ejemplo, `a + b`), que utiliza los nombres de letra de los valores de entrada como variables. Entrada multilínea. (valor por defecto: "a + b") | STRING | Sí | N/A |
-| `values` | Grupo ampliable de valores de entrada que proporciona las variables para la expresión. Cada valor agregado al grupo recibe automáticamente el siguiente nombre de letra minúscula a partir de `a` (`a`, `b`, `c`, ...), y ese nombre puede usarse luego dentro de `expression`. Cada elemento acepta un número (INT o FLOAT) o un valor booleano (TRUE/FALSE). | FLOAT, INT, BOOLEAN | Sí | 1 a 26 valores, nombrados de `a` a `z` |
+| `expresión` | La fórmula matemática a evaluar, escrita como texto (por ejemplo, `a + b`), que utiliza los nombres de letra de los valores de entrada como variables. Entrada multilínea. (valor por defecto: "a + b") | STRING | Sí | N/A |
+| `valores` | Grupo ampliable de valores de entrada que proporciona las variables para la expresión. Cada valor agregado al grupo recibe automáticamente el siguiente nombre de letra minúscula a partir de `a` (`a`, `b`, `c`, ...), y ese nombre puede usarse luego dentro de `expression`. Cada elemento acepta un número (INT o FLOAT) o un valor booleano (TRUE/FALSE). | FLOAT, INT, BOOLEAN | Sí | 1 a 26 valores, nombrados de `a` a `z` |
 
 ### Notas y restricciones
 

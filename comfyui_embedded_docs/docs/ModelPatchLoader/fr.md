@@ -6,7 +6,7 @@ Le nœud ModelPatchLoader charge un fichier de patch de modèle depuis le dossie
 
 | Paramètre | Description | Type de données | Requis | Plage |
 | --- | --- | --- | --- | --- |
-| `name` | Le nom du fichier de patch de modèle à charger depuis le dossier model_patches. Sélectionnez l'un des fichiers de patch disponibles dans la liste. | COMBO | Oui | Liste générée dynamiquement de tous les fichiers de patch de modèle trouvés dans le dossier model_patches |
+| `nom` | Le nom du fichier de patch de modèle à charger depuis le dossier model_patches. Sélectionnez l'un des fichiers de patch disponibles dans la liste. | COMBO | Oui | Liste générée dynamiquement de tous les fichiers de patch de modèle trouvés dans le dossier model_patches |
 
 Remarque : Ce nœud est marqué comme expérimental. Le type de patch est détecté automatiquement à partir du contenu du fichier, aucune sélection manuelle du type n'est donc nécessaire.
 

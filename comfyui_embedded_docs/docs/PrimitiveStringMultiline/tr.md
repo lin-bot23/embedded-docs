@@ -6,7 +6,7 @@ Text (Multiline) düğümü, iş akışınız boyunca dize değerleri girmek ve 
 
 | Parametre | Açıklama | Veri Türü | Zorunlu | Aralık |
 | --- | --- | --- | --- | --- |
-| `value` | Birden çok satıra yayılabilen metin giriş değeri | STRING | Evet | N/A |
+| `değer` | Birden çok satıra yayılabilen metin giriş değeri | STRING | Evet | N/A |
 
 ## Çıktılar
 

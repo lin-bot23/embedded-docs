@@ -8,9 +8,9 @@
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `model` | مدل مورد استفاده برای تولید ویدیو (پیش‌فرض: "MiniMax H3"). انتخاب "MiniMax H3" ورودی‌های تولید و مرجع MiniMax H3 را در زیر فراهم می‌کند. انتخاب "MiniMax H3 Max" ورودی‌های تولید و مرجع MiniMax H3 Max را در زیر فراهم می‌کند. | DYNAMIC_COMBO | بله | "MiniMax H3"<br>"MiniMax H3 Max" |
+| `مدل` | مدل مورد استفاده برای تولید ویدیو (پیش‌فرض: "MiniMax H3"). انتخاب "MiniMax H3" ورودی‌های تولید و مرجع MiniMax H3 را در زیر فراهم می‌کند. انتخاب "MiniMax H3 Max" ورودی‌های تولید و مرجع MiniMax H3 Max را در زیر فراهم می‌کند. | DYNAMIC_COMBO | بله | "MiniMax H3"<br>"MiniMax H3 Max" |
 | `seed` | seed تصادفی. درخواست یکسان با seed یکسان نتایج مشابه، اما نه لزوماً یکسان، می‌دهد (پیش‌فرض: 42). | INT | بله | 0 تا 4294967295 |
-| `watermark` | آیا واترمارک AIGC به ویدیو اضافه شود (پیش‌فرض: false). فقط توسط مدل MiniMax H3 پشتیبانی می‌شود. | BOOLEAN | خیر | true<br>false |
+| `واترمارک` | آیا واترمارک AIGC به ویدیو اضافه شود (پیش‌فرض: false). فقط توسط مدل MiniMax H3 پشتیبانی می‌شود. | BOOLEAN | خیر | true<br>false |
 
 ### ورودی‌های MiniMax H3
 

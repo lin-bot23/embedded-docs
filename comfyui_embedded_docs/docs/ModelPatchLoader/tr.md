@@ -6,7 +6,7 @@ ModelPatchLoader düğümü, `model_patches` klasöründen bir model yaması dos
 
 | Parametre | Açıklama | Veri Türü | Zorunlu | Aralık |
 | --- | --- | --- | --- | --- |
-| `name` | `model_patches` dizininden yüklenecek model yaması dosyasının adı. Listede bulunan mevcut yama dosyalarından birini seçin. | COMBO | Evet | `model_patches` klasöründe bulunan tüm model yaması dosyalarının dinamik olarak oluşturulan listesi |
+| `ad` | `model_patches` dizininden yüklenecek model yaması dosyasının adı. Listede bulunan mevcut yama dosyalarından birini seçin. | COMBO | Evet | `model_patches` klasöründe bulunan tüm model yaması dosyalarının dinamik olarak oluşturulan listesi |
 
 Not: Bu düğüm deneysel olarak işaretlenmiştir. Yama türü dosya içeriğinden otomatik olarak algılanır, bu nedenle manuel tür seçimi gerekmez.
 

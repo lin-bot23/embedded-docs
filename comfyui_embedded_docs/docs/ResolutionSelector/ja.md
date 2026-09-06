@@ -6,17 +6,17 @@ Resolution Selector ノードは、選択したアスペクト比と目標とす
 
 | パラメータ | 説明 | データ型 | 必須 | 範囲 |
 |-----------|-------------|-----------|----------|-------|
-| `aspect_ratio` | 出力寸法のアスペクト比です（デフォルト：`"1:1 (Square)"`）。 | COMBO | はい | `"1:1 (Square)"`<br>`"2:3 (Portrait Photo)"`<br>`"3:2 (Photo)"`<br>`"3:4 (Portrait Standard)"`<br>`"4:3 (Standard)"`<br>`"9:16 (Portrait Widescreen)"`<br>`"16:9 (Widescreen)"`<br>`"21:9 (Ultrawide)"` |
-| `megapixels` | 目標とする総メガピクセル数です。正方形の場合、1.0 MP ≈ 1024x1024 です（デフォルト：1.0）。 | FLOAT | はい | 0.1 - 16.0 (step: 0.1) |
+| `アスペクト比` | 出力寸法のアスペクト比です（デフォルト：`"1:1 (Square)"`）。 | COMBO | はい | `"1:1 (Square)"`<br>`"2:3 (Portrait Photo)"`<br>`"3:2 (Photo)"`<br>`"3:4 (Portrait Standard)"`<br>`"4:3 (Standard)"`<br>`"9:16 (Portrait Widescreen)"`<br>`"16:9 (Widescreen)"`<br>`"21:9 (Ultrawide)"` |
+| `メガピクセル` | 目標とする総メガピクセル数です。正方形の場合、1.0 MP ≈ 1024x1024 です（デフォルト：1.0）。 | FLOAT | はい | 0.1 - 16.0 (step: 0.1) |
 | `preview` | 計算された出力解像度のライブプレビューです。この読み取り専用ウィジェットは自動的に更新され、ユーザー入力は受け付けません。 | RESOLUTION_PREVIEW | いいえ | N/A |
-| `multiple` | 計算された解像度を、この値の倍数のうち最も近い値に丸めるために使用します（デフォルト：8）。 | INT | いいえ | 8 - 128 (step: 4) |
+| `倍数` | 計算された解像度を、この値の倍数のうち最も近い値に丸めるために使用します（デフォルト：8）。 | INT | いいえ | 8 - 128 (step: 4) |
 
 ## 出力
 
 | 出力名 | 説明 | データ型 |
 |-------------|-------------|-----------|
-| `width` | 計算された幅（ピクセル）に、選択した倍数を乗算した値です。 | INT |
-| `height` | 計算された高さ（ピクセル）に、選択した倍数を乗算した値です。 | INT |
+| `幅` | 計算された幅（ピクセル）に、選択した倍数を乗算した値です。 | INT |
+| `高さ` | 計算された高さ（ピクセル）に、選択した倍数を乗算した値です。 | INT |
 
 > このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ResolutionSelector/ja.md)
 

@@ -6,12 +6,12 @@ Este nodo predice la duración natural de la toma para un prompt de texto usando
 
 | Parámetro | Descripción | Tipo de dato | Requerido | Rango |
 |-----------|-------------|--------------|-----------|-------|
-| `model` | El modelo utilizado para preprocesar los embeddings de texto y ejecutar la cabeza de duración. | MODEL | Sí | N/A |
-| `positive` | El condicionamiento que proporciona los embeddings de texto del prompt y los metadatos para la predicción de duración. | CONDITIONING | Sí | N/A |
+| `modelo` | El modelo utilizado para preprocesar los embeddings de texto y ejecutar la cabeza de duración. | MODEL | Sí | N/A |
+| `positivo` | El condicionamiento que proporciona los embeddings de texto del prompt y los metadatos para la predicción de duración. | CONDITIONING | Sí | N/A |
 | `duration_head` | Cabeza de duración LTX 2.4 cargada con ModelPatchLoader. Debe ser una cabeza de duración LTX. | MODEL_PATCH | Sí | N/A |
-| `frame_rate` | Velocidad de fotogramas en fotogramas por segundo utilizada para convertir segundos a fotogramas (por defecto: 24.0). | FLOAT | Sí | 1.0 a 120.0 |
-| `min_seconds` | Duración mínima en segundos utilizada al convertir la predicción a un recuento de fotogramas (por defecto: 1.0). | FLOAT | Sí | 0.5 a 120.0 |
-| `max_seconds` | Duración máxima en segundos utilizada al convertir la predicción a un recuento de fotogramas (por defecto: 20.0). | FLOAT | Sí | 0.5 a 120.0 |
+| `frecuencia_de_fotogramas` | Velocidad de fotogramas en fotogramas por segundo utilizada para convertir segundos a fotogramas (por defecto: 24.0). | FLOAT | Sí | 1.0 a 120.0 |
+| `segundos_mínimos` | Duración mínima en segundos utilizada al convertir la predicción a un recuento de fotogramas (por defecto: 1.0). | FLOAT | Sí | 0.5 a 120.0 |
+| `segundos_máximos` | Duración máxima en segundos utilizada al convertir la predicción a un recuento de fotogramas (por defecto: 20.0). | FLOAT | Sí | 0.5 a 120.0 |
 
 Nota: La entrada `duration_head` debe ser un model patch que contenga una cabeza de duración LTX. Si el model patch conectado no es una cabeza de duración LTX, el nodo lanza un ValueError. Solo se utiliza la primera entrada de condicionamiento — si `positive` contiene un lote de más de un prompt, el nodo evalúa únicamente el primero.
 
@@ -20,7 +20,7 @@ Nota: La entrada `duration_head` debe ser un model patch que contenga una cabeza
 | Nombre de salida | Descripción | Tipo de dato |
 |------------------|-------------|--------------|
 | `num_frames` | La duración predicha convertida a un número de fotogramas y ajustada a la cuadrícula de fotogramas 8k+1 del VAE. | INT |
-| `seconds` | Duración predicha en bruto (sin recortar). Este es el valor antes de ajustarse a la cuadrícula de fotogramas. | FLOAT |
+| `segundos` | Duración predicha en bruto (sin recortar). Este es el valor antes de ajustarse a la cuadrícula de fotogramas. | FLOAT |
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVDurationPredictor/es.md)
 

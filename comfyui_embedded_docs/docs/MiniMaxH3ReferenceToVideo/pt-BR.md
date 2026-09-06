@@ -8,14 +8,14 @@
 | `vae` | VAE de vídeo usado para codificar imagens de referência e quadros de vídeo de referência. Sem ele, imagens e vídeos de referência apenas condicionam o encoder de texto. | VAE | Não | |
 | `audio_vae` | VAE de áudio usado para codificar áudio de referência. O áudio é resampled para a taxa de amostragem do VAE de áudio (32 kHz por padrão). Sem ele, o áudio de referência apenas condiciona o encoder de texto. | VAE | Não | |
 | `prompt` | Prompt de texto para o vídeo. Meios de referência podem ser mencionados com tags `<Picture i>`, `<Video k>`, e `<Audio j>` (baseado em 1 para cada tipo). Suporta prompts multilinha e dinâmicos. | STRING | Sim | |
-| `width` | Largura do vídeo gerado em pixels (padrão: 1344). | INT | Sim | 32 a 16384 (passo 32) |
-| `height` | Altura do vídeo gerado em pixels (padrão: 768). | INT | Sim | 32 a 16384 (passo 32) |
-| `length` | Número de quadros em 24 fps; 124 = ~5s, o intervalo treinado é ~124-362 (padrão: 124). | INT | Sim | 5 a 3600 (passo 17) |
-| `ref_image_size` | Tamanho da imagem de referência. `match` escala cada imagem de referência apenas para a área de pixels da geração, mantendo a proporção, enquanto `max` usa a borda curta de 2048px da pipeline de referência para a melhor fidelidade de identidade. Os tokens de referência passam por cada passo de amostragem, então `max` pode ser várias vezes mais lento (padrão: `match`). | COMBO | Sim | `"match"`<br>`"max"` |
-| `ref_images` | Espaço crescente: conecte até 9 imagens de referência (`ref_image_1` ... `ref_image_9`). As imagens de referência são escalonadas para uma borda curta de 2048px se maior e nunca são escalonadas para cima. | IMAGE | Não | 0 a 9 |
-| `ref_videos` | Espaço crescente: conecte até 3 vídeos de referência (`ref_video_1` ... `ref_video_3`). Quadros de vídeo de referência a 24 fps (2-15s). | IMAGE | Não | 0 a 3 |
-| `ref_video_audios` | Espaço crescente: conecte até 3 trilhas de som (`ref_video_audio_1` ... `ref_video_audio_3`). Trilha de som do vídeo de referência com o mesmo número. | AUDIO | Não | 0 a 3 |
-| `ref_audios` | Espaço crescente: conecte até 3 cliques de áudio de referência independentes (`ref_audio_1` ... `ref_audio_3`). | AUDIO | Não | 0 a 3 |
+| `largura` | Largura do vídeo gerado em pixels (padrão: 1344). | INT | Sim | 32 a 16384 (passo 32) |
+| `altura` | Altura do vídeo gerado em pixels (padrão: 768). | INT | Sim | 32 a 16384 (passo 32) |
+| `duração` | Número de quadros em 24 fps; 124 = ~5s, o intervalo treinado é ~124-362 (padrão: 124). | INT | Sim | 5 a 3600 (passo 17) |
+| `tamanho_imagem_ref` | Tamanho da imagem de referência. `match` escala cada imagem de referência apenas para a área de pixels da geração, mantendo a proporção, enquanto `max` usa a borda curta de 2048px da pipeline de referência para a melhor fidelidade de identidade. Os tokens de referência passam por cada passo de amostragem, então `max` pode ser várias vezes mais lento (padrão: `match`). | COMBO | Sim | `"match"`<br>`"max"` |
+| `imagens_ref` | Espaço crescente: conecte até 9 imagens de referência (`ref_image_1` ... `ref_image_9`). As imagens de referência são escalonadas para uma borda curta de 2048px se maior e nunca são escalonadas para cima. | IMAGE | Não | 0 a 9 |
+| `vídeos_ref` | Espaço crescente: conecte até 3 vídeos de referência (`ref_video_1` ... `ref_video_3`). Quadros de vídeo de referência a 24 fps (2-15s). | IMAGE | Não | 0 a 3 |
+| `áudios_vídeo_ref` | Espaço crescente: conecte até 3 trilhas de som (`ref_video_audio_1` ... `ref_video_audio_3`). Trilha de som do vídeo de referência com o mesmo número. | AUDIO | Não | 0 a 3 |
+| `áudios_ref` | Espaço crescente: conecte até 3 cliques de áudio de referência independentes (`ref_audio_1` ... `ref_audio_3`). | AUDIO | Não | 0 a 3 |
 
 Notas:
 
@@ -28,7 +28,7 @@ Notas:
 
 | Nome da Saída | Descrição | Tipo de Dados |
 |-------------|-------------|-----------|
-| `positive` | Condição contendo o prompt codificado. Quando meios de referência e os relevantes VAEs são fornecidos, também contém o conteúdo de imagem, vídeo e áudio de referência codificado usado pelo modelo MiniMax H3. | CONDIÇÃO |
+| `positivo` | Condição contendo o prompt codificado. Quando meios de referência e os relevantes VAEs são fornecidos, também contém o conteúdo de imagem, vídeo e áudio de referência codificado usado pelo modelo MiniMax H3. | CONDIÇÃO |
 | `latent` | Latente de áudio-vídeo vazio com a largura, altura e comprimento solicitados (número de quadros). | LATENTE |
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/MiniMaxH3ReferenceToVideo/pt-BR.md)

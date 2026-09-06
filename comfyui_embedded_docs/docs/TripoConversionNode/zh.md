@@ -6,25 +6,25 @@
 
 | 参数 | 描述 | 数据类型 | 是否必填 | 范围 |
 |-----------|-------------|-----------|----------|-------|
-| `original_model_task_id` | 要转换的 Tripo 模型的任务 ID。它必须来自先前的 Tripo 模型生成、骨骼绑定、重定向或分割任务。如果 ID 缺失或为空，节点会报错。 | STRING（Tripo 任务 ID） | 是 | MODEL_TASK_ID<br>RIG_TASK_ID<br>RETARGET_TASK_ID<br>SEGMENT_TASK_ID |
-| `format` | 转换后 3D 模型的目标文件格式。 | COMBO | 是 | GLTF<br>USDZ<br>FBX<br>OBJ<br>STL<br>3MF |
-| `quad` | 启用时将三角形转换为四边形（默认：False）。 | BOOLEAN | 否 | True 或 False |
-| `face_limit` | 转换后模型中的最大面数。设置为 -1 表示无限制（默认：-1）。 | INT | 否 | -1 至 2000000 |
-| `texture_size` | 输出纹理的分辨率，单位为像素（默认：4096）。 | INT | 否 | 128 至 8192 |
-| `texture_format` | 导出纹理使用的文件格式（默认：JPEG）。 | COMBO | 否 | BMP<br>DPX<br>HDR<br>JPEG<br>OPEN_EXR<br>PNG<br>TARGA<br>TIFF<br>WEBP |
-| `force_symmetry` | 启用时强制模型对称（默认：False）。 | BOOLEAN | 否 | True 或 False |
-| `flatten_bottom` | 启用时压平模型底部（默认：False）。 | BOOLEAN | 否 | True 或 False |
-| `flatten_bottom_threshold` | 与 `flatten_bottom` 配合使用的压平深度（默认：0.01）。此值仅在启用 `flatten_bottom` 时生效。 | FLOAT | 否 | 0.01 至 1.0 |
-| `pivot_to_center_bottom` | 启用时将枢轴点移动到模型的底部中心（默认：False）。 | BOOLEAN | 否 | True 或 False |
-| `scale_factor` | 应用于转换后模型的缩放因子（默认：1.0）。 | FLOAT | 否 | 0.01 及以上 |
-| `with_animation` | 保留已绑定骨骼或已重定向模型的骨架和动画（默认：True）。 | BOOLEAN | 否 | True 或 False |
-| `pack_uv` | 启用时重新打包 UV 坐标（默认：False）。 | BOOLEAN | 否 | True 或 False |
-| `bake` | 将高级材质烘焙到基础纹理中以提高兼容性（默认：True）。 | BOOLEAN | 否 | True 或 False |
-| `part_names` | 要发送用于转换的模型部件名称的逗号分隔列表。空条目将被忽略，重复名称将被移除。留空以省略此选项（默认：空）。 | STRING | 否 | 逗号分隔的部件名称列表 |
-| `fbx_preset` | FBX 兼容性预设。bake_scale 将缩放变换烘焙到几何体中（默认：blender）。 | COMBO | 否 | blender<br>mixamo<br>3dsmax<br>bake_scale |
-| `export_vertex_colors` | 启用时导出顶点颜色（默认：False）。 | BOOLEAN | 否 | True 或 False |
-| `export_orientation` | 导出模型的前向轴。default 保持 Tripo 的 +x 方向（默认：default）。 | COMBO | 否 | default<br>+x<br>-x<br>+y<br>-y |
-| `animate_in_place` | 启用时模型在原地播放动画（默认：False）。 | BOOLEAN | 否 | True 或 False |
+| `原始模型任务ID` | 要转换的 Tripo 模型的任务 ID。它必须来自先前的 Tripo 模型生成、骨骼绑定、重定向或分割任务。如果 ID 缺失或为空，节点会报错。 | STRING（Tripo 任务 ID） | 是 | MODEL_TASK_ID<br>RIG_TASK_ID<br>RETARGET_TASK_ID<br>SEGMENT_TASK_ID |
+| `格式` | 转换后 3D 模型的目标文件格式。 | COMBO | 是 | GLTF<br>USDZ<br>FBX<br>OBJ<br>STL<br>3MF |
+| `四边形` | 启用时将三角形转换为四边形（默认：False）。 | BOOLEAN | 否 | True 或 False |
+| `面数限制` | 转换后模型中的最大面数。设置为 -1 表示无限制（默认：-1）。 | INT | 否 | -1 至 2000000 |
+| `纹理大小` | 输出纹理的分辨率，单位为像素（默认：4096）。 | INT | 否 | 128 至 8192 |
+| `纹理格式` | 导出纹理使用的文件格式（默认：JPEG）。 | COMBO | 否 | BMP<br>DPX<br>HDR<br>JPEG<br>OPEN_EXR<br>PNG<br>TARGA<br>TIFF<br>WEBP |
+| `强制对称` | 启用时强制模型对称（默认：False）。 | BOOLEAN | 否 | True 或 False |
+| `平滑底部` | 启用时压平模型底部（默认：False）。 | BOOLEAN | 否 | True 或 False |
+| `平滑底部阈值` | 与 `flatten_bottom` 配合使用的压平深度（默认：0.01）。此值仅在启用 `flatten_bottom` 时生效。 | FLOAT | 否 | 0.01 至 1.0 |
+| `对齐底部中心` | 启用时将枢轴点移动到模型的底部中心（默认：False）。 | BOOLEAN | 否 | True 或 False |
+| `缩放系数` | 应用于转换后模型的缩放因子（默认：1.0）。 | FLOAT | 否 | 0.01 及以上 |
+| `加入动画` | 保留已绑定骨骼或已重定向模型的骨架和动画（默认：True）。 | BOOLEAN | 否 | True 或 False |
+| `打包uv` | 启用时重新打包 UV 坐标（默认：False）。 | BOOLEAN | 否 | True 或 False |
+| `烘焙` | 将高级材质烘焙到基础纹理中以提高兼容性（默认：True）。 | BOOLEAN | 否 | True 或 False |
+| `部件名称` | 要发送用于转换的模型部件名称的逗号分隔列表。空条目将被忽略，重复名称将被移除。留空以省略此选项（默认：空）。 | STRING | 否 | 逗号分隔的部件名称列表 |
+| `fbx预设` | FBX 兼容性预设。bake_scale 将缩放变换烘焙到几何体中（默认：blender）。 | COMBO | 否 | blender<br>mixamo<br>3dsmax<br>bake_scale |
+| `导出顶点色` | 启用时导出顶点颜色（默认：False）。 | BOOLEAN | 否 | True 或 False |
+| `导出朝向` | 导出模型的前向轴。default 保持 Tripo 的 +x 方向（默认：default）。 | COMBO | 否 | default<br>+x<br>-x<br>+y<br>-y |
+| `原地动画` | 启用时模型在原地播放动画（默认：False）。 | BOOLEAN | 否 | True 或 False |
 
 **注意：** 除 `original_model_task_id` 和 `format` 外，所有输入均为可选的进阶设置。保持默认值的设置将从转换请求中省略，以便 Tripo API 使用其标准行为。输入 `flatten_bottom_threshold` 仅在启用 `flatten_bottom` 时才有意义。
 

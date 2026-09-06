@@ -8,15 +8,15 @@
 
 | 參數 | 說明 | 資料類型 | 必填 | 範圍 |
 |-----------|-------------|-----------|----------|-------|
-| `output_mode` | 控制生成的模型僅包含幾何形狀，還是同時包含顏色/PBR 紋理。選擇「Textured」會在下文加入紋理輸入。「Geometry only」會回傳未套用紋理的網格；「Textured」則會新增顏色/PBR 貼圖。 | DYNAMIC_COMBO | 是 | `"Geometry only"`<br>`"Textured"` |
-| `prompt` | 您想要生成的 3D 模型的文字描述。最多 1024 個字元。 | STRING | 是 | 最多 1024 個字元 |
-| `negative_prompt` | 對您不希望出現在生成模型中的內容的文字描述。最多 255 個字元。 | STRING | 否 | 最多 255 個字元 |
-| `image_seed` | 影像生成的種子值，用於控制隨機性。預設：42。 | INT | 否 | 0 至 2147483647 |
-| `face_limit` | 目標面數，範圍為 48 至 20000。若為 -1，則讓 Tripo 自適應選取。預設：-1。 | INT | 否 | -1 至 20000 |
-| `model_seed` | 模型生成的種子值，用於控制隨機性。預設：42。 | INT | 否 | 0 至 2147483647 |
-| `auto_size` | 將輸出縮放為約略符合真實世界的公尺數。預設：False。 | BOOLEAN | 否 | True / False |
-| `export_uv` | 在生成期間執行 UV 展開。若只要幾何形狀並希望加快執行速度，可關閉此選項。預設：True。 | BOOLEAN | 否 | True / False |
-| `compress_geometry` | 套用 meshopt 幾何壓縮（EXT_meshopt_compression）。檔案較小，但 ComfyUI 的 3D 預覽無法顯示；編輯前請先解壓縮。預設：False。 | BOOLEAN | 否 | True / False |
+| `輸出模式` | 控制生成的模型僅包含幾何形狀，還是同時包含顏色/PBR 紋理。選擇「Textured」會在下文加入紋理輸入。「Geometry only」會回傳未套用紋理的網格；「Textured」則會新增顏色/PBR 貼圖。 | DYNAMIC_COMBO | 是 | `"Geometry only"`<br>`"Textured"` |
+| `提示詞` | 您想要生成的 3D 模型的文字描述。最多 1024 個字元。 | STRING | 是 | 最多 1024 個字元 |
+| `負面提示詞` | 對您不希望出現在生成模型中的內容的文字描述。最多 255 個字元。 | STRING | 否 | 最多 255 個字元 |
+| `圖像種子` | 影像生成的種子值，用於控制隨機性。預設：42。 | INT | 否 | 0 至 2147483647 |
+| `面數上限` | 目標面數，範圍為 48 至 20000。若為 -1，則讓 Tripo 自適應選取。預設：-1。 | INT | 否 | -1 至 20000 |
+| `模型種子` | 模型生成的種子值，用於控制隨機性。預設：42。 | INT | 否 | 0 至 2147483647 |
+| `自動尺寸` | 將輸出縮放為約略符合真實世界的公尺數。預設：False。 | BOOLEAN | 否 | True / False |
+| `匯出 UV` | 在生成期間執行 UV 展開。若只要幾何形狀並希望加快執行速度，可關閉此選項。預設：True。 | BOOLEAN | 否 | True / False |
+| `壓縮幾何` | 套用 meshopt 幾何壓縮（EXT_meshopt_compression）。檔案較小，但 ComfyUI 的 3D 預覽無法顯示；編輯前請先解壓縮。預設：False。 | BOOLEAN | 否 | True / False |
 
 ### 僅幾何形狀輸入
 
@@ -36,8 +36,8 @@
 
 | 輸出名稱 | 說明 | 資料類型 |
 |-------------|-------------|-----------|
-| `model_file` | 生成的 3D 模型的檔案路徑，僅為向後相容性而保留。 | STRING |
-| `model task_id` | 模型生成請求的唯一任務 ID。 | MODEL_TASK_ID |
+| `模型檔案` | 生成的 3D 模型的檔案路徑，僅為向後相容性而保留。 | STRING |
+| `模型任務 ID` | 模型生成請求的唯一任務 ID。 | MODEL_TASK_ID |
 | `GLB` | 以 GLB 格式生成的 3D 模型。 | FILE3DGLB |
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1TextToModelNode/zh-TW.md)

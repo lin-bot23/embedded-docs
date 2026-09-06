@@ -8,12 +8,12 @@ TripoTextureNode 节点使用 Tripo API 为现有的 Tripo 3D 模型添加纹理
 
 | 参数 | 描述 | 数据类型 | 必填 | 范围 |
 |-----------|-------------|-----------|----------|-------|
-| `model_task_id` | 需要添加纹理的模型的 Tripo 任务 ID。接受模型任务 ID 和分割任务 ID。 | MODEL_TASK_ID | 是 | - |
-| `texture` | 已忽略：此节点始终会生成纹理。为旧版工作流保留。（默认：True） | BOOLEAN | 否 | true<br>false |
-| `pbr` | PBR 材质贴图（基础颜色、金属度、粗糙度、法线）；关闭时仅生成纯色纹理。（默认：True） | BOOLEAN | 否 | true<br>false |
-| `texture_seed` | 纹理生成的随机种子。使用相同种子和相同输入会得到相同结果。（默认：42） | INT | 否 | 0 – 2147483647 |
-| `texture_quality` | 纹理分辨率质量：detailed = 高清纹理，extreme = 8K 极致纹理。（默认："standard"）。大致费用：standard $0.10，detailed $0.20，extreme $0.30。 | COMBO | 否 | "standard"<br>"detailed"<br>"extreme" |
-| `texture_alignment` | 用于将生成的纹理对齐到模型的方法。（默认："original_image"） | COMBO | 否 | "original_image"<br>"geometry" |
+| `模型任务ID` | 需要添加纹理的模型的 Tripo 任务 ID。接受模型任务 ID 和分割任务 ID。 | MODEL_TASK_ID | 是 | - |
+| `纹理` | 已忽略：此节点始终会生成纹理。为旧版工作流保留。（默认：True） | BOOLEAN | 否 | true<br>false |
+| `PBR` | PBR 材质贴图（基础颜色、金属度、粗糙度、法线）；关闭时仅生成纯色纹理。（默认：True） | BOOLEAN | 否 | true<br>false |
+| `纹理种子` | 纹理生成的随机种子。使用相同种子和相同输入会得到相同结果。（默认：42） | INT | 否 | 0 – 2147483647 |
+| `纹理质量` | 纹理分辨率质量：detailed = 高清纹理，extreme = 8K 极致纹理。（默认："standard"）。大致费用：standard $0.10，detailed $0.20，extreme $0.30。 | COMBO | 否 | "standard"<br>"detailed"<br>"extreme" |
+| `纹理对齐` | 用于将生成的纹理对齐到模型的方法。（默认："original_image"） | COMBO | 否 | "original_image"<br>"geometry" |
 | `texture_prompt` | 可选纹理文本引导。对于导入的模型（Tripo: Import Model），由于没有可用于推断颜色的源图像，实际上需要提供此参数。不能与参考图像同时使用。（默认：""） | STRING | 否 | - |
 | `model_version` | 纹理模型：v3.0 适用于由 v3.x 生成的网格，v2.5 适用于由 v2.5 生成的网格。（默认：最新的 v3.0 版本） | COMBO | 否 | 多个选项可用 |
 | `style_image` | 纹理艺术风格的参考图像。仅与 `texture_prompt` 一起使用。 | IMAGE | 否 | - |
@@ -45,8 +45,8 @@ TripoTextureNode 节点使用 Tripo API 为现有的 Tripo 3D 模型添加纹理
 
 | 输出名 | 描述 | 数据类型 |
 |-------------|-------------|-----------|
-| `model_file` | 生成的模型文件（仅用于向后兼容）。 | STRING |
-| `model task_id` | 已完成纹理生成任务的任务 ID，可用作其他 Tripo 节点的输入。 | MODEL_TASK_ID |
+| `模型文件` | 生成的模型文件（仅用于向后兼容）。 | STRING |
+| `模型任务ID` | 已完成纹理生成任务的任务 ID，可用作其他 Tripo 节点的输入。 | MODEL_TASK_ID |
 | `GLB` | 生成的带纹理模型，格式为 GLB。如果源模型是四边形网格或来自 FBX 导入，则此项为空。 | FILE3DGLB |
 | `FBX` | 生成的带纹理模型，格式为 FBX。Tripo 对四边形网格和 FBX 导入返回 FBX；否则此项为空。 | FILE3DFBX |
 

@@ -8,7 +8,7 @@ O nó Text (Multiline) oferece um campo de entrada de texto múltiplas linhas pa
 
 | Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
 | --- | --- | --- | --- | --- |
-| `value` | O valor de entrada de texto que pode se estender por várias linhas | STRING | Sim | N/A |
+| `valor` | O valor de entrada de texto que pode se estender por várias linhas | STRING | Sim | N/A |
 
 ## Saídas
 

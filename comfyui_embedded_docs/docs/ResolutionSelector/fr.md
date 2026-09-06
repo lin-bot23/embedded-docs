@@ -6,17 +6,17 @@ Le nœud Resolution Selector calcule la largeur et la hauteur en pixels à parti
 
 | Paramètre | Description | Type de données | Requis | Plage |
 |-----------|-------------|-----------------|--------|-------|
-| `aspect_ratio` | Format d’image pour les dimensions de sortie (par défaut : `"1:1 (Square)"`). | COMBO | Oui | `"1:1 (Square)"`<br>`"2:3 (Portrait Photo)"`<br>`"3:2 (Photo)"`<br>`"3:4 (Portrait Standard)"`<br>`"4:3 (Standard)"`<br>`"9:16 (Portrait Widescreen)"`<br>`"16:9 (Widescreen)"`<br>`"21:9 (Ultrawide)"` |
-| `megapixels` | Résolution totale cible en mégapixels. 1.0 MP ≈ 1024x1024 pour un format carré (par défaut : 1.0). | FLOAT | Oui | 0.1 - 16.0 (step : 0.1) |
-| `preview` | Aperçu en direct de la résolution de sortie calculée. Ce widget en lecture seule se met à jour automatiquement et n’accepte aucune saisie de l’utilisateur. | RESOLUTION_PREVIEW | Non | N/A |
+| `ratio d'aspect` | Format d’image pour les dimensions de sortie (par défaut : `"1:1 (Square)"`). | COMBO | Oui | `"1:1 (Square)"`<br>`"2:3 (Portrait Photo)"`<br>`"3:2 (Photo)"`<br>`"3:4 (Portrait Standard)"`<br>`"4:3 (Standard)"`<br>`"9:16 (Portrait Widescreen)"`<br>`"16:9 (Widescreen)"`<br>`"21:9 (Ultrawide)"` |
+| `mégapixels` | Résolution totale cible en mégapixels. 1.0 MP ≈ 1024x1024 pour un format carré (par défaut : 1.0). | FLOAT | Oui | 0.1 - 16.0 (step : 0.1) |
+| `aperçu` | Aperçu en direct de la résolution de sortie calculée. Ce widget en lecture seule se met à jour automatiquement et n’accepte aucune saisie de l’utilisateur. | RESOLUTION_PREVIEW | Non | N/A |
 | `multiple` | Multiple le plus proche du résultat auquel la résolution sélectionnée doit être arrondie (par défaut : 8). | INT | Non | 8 - 128 (step : 4) |
 
 ## Sorties
 
 | Nom de sortie | Description | Type de données |
 |---------------|-------------|-----------------|
-| `width` | Largeur calculée en pixels, multipliée par le multiple sélectionné. | INT |
-| `height` | Hauteur calculée en pixels, multipliée par le multiple sélectionné. | INT |
+| `largeur` | Largeur calculée en pixels, multipliée par le multiple sélectionné. | INT |
+| `hauteur` | Hauteur calculée en pixels, multipliée par le multiple sélectionné. | INT |
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ResolutionSelector/fr.md)
 

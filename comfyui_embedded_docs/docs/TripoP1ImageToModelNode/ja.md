@@ -10,14 +10,14 @@ Tripo P1: Image to Model は、Tripo P1 API を使用して単一の 2D 画像�
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `output_mode` | 結果のタイプを選択します。"Geometry only" はテクスチャなしのメッシュを返し、"Textured" は色と PBR マップを追加して追加のテクスチャ設定を表示します。 | DYNAMIC_COMBO | はい | `"Geometry only"`<br>`"Textured"` |
-| `image` | 3D モデルの生成に使用するソース 2D 画像です。このノードは単一の画像を必要とし、画像が提供されない場合はエラーを返します。 | IMAGE | はい | - |
-| `enable_image_autofix` | 生成品質を向上させるため、入力画像を前処理します。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
-| `face_limit` | 目標面数（48〜20000）です。-1 を指定すると Tripo が適応的に選択します。（デフォルト: -1） | INT | いいえ | -1 〜 20000 |
-| `model_seed` | 結果を再現できるよう、ジオメトリ生成に使用するシードです。（デフォルト: 42） | INT | いいえ | 0 〜 2147483647 |
-| `auto_size` | 実世界のメートル単位に近づくように出力をスケールします。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
-| `export_uv` | 生成中に UV 展開を行います。ジオメトリのみの実行を高速化するにはオフにします。（デフォルト: True） | BOOLEAN | いいえ | True<br>False |
-| `compress_geometry` | meshopt ジオメトリ圧縮（EXT_meshopt_compression）を適用します。ファイルサイズは小さくなりますが、ComfyUI の 3D プレビューでは表示できません。編集前に解凍してください。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
+| `出力モード` | 結果のタイプを選択します。"Geometry only" はテクスチャなしのメッシュを返し、"Textured" は色と PBR マップを追加して追加のテクスチャ設定を表示します。 | DYNAMIC_COMBO | はい | `"Geometry only"`<br>`"Textured"` |
+| `画像` | 3D モデルの生成に使用するソース 2D 画像です。このノードは単一の画像を必要とし、画像が提供されない場合はエラーを返します。 | IMAGE | はい | - |
+| `画像自動補正を有効化` | 生成品質を向上させるため、入力画像を前処理します。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
+| `面数制限` | 目標面数（48〜20000）です。-1 を指定すると Tripo が適応的に選択します。（デフォルト: -1） | INT | いいえ | -1 〜 20000 |
+| `モデルシード` | 結果を再現できるよう、ジオメトリ生成に使用するシードです。（デフォルト: 42） | INT | いいえ | 0 〜 2147483647 |
+| `自動サイズ調整` | 実世界のメートル単位に近づくように出力をスケールします。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
+| `UV展開を出力` | 生成中に UV 展開を行います。ジオメトリのみの実行を高速化するにはオフにします。（デフォルト: True） | BOOLEAN | いいえ | True<br>False |
+| `ジオメトリ圧縮` | meshopt ジオメトリ圧縮（EXT_meshopt_compression）を適用します。ファイルサイズは小さくなりますが、ComfyUI の 3D プレビューでは表示できません。編集前に解凍してください。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
 
 ### テクスチャ付き入力
 
@@ -37,8 +37,8 @@ Tripo P1: Image to Model は、Tripo P1 API を使用して単一の 2D 画像�
 
 | 出力名 | 説明 | データ型 |
 |--------|------|----------|
-| `model_file` | 生成された 3D モデル結果です。後方互換性のためだけに保持されています。 | STRING |
-| `model task_id` | 完了した生成ジョブに対して Tripo API が返す一意のタスク ID です。 | MODEL_TASK_ID |
+| `モデルファイル` | 生成された 3D モデル結果です。後方互換性のためだけに保持されています。 | STRING |
+| `モデルタスクID` | 完了した生成ジョブに対して Tripo API が返す一意のタスク ID です。 | MODEL_TASK_ID |
 | `GLB` | 生成された 3D モデル（GLB 形式）です。 | FILE3DGLB |
 
 > このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1ImageToModelNode/ja.md)

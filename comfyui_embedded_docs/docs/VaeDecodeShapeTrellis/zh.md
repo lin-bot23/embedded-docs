@@ -6,7 +6,7 @@
 
 | 参数 | 说明 | 数据类型 | 必需 | 范围 |
 |-----------|-------------|-----------|----------|-------|
-| `samples` | 要解码的潜空间样本，包含样本张量和稀疏坐标数据。该潜空间字典还可能包含可选字段：用于批量形状的 `coord_counts`、用于控制网格分辨率的 `coord_resolution`，以及用于坐标方向的 `model_frame`。 | LATENT | 是 | None |
+| `样本` | 要解码的潜空间样本，包含样本张量和稀疏坐标数据。该潜空间字典还可能包含可选字段：用于批量形状的 `coord_counts`、用于控制网格分辨率的 `coord_resolution`，以及用于坐标方向的 `model_frame`。 | LATENT | 是 | None |
 | `vae` | 用于将形状潜空间解码为网格的 VAE 模型。 | VAE | 是 | None |
 
 ### 关于 `samples` 的说明
@@ -20,8 +20,8 @@
 
 | 输出名称 | 说明 | 数据类型 |
 |-------------|-------------|-----------|
-| `mesh` | 解码后的 3D 网格，包含顶点位置和面索引。解码多个形状时，如果所有网格的张量形状相同，则将它们作为单个堆叠张量返回；否则以打包的变长批次形式返回。 | MESH |
-| `shape_subdivides` | 解码过程中每个阶段生成的形状细分数据。 | SHAPE_SUBDIVIDES |
+| `网格` | 解码后的 3D 网格，包含顶点位置和面索引。解码多个形状时，如果所有网格的张量形状相同，则将它们作为单个堆叠张量返回；否则以打包的变长批次形式返回。 | MESH |
+| `形状细分` | 解码过程中每个阶段生成的形状细分数据。 | SHAPE_SUBDIVIDES |
 
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/VaeDecodeShapeTrellis/zh.md)
 

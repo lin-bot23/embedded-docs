@@ -12,9 +12,9 @@ GetImageSize, bir girdi görüntüsünü okur ve genişliğini, yüksekliğini v
 
 | Çıktı Adı | Açıklama | Veri Türü |
 |-----------|----------|-----------|
-| `width` | Girdi görüntüsünün piksel cinsinden genişliği | INT |
-| `height` | Girdi görüntüsünün piksel cinsinden yüksekliği | INT |
-| `batch_size` | Girdi partisinde bulunan görüntü sayısı | INT |
+| `genişlik` | Girdi görüntüsünün piksel cinsinden genişliği | INT |
+| `yükseklik` | Girdi görüntüsünün piksel cinsinden yüksekliği | INT |
+| `toplu_boyut` | Girdi partisinde bulunan görüntü sayısı | INT |
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/GetImageSize/tr.md)
 

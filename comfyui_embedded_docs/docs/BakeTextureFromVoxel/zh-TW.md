@@ -9,7 +9,7 @@
 | `mesh` | 要烘焙紋理至其上的 3D 網格。必須已具有 UV 佈局；上游必須連接 UV 展開節點。 | MESH | 是 | |
 | `voxel_colors` | 包含每個體素顏色與可選 PBR 屬性（金屬度與粗糙度通道）的稀疏體素體積。 | VOXEL | 是 | |
 | `texture_size` | 方形 UV 圖集解析度（顯示名稱：「resolution」，預設值：2048）。 | INT | 是 | 64 至 8192 |
-| `reference_mesh` | 可選的密集預抽取（pre-decimation）網格；在取樣前將每個紋素反投影到其真實表面上，消除粗糙網格上的分面烘焙。 | MESH | 否 | |
+| `參考網格` | 可選的密集預抽取（pre-decimation）網格；在取樣前將每個紋素反投影到其真實表面上，消除粗糙網格上的分面烘焙。 | MESH | 否 | |
 
 備註：
 
@@ -21,9 +21,9 @@
 
 | 輸出名稱 | 描述 | 資料型別 |
 |-------------|-------------|-----------|
-| `base_color` | RGB 基礎顏色紋理貼圖。數值為 0–1 範圍內的浮點數。 | IMAGE |
-| `metallic` | 灰階金屬度貼圖（float，0–1）。當體素顏色不包含金屬度通道時為黑色。 | IMAGE |
-| `roughness` | 灰階粗糙度貼圖（float，0–1）。當體素顏色不包含粗糙度通道時為黑色。 | IMAGE |
+| `基礎顏色` | RGB 基礎顏色紋理貼圖。數值為 0–1 範圍內的浮點數。 | IMAGE |
+| `金屬度` | 灰階金屬度貼圖（float，0–1）。當體素顏色不包含金屬度通道時為黑色。 | IMAGE |
+| `粗糙度` | 灰階粗糙度貼圖（float，0–1）。當體素顏色不包含粗糙度通道時為黑色。 | IMAGE |
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/BakeTextureFromVoxel/zh-TW.md)
 

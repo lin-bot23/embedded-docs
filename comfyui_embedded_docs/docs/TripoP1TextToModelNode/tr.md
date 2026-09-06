@@ -8,15 +8,15 @@ Bu düğüm, Tripo P1 API'sini kullanarak bir metin açıklamasından 3B model �
 
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 |-----------|-------------|-----------|----------|-------|
-| `output_mode` | Oluşturulan modelin yalnızca geometri mi yoksa renk/PBR dokuları mı içereceğini kontrol eder. "Textured" seçildiğinde aşağıya doku girdileri eklenir. "Geometry only" dokusuz bir ağ döndürür; "Textured" ise renk/PBR haritaları ekler. | DYNAMIC_COMBO | Evet | `"Geometry only"`<br>`"Textured"` |
-| `prompt` | Oluşturmak istediğiniz 3B modelin metin açıklaması. En fazla 1024 karakter. | STRING | Evet | Up to 1024 characters |
-| `negative_prompt` | Oluşturulan modelde istemediklerinizi tanımlayan metin açıklaması. En fazla 255 karakter. | STRING | Hayır | Up to 255 characters |
-| `image_seed` | Görüntü üretimi için kullanılan ve rastgeleliği kontrol eden tohum değeri. Varsayılan: 42. | INT | Hayır | 0 ile 2147483647 |
-| `face_limit` | Hedef yüz sayısı, 48-20000. -1 değeri Tripo'nun uyarlanabilir şekilde seçmesini sağlar. Varsayılan: -1. | INT | Hayır | -1 ile 20000 |
-| `model_seed` | Model üretimi için kullanılan ve rastgeleliği kontrol eden tohum değeri. Varsayılan: 42. | INT | Hayır | 0 ile 2147483647 |
-| `auto_size` | Çıktıyı yaklaşık gerçek dünya metrelerine ölçekler. Varsayılan: False. | BOOLEAN | Hayır | True / False |
-| `export_uv` | Üretim sırasında UV açılımı yapar. Yalnızca geometri çalıştırmalarında hız için kapatın. Varsayılan: True. | BOOLEAN | Hayır | True / False |
-| `compress_geometry` | meshopt geometri sıkıştırması uygular (EXT_meshopt_compression). Daha küçük dosyalar elde edilir, ancak ComfyUI'nin 3B önizlemesi bunları görüntüleyemez; düzenlemeden önce sıkıştırmayı açın. Varsayılan: False. | BOOLEAN | Hayır | True / False |
+| `çıktı_modu` | Oluşturulan modelin yalnızca geometri mi yoksa renk/PBR dokuları mı içereceğini kontrol eder. "Textured" seçildiğinde aşağıya doku girdileri eklenir. "Geometry only" dokusuz bir ağ döndürür; "Textured" ise renk/PBR haritaları ekler. | DYNAMIC_COMBO | Evet | `"Geometry only"`<br>`"Textured"` |
+| `istem` | Oluşturmak istediğiniz 3B modelin metin açıklaması. En fazla 1024 karakter. | STRING | Evet | Up to 1024 characters |
+| `negatif_istem` | Oluşturulan modelde istemediklerinizi tanımlayan metin açıklaması. En fazla 255 karakter. | STRING | Hayır | Up to 255 characters |
+| `görüntü_tohumu` | Görüntü üretimi için kullanılan ve rastgeleliği kontrol eden tohum değeri. Varsayılan: 42. | INT | Hayır | 0 ile 2147483647 |
+| `yüz_sınırı` | Hedef yüz sayısı, 48-20000. -1 değeri Tripo'nun uyarlanabilir şekilde seçmesini sağlar. Varsayılan: -1. | INT | Hayır | -1 ile 20000 |
+| `model_tohumu` | Model üretimi için kullanılan ve rastgeleliği kontrol eden tohum değeri. Varsayılan: 42. | INT | Hayır | 0 ile 2147483647 |
+| `otomatik_boyut` | Çıktıyı yaklaşık gerçek dünya metrelerine ölçekler. Varsayılan: False. | BOOLEAN | Hayır | True / False |
+| `uv_dışa_aktar` | Üretim sırasında UV açılımı yapar. Yalnızca geometri çalıştırmalarında hız için kapatın. Varsayılan: True. | BOOLEAN | Hayır | True / False |
+| `geometriyi_sıkıştır` | meshopt geometri sıkıştırması uygular (EXT_meshopt_compression). Daha küçük dosyalar elde edilir, ancak ComfyUI'nin 3B önizlemesi bunları görüntüleyemez; düzenlemeden önce sıkıştırmayı açın. Varsayılan: False. | BOOLEAN | Hayır | True / False |
 
 ### Yalnızca Geometri Girdileri
 
@@ -36,8 +36,8 @@ Bu girdiler yalnızca `output_mode` parametresi `"Textured"` olarak ayarlandığ
 
 | Çıktı Adı | Açıklama | Veri Türü |
 |-------------|-------------|-----------|
-| `model_file` | Oluşturulan 3B modelin dosya yolu; yalnızca geriye dönük uyumluluk için korunur. | STRING |
-| `model task_id` | Model oluşturma isteği için benzersiz görev kimliği. | MODEL_TASK_ID |
+| `model_dosyası` | Oluşturulan 3B modelin dosya yolu; yalnızca geriye dönük uyumluluk için korunur. | STRING |
+| `model_görev_id` | Model oluşturma isteği için benzersiz görev kimliği. | MODEL_TASK_ID |
 | `GLB` | GLB biçiminde oluşturulan 3B model. | FILE3DGLB |
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1TextToModelNode/tr.md)

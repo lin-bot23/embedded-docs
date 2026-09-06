@@ -6,7 +6,7 @@ Le nœud Text (Multiline) fournit un champ de saisie de texte multiligne pour pe
 
 | Paramètre | Description | Type de données | Requis | Plage |
 | --- | --- | --- | --- | --- |
-| `value` | La valeur de texte d'entrée pouvant s'étendre sur plusieurs lignes | STRING | Oui | N/A |
+| `valeur` | La valeur de texte d'entrée pouvant s'étendre sur plusieurs lignes | STRING | Oui | N/A |
 
 ## Sorties
 

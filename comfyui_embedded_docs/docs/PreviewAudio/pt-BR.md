@@ -14,7 +14,7 @@ O nó Preview Audio permite que você ouça áudio diretamente na interface do C
 
 | Nome da Saída | Descrição | Tipo de Dados |
 | --- | --- | --- |
-| `audio` | Os dados de áudio passados em seguida sem alteração da entrada. | AUDIO |
+| `áudio` | Os dados de áudio passados em seguida sem alteração da entrada. | AUDIO |
 | `ui` | Exibe um widget de player de áudio na interface para visualização do áudio. | UI |
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/PreviewAudio/pt-BR.md)

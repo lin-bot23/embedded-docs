@@ -6,10 +6,10 @@
 
 | 參數 | 描述 | 資料類型 | 必填 | 範圍 |
 |-----------|-------------|-----------|----------|-------|
-| `image` | 物體的正面視圖影像。 | IMAGE | 是 | - |
-| `image_left` | 物體的左側視圖影像。 | IMAGE | 否 | - |
-| `image_back` | 物體的背面視圖影像。 | IMAGE | 否 | - |
-| `image_right` | 物體的右側視圖影像。 | IMAGE | 否 | - |
+| `圖像` | 物體的正面視圖影像。 | IMAGE | 是 | - |
+| `左側圖像` | 物體的左側視圖影像。 | IMAGE | 否 | - |
+| `後方圖像` | 物體的背面視圖影像。 | IMAGE | 否 | - |
+| `右側圖像` | 物體的右側視圖影像。 | IMAGE | 否 | - |
 | `model_version` | 用於生成的模型版本。 | COMBO | 否 | 多個可用選項 |
 | `orientation` | 3D 模型的方向設定（預設：`"default"`）。 | COMBO | 否 | 多個可用選項 |
 | `texture` | 生成紋理貼圖。關閉時會回傳未帶紋理的幾何形狀，並忽略 pbr。（預設：True） | BOOLEAN | 否 | - |
@@ -20,7 +20,7 @@
 | `texture_alignment` | 用於將紋理對齊到模型的方法（預設：`"original_image"`）。 | COMBO | 否 | `"original_image"`<br>`"geometry"` |
 | `face_limit` | 最大面數。-1 讓 Tripo 自適應選擇（v3.x 標準約 140 萬面，詳細模式約 200 萬面）。Tripo 會靜默限制：v2.5 為 500,000，四邊形網格為 150,000。（預設：-1） | INT | 否 | -1 至 2,000,000 |
 | `quad` | 四邊形網格輸出。Tripo 以 FBX 格式提供四邊形網格，因此結果會出現在 FBX 輸出，而 GLB 輸出保持為空。（預設：False） | BOOLEAN | 否 | - |
-| `geometry_quality` | 幾何生成的品質等級（預設：`"standard"`）。 | COMBO | 否 | `"standard"`<br>`"detailed"` |
+| `幾何品質` | 幾何生成的品質等級（預設：`"standard"`）。 | COMBO | 否 | `"standard"`<br>`"detailed"` |
 | `smart_low_poly` | 具有乾淨手工風格拓撲的低多邊形網格（500–20,000 個面，四邊形網格 500–10,000）。最適合簡單物體；複雜物體可能失敗。（預設：False） | BOOLEAN | 否 | - |
 | `auto_size` | 將帶有紋理的模型縮放到其實際尺寸（以公尺為單位）。Tripo 將尺寸儲存為模型的場景變換，並在模型被轉換、骨骼綁定或重定向時將其烘焙進去；若無紋理則忽略。（預設：False） | BOOLEAN | 否 | - |
 
@@ -30,8 +30,8 @@
 
 | 輸出名 | 描述 | 資料類型 |
 |-------------|-------------|-----------|
-| `model_file` | 生成之 3D 模型的檔案路徑或識別碼（僅供向後相容）。 | STRING |
-| `model task_id` | 用於追蹤模型生成過程的任務識別碼。 | MODEL_TASK_ID |
+| `模型檔案` | 生成之 3D 模型的檔案路徑或識別碼（僅供向後相容）。 | STRING |
+| `模型任務 ID` | 用於追蹤模型生成過程的任務識別碼。 | MODEL_TASK_ID |
 | `GLB` | 以 GLB 格式生成的 3D 模型檔案。啟用 `quad` 時為空。 | FILE3DGLB |
 | `FBX` | 以 FBX 格式生成的 3D 模型檔案。僅在啟用 `quad` 時填入。 | FILE3DFBX |
 

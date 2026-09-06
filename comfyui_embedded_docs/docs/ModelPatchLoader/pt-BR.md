@@ -6,7 +6,7 @@ O nó ModelPatchLoader carrega um arquivo de patch de modelo da pasta `model_pat
 
 | Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
 | --- | --- | --- | --- | --- |
-| `name` | O nome do arquivo do patch de modelo a ser carregado da pasta model_patches. Selecione um dos arquivos de patch disponíveis na lista. | COMBO | Sim | Lista gerada dinamicamente de todos os arquivos de patch de modelo encontrados na pasta model_patches |
+| `nome` | O nome do arquivo do patch de modelo a ser carregado da pasta model_patches. Selecione um dos arquivos de patch disponíveis na lista. | COMBO | Sim | Lista gerada dinamicamente de todos os arquivos de patch de modelo encontrados na pasta model_patches |
 
 Nota: Este nó está marcado como experimental. O tipo de patch é detectado automaticamente a partir do conteúdo do arquivo, portanto, não há necessidade de seleção manual do tipo.
 

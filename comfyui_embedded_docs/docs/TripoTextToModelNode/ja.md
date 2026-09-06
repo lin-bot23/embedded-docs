@@ -18,7 +18,7 @@ Tripo の API を使用して、テキストによる説明から完成した 3D
 | `texture_quality` | 生成されるテクスチャの品質。detailed は HD テクスチャ、extreme は 8K Ultra テクスチャです（デフォルト: standard）。 | COMBO | 任意 | "standard"<br>"detailed"<br>"extreme" |
 | `face_limit` | 最大面数。-1 を指定すると、Tripo が適応的に選択します（v3.x の standard では約140万面、detailed では約200万面）。Tripo は v2.5 では 500,000、クアッドメッシュでは 150,000 に自動的にクランプします（デフォルト: -1）。 | INT | 任意 | -1〜2000000 |
 | `quad` | クアッドメッシュ出力。Tripo はクアッドメッシュを FBX として提供するため、結果は FBX 出力に格納され、GLB 出力は空のままになります（デフォルト: False）。 | BOOLEAN | 任意 | true / false |
-| `geometry_quality` | 生成されるジオメトリの品質（デフォルト: standard）。 | COMBO | 任意 | "standard"<br>"detailed" |
+| `ジオメトリ品質` | 生成されるジオメトリの品質（デフォルト: standard）。 | COMBO | 任意 | "standard"<br>"detailed" |
 | `smart_low_poly` | クリーンでハンドクラフト風のトポロジーを持つローポリメッシュ（500〜20,000面、クアッドでは500〜10,000面）。単純な被写体に最適です。複雑な被写体は失敗することがあります（デフォルト: False）。 | BOOLEAN | 任意 | true / false |
 | `auto_size` | テクスチャ付きモデルをメートル単位の実世界サイズにスケールします。Tripo はサイズをモデルのシーントランスフォームとして保存し、モデルの変換、リギング、またはリターゲティング時に焼き込みます。テクスチャなしでは無視されます（デフォルト: True）。 | BOOLEAN | 任意 | true / false |
 
@@ -32,8 +32,8 @@ Tripo の API を使用して、テキストによる説明から完成した 3D
 
 | 出力名 | 説明 | データ型 |
 |-------------|-------------|-----------|
-| `model_file` | 生成された 3D モデルファイル。後方互換性のためだけに保持されています。 | STRING |
-| `model task_id` | モデル生成処理の一意のタスク識別子。 | MODEL_TASK_ID |
+| `モデルファイル` | 生成された 3D モデルファイル。後方互換性のためだけに保持されています。 | STRING |
+| `モデルタスクID` | モデル生成処理の一意のタスク識別子。 | MODEL_TASK_ID |
 | `GLB` | GLB 形式の生成された 3D モデル。`quad` が有効な場合は空になります。 | FILE3DGLB |
 | `FBX` | FBX 形式の生成された 3D モデル。`quad` が有効な場合にのみデータが格納されます。 | FILE3DFBX |
 

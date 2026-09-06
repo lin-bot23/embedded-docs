@@ -9,15 +9,15 @@ MiniMax H3 Reference to Video crée le conditionnement textuel et le latent audi
 | `clip` | Modèle CLIP utilisé pour tokeniser l'invite et encoder les médias de référence en jetons de conditionnement. | CLIP | Oui | |
 | `vae` | VAE vidéo utilisé pour encoder les images de référence et les frames des vidéos de référence. Sans lui, les images/vidéos de référence ne conditionnent que l'encodeur de texte. | VAE | Non | |
 | `audio_vae` | VAE audio utilisé pour encoder l'audio de référence. L'audio est rééchantillonné au taux d'échantillonnage du VAE audio (32 kHz par défaut). Sans lui, l'audio de référence ne conditionne que l'encodeur de texte. | VAE | Non | |
-| `prompt` | Invite textuelle pour la vidéo. Les médias de référence peuvent être désignés avec les balises `<Picture i>`, `<Video k>` et `<Audio j>` (indexées à partir de 1 pour chaque type). Prend en charge les invites multilignes et dynamiques. | STRING | Oui | |
-| `width` | Largeur de la vidéo générée en pixels (par défaut : 1344). | INT | Oui | 32 à 16384 (pas de 32) |
-| `height` | Hauteur de la vidéo générée en pixels (par défaut : 768). | INT | Oui | 32 à 16384 (pas de 32) |
-| `length` | Nombre de frames à 24 fps ; 124 = ~5 s, la plage d'entraînement est d'environ 124-362 (par défaut : 124). | INT | Oui | 5 à 3600 (pas de 17) |
-| `ref_image_size` | Dimensionnement des images de référence. `match` réduit chaque image de référence uniquement, en conservant le ratio hauteur/largeur, à la zone en pixels de la génération ; `max` utilise le petit côté de 2048 px du pipeline de référence pour une meilleure fidélité de l'identité. Les jetons de référence traversent chaque étape d'échantillonnage, donc `max` peut être plusieurs fois plus lent (par défaut : `match`). | COMBO | Oui | `"match"`<br>`"max"` |
-| `ref_images` | Emplacement extensible : connectez jusqu'à 9 images de référence (`ref_image_1` ... `ref_image_9`). Les images de référence sont réduites à un petit côté de 2048 px si elles sont plus grandes et ne sont jamais agrandies. | IMAGE | Non | 0 à 9 |
-| `ref_videos` | Emplacement extensible : connectez jusqu'à 3 vidéos de référence (`ref_video_1` ... `ref_video_3`). Frames de vidéos de référence à 24 fps (2-15 s). | IMAGE | Non | 0 à 3 |
-| `ref_video_audios` | Emplacement extensible : connectez jusqu'à 3 bandes sonores (`ref_video_audio_1` ... `ref_video_audio_3`). Bande sonore de la vidéo de référence portant le même numéro. | AUDIO | Non | 0 à 3 |
-| `ref_audios` | Emplacement extensible : connectez jusqu'à 3 clips audio de référence autonomes (`ref_audio_1` ... `ref_audio_3`). | AUDIO | Non | 0 à 3 |
+| `invite` | Invite textuelle pour la vidéo. Les médias de référence peuvent être désignés avec les balises `<Picture i>`, `<Video k>` et `<Audio j>` (indexées à partir de 1 pour chaque type). Prend en charge les invites multilignes et dynamiques. | STRING | Oui | |
+| `largeur` | Largeur de la vidéo générée en pixels (par défaut : 1344). | INT | Oui | 32 à 16384 (pas de 32) |
+| `hauteur` | Hauteur de la vidéo générée en pixels (par défaut : 768). | INT | Oui | 32 à 16384 (pas de 32) |
+| `longueur` | Nombre de frames à 24 fps ; 124 = ~5 s, la plage d'entraînement est d'environ 124-362 (par défaut : 124). | INT | Oui | 5 à 3600 (pas de 17) |
+| `taille_image_référence` | Dimensionnement des images de référence. `match` réduit chaque image de référence uniquement, en conservant le ratio hauteur/largeur, à la zone en pixels de la génération ; `max` utilise le petit côté de 2048 px du pipeline de référence pour une meilleure fidélité de l'identité. Les jetons de référence traversent chaque étape d'échantillonnage, donc `max` peut être plusieurs fois plus lent (par défaut : `match`). | COMBO | Oui | `"match"`<br>`"max"` |
+| `images_de_référence` | Emplacement extensible : connectez jusqu'à 9 images de référence (`ref_image_1` ... `ref_image_9`). Les images de référence sont réduites à un petit côté de 2048 px si elles sont plus grandes et ne sont jamais agrandies. | IMAGE | Non | 0 à 9 |
+| `vidéos_de_référence` | Emplacement extensible : connectez jusqu'à 3 vidéos de référence (`ref_video_1` ... `ref_video_3`). Frames de vidéos de référence à 24 fps (2-15 s). | IMAGE | Non | 0 à 3 |
+| `audios_vidéo_de_référence` | Emplacement extensible : connectez jusqu'à 3 bandes sonores (`ref_video_audio_1` ... `ref_video_audio_3`). Bande sonore de la vidéo de référence portant le même numéro. | AUDIO | Non | 0 à 3 |
+| `audios_de_référence` | Emplacement extensible : connectez jusqu'à 3 clips audio de référence autonomes (`ref_audio_1` ... `ref_audio_3`). | AUDIO | Non | 0 à 3 |
 
 Notes :
 
@@ -30,7 +30,7 @@ Notes :
 
 | Nom de sortie | Description | Type de données |
 |---------------|-------------|-----------------|
-| `positive` | Conditionnement contenant l'invite encodée. Lorsque des médias de référence et les VAE correspondants sont fournis, il contient également le contenu encodé des images, vidéos et audios de référence utilisé par le modèle MiniMax H3. | CONDITIONING |
+| `positif` | Conditionnement contenant l'invite encodée. Lorsque des médias de référence et les VAE correspondants sont fournis, il contient également le contenu encodé des images, vidéos et audios de référence utilisé par le modèle MiniMax H3. | CONDITIONING |
 | `latent` | Latent audio-vidéo vide aux `width`, `height` et `length` (nombre de frames) demandés. | LATENT |
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/MiniMaxH3ReferenceToVideo/fr.md)

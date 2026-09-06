@@ -14,11 +14,11 @@
 
 | 輸出名稱 | 描述 | 資料類型 |
 |-------------|-------------|-----------|
-| `MULTIVIEW_TASK_ID` | Tripo 針對多視圖圖片生成請求所回傳的工作任務識別碼。這是一個字串識別碼，可用來參照已完成的任務。 | MULTIVIEW_TASK_ID |
-| `front` | 生成的主體前視圖。 | IMAGE |
-| `left` | 生成的主體左視圖。 | IMAGE |
-| `back` | 生成的主體後視圖。 | IMAGE |
-| `right` | 生成的主體右視圖。 | IMAGE |
+| `多視角 task_id` | Tripo 針對多視圖圖片生成請求所回傳的工作任務識別碼。這是一個字串識別碼，可用來參照已完成的任務。 | MULTIVIEW_TASK_ID |
+| `前方` | 生成的主體前視圖。 | IMAGE |
+| `左側` | 生成的主體左視圖。 | IMAGE |
+| `後方` | 生成的主體後視圖。 | IMAGE |
+| `右側` | 生成的主體右視圖。 | IMAGE |
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoImageToMultiviewNode/zh-TW.md)
 

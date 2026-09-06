@@ -8,9 +8,9 @@
 
 | 參數 | 描述 | 資料類型 | 必填 | 範圍 |
 |-----------|-------------|-----------|----------|-------|
-| `model` | 用於影片生成的模型（預設：「MiniMax H3」）。選取模型後，也會顯示下列小節所述、專屬於該模型的設定。 | DYNAMIC_COMBO | 是 | "MiniMax H3"<br>"MiniMax H3 Max"<br>"MiniMax H3 Max Turbo" |
-| `seed` | 隨機種子。使用相同種子的相同請求會產生相似但不保證完全相同的結果（預設：42）。 | INT | 是 | 0 至 4294967295 |
-| `watermark` | 是否在影片中加入 AIGC 浮水印（預設：false）。啟用此功能時，僅支援「MiniMax H3」模型。 | BOOLEAN | 否 | true<br>false |
+| `模型` | 用於影片生成的模型（預設：「MiniMax H3」）。選取模型後，也會顯示下列小節所述、專屬於該模型的設定。 | DYNAMIC_COMBO | 是 | "MiniMax H3"<br>"MiniMax H3 Max"<br>"MiniMax H3 Max Turbo" |
+| `隨機種子` | 隨機種子。使用相同種子的相同請求會產生相似但不保證完全相同的結果（預設：42）。 | INT | 是 | 0 至 4294967295 |
+| `浮水印` | 是否在影片中加入 AIGC 浮水印（預設：false）。啟用此功能時，僅支援「MiniMax H3」模型。 | BOOLEAN | 否 | true<br>false |
 
 ### MiniMax H3 輸入
 

@@ -8,16 +8,16 @@ Este nodo genera un modelo 3D a partir de dos a cuatro imágenes de referencia d
 
 | Parámetro | Descripción | Tipo de datos | Requerido | Rango |
 |-----------|-------------|-----------|----------|-------|
-| `image` | Vista frontal (0°). Obligatoria. | IMAGE | Sí | - |
-| `image_left` | Vista izquierda (90°), es decir, el lado izquierdo del sujeto. | IMAGE | No | - |
-| `image_back` | Vista posterior (180°). | IMAGE | No | - |
-| `image_right` | Vista derecha (270°), es decir, el lado derecho del sujeto. | IMAGE | No | - |
-| `output_mode` | Elija el tipo de modelo a generar. "Geometry only" devuelve una malla sin textura. "Textured" añade mapas de color/PBR. | DYNAMIC_COMBO | Sí | "Geometry only"<br>"Textured" |
-| `face_limit` | Número de caras objetivo, de 48 a 20000. -1 permite que Tripo lo elija adaptativamente. (predeterminado: -1) | INT | No | -1 a 20000 |
-| `model_seed` | Semilla para la generación reproducible de modelos. (predeterminado: 42) | INT | No | 0 a 2147483647 |
-| `auto_size` | Escala la salida para aproximarse a metros del mundo real. (predeterminado: False) | BOOLEAN | No | True<br>False |
-| `export_uv` | Desenvolvimiento UV durante la generación. Desactívelo para ejecuciones más rápidas solo de geometría. (predeterminado: True) | BOOLEAN | No | True<br>False |
-| `compress_geometry` | Aplica compresión de geometría meshopt (EXT_meshopt_compression). Archivos más pequeños, pero la vista previa 3D de ComfyUI no puede mostrarlos; descomprímalos antes de editarlos. (predeterminado: False) | BOOLEAN | No | True<br>False |
+| `imagen` | Vista frontal (0°). Obligatoria. | IMAGE | Sí | - |
+| `imagen_izquierda` | Vista izquierda (90°), es decir, el lado izquierdo del sujeto. | IMAGE | No | - |
+| `imagen_trasera` | Vista posterior (180°). | IMAGE | No | - |
+| `imagen_derecha` | Vista derecha (270°), es decir, el lado derecho del sujeto. | IMAGE | No | - |
+| `modo_de_salida` | Elija el tipo de modelo a generar. "Geometry only" devuelve una malla sin textura. "Textured" añade mapas de color/PBR. | DYNAMIC_COMBO | Sí | "Geometry only"<br>"Textured" |
+| `límite_de_caras` | Número de caras objetivo, de 48 a 20000. -1 permite que Tripo lo elija adaptativamente. (predeterminado: -1) | INT | No | -1 a 20000 |
+| `semilla_modelo` | Semilla para la generación reproducible de modelos. (predeterminado: 42) | INT | No | 0 a 2147483647 |
+| `auto_escala` | Escala la salida para aproximarse a metros del mundo real. (predeterminado: False) | BOOLEAN | No | True<br>False |
+| `exportar_uv` | Desenvolvimiento UV durante la generación. Desactívelo para ejecuciones más rápidas solo de geometría. (predeterminado: True) | BOOLEAN | No | True<br>False |
+| `comprimir_geometría` | Aplica compresión de geometría meshopt (EXT_meshopt_compression). Archivos más pequeños, pero la vista previa 3D de ComfyUI no puede mostrarlos; descomprímalos antes de editarlos. (predeterminado: False) | BOOLEAN | No | True<br>False |
 
 ### Entradas de Geometry only
 
@@ -41,8 +41,8 @@ Estas entradas aparecen cuando `output_mode` se establece en `"Textured"`.
 
 | Nombre de salida | Descripción | Tipo de datos |
 |-------------|-------------|-----------|
-| `model_file` | El nombre del archivo del modelo GLB generado (solo para compatibilidad hacia atrás). | STRING |
-| `model_task_id` | El ID de tarea único para esta solicitud de generación de modelo. | MODEL_TASK_ID |
+| `archivo_modelo` | El nombre del archivo del modelo GLB generado (solo para compatibilidad hacia atrás). | STRING |
+| `id_tarea_modelo` | El ID de tarea único para esta solicitud de generación de modelo. | MODEL_TASK_ID |
 | `GLB` | El modelo 3D generado en formato GLB. | FILE3DGLB |
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1MultiviewToModelNode/es.md)

@@ -8,9 +8,9 @@ Este nó embaralha aleatoriamente a ordem de pares de vídeo-texto em uma lista,
 
 | Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
 |-----------|-------------|-----------|----------|-------|
-| `videos` | Lista de vídeos a serem embaralhados. | VIDEO | Sim | Lista de itens de vídeo |
-| `texts` | Lista de textos a serem embaralhados (os legendas associadas aos vídeos). | STRING | Sim | Lista de strings de texto |
-| `seed` | Semente aleatória que determina a ordem do embaralhamento (padrão: 0). | INT | Sim | 0 a 18446744073709551615 |
+| `vídeos` | Lista de vídeos a serem embaralhados. | VIDEO | Sim | Lista de itens de vídeo |
+| `textos` | Lista de textos a serem embaralhados (os legendas associadas aos vídeos). | STRING | Sim | Lista de strings de texto |
+| `semente` | Semente aleatória que determina a ordem do embaralhamento (padrão: 0). | INT | Sim | 0 a 18446744073709551615 |
 
 Nota: `videos` e `texts` devem ter o mesmo comprimento, pois o nó combina cada vídeo com o texto na mesma posição e preserva essas combinações quando embaralha. Internamente, o valor da semente é reduzido usando modulo 4294967295 (2^32 - 1) antes de gerar a ordem aleatória, então valores de semente muito grandes podem produzir o mesmo embaralhamento que valores menores.
 
@@ -18,8 +18,8 @@ Nota: `videos` e `texts` devem ter o mesmo comprimento, pois o nó combina cada 
 
 | Nome da Saída | Descrição | Tipo de Dados |
 |-------------|-------------|-----------|
-| `videos` | Vídeos embaralhados na nova ordem aleatória. | VIDEO |
-| `texts` | Textos embaralhados na mesma nova ordem que os vídeos. | STRING |
+| `vídeos` | Vídeos embaralhados na nova ordem aleatória. | VIDEO |
+| `textos` | Textos embaralhados na mesma nova ordem que os vídeos. | STRING |
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ShuffleVideoTextDataset/pt-BR.md)
 

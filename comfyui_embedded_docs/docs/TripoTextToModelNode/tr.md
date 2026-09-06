@@ -6,18 +6,18 @@ Tripo'nun API'sini kullanarak bir metin açıklamasından bitmiş 3D modeller ü
 
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 |-----------|-------------|-----------|----------|-------|
-| `prompt` | Oluşturulacak 3D modelin metin açıklaması (çok satırlı). Bu parametre zorunludur ve boş olamaz. | STRING | Evet | - |
-| `negative_prompt` | Oluşturulan modelde kaçınılması gerekenlerin metin açıklaması (çok satırlı). En fazla 255 karakter. Yalnızca boş olmadığında API'ye gönderilir. | STRING | Hayır | Up to 255 characters |
-| `model_version` | Üretim için kullanılacak Tripo modelinin sürümü (varsayılan: v3.1-20260211). | COMBO | Hayır | Multiple options available |
-| `style` | Oluşturulan modele uygulanan stil (varsayılan: None). Tripo tarafından artık desteklenmiyor ve yok sayılıyor; eski iş akışları için korunuyor. | COMBO | Hayır | Multiple options available |
-| `texture` | Doku haritalarının oluşturulup oluşturulmayacağı. Kapalı, çıplak geometri döndürür ve `pbr` yok sayılır (varsayılan: True). | BOOLEAN | Hayır | true / false |
+| `istek` | Oluşturulacak 3D modelin metin açıklaması (çok satırlı). Bu parametre zorunludur ve boş olamaz. | STRING | Evet | - |
+| `olumsuz_istek` | Oluşturulan modelde kaçınılması gerekenlerin metin açıklaması (çok satırlı). En fazla 255 karakter. Yalnızca boş olmadığında API'ye gönderilir. | STRING | Hayır | Up to 255 characters |
+| `model_versiyonu` | Üretim için kullanılacak Tripo modelinin sürümü (varsayılan: v3.1-20260211). | COMBO | Hayır | Multiple options available |
+| `stil` | Oluşturulan modele uygulanan stil (varsayılan: None). Tripo tarafından artık desteklenmiyor ve yok sayılıyor; eski iş akışları için korunuyor. | COMBO | Hayır | Multiple options available |
+| `doku` | Doku haritalarının oluşturulup oluşturulmayacağı. Kapalı, çıplak geometri döndürür ve `pbr` yok sayılır (varsayılan: True). | BOOLEAN | Hayır | true / false |
 | `pbr` | PBR malzeme haritalarının (temel renk, metaliklik, pürüzlülük, normal) oluşturulup oluşturulmayacağı. `texture` gerektirir; `texture` kapalıyken zorla kapatılır (varsayılan: True). | BOOLEAN | Hayır | true / false |
-| `image_seed` | Görüntü oluşturma aşamasında kullanılan tohum (varsayılan: 42). | INT | Hayır | 0 ile 2147483647 |
-| `model_seed` | Model oluşturma aşamasında kullanılan tohum (varsayılan: 42). | INT | Hayır | 0 ile 2147483647 |
-| `texture_seed` | Doku oluşturma aşamasında kullanılan tohum (varsayılan: 42). | INT | Hayır | 0 ile 2147483647 |
-| `texture_quality` | Oluşturulan dokuların kalitesi. detailed = HD dokular, extreme = 8K Ultra dokular (varsayılan: standard). | COMBO | Hayır | "standard"<br>"detailed"<br>"extreme" |
-| `face_limit` | Maksimum yüz sayısı. -1, Tripo'nun uyarlamalı olarak seçmesini sağlar (v3.x standardında yaklaşık 1,4M yüz, detailed'da 2M). Tripo sessizce sınırlar: v2.5'te 500.000, dörtgen ağlarda 150.000. (varsayılan: -1) | INT | Hayır | -1 ile 2000000 |
-| `quad` | Dörtgen ağ çıktısı. Tripo dörtgen ağları FBX olarak teslim eder, böylece sonuç FBX çıktısına gelir ve GLB çıktısı boş kalır. (varsayılan: False) | BOOLEAN | Hayır | true / false |
+| `görüntü_tohumu` | Görüntü oluşturma aşamasında kullanılan tohum (varsayılan: 42). | INT | Hayır | 0 ile 2147483647 |
+| `model_tohumu` | Model oluşturma aşamasında kullanılan tohum (varsayılan: 42). | INT | Hayır | 0 ile 2147483647 |
+| `doku_tohumu` | Doku oluşturma aşamasında kullanılan tohum (varsayılan: 42). | INT | Hayır | 0 ile 2147483647 |
+| `doku_kalitesi` | Oluşturulan dokuların kalitesi. detailed = HD dokular, extreme = 8K Ultra dokular (varsayılan: standard). | COMBO | Hayır | "standard"<br>"detailed"<br>"extreme" |
+| `yüz_sınırı` | Maksimum yüz sayısı. -1, Tripo'nun uyarlamalı olarak seçmesini sağlar (v3.x standardında yaklaşık 1,4M yüz, detailed'da 2M). Tripo sessizce sınırlar: v2.5'te 500.000, dörtgen ağlarda 150.000. (varsayılan: -1) | INT | Hayır | -1 ile 2000000 |
+| `dörtgen` | Dörtgen ağ çıktısı. Tripo dörtgen ağları FBX olarak teslim eder, böylece sonuç FBX çıktısına gelir ve GLB çıktısı boş kalır. (varsayılan: False) | BOOLEAN | Hayır | true / false |
 | `geometry_quality` | Oluşturulan geometrinin kalitesi (varsayılan: standard). | COMBO | Hayır | "standard"<br>"detailed" |
 | `smart_low_poly` | Temiz, el yapımı tarzda topolojiye sahip düşük poligonlu ağ (500-20.000 yüz, dörtgen 500-10.000). Basit konular için en iyisi; karmaşık olanlar başarısız olabilir. (varsayılan: False) | BOOLEAN | Hayır | true / false |
 | `auto_size` | Dokulu modelleri gerçek dünya boyutlarına metre cinsinden ölçekler. Tripo boyutu modelin sahne dönüşümü olarak saklar ve model dönüştürüldüğünde, donatıldığında veya yeniden hedeflendiğinde bunu kalıcı olarak uygular; doku olmadan yok sayılır. (varsayılan: True) | BOOLEAN | Hayır | true / false |
@@ -32,8 +32,8 @@ Tripo'nun API'sini kullanarak bir metin açıklamasından bitmiş 3D modeller ü
 
 | Çıktı Adı | Açıklama | Veri Türü |
 |-------------|-------------|-----------|
-| `model_file` | Oluşturulan 3D model dosyası, yalnızca geriye dönük uyumluluk için saklanır. | STRING |
-| `model task_id` | Model oluşturma süreci için benzersiz görev tanımlayıcısı. | MODEL_TASK_ID |
+| `model_dosyası` | Oluşturulan 3D model dosyası, yalnızca geriye dönük uyumluluk için saklanır. | STRING |
+| `model_görev_id` | Model oluşturma süreci için benzersiz görev tanımlayıcısı. | MODEL_TASK_ID |
 | `GLB` | GLB formatında oluşturulan 3D model. `quad` etkinleştirildiğinde boştur. | FILE3DGLB |
 | `FBX` | FBX formatında oluşturulan 3D model. Yalnızca `quad` etkinleştirildiğinde doldurulur. | FILE3DFBX |
 

@@ -6,15 +6,15 @@ GetImageSize lee una imagen de entrada y devuelve su ancho, alto y tamaño de lo
 
 | Parámetro | Descripción | Tipo de datos | Requerido | Rango |
 |-----------|-------------|---------------|-----------|-------|
-| `image` | La imagen de entrada de la que se extraen el ancho, alto y tamaño de lote | IMAGE | Sí | - |
+| `imagen` | La imagen de entrada de la que se extraen el ancho, alto y tamaño de lote | IMAGE | Sí | - |
 
 ## Salidas
 
 | Nombre de salida | Descripción | Tipo de datos |
 |------------------|-------------|---------------|
-| `width` | El ancho de la imagen de entrada en píxeles | INT |
-| `height` | El alto de la imagen de entrada en píxeles | INT |
-| `batch_size` | El número de imágenes contenidas en el lote de entrada | INT |
+| `ancho` | El ancho de la imagen de entrada en píxeles | INT |
+| `alto` | El alto de la imagen de entrada en píxeles | INT |
+| `tamaño_de_lote` | El número de imágenes contenidas en el lote de entrada | INT |
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/GetImageSize/es.md)
 

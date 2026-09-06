@@ -6,9 +6,9 @@ Le nœud Switch sélectionne entre deux entrées possibles en fonction d'une con
 
 | Paramètre | Description | Type de données | Requis | Plage |
 | --- | --- | --- | --- | --- |
-| `switch` | Une condition booléenne qui détermine quelle entrée transmettre. Lorsqu'il est activé (true), l'entrée `on_true` est sélectionnée. Lorsqu'il est désactivé (false), l'entrée `on_false` est sélectionnée. | BOOLEAN | Oui |  |
-| `on_false` | Les données à transmettre à la sortie lorsque `switch` est désactivé (false). Cette entrée n'est requise que lorsque `switch` est false. | MATCH_TYPE | Non |  |
-| `on_true` | Les données à transmettre à la sortie lorsque `switch` est activé (true). Cette entrée n'est requise que lorsque `switch` est true. | MATCH_TYPE | Non |  |
+| `interrupteur` | Une condition booléenne qui détermine quelle entrée transmettre. Lorsqu'il est activé (true), l'entrée `on_true` est sélectionnée. Lorsqu'il est désactivé (false), l'entrée `on_false` est sélectionnée. | BOOLEAN | Oui |  |
+| `faux` | Les données à transmettre à la sortie lorsque `switch` est désactivé (false). Cette entrée n'est requise que lorsque `switch` est false. | MATCH_TYPE | Non |  |
+| `vrai` | Les données à transmettre à la sortie lorsque `switch` est activé (true). Cette entrée n'est requise que lorsque `switch` est true. | MATCH_TYPE | Non |  |
 
 **Remarque sur les exigences d'entrée :** les entrées `on_false` et `on_true` sont requises de manière conditionnelle. Le nœud demande l'entrée `on_true` uniquement lorsque `switch` est true, et l'entrée `on_false` uniquement lorsque `switch` est false. Les deux entrées doivent être du même type de données et doivent correspondre au type de données de sortie. Si l'entrée sélectionnée n'est pas connectée, le nœud ne produit aucune valeur.
 
@@ -16,7 +16,7 @@ Le nœud Switch sélectionne entre deux entrées possibles en fonction d'une con
 
 | Nom de sortie | Description | Type de données |
 | --- | --- | --- |
-| `output` | Les données sélectionnées. Il s'agit de la valeur provenant de l'entrée `on_true` lorsque `switch` est true, ou de la valeur provenant de l'entrée `on_false` lorsque `switch` est false. | MATCH_TYPE |
+| `sortie` | Les données sélectionnées. Il s'agit de la valeur provenant de l'entrée `on_true` lorsque `switch` est true, ou de la valeur provenant de l'entrée `on_false` lorsque `switch` est false. | MATCH_TYPE |
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ComfySwitchNode/fr.md)
 

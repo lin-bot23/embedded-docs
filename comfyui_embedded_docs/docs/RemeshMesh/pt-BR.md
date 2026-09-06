@@ -10,10 +10,10 @@ A reestruturação de malha (Remesh Mesh) recria uma malha com uma tesselação 
 
 | Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
 |-----------|-------------|-----------|----------|-------|
-| `mesh` | A malha de entrada a ser reestruturada. | MESH | Sim | — |
-| `resolution` | Resolução da grade de voxel (densidade de saída). 256 ~ 100k faces, 512 ~ 1M. Para um número exato de faces, siga com Decimar Malha. (padrão: 512) | INT | Sim | 32 - 2048 |
+| `malha` | A malha de entrada a ser reestruturada. | MESH | Sim | — |
+| `resolução` | Resolução da grade de voxel (densidade de saída). 256 ~ 100k faces, 512 ~ 1M. Para um número exato de faces, siga com Decimar Malha. (padrão: 512) | INT | Sim | 32 - 2048 |
 | `sign_mode` | Modo de extração de superfície. "udf" é robusto a entradas bagunçadas/não-manifold; "sdf" gera uma superfície limpa e única com recuperação de características afiadas usando QEF (Função de Erro Quadrática), mas requer reviravolta consistente. A seleção de um modo revela suas opções específicas. (padrão: "udf") | COMBO DINÂMICO | Sim | "udf"<br>"sdf" |
-| `band` | Largura da banda estreita em unidades de voxel. No modo UDF também desloca a superfície. (avançado, padrão: 1.0) | FLOAT | Sim | 0.5 - 4.0 |
+| `banda` | Largura da banda estreita em unidades de voxel. No modo UDF também desloca a superfície. (avançado, padrão: 1.0) | FLOAT | Sim | 0.5 - 4.0 |
 | `project_back` | Interpola linearmente os vértices em direção à superfície original (0 = pura DC, 1 = ajustada). (avançado, padrão: 0.0) | FLOAT | Sim | 0.0 - 1.0 |
 | `fix_poles` | Colapsa pares de vértices de valência 3 (artefato de entroncamento DC). (avançado, padrão: falso) | BOOLEAN | Sim | verdadeiro / falso |
 | `smooth_iters` | Iterações de suavização de Taubin (0 = desligado). 2-3 limpa artefatos de escada DC; valores mais altos podem suavizar excessivamente os bordas QEF. (padrão: 0) | INT | Sim | 0 - 20 |
@@ -45,7 +45,7 @@ Nota: A opção `qef` tem um padrão diferente dependendo do modo selecionado �
 
 | Nome da Saída | Descrição | Tipo de Dados |
 |-------------|-------------|-----------|
-| `mesh` | A malha reestruturada com tesselação uniforme e topologia soldada. As cores dos vértices são preservadas quando presentes na entrada; qualquer UV, normais e tangentes não são transferidos. | MESH |
+| `malha` | A malha reestruturada com tesselação uniforme e topologia soldada. As cores dos vértices são preservadas quando presentes na entrada; qualquer UV, normais e tangentes não são transferidos. | MESH |
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/RemeshMesh/pt-BR.md)
 

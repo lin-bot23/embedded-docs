@@ -6,7 +6,7 @@
 
 | 매개변수 | 설명 | 데이터 타입 | 필수 | 범위 |
 |-----------|-------------|-----------|----------|-------|
-| `original_model_task_id` | 리깅할 원본 3D 모델의 태스크 ID입니다. 일반적으로 이전 Tripo 모델 생성 노드에서 생성된 ID입니다. | MODEL_TASK_ID | 예 | - |
+| `원본 모델 작업 ID` | 리깅할 원본 3D 모델의 태스크 ID입니다. 일반적으로 이전 Tripo 모델 생성 노드에서 생성된 ID입니다. | MODEL_TASK_ID | 예 | - |
 | `model_version` | 사용할 리깅 모델 버전입니다. v1.0: 휴머노이드(이족 보행) 캐릭터 전용이며 90개 이상의 애니메이션 프리셋을 지원합니다. v2.5: 비휴머노이드 생물체(quadruped, hexapod, octopod, avian, serpentine, aquatic)를 지원합니다. 기본값: `v1.0-20240301`. | COMBO | 아니요 | "v1.0-20240301"<br>"v2.5-20260210" |
 | `rig_type` | 뼈대 유형입니다. "auto"를 선택하면 Tripo의 무료 리그 검사를 먼저 실행하고 권장 유형을 사용합니다. 다른 값은 특정 뼈대 유형을 강제합니다. 예를 들어 휴머노이드 캐릭터에는 biped를 사용합니다. 기본값: "auto". | COMBO | 아니요 | "auto"<br>"biped"<br>"quadruped"<br>"hexapod"<br>"octopod"<br>"avian"<br>"serpentine"<br>"aquatic" |
 | `spec` | 본(bone) 이름 지정 방식입니다. Tripo 기본 방식 또는 Mixamo 호환 방식입니다. Tripo는 mixamo 사양으로 생성된 v1.0 리그에 자체 애니메이션 프리셋을 리타겟할 수 없습니다. Tripo: Retarget rigged model에는 tripo를 사용하십시오. 기본값: "tripo". | COMBO | 아니요 | "tripo"<br>"mixamo" |
@@ -20,8 +20,8 @@
 
 | 출력 이름 | 설명 | 데이터 타입 |
 |-------------|-------------|-----------|
-| `model_file` | 생성된 리깅 3D 모델 파일입니다. 하위 호환성을 위해서만 유지됩니다. | STRING |
-| `rig task_id` | 리깅 생성 프로세스를 추적하기 위한 태스크 ID입니다. | RIG_TASK_ID |
+| `모델 파일` | 생성된 리깅 3D 모델 파일입니다. 하위 호환성을 위해서만 유지됩니다. | STRING |
+| `리깅 task_id` | 리깅 생성 프로세스를 추적하기 위한 태스크 ID입니다. | RIG_TASK_ID |
 | `GLB` | 리깅된 모델의 GLB 3D 파일입니다. `out_format`이 "glb"일 때 채워집니다. | FILE3DGLB |
 | `FBX` | 리깅된 모델의 FBX 3D 파일입니다. `out_format`이 "fbx"일 때 채워집니다. | FILE3DFBX |
 

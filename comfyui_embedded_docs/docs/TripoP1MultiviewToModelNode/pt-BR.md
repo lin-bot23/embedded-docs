@@ -6,16 +6,16 @@
 
 | Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
 |-----------|-------------|-----------|----------|-------|
-| `image` | Visão frontal (0°). Obrigatório. | IMAGEM | Sim | - |
-| `image_left` | Visão esquerda (90°), ou seja, o lado esquerdo do sujeito. | IMAGEM | Não | - |
-| `image_back` | Visão traseira (180°). | IMAGEM | Não | - |
-| `image_right` | Visão direita (270°), ou seja, o lado direito do sujeito. | IMAGEM | Não | - |
-| `output_mode` | Escolha o tipo de modelo a ser gerado. "Apenas geometria" retorna uma malha sem textura. "Texturizado" adiciona mapas de cor/PBR. | COMBO DINÂMICO | Sim | "Apenas geometria"<br>"Texturizado" |
-| `face_limit` | Número alvo de faces, 48-20000. -1 permite que o Tripo escolha adaptivamente. (padrão: -1) | INTEIRO | Não | -1 a 20000 |
-| `model_seed` | Semente para geração de modelo repetível. (padrão: 42) | INTEIRO | Não | 0 a 2147483647 |
-| `auto_size` | Escalar a saída para aproximar metros do mundo real. (padrão: Falso) | BOOLEANO | Não | True<br>False |
-| `export_uv` | Desempacotar UV durante a geração. Desative para execução mais rápida de geometria apenas. (padrão: True) | BOOLEANO | Não | True<br>False |
-| `compress_geometry` | Aplicar compressão de geometria meshopt (EXT_meshopt_compression). Arquivos menores, mas o preview 3D do ComfyUI não pode exibi-los; descomprima antes de editar. (padrão: False) | BOOLEANO | Não | True<br>False |
+| `imagem` | Visão frontal (0°). Obrigatório. | IMAGEM | Sim | - |
+| `imagem_esquerda` | Visão esquerda (90°), ou seja, o lado esquerdo do sujeito. | IMAGEM | Não | - |
+| `imagem_traseira` | Visão traseira (180°). | IMAGEM | Não | - |
+| `imagem_direita` | Visão direita (270°), ou seja, o lado direito do sujeito. | IMAGEM | Não | - |
+| `modo_de_saida` | Escolha o tipo de modelo a ser gerado. "Apenas geometria" retorna uma malha sem textura. "Texturizado" adiciona mapas de cor/PBR. | COMBO DINÂMICO | Sim | "Apenas geometria"<br>"Texturizado" |
+| `limite_de_faces` | Número alvo de faces, 48-20000. -1 permite que o Tripo escolha adaptivamente. (padrão: -1) | INTEIRO | Não | -1 a 20000 |
+| `semente_do_modelo` | Semente para geração de modelo repetível. (padrão: 42) | INTEIRO | Não | 0 a 2147483647 |
+| `tamanho_automático` | Escalar a saída para aproximar metros do mundo real. (padrão: Falso) | BOOLEANO | Não | True<br>False |
+| `exportar_uv` | Desempacotar UV durante a geração. Desative para execução mais rápida de geometria apenas. (padrão: True) | BOOLEANO | Não | True<br>False |
+| `comprimir_geometria` | Aplicar compressão de geometria meshopt (EXT_meshopt_compression). Arquivos menores, mas o preview 3D do ComfyUI não pode exibi-los; descomprima antes de editar. (padrão: False) | BOOLEANO | Não | True<br>False |
 
 ### Entradas de geometria apenas
 
@@ -39,8 +39,8 @@ Essas entradas aparecem quando `output_mode` é definido como `"Texturizado"`.
 
 | Nome da Saída | Descrição | Tipo de Dados |
 |-------------|-------------|-----------|
-| `model_file` | O nome do arquivo do modelo gerado GLB (apenas para compatibilidade reversa). | STRING |
-| `model_task_id` | O ID de tarefa único para este pedido de geração de modelo. | ID_DE_TAREFA_DE_MODELO |
+| `arquivo_modelo` | O nome do arquivo do modelo gerado GLB (apenas para compatibilidade reversa). | STRING |
+| `id_tarefa_modelo` | O ID de tarefa único para este pedido de geração de modelo. | ID_DE_TAREFA_DE_MODELO |
 | `GLB` | O modelo 3D gerado no formato GLB. | ARQUIVO3DGLB |
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1MultiviewToModelNode/pt-BR.md)

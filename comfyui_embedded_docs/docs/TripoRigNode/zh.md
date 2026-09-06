@@ -6,7 +6,7 @@
 
 | 参数 | 描述 | 数据类型 | 必需 | 范围 |
 |------|------|----------|------|------|
-| `original_model_task_id` | 需要绑定的原始 3D 模型的任务 ID。通常由之前的某个 Tripo 模型生成节点生成。 | MODEL_TASK_ID | 是 | - |
+| `原始模型任务ID` | 需要绑定的原始 3D 模型的任务 ID。通常由之前的某个 Tripo 模型生成节点生成。 | MODEL_TASK_ID | 是 | - |
 | `model_version` | 要使用的绑定模型版本。v1.0：仅支持人形（双足）角色，附带 90+ 个动画预设。v2.5：支持非人形生物（四足、六足、八足、禽类、蛇形、水生）。默认值：`v1.0-20240301`。 | COMBO | 否 | "v1.0-20240301"<br>"v2.5-20260210" |
 | `rig_type` | 骨架类型。"auto" 会先运行 Tripo 的免费骨骼绑定检查，并使用推荐的骨架类型。其他值用于强制指定特定类型的骨架，例如用 biped 表示人形角色。默认值："auto"。 | COMBO | 否 | "auto"<br>"biped"<br>"quadruped"<br>"hexapod"<br>"octopod"<br>"avian"<br>"serpentine"<br>"aquatic" |
 | `spec` | 骨骼命名方案：Tripo 原生或 Mixamo 兼容。Tripo 无法将动画预设重定向到使用 mixamo 方案创建的 v1.0 绑定骨架上；请选择 tripo，以配合 Tripo: Retarget rigged model 节点使用。默认值："tripo"。 | COMBO | 否 | "tripo"<br>"mixamo" |
@@ -20,8 +20,8 @@
 
 | 输出名称 | 描述 | 数据类型 |
 |----------|------|----------|
-| `model_file` | 生成后的已绑定 3D 模型文件。仅为向后兼容保留。 | STRING |
-| `rig task_id` | 用于追踪绑定生成过程的任务 ID。 | RIG_TASK_ID |
+| `模型文件` | 生成后的已绑定 3D 模型文件。仅为向后兼容保留。 | STRING |
+| `绑定任务ID` | 用于追踪绑定生成过程的任务 ID。 | RIG_TASK_ID |
 | `GLB` | 以 GLB 3D 文件形式输出的已绑定模型。当 `out_format` 为 "glb" 时填充。 | FILE3DGLB |
 | `FBX` | 以 FBX 3D 文件形式输出的已绑定模型。当 `out_format` 为 "fbx" 时填充。 | FILE3DFBX |
 

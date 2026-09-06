@@ -8,16 +8,16 @@
 
 | 参数 | 描述 | 数据类型 | 必填 | 范围 |
 |------|------|---------|------|------|
-| `image` | 前视图（0°）。必填。 | IMAGE | 是 | - |
-| `image_left` | 左视图（90°），即主体的左侧。 | IMAGE | 否 | - |
-| `image_back` | 后视图（180°）。 | IMAGE | 否 | - |
-| `image_right` | 右视图（270°），即主体的右侧。 | IMAGE | 否 | - |
-| `output_mode` | 选择要生成的模型类型。“Geometry only”返回无纹理网格。“Textured”添加颜色/PBR 贴图。 | DYNAMIC_COMBO | 是 | "Geometry only"<br>"Textured" |
-| `face_limit` | 目标面数，48-20000。设为 -1 可让 Tripo 自适应选择。（默认：-1） | INT | 否 | -1 到 20000 |
-| `model_seed` | 用于可复现模型生成的种子。（默认：42） | INT | 否 | 0 到 2147483647 |
-| `auto_size` | 将输出缩放至接近真实世界的米制尺寸。（默认：False） | BOOLEAN | 否 | True<br>False |
-| `export_uv` | 生成时进行 UV 展开。关闭可加快仅几何体模式的运行速度。（默认：True） | BOOLEAN | 否 | True<br>False |
-| `compress_geometry` | 应用 meshopt 几何压缩（EXT_meshopt_compression）。生成的文件更小，但 ComfyUI 的 3D 预览无法显示它们；编辑前请先解压。（默认：False） | BOOLEAN | 否 | True<br>False |
+| `图像` | 前视图（0°）。必填。 | IMAGE | 是 | - |
+| `左侧图像` | 左视图（90°），即主体的左侧。 | IMAGE | 否 | - |
+| `背面图像` | 后视图（180°）。 | IMAGE | 否 | - |
+| `右侧图像` | 右视图（270°），即主体的右侧。 | IMAGE | 否 | - |
+| `输出模式` | 选择要生成的模型类型。“Geometry only”返回无纹理网格。“Textured”添加颜色/PBR 贴图。 | DYNAMIC_COMBO | 是 | "Geometry only"<br>"Textured" |
+| `面数限制` | 目标面数，48-20000。设为 -1 可让 Tripo 自适应选择。（默认：-1） | INT | 否 | -1 到 20000 |
+| `模型种子` | 用于可复现模型生成的种子。（默认：42） | INT | 否 | 0 到 2147483647 |
+| `自动缩放` | 将输出缩放至接近真实世界的米制尺寸。（默认：False） | BOOLEAN | 否 | True<br>False |
+| `导出 UV` | 生成时进行 UV 展开。关闭可加快仅几何体模式的运行速度。（默认：True） | BOOLEAN | 否 | True<br>False |
+| `压缩几何体` | 应用 meshopt 几何压缩（EXT_meshopt_compression）。生成的文件更小，但 ComfyUI 的 3D 预览无法显示它们；编辑前请先解压。（默认：False） | BOOLEAN | 否 | True<br>False |
 
 ### 仅几何体输入
 
@@ -41,8 +41,8 @@
 
 | 输出名称 | 描述 | 数据类型 |
 |---------|------|---------|
-| `model_file` | 生成的 GLB 模型的文件名（仅用于向后兼容）。 | STRING |
-| `model_task_id` | 此模型生成请求的唯一任务 ID。 | MODEL_TASK_ID |
+| `模型文件` | 生成的 GLB 模型的文件名（仅用于向后兼容）。 | STRING |
+| `模型任务 ID` | 此模型生成请求的唯一任务 ID。 | MODEL_TASK_ID |
 | `GLB` | 生成的 GLB 格式 3D 模型。 | FILE3DGLB |
 
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1MultiviewToModelNode/zh.md)
