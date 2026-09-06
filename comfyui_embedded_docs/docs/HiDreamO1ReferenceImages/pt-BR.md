@@ -1,27 +1,25 @@
 # Imagens de Referência HiDream-O1
 
-## Visão Geral
-
-Anexe imagens de referência ao condicionamento positivo e negativo. Este nó permite fornecer de 1 a 10 imagens de referência; uma única imagem é usada para edição baseada em instruções, enquanto múltiplas imagens (2-10) permitem personalização orientada por assunto.
+Este nó anexa imagens de referência tanto ao condicionamento positivo quanto ao negativo, permitindo que nós downstream as utilizem para guiar a geração. As imagens de referência são aplicadas na ordem numérica de suas entradas de soquetes. Se nenhuma imagem de referência estiver conectada, o condicionamento positivo e negativo passam inalterados.
 
 ## Entradas
 
 | Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
 | --- | --- | --- | --- | --- |
-| `positivo` | O condicionamento positivo ao qual anexar as imagens de referência. | CONDITIONING | Sim | - |
-| `negativo` | O condicionamento negativo ao qual anexar as imagens de referência. | CONDITIONING | Sim | - |
-| `imagens` | Imagens de referência. 1 imagem = edição por instrução; 2-10 imagens = referência múltipla. | IMAGE | Sim | 1 a 10 images |
+| `positive` | O condicionamento positivo ao qual anexar imagens de referência. | CONDITIONING | Sim | - |
+| `negative` | O condicionamento negativo ao qual anexar imagens de referência. | CONDITIONING | Sim | - |
+| `images` | As imagens de referência são usadas na ordem numérica dos soquetes. Quando imagens são fornecidas, elas são anexadas tanto ao condicionamento positivo quanto ao negativo. | IMAGE | Não | 0 a 100 imagens (`image_1` a `image_100`) |
 
-**Nota sobre o parâmetro `images`:** Esta é uma entrada com crescimento automático (autogrow) que aceita entre 1 e 10 imagens. As imagens são rotuladas de `image_1` a `image_10`. Você deve fornecer pelo menos 1 imagem. O número de imagens determina o modo de operação: uma única imagem é usada para instruções de edição, enquanto múltiplas imagens (2-10) são usadas para personalização orientada por assunto.
+**Nota sobre o parâmetro `images`:** Este é um entrada aut crescente que fornece soquetes numerados `image_1` até `image_100`. As imagens são usadas na ordem numérica dos soquetes. A entrada é opcional: se nenhuma imagem de referência estiver conectada, o nó retorna o condicionamento positivo e negativo inalterados. Quando imagens são conectadas, o mesmo conjunto de imagens de referência é anexado aos dois outputs, e o condicionamento negativo é também marcado como negativo antes das imagens serem anexadas.
 
 ## Saídas
 
 | Nome da Saída | Descrição | Tipo de Dados |
 | --- | --- | --- |
-| `positivo` | O condicionamento positivo com as imagens de referência anexadas. | CONDITIONING |
-| `negativo` | O condicionamento negativo com as imagens de referência anexadas. | CONDITIONING |
+| `positive` | O condicionamento positivo com as imagens de referência anexadas. | CONDITIONING |
+| `negative` | O condicionamento negativo com as imagens de referência anexadas. | CONDITIONING |
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/HiDreamO1ReferenceImages/pt-BR.md)
 
 ---
-**Source fingerprint (SHA-256):** `f05f6be19df8b8697a98507163e8f60fd0cf2048c81f92597d2ae0a3395b8c6d`
+**Source fingerprint (SHA-256):** `07f9f0ea19957523e95d04b9086dc994807bb0cd5262fe798dc784c1ecb4920d`

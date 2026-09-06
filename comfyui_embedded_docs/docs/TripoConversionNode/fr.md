@@ -1,42 +1,40 @@
 # Tripo : Convertir le modèle
 
-Voici la traduction en français de la documentation du nœud TripoConversionNode :
-
-Le TripoConversionNode convertit des modèles 3D entre différents formats de fichiers à l'aide de l'API Tripo. Il prend un ID de tâche provenant d'une opération Tripo précédente (génération de modèle, rigging ou retargeting) et convertit le modèle résultant dans le format souhaité avec diverses options d'exportation.
+Ce nœud convertit un modèle 3D Tripo existant dans un autre format de fichier 3D. Il prend l’ID de tâche d’un modèle précédemment créé ou traité par une opération Tripo (comme la génération de modèle, le rigging, le retargeting ou la segmentation), soumet une tâche de conversion à l’API Tripo, attend que cette tâche se termine, puis renvoie le fichier du modèle converti.
 
 ## Entrées
 
 | Paramètre | Description | Type de données | Requis | Plage |
-| --- | --- | --- | --- | --- |
-| `id_tâche_modèle_original` | L'ID de tâche d'une opération Tripo précédente (génération de modèle, rigging ou retargeting) | MODEL_TASK_ID,RIG_TASK_ID,RETARGET_TASK_ID | Oui | MODEL_TASK_ID<br>RIG_TASK_ID<br>RETARGET_TASK_ID |
-| `format` | Le format de fichier cible pour le modèle 3D converti | COMBO | Oui | GLTF<br>USDZ<br>FBX<br>OBJ<br>STL<br>3MF |
-| `quad` | Convertir les triangles en quads (par défaut : Faux) | BOOLEAN | Non | Vrai/Faux |
-| `limite_faces` | Nombre maximal de faces dans le modèle de sortie, utiliser -1 pour aucune limite (par défaut : -1) | INT | Non | -1 à 2000000 |
-| `taille_texture` | Taille des textures de sortie en pixels (par défaut : 4096) | INT | Non | 128 à 4096 |
-| `format_texture` | Format des textures exportées (par défaut : JPEG) | COMBO | Non | BMP<br>DPX<br>HDR<br>JPEG<br>OPEN_EXR<br>PNG<br>TARGA<br>TIFF<br>WEBP |
-| `force_symmetry` | Forcer la symétrie sur le modèle (par défaut : Faux) | BOOLEAN | Non | Vrai/Faux |
-| `flatten_bottom` | Aplatir le bas du modèle (par défaut : Faux) | BOOLEAN | Non | Vrai/Faux |
-| `flatten_bottom_threshold` | Seuil pour l'aplatissement du bas (par défaut : 0.0) | FLOAT | Non | 0.0 à 1.0 |
-| `pivot_to_center_bottom` | Déplacer le point de pivot au centre bas du modèle (par défaut : Faux) | BOOLEAN | Non | Vrai/Faux |
-| `scale_factor` | Facteur d'échelle à appliquer au modèle (par défaut : 1.0) | FLOAT | Non | 0.0 et plus |
-| `with_animation` | Inclure les données d'animation dans l'exportation (par défaut : Faux) | BOOLEAN | Non | Vrai/Faux |
-| `pack_uv` | Empaqueter les coordonnées UV (par défaut : Faux) | BOOLEAN | Non | Vrai/Faux |
-| `bake` | Cuire les textures (par défaut : Faux) | BOOLEAN | Non | Vrai/Faux |
-| `part_names` | Liste séparée par des virgules des noms de pièces à inclure dans l'exportation (par défaut : "") | STRING | Non | Liste séparée par des virgules |
-| `fbx_preset` | Préréglage d'exportation FBX à utiliser (par défaut : blender) | COMBO | Non | blender<br>mixamo<br>3dsmax |
-| `export_vertex_colors` | Exporter les couleurs des sommets (par défaut : Faux) | BOOLEAN | Non | Vrai/Faux |
-| `export_orientation` | Mode d'orientation d'exportation (par défaut : default) | COMBO | Non | align_image<br>default |
-| `animate_in_place` | Animer le modèle sur place (par défaut : Faux) | BOOLEAN | Non | Vrai/Faux |
+|-----------|-------------|-----------------|--------|-------|
+| `original_model_task_id` | ID de tâche du modèle Tripo à convertir. Il doit provenir d’une tâche antérieure de génération, de rigging, de retargeting ou de segmentation de modèle Tripo. Si l’ID est manquant ou vide, le nœud déclenche une erreur. | STRING (ID de tâche Tripo) | Oui | MODEL_TASK_ID<br>RIG_TASK_ID<br>RETARGET_TASK_ID<br>SEGMENT_TASK_ID |
+| `format` | Format de fichier cible du modèle 3D converti. | COMBO | Oui | GLTF<br>USDZ<br>FBX<br>OBJ<br>STL<br>3MF |
+| `quad` | Convertit les triangles en quads lorsqu’il est activé (par défaut : False). | BOOLEAN | Non | True or False |
+| `face_limit` | Nombre maximal de faces dans le modèle converti. Réglez sur -1 pour aucune limite (par défaut : -1). | INT | Non | de -1 à 2000000 |
+| `texture_size` | Résolution des textures de sortie en pixels (par défaut : 4096). | INT | Non | de 128 à 8192 |
+| `texture_format` | Format de fichier utilisé pour les textures exportées (par défaut : JPEG). | COMBO | Non | BMP<br>DPX<br>HDR<br>JPEG<br>OPEN_EXR<br>PNG<br>TARGA<br>TIFF<br>WEBP |
+| `force_symmetry` | Force la symétrie du modèle lorsqu’il est activé (par défaut : False). | BOOLEAN | Non | True or False |
+| `flatten_bottom` | Aplatit la base du modèle lorsqu’il est activé (par défaut : False). | BOOLEAN | Non | True or False |
+| `flatten_bottom_threshold` | Profondeur d’aplatissement utilisée avec `flatten_bottom` (par défaut : 0.01). Cette valeur n’est appliquée que lorsque `flatten_bottom` est activé. | FLOAT | Non | de 0.01 à 1.0 |
+| `pivot_to_center_bottom` | Déplace le point de pivot au centre de la base du modèle lorsqu’il est activé (par défaut : False). | BOOLEAN | Non | True or False |
+| `scale_factor` | Facteur d’échelle appliqué au modèle converti (par défaut : 1.0). | FLOAT | Non | 0.01 et plus |
+| `with_animation` | Conserve le squelette et l’animation des modèles riggés ou retargetés (par défaut : True). | BOOLEAN | Non | True or False |
+| `pack_uv` | Réemballe les coordonnées UV lorsqu’il est activé (par défaut : False). | BOOLEAN | Non | True or False |
+| `bake` | Intègre les matériaux avancés dans les textures de base pour une meilleure compatibilité (par défaut : True). | BOOLEAN | Non | True or False |
+| `part_names` | Liste séparée par des virgules des noms de parties du modèle à envoyer à la conversion. Les entrées vides sont ignorées et les noms en double sont supprimés. Laissez vide pour omettre cette option (par défaut : vide). | STRING | Non | Liste de noms de parties séparés par des virgules |
+| `fbx_preset` | Préréglage de compatibilité FBX. bake_scale intègre la transformation d’échelle dans la géométrie (par défaut : blender). | COMBO | Non | blender<br>mixamo<br>3dsmax<br>bake_scale |
+| `export_vertex_colors` | Exporte les couleurs de sommets lorsqu’il est activé (par défaut : False). | BOOLEAN | Non | True or False |
+| `export_orientation` | Axe avant du modèle exporté. default conserve le +x de Tripo (par défaut : default). | COMBO | Non | default<br>+x<br>-x<br>+y<br>-y |
+| `animate_in_place` | Anime le modèle sur place lorsqu’il est activé (par défaut : False). | BOOLEAN | Non | True or False |
 
-**Remarque :** Le `original_model_task_id` doit être un ID de tâche valide provenant d'une opération Tripo précédente (génération de modèle, rigging ou retargeting). Les paramètres marqués comme "avancés" sont facultatifs et ne nécessitent une configuration que pour des besoins d'exportation spécifiques.
+**Remarque :** À l’exception de `original_model_task_id` et `format`, toutes les entrées sont des paramètres avancés facultatifs. Les paramètres laissés à leur valeur par défaut sont omis de la demande de conversion afin que l’API Tripo adopte son comportement standard. L’entrée `flatten_bottom_threshold` n’a de sens que lorsque `flatten_bottom` est activé.
 
 ## Sorties
 
 | Nom de sortie | Description | Type de données |
-| --- | --- | --- |
-| *Aucune sortie nommée* | Ce nœud traite la conversion de manière asynchrone et renvoie le résultat via le système d'API Tripo | - |
+|---------------|-------------|-----------------|
+| `model_3d` | Modèle converti dans le format demandé. OBJ est fourni par Tripo sous forme d’archive ZIP (maillage, matériau et textures). | FILE_3D |
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoConversionNode/fr.md)
 
 ---
-**Source fingerprint (SHA-256):** `b11ecab98701b7153a350f5e4980ddc2f446c0a12be3402ca98a5e6de60bd7ce`
+**Source fingerprint (SHA-256):** `5fd181d15025576083769e1ce31fb20cabb33096a01c67be50c3d9bb332739bf`

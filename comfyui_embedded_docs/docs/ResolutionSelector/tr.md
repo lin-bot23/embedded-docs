@@ -1,22 +1,24 @@
 # Çözünürlük Seçici
 
-Çözünürlük Seçici düğümü, seçilen bir en-boy oranına ve megapiksel cinsinden hedef toplam çözünürlüğe göre bir görüntünün piksel genişliğini ve yüksekliğini hesaplar. Boş Gizli Görüntü düğümü gibi diğer düğümler için tutarlı boyutlar oluşturmada kullanışlıdır. Çıktı boyutları her zaman en yakın 8'in katına yuvarlanır.
+Resolution Selector düğümü, seçilen en-boy oranına ve megapiksel cinsinden hedeflenen toplam çözünürlüğe göre piksel genişliğini ve yüksekliğini hesaplar. Empty Latent Image düğümü gibi diğer düğümler için tutarlı boyutlar üretmek amacıyla kullanışlıdır.
 
-## Girişler
+## Girdiler
 
-| Parametre | Açıklama | Veri Türü | Zorunlu | Aralık |
-| --- | --- | --- | --- | --- |
-| `en_boy_orani` | Çıktı boyutları için en-boy oranı (varsayılan: `"SQUARE"`). | COMBO | Evet | `"SQUARE"`<br>`"PORTRAIT_2_3"`<br>`"PORTRAIT_3_4"`<br>`"PORTRAIT_9_16"`<br>`"LANDSCAPE_3_2"`<br>`"LANDSCAPE_4_3"`<br>`"LANDSCAPE_16_9"` |
-| `megapiksel` | Hedef toplam megapiksel. Kare en-boy oranı için 1.0 MP ≈ 1024×1024 (varsayılan: 1.0). | FLOAT | Evet | 0.1 - 16.0 |
+| Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
+|-----------|-------------|-----------|----------|-------|
+| `aspect_ratio` | Çıktı boyutları için en-boy oranı (varsayılan: `"1:1 (Square)"`). | COMBO | Evet | `"1:1 (Square)"`<br>`"2:3 (Portrait Photo)"`<br>`"3:2 (Photo)"`<br>`"3:4 (Portrait Standard)"`<br>`"4:3 (Standard)"`<br>`"9:16 (Portrait Widescreen)"`<br>`"16:9 (Widescreen)"`<br>`"21:9 (Ultrawide)"` |
+| `megapixels` | Hedeflenen toplam megapiksel değeri. Kare için 1.0 MP ≈ 1024x1024 (varsayılan: 1.0). | FLOAT | Evet | 0.1 - 16.0 (step: 0.1) |
+| `preview` | Hesaplanan çıktı çözünürlüğünün canlı önizlemesi. Bu salt okunur widget otomatik olarak güncellenir ve kullanıcı girdisi kabul etmez. | RESOLUTION_PREVIEW | Hayır | N/A |
+| `multiple` | Seçilen çözünürlüğün ayarlanacağı, hesaplanan sonucun en yakın katı (varsayılan: 8). | INT | Hayır | 8 - 128 (step: 4) |
 
 ## Çıktılar
 
 | Çıktı Adı | Açıklama | Veri Türü |
-| --- | --- | --- |
-| `genislik` | Piksel cinsinden hesaplanan genişlik, 8'in katıdır. | INT |
-| `yukseklik` | Piksel cinsinden hesaplanan yükseklik, 8'in katıdır. | INT |
+|-------------|-------------|-----------|
+| `width` | Hesaplanan genişlik (piksel), seçilen kat değeriyle çarpılır. | INT |
+| `height` | Hesaplanan yükseklik (piksel), seçilen kat değeriyle çarpılır. | INT |
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ResolutionSelector/tr.md)
 
 ---
-**Source fingerprint (SHA-256):** `221d38fa72c9989e06b706d33fd3e0dc4caa0f741dd2931864c58a6bd7f52613`
+**Source fingerprint (SHA-256):** `dd4c7f977ed69a873a48da4b01c5c8f0b6563cfd743740235fc0ad5762579697`

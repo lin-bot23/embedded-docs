@@ -1,28 +1,31 @@
 # Expression mathématique
 
-Le nœud ComfyMathExpression évalue une formule mathématique à l'aide d'un ensemble de valeurs d'entrée. Vous pouvez écrire une expression en utilisant des noms de variables (comme `a`, `b`, `c`), et le nœud calculera le résultat. Il prend en charge l'ajout dynamique d'autant de valeurs d'entrée que nécessaire pour votre calcul.
+Le nœud `ComfyMathExpression` évalue une formule mathématique que vous écrivez sous forme de texte. La formule peut référencer les valeurs d’entrée du nœud en utilisant des noms de lettres comme `a`, `b`, `c`, et vous pouvez ajouter autant de valeurs d’entrée que nécessaire via le groupe extensible `values`. Le résultat du calcul est renvoyé simultanément sous forme de nombre à virgule flottante, d’entier et de valeur booléenne.
 
 ## Entrées
 
 | Paramètre | Description | Type de données | Requis | Plage |
-| --- | --- | --- | --- | --- |
-| `expression` | La formule mathématique à évaluer. Vous pouvez utiliser des noms de variables qui correspondent aux valeurs d'entrée (par défaut : "a + b"). | STRING | Oui | N/A |
-| `valeurs` | Un ensemble d'entrées numériques ou booléennes pouvant être ajoutées dynamiquement. Chaque entrée se voit attribuer une lettre de l'alphabet (a, b, c, ...) à utiliser comme variable dans l'expression. | FLOAT, INT, BOOLEAN | Non | N/A |
+|-----------|-------------|-----------------|--------|-------|
+| `expression` | La formule mathématique à évaluer, écrite sous forme de texte (par exemple `a + b`), en utilisant les noms de lettres des valeurs d’entrée comme variables. Saisie multiligne. (défaut : « a + b ») | STRING | Oui | N/A |
+| `values` | Groupe extensible de valeurs d’entrée qui fournit les variables de l’expression. Chaque valeur ajoutée au groupe reçoit automatiquement le nom de lettre minuscule suivant en partant de `a` (`a`, `b`, `c`, …), et ce nom peut ensuite être utilisé dans `expression`. Chaque élément accepte un nombre (INT ou FLOAT) ou un booléen (TRUE/FALSE). | FLOAT, INT, BOOLEAN | Oui | 1 à 26 valeurs, nommées `a` à `z` |
 
-**Contraintes des paramètres :**
-*   Le paramètre `expression` ne peut pas être vide ou contenir uniquement des espaces.
-*   L'expression doit produire un résultat numérique fini (INT ou FLOAT). Un résultat booléen ou non numérique provoquera une erreur.
-*   Les valeurs d'entrée pour le paramètre `values` peuvent être des nombres (INT ou FLOAT) ou des valeurs booléennes (TRUE/FALSE).
+### Notes et contraintes
+
+- `expression` ne peut pas être vide ni contenir uniquement des espaces.
+- L’expression doit produire un résultat numérique (INT ou FLOAT). Si le résultat est d’un type différent, comme du texte, le nœud génère une erreur.
+- Le résultat numérique doit être fini et convertible en nombre à virgule flottante. Des résultats trop grands ou non finis provoquent une erreur.
+- L’ensemble des valeurs d’entrée est également disponible dans l’expression sous le nom de variable `values` (sous forme de liste), ce qui permet des expressions telles que `sum(values)`.
+- Les fonctions mathématiques suivantes sont disponibles dans l’expression : `sum`, `min`, `max`, `abs`, `round`, `pow`, `sqrt`, `ceil`, `floor`, `log`, `log2`, `log10`, `sin`, `cos`, `tan`, `int`, `float`.
 
 ## Sorties
 
 | Nom de sortie | Description | Type de données |
-| --- | --- | --- |
-| `FLOAT` | Le résultat de l'expression mathématique sous forme de nombre à virgule flottante. | FLOAT |
-| `BOOL` | Le résultat de l'expression mathématique sous forme de nombre entier. | INT |
-| `BOOL` | Le résultat de l'expression mathématique sous forme de valeur booléenne. | BOOLEAN |
+|---------------|-------------|-----------------|
+| `FLOAT` | Le résultat de l’expression sous forme de nombre à virgule flottante. | FLOAT |
+| `INT` | Le résultat de l’expression converti en entier, avec troncature de la partie décimale. | INT |
+| `BOOL` | Le résultat converti en valeur booléenne : TRUE lorsque le résultat numérique est non nul, FALSE lorsqu’il est nul. | BOOLEAN |
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ComfyMathExpression/fr.md)
 
 ---
-**Source fingerprint (SHA-256):** `962f82684d9dc58a67a57e6738d6d2ed457d7f30288cedb21fd46b5c655c1708`
+**Source fingerprint (SHA-256):** `4c77e9834fe7341143352f95ed8808dc81def3361b197c67e33a531bb3696d71`

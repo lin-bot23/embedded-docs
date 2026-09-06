@@ -1,12 +1,12 @@
 # String (Çok Satırlı)
 
-PrimitiveStringMultiline düğümü, iş akışınızda dize değerleri girmek ve iletmek için çok satırlı bir metin giriş alanı sağlar. Birden çok satır içeren metin girdisini kabul eder ve aynı dize değerini değiştirmeden çıktı olarak verir. Bu düğüm, birden çok satıra yayılan daha uzun metin içeriği veya biçimlendirilmiş metin girmeniz gerektiğinde kullanışlıdır.
+Text (Multiline) düğümü, iş akışınız boyunca dize değerleri girmek ve iletmek için çok satırlı bir metin giriş alanı sağlar. Birden çok satıra yayılan metni kabul eder ve aynı dize değerini değiştirmeden çıktı olarak verir. Bu düğüm, daha uzun metin içeriği veya biçimlendirilmiş çok satırlı metin sağlamanız gerektiğinde kullanışlıdır.
 
 ## Girdiler
 
 | Parametre | Açıklama | Veri Türü | Zorunlu | Aralık |
 | --- | --- | --- | --- | --- |
-| `değer` | Birden çok satıra yayılabilen metin giriş değeri | STRING | Evet | N/A |
+| `value` | Birden çok satıra yayılabilen metin giriş değeri | STRING | Evet | N/A |
 
 ## Çıktılar
 
@@ -17,4 +17,4 @@ PrimitiveStringMultiline düğümü, iş akışınızda dize değerleri girmek v
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/PrimitiveStringMultiline/tr.md)
 
 ---
-**Source fingerprint (SHA-256):** `c94ea034591b8b98630b1ee831d65a156f59cf3b84dc2837046f67fdf78f8c15`
+**Source fingerprint (SHA-256):** `7e50ab0c4adfb68b3fe2ad4e31f9dec059224555d68cd53335f89ff0b83a83b6`

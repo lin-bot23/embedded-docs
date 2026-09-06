@@ -1,25 +1,25 @@
 # MaskPreview
 
-Le nœud MaskPreview affiche un aperçu visuel des données de masque directement dans l'interface ComfyUI, sans les enregistrer dans le répertoire de sortie. Cela vous permet d'inspecter les valeurs exactes du masque à n'importe quel point de votre flux de travail.
+Le nœud MaskPreview affiche un aperçu visuel des données de masque directement dans l'interface ComfyUI, sans les enregistrer dans le répertoire de sortie. Cela vous permet d'inspecter le masque à n'importe quel moment de votre flux de travail, tandis que le masque traverse également le nœud sans modification afin de pouvoir continuer à être utilisé en aval.
 
 ## Entrées
 
 | Paramètre | Description | Type de données | Requis | Plage |
 |-----------|-------------|-----------------|--------|-------|
 | `mask` | Les données de masque à prévisualiser | MASK | Oui | - |
-| `filename_prefix` | Préfixe pour le nom de fichier de l'aperçu (par défaut : "ComfyUI") | STRING | Non | - |
-| `prompt` | Informations de prompt pour les métadonnées (fournies automatiquement) | PROMPT | Non | - |
+| `filename_prefix` | Préfixe de nom de fichier utilisé pour l'aperçu (par défaut : « ComfyUI ») | STRING | Non | - |
+| `prompt` | Informations d'invite pour les métadonnées (fournies automatiquement) | PROMPT | Non | - |
 | `extra_pnginfo` | Informations PNG supplémentaires pour les métadonnées (fournies automatiquement) | EXTRA_PNGINFO | Non | - |
 
-Les entrées `prompt` et `extra_pnginfo` sont masquées et sont fournies automatiquement par le système ComfyUI ; vous n'avez pas besoin de les connecter manuellement.
+Seule l'entrée `mask` est une entrée visible qui doit être connectée. Les paramètres `filename_prefix`, `prompt` et `extra_pnginfo` sont fournis par le système : `filename_prefix` revient à sa valeur par défaut, tandis que `prompt` et `extra_pnginfo` sont masqués et fournis automatiquement par l'environnement d'exécution de ComfyUI.
 
 ## Sorties
 
 | Nom de sortie | Description | Type de données |
 |---------------|-------------|-----------------|
-| `mask` | Les données de masque qui ont été prévisualisées, renvoyées inchangées pour une utilisation ultérieure dans le flux de travail | MASK |
+| `mask` | Les mêmes données de masque qui ont été prévisualisées, retournées sans modification afin de pouvoir être utilisées ailleurs dans le flux de travail | MASK |
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/MaskPreview/fr.md)
 
 ---
-**Source fingerprint (SHA-256):** `3d4ecb8cd90c3ecbe9d3cff8f782062c582c7190d9f0e0ed069cba114d4beac5`
+**Source fingerprint (SHA-256):** `fb7abe8cb6b5ac8a6a38e88ef90a146d16caf41d24c5de95309a94bc3c371d75`

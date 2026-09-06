@@ -1,24 +1,27 @@
 # Embaralhar Pares de Vídeo-Texto
 
-Este nó embaralha aleatoriamente a ordem de pares de vídeo-texto, mantendo cada vídeo emparelhado com seu texto correspondente. Ele recebe duas listas de mesmo comprimento e aplica a mesma permutação aleatória a ambas, garantindo que os pares originais sejam preservados após o embaralhamento.
+### Visão Geral
+
+Este nó embaralha aleatoriamente a ordem de pares de vídeo-texto em uma lista, mantendo cada vídeo associado ao seu texto correspondente. Ele recebe duas listas de comprimento igual e aplica a mesma permutação aleatória a ambas, garantindo que as combinações originais sejam preservadas após o embaralhamento. Um valor de semente controla a ordem do embaralhamento, permitindo que os resultados sejam reproduzidos.
 
 ## Entradas
 
-| Parâmetro | Descrição | Tipo de Dados | Obrigatório | Faixa |
-|-----------|-----------|---------------|-------------|-------|
-| `vídeos` | Lista de vídeos para embaralhar. | VIDEO | Sim | Lista de itens de vídeo |
-| `textos` | Lista de textos para embaralhar. | STRING | Sim | Lista de strings de texto |
-| `semente` | Semente aleatória para controlar a ordem do embaralhamento (padrão: 0). | INT | Sim | 0 a 18446744073709551615 |
-Observação: `videos` e `texts` devem ter o mesmo comprimento, pois o nó emparelha cada vídeo com o texto na mesma posição e preserva esses emparelhamentos ao embaralhar.
+| Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
+|-----------|-------------|-----------|----------|-------|
+| `videos` | Lista de vídeos a serem embaralhados. | VIDEO | Sim | Lista de itens de vídeo |
+| `texts` | Lista de textos a serem embaralhados (os legendas associadas aos vídeos). | STRING | Sim | Lista de strings de texto |
+| `seed` | Semente aleatória que determina a ordem do embaralhamento (padrão: 0). | INT | Sim | 0 a 18446744073709551615 |
+
+Nota: `videos` e `texts` devem ter o mesmo comprimento, pois o nó combina cada vídeo com o texto na mesma posição e preserva essas combinações quando embaralha. Internamente, o valor da semente é reduzido usando modulo 4294967295 (2^32 - 1) antes de gerar a ordem aleatória, então valores de semente muito grandes podem produzir o mesmo embaralhamento que valores menores.
 
 ## Saídas
 
 | Nome da Saída | Descrição | Tipo de Dados |
-|---------------|-----------|---------------|
-| `vídeos` | Vídeos embaralhados na nova ordem aleatória. | VIDEO |
-| `textos` | Textos embaralhados na mesma nova ordem dos vídeos. | STRING |
+|-------------|-------------|-----------|
+| `videos` | Vídeos embaralhados na nova ordem aleatória. | VIDEO |
+| `texts` | Textos embaralhados na mesma nova ordem que os vídeos. | STRING |
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ShuffleVideoTextDataset/pt-BR.md)
 
 ---
-**Source fingerprint (SHA-256):** `33b763a6d48ca1036d5267139f90eadb3b2080a02fa57ce5bcae6087a077efa1`
+**Source fingerprint (SHA-256):** `834305718cd53a86211363750e887ffccdb54bc3b628dc17f049e546c234f9cb`

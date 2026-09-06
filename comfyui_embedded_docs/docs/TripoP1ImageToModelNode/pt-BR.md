@@ -1,33 +1,47 @@
 # Tripo P1: Imagem para Modelo
 
-Esta documentação foi gerada por IA. Se você encontrar algum erro ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1ImageToModelNode/en.md)
-
-## Visão Geral
-
-Este nó converte uma única imagem 2D em um modelo 3D usando a API Tripo P1. Ele é otimizado para gerar malhas de baixa poligonização, prontas para uso em jogos.
+Converta uma única imagem 2D em um modelo 3D usando a API do Tripo P1. É otimizado para gerar malhas de baixa poligonal, prontas para jogos, e permite escolher entre uma malha geométrica apenas ou um modelo texturizado com mapas PBR. O modelo final é retornado como um arquivo GLB.
 
 ## Entradas
 
-| Parâmetro | Descrição | Tipo de Dado | Obrigatório | Faixa |
-| --- | --- | --- | --- | --- |
-| `imagem` | A imagem de entrada para converter em um modelo 3D. | IMAGE | Sim | - |
-| `modo_de_saida` | Um dicionário que especifica o modo de saída e as configurações de qualidade. Este parâmetro controla o tipo de modelo gerado e sua qualidade de textura. As opções disponíveis são definidas pela função auxiliar `_build_p1_output_mode` e incluem configurações para `texture_quality` (ex.: "standard", "high", "ultra") e `image_alignment`. | DICT | Sim | Ver descrição |
-| `habilitar_autoajuste_imagem` | Pré-processa a imagem de entrada para melhor qualidade de geração. (padrão: False) | BOOLEAN | Não | True<br>False |
-| `limite_de_faces` | Limita o número de faces na malha gerada. Um valor de -1 significa sem limite. (padrão: -1) | INT | Não | - |
-| `semente_do_modelo` | Um valor de semente para geração reproduzível do modelo. Se não for fornecido, uma semente aleatória é usada. (padrão: None) | INT | Não | - |
-| `tamanho_automático` | Determina automaticamente o tamanho ideal para o modelo gerado. (padrão: False) | BOOLEAN | Não | True<br>False |
-| `exportar_uv` | Exporta coordenadas UV com o modelo. (padrão: True) | BOOLEAN | Não | True<br>False |
-| `comprimir_geometria` | Comprime os dados geométricos para reduzir o tamanho do arquivo. (padrão: False) | BOOLEAN | Não | True<br>False |
+### Entradas comuns
+
+Esses parâmetros estão sempre disponíveis.
+
+| Parâmetro | Descrição | Tipo de dados | Obrigatório | Intervalo |
+|-----------|-------------|-----------|----------|-------|
+| `output_mode` | Escolhe o tipo de resultado. "Geometry only" retorna uma malha não texturizada; "Textured" adiciona cores e mapas PBR e revela configurações extras de textura. | COMBO DINÂMICO | Sim | `"Geometry only"`<br>`"Textured"` |
+| `image` | A imagem 2D de origem usada para gerar o modelo 3D. O nó requer uma única imagem e gera um erro se nenhuma for fornecida. | IMAGEM | Sim | - |
+| `enable_image_autofix` | Pré-processa a imagem de entrada para melhorar a qualidade da geração. (padrão: Falso) | BOOLEAN | Não | True<br>False |
+| `face_limit` | Número alvo de faces, 48-20000. -1 permite que o Tripo escolha adaptivamente. (padrão: -1) | INT | Não | -1 a 20000 |
+| `model_seed` | Semente usada para a geração geométrica para que os resultados possam ser reproduzidos. (padrão: 42) | INT | Não | 0 a 2147483647 |
+| `auto_size` | Escala a saída para aproximar metros do mundo real. (padrão: Falso) | BOOLEAN | Não | True<br>False |
+| `export_uv` | Desenvolve UV durante a geração. Desative para execução mais rápida de malhas geométricas apenas. (padrão: True) | BOOLEAN | Não | True<br>False |
+| `compress_geometry` | Aplica compressão geométrica meshopt (EXT_meshopt_compression). Arquivos menores, mas o preview 3D do ComfyUI não pode exibi-los; descomprima antes de editar. (padrão: Falso) | BOOLEAN | Não | True<br>False |
+
+### Entradas texturizadas
+
+Esses parâmetros aparecem quando `output_mode` é definido como "Textured". O modo "Geometry only" não tem parâmetros extras.
+
+| Parâmetro | Descrição | Tipo de dados | Obrigatório | Intervalo |
+|-----------|-------------|-----------|----------|-------|
+| `pbr` | Inclui mapas PBR. Quando ativado, o textura base também é forçada. (padrão: True) | BOOLEAN | Não | True<br>False |
+| `texture_quality` | Nível de resolução da textura. "detailed" = texturas HD, "extreme" = texturas Ultra 8K. (padrão: "standard") | COMBO | Não | `"standard"`<br>`"detailed"`<br>`"extreme"` |
+| `texture_alignment` | Prioriza a fidelidade visual à imagem de origem ou alinhamento à geometria da malha. (padrão: "original_image") | COMBO | Não | `"original_image"`<br>`"geometry"` |
+| `orientation` | Gira a saída para coincidir com a imagem de origem. Apenas se aplica quando texturizado. (padrão: "default") | COMBO | Não | `"default"`<br>`"align_image"` |
+| `texture_seed` | Semente usada para a geração de textura para que os resultados texturizados possam ser reproduzidos. (padrão: 42) | INT | Não | 0 a 2147483647 |
+
+Nota: Quando `output_mode` é "Geometry only", a textura é desativada para a solicitação. No modo "Textured", uma textura de cor sempre é solicitada; desativar `pbr` remove os mapas PBR, mas mantém a textura de cor base, enquanto ativar `pbr` força a textura base.
 
 ## Saídas
 
-| Nome da Saída | Descrição | Tipo de Dado |
-| --- | --- | --- |
-| `arquivo_modelo` | O caminho do arquivo para o modelo 3D gerado. Esta saída é fornecida apenas para compatibilidade com versões anteriores. | STRING |
-| `id_tarefa_modelo` | O ID de tarefa único para a solicitação de geração do modelo. | MODEL_TASK_ID |
-| `GLB` | O modelo 3D gerado no formato GLB. | FILE3DGLB |
+| Nome da saída | Descrição | Tipo de dados |
+|-------------|-------------|-----------|
+| `model_file` | O resultado do modelo 3D gerado. Mantido apenas por compatibilidade reversa. | STRING |
+| `model task_id` | O ID de tarefa único retornado pela API do Tripo para o trabalho de geração completo. | ID_TAREFA_MODELO |
+| `GLB` | O modelo 3D gerado no formato GLB. | ARQUIVO3DGLB |
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1ImageToModelNode/pt-BR.md)
 
 ---
-**Source fingerprint (SHA-256):** `2ac611603dd6eb88700a8105c19f97a8c4eefe5f4efb23d8854ccc27af590626`
+**Source fingerprint (SHA-256):** `db5dc76518a4efcd28d388dc00ad0810f619481482f20fa456c4ff2478192aa3`

@@ -1,23 +1,21 @@
 # Sesi Önizle
 
-Preview Audio düğümü, sesi ComfyUI çıktı dizinine kaydetmeden, arayüzde doğrudan oynatılabilen geçici bir ses önizlemesi oluşturur. Girdi olarak ses verisini alır ve bir önizleme widget'ı üretir; böylece kullanıcılar kalıcı dosyalar kaydetmeden ses çıktılarını dinleyebilir.
+The Preview Audio düğümü, sesi çıktı dizinine kaydetmeden doğrudan ComfyUI arayüzünde dinlemenizi sağlar. Ses verisini girdi olarak alır, varlığını doğrular ve geçici bir ses oynatıcısı göstererek sonucu duyabilmeniz için onu geçirir.
 
 ## Girdiler
 
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 | --- | --- | --- | --- | --- |
-| `ses` | Önizlenecek ses verisi. Bu düğüm, girdi sesi None ise hata verir; bu durum, kaynak videonun ses parçası olmadığında meydana gelebilir. | AUDIO | Evet | - |
-
-**Not:** Girdi `audio` None ise düğüm bir ValueError hatası fırlatır. Bu durum, kaynak videonun ses parçası olmadığında meydana gelebilir.
+| `audio` | Önizlenecek ses verisi. Kaynak videoda ses parçası yoksa girdi None olduğunda düğüm bir ValueError yükseltir. | AUDIO | Evet | - |
 
 ## Çıktılar
 
 | Çıktı Adı | Açıklama | Veri Türü |
 | --- | --- | --- |
-| `audio` | Önizleme için kullanılan, girdiden geçirilen ses verisi. | AUDIO |
-| `ui` | Arayüzde sesi önizlemek için bir ses oynatıcı widget'ı görüntüler. | UI |
+| `audio` | Girdiden değiştirilmeden geçirilen ses verisi. | AUDIO |
+| `ui` | Sesin önizlenmesi için arayüzde bir ses oynatıcı bileşeni görüntüler. | UI |
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/PreviewAudio/tr.md)
 
 ---
-**Source fingerprint (SHA-256):** `ccbf9873a16bf1578fe25d178454d782f4f9b37ad5721721bef0aee3ff374f9f`
+**Source fingerprint (SHA-256):** `02dbc5cb7d6924aae63c59e926a8ea265eb0889dbc2e6b47ff60f666a55d1adf`
