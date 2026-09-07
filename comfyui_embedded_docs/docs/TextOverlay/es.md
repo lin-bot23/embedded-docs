@@ -13,7 +13,7 @@ Este nodo dibuja texto sobre una imagen o un lote de imágenes. Crea una superpo
 | `posición` | Posición vertical del texto en la imagen (predeterminado: "top") | COMBO | Sí | `"top"`<br>`"bottom"` |
 | `alineación` | Alineación horizontal del texto (predeterminado: "left") | COMBO | Sí | `"left"`<br>`"center"`<br>`"right"` |
 | `contorno` | Dibujar un contorno negro alrededor del texto (predeterminado: True) | BOOLEAN | Sí | |
-Nota: si `text` está vacío o contiene solo espacios en blanco, el nodo devuelve las imágenes de entrada sin cambios. La misma superposición de texto se aplica a todas las imágenes del lote.
+Nota: si `text` está vacío o contiene solo espacios en blanco, el nodo devuelve las imágenes de entrada sin cambios. La misma superposición de texto se aplica a todas las imágenes del lote. Para imágenes con canal alfa (RGBA), el texto se compone mediante una mezcla alfa source-over, por lo que la transparencia existente se respeta.
 
 ## Salidas
 
@@ -24,4 +24,4 @@ Nota: si `text` está vacío o contiene solo espacios en blanco, el nodo devuelv
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TextOverlay/es.md)
 
 ---
-**Source fingerprint (SHA-256):** `baffaa4ec9d3565e3533673658399271234def8c49e2e4a5f16767ec3f98cb22`
+**Source fingerprint (SHA-256):** `b347f563fa26e098a310892f3e7fff41b83722800d67e5af9debad14fc9d01e7`

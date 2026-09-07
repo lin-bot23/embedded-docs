@@ -19,4 +19,4 @@ Nota: Este nó está marcado como experimental. O tipo de patch é detectado aut
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ModelPatchLoader/pt-BR.md)
 
 ---
-**Source fingerprint (SHA-256):** `2994f076f8b28e2576304d308a2a4d630a0e6cc330afbc8d11d799241dc27469`
+**Source fingerprint (SHA-256):** `069f40b1f108ecd74fc58c12aa2f74edff07f743aa1ed6352ff7bcf0c39341d4`

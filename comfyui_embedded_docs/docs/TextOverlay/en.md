@@ -14,7 +14,7 @@ This node draws text on top of an image or a batch of images. It creates a text 
 | `align` | Horizontal alignment of the text (default: "left") | COMBO | Yes | "left"<br>"center"<br>"right" |
 | `outline` | Draw a black outline around the text (default: True) | BOOLEAN | Yes | |
 
-Note: If `text` is empty or contains only whitespace, the node returns the input images unchanged. The same text overlay is applied to every image in the batch.
+Note: If `text` is empty or contains only whitespace, the node returns the input images unchanged. The same text overlay is applied to every image in the batch. For images with an alpha channel (RGBA), the text is composited using source-over alpha blending so the existing transparency is respected.
 
 ## Outputs
 
@@ -25,4 +25,4 @@ Note: If `text` is empty or contains only whitespace, the node returns the input
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TextOverlay/en.md)
 
 ---
-**Source fingerprint (SHA-256):** `baffaa4ec9d3565e3533673658399271234def8c49e2e4a5f16767ec3f98cb22`
+**Source fingerprint (SHA-256):** `b347f563fa26e098a310892f3e7fff41b83722800d67e5af9debad14fc9d01e7`

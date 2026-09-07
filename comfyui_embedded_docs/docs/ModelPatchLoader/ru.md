@@ -19,4 +19,4 @@
 > Эта документация была создана с помощью ИИ. Если вы обнаружите ошибки или у вас есть предложения по улучшению, пожалуйста, внесите свой вклад! [Редактировать на GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ModelPatchLoader/ru.md)
 
 ---
-**Source fingerprint (SHA-256):** `2994f076f8b28e2576304d308a2a4d630a0e6cc330afbc8d11d799241dc27469`
+**Source fingerprint (SHA-256):** `069f40b1f108ecd74fc58c12aa2f74edff07f743aa1ed6352ff7bcf0c39341d4`

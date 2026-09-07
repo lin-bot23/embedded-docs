@@ -13,7 +13,7 @@
 | `位置` | 文字在影像上的垂直位置（預設："top"） | COMBO | 是 | `"top"`<br>`"bottom"` |
 | `對齊` | 文字的水平對齊方式（預設："left"） | COMBO | 是 | `"left"`<br>`"center"`<br>`"right"` |
 | `外框` | 在文字周圍繪製黑色外框（預設：True） | BOOLEAN | 是 | |
-注意：如果 `text` 為空或僅包含空白字元，節點將原樣回傳輸入影像。相同的文字疊加會套用至批次中的每張影像。
+注意：如果 `text` 為空或僅包含空白字元，節點將原樣回傳輸入影像。相同的文字疊加會套用至批次中的每張影像。對於帶有透明通道（RGBA）的影像，文字使用 source-over alpha 混合進行合成，因此現有的透明度會被保留。
 
 ## 輸出
 
@@ -24,4 +24,4 @@
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TextOverlay/zh-TW.md)
 
 ---
-**Source fingerprint (SHA-256):** `baffaa4ec9d3565e3533673658399271234def8c49e2e4a5f16767ec3f98cb22`
+**Source fingerprint (SHA-256):** `b347f563fa26e098a310892f3e7fff41b83722800d67e5af9debad14fc9d01e7`

@@ -13,7 +13,7 @@
 | `position` | 이미지에서 텍스트의 세로 위치 (기본값: "top") | COMBO | 예 | `"top"`<br>`"bottom"` |
 | `align` | 텍스트의 가로 정렬 (기본값: "left") | COMBO | 예 | `"left"`<br>`"center"`<br>`"right"` |
 | `outline` | 텍스트 주위에 검은색 윤곽선 그리기 (기본값: True) | BOOLEAN | 예 | |
-참고: `text`가 비어 있거나 공백만 포함된 경우, 노드는 입력 이미지를 변경 없이 반환합니다. 동일한 텍스트 오버레이가 배치의 모든 이미지에 적용됩니다.
+참고: `text`가 비어 있거나 공백만 포함된 경우, 노드는 입력 이미지를 변경 없이 반환합니다. 동일한 텍스트 오버레이가 배치의 모든 이미지에 적용됩니다. 알파 채널(RGBA)이 있는 이미지의 경우 텍스트가 source-over 알파 블렌딩으로 합성되므로 기존 투명도가 유지됩니다.
 
 ## 출력
 
@@ -24,4 +24,4 @@
 > 이 문서는 AI에 의해 생성되었습니다. 오류를 발견하거나 개선 제안이 있으시면 기여해 주세요! [GitHub에서 편집](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TextOverlay/ko.md)
 
 ---
-**Source fingerprint (SHA-256):** `baffaa4ec9d3565e3533673658399271234def8c49e2e4a5f16767ec3f98cb22`
+**Source fingerprint (SHA-256):** `b347f563fa26e098a310892f3e7fff41b83722800d67e5af9debad14fc9d01e7`

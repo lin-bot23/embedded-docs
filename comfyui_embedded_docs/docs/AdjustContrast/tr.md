@@ -1,6 +1,6 @@
 # Kontrastı Ayarla
 
-Adjust Contrast düğümü, bir girdi görüntüsünün kontrast düzeyini değiştirir. Bu, görüntünün açık ve koyu alanları arasındaki farkı ayarlayarak çalışır. 1.0 faktörü görüntüyü değiştirmez, 1.0'ın altındaki değerler kontrastı azaltır, 1.0'ın üzerindeki değerler ise artırır.
+Adjust Contrast düğümü, bir girdi görüntüsünün kontrast düzeyini değiştirir. Bu, görüntünün açık ve koyu alanları arasındaki farkı ayarlayarak çalışır. 1.0 faktörü görüntüyü değiştirmez, 1.0'ın altındaki değerler kontrastı azaltır, 1.0'ın üzerindeki değerler ise artırır. Girdi görüntüsü bir alfa kanalı içeriyorsa, şeffaflığı korumak için alfa kanalı değiştirilmeden aktarılır.
 
 ## Girdiler
 
@@ -18,4 +18,4 @@ Adjust Contrast düğümü, bir girdi görüntüsünün kontrast düzeyini deği
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/AdjustContrast/tr.md)
 
 ---
-**Source fingerprint (SHA-256):** `1f5fbd0f0b739492bc171d3c43ea2150a3ca76dc3ede9bf63cb97c45a90b9e44`
+**Source fingerprint (SHA-256):** `489f840cc3d98339a5cf7b55e9179c60878c58b2f992740796c7d49642e05932`

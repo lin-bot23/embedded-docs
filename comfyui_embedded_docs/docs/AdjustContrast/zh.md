@@ -1,6 +1,6 @@
 # 调整对比度
 
-调整对比度节点用于修改输入图像的对比度级别。它通过调整图像亮部与暗部之间的差异来实现。因子为 1.0 时图像保持不变，低于 1.0 的值降低对比度，高于 1.0 的值则提高对比度。
+调整对比度节点用于修改输入图像的对比度级别。它通过调整图像亮部与暗部之间的差异来实现。因子为 1.0 时图像保持不变，低于 1.0 的值降低对比度，高于 1.0 的值则提高对比度。如果输入图像带有透明通道，透明通道将原样保留，以保持透明度。
 
 ## 输入
 
@@ -18,4 +18,4 @@
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/AdjustContrast/zh.md)
 
 ---
-**Source fingerprint (SHA-256):** `1f5fbd0f0b739492bc171d3c43ea2150a3ca76dc3ede9bf63cb97c45a90b9e44`
+**Source fingerprint (SHA-256):** `489f840cc3d98339a5cf7b55e9179c60878c58b2f992740796c7d49642e05932`

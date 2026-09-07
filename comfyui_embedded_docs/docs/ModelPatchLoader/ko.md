@@ -19,4 +19,4 @@ The `ModelPatchLoader` 노드는 `model_patches` 폴더에서 모델 패치 파�
 > 이 문서는 AI에 의해 생성되었습니다. 오류를 발견하거나 개선 제안이 있으시면 기여해 주세요! [GitHub에서 편집](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ModelPatchLoader/ko.md)
 
 ---
-**Source fingerprint (SHA-256):** `2994f076f8b28e2576304d308a2a4d630a0e6cc330afbc8d11d799241dc27469`
+**Source fingerprint (SHA-256):** `069f40b1f108ecd74fc58c12aa2f74edff07f743aa1ed6352ff7bcf0c39341d4`

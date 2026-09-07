@@ -1,6 +1,6 @@
 # 调整亮度
 
-调整亮度节点用于修改输入图像的亮度。其工作原理是将每个像素的值乘以指定系数，然后将结果值限制在有效范围内。系数为 1.0 时图像保持不变，低于 1.0 时图像变暗，高于 1.0 时图像变亮。
+调整亮度节点用于修改输入图像的亮度。其工作原理是将每个像素的值乘以指定系数，然后将结果值限制在有效范围内。系数为 1.0 时图像保持不变，低于 1.0 时图像变暗，高于 1.0 时图像变亮。如果输入图像带有透明通道，透明通道将原样保留，以保持透明度。
 
 ## 输入
 
@@ -18,4 +18,4 @@
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/AdjustBrightness/zh.md)
 
 ---
-**Source fingerprint (SHA-256):** `696fb3c0bfc8edccc2049dad8f44b4b056fe1caa95b0cc0126164269cb65ab1a`
+**Source fingerprint (SHA-256):** `64c1499d16deb5922fa63538182cd227e8f2ba9ded5962064ce9f228a0f4a163`

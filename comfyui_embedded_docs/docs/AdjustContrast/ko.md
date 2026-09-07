@@ -1,6 +1,6 @@
 # 명암 조정
 
-Adjust Contrast 노드는 입력 이미지의 대비 수준을 수정합니다. 이 노드는 이미지의 밝은 영역과 어두운 영역 간의 차이를 조정하는 방식으로 작동합니다. 대비 계수(factor)가 1.0이면 이미지가 변경되지 않고, 1.0보다 낮으면 대비가 감소하며, 1.0보다 높으면 대비가 증가합니다.
+Adjust Contrast 노드는 입력 이미지의 대비 수준을 수정합니다. 이 노드는 이미지의 밝은 영역과 어두운 영역 간의 차이를 조정하는 방식으로 작동합니다. 대비 계수(factor)가 1.0이면 이미지가 변경되지 않고, 1.0보다 낮으면 대비가 감소하며, 1.0보다 높으면 대비가 증가합니다. 입력 이미지에 알파 채널이 있는 경우 알파 채널은 변경되지 않고 그대로 유지되어 투명도가 보존됩니다.
 
 ## 입력
 
@@ -18,4 +18,4 @@ Adjust Contrast 노드는 입력 이미지의 대비 수준을 수정합니다. 
 > 이 문서는 AI에 의해 생성되었습니다. 오류를 발견하거나 개선 제안이 있으시면 기여해 주세요! [GitHub에서 편집](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/AdjustContrast/ko.md)
 
 ---
-**Source fingerprint (SHA-256):** `1f5fbd0f0b739492bc171d3c43ea2150a3ca76dc3ede9bf63cb97c45a90b9e44`
+**Source fingerprint (SHA-256):** `489f840cc3d98339a5cf7b55e9179c60878c58b2f992740796c7d49642e05932`

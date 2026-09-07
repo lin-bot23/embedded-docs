@@ -1,6 +1,6 @@
 # Ajustar brillo
 
-El nodo Adjust Brightness modifica el brillo de una imagen de entrada. Funciona multiplicando el valor de cada píxel por un factor especificado y luego limitando los valores resultantes para que se mantengan dentro de un rango válido. Un factor de 1.0 deja la imagen sin cambios, los valores inferiores a 1.0 la oscurecen y los valores superiores a 1.0 la aclaran.
+El nodo Adjust Brightness modifica el brillo de una imagen de entrada. Funciona multiplicando el valor de cada píxel por un factor especificado y luego limitando los valores resultantes para que se mantengan dentro de un rango válido. Un factor de 1.0 deja la imagen sin cambios, los valores inferiores a 1.0 la oscurecen y los valores superiores a 1.0 la aclaran. Si la imagen de entrada tiene un canal alfa, este se mantiene sin cambios para preservar la transparencia.
 
 ## Entradas
 
@@ -18,4 +18,4 @@ El nodo Adjust Brightness modifica el brillo de una imagen de entrada. Funciona 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/AdjustBrightness/es.md)
 
 ---
-**Source fingerprint (SHA-256):** `696fb3c0bfc8edccc2049dad8f44b4b056fe1caa95b0cc0126164269cb65ab1a`
+**Source fingerprint (SHA-256):** `64c1499d16deb5922fa63538182cd227e8f2ba9ded5962064ce9f228a0f4a163`

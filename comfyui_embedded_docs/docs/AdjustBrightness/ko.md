@@ -1,6 +1,6 @@
 # 밝기 조정
 
-Adjust Brightness 노드는 입력 이미지의 밝기를 조정합니다. 각 픽셀의 값에 지정된 계수를 곱한 다음 결과 값을 유효 범위 내에 유지하도록 클램핑하는 방식으로 작동합니다. 계수가 1.0이면 이미지가 변경되지 않고, 1.0 미만이면 더 어두워지며, 1.0 초과이면 더 밝아집니다.
+Adjust Brightness 노드는 입력 이미지의 밝기를 조정합니다. 각 픽셀의 값에 지정된 계수를 곱한 다음 결과 값을 유효 범위 내에 유지하도록 클램핑하는 방식으로 작동합니다. 계수가 1.0이면 이미지가 변경되지 않고, 1.0 미만이면 더 어두워지며, 1.0 초과이면 더 밝아집니다. 입력 이미지에 알파 채널이 있는 경우 알파 채널은 변경되지 않고 그대로 유지되어 투명도가 보존됩니다.
 
 ## 입력
 
@@ -18,4 +18,4 @@ Adjust Brightness 노드는 입력 이미지의 밝기를 조정합니다. 각 �
 > 이 문서는 AI에 의해 생성되었습니다. 오류를 발견하거나 개선 제안이 있으시면 기여해 주세요! [GitHub에서 편집](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/AdjustBrightness/ko.md)
 
 ---
-**Source fingerprint (SHA-256):** `696fb3c0bfc8edccc2049dad8f44b4b056fe1caa95b0cc0126164269cb65ab1a`
+**Source fingerprint (SHA-256):** `64c1499d16deb5922fa63538182cd227e8f2ba9ded5962064ce9f228a0f4a163`

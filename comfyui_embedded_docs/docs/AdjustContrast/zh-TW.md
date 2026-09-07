@@ -1,6 +1,6 @@
 # 調整對比度
 
-Adjust Contrast 節點會修改輸入影像的對比度等級。其運作方式是調整影像中亮部與暗部之間的差異。係數為 1.0 時影像保持不變，低於 1.0 的值會降低對比度，高於 1.0 的值則會增加對比度。
+Adjust Contrast 節點會修改輸入影像的對比度等級。其運作方式是調整影像中亮部與暗部之間的差異。係數為 1.0 時影像保持不變，低於 1.0 的值會降低對比度，高於 1.0 的值則會增加對比度。如果輸入影像帶有透明通道，透明通道將原樣保留，以保持透明度。
 
 ## 輸入
 
@@ -18,4 +18,4 @@ Adjust Contrast 節點會修改輸入影像的對比度等級。其運作方式�
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/AdjustContrast/zh-TW.md)
 
 ---
-**Source fingerprint (SHA-256):** `1f5fbd0f0b739492bc171d3c43ea2150a3ca76dc3ede9bf63cb97c45a90b9e44`
+**Source fingerprint (SHA-256):** `489f840cc3d98339a5cf7b55e9179c60878c58b2f992740796c7d49642e05932`
