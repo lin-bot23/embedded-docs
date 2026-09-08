@@ -6,9 +6,9 @@ Ce nœud mélange aléatoirement l’ordre des paires vidéo-texte dans une list
 
 | Paramètre | Description | Type de données | Requis | Plage |
 |-----------|-------------|-----------------|--------|-------|
-| `videos` | Liste des vidéos à mélanger. | VIDEO | Oui | Liste de vidéos |
-| `texts` | Liste des textes à mélanger (les légendes appariées avec les vidéos). | STRING | Oui | Liste de chaînes de caractères |
-| `seed` | Seed aléatoire qui détermine l’ordre du mélange (par défaut : 0). | INT | Oui | 0 à 18446744073709551615 |
+| `vidéos` | Liste des vidéos à mélanger. | VIDEO | Oui | Liste de vidéos |
+| `textes` | Liste des textes à mélanger (les légendes appariées avec les vidéos). | STRING | Oui | Liste de chaînes de caractères |
+| `graine` | Seed aléatoire qui détermine l’ordre du mélange (par défaut : 0). | INT | Oui | 0 à 18446744073709551615 |
 
 Remarque : `videos` et `texts` doivent avoir la même longueur, car le nœud associe chaque vidéo au texte situé à la même position et préserve ces appariements lors du mélange. En interne, la valeur de `seed` est réduite modulo 4294967295 (2^32 - 1) avant que l’ordre aléatoire ne soit généré ; des valeurs de seed très grandes peuvent donc produire le même mélange que des valeurs plus petites.
 
@@ -16,8 +16,8 @@ Remarque : `videos` et `texts` doivent avoir la même longueur, car le nœud ass
 
 | Nom de sortie | Description | Type de données |
 |---------------|-------------|-----------------|
-| `videos` | Vidéos mélangées dans le nouvel ordre aléatoire. | VIDEO |
-| `texts` | Textes mélangés dans le même nouvel ordre que les vidéos. | STRING |
+| `vidéos` | Vidéos mélangées dans le nouvel ordre aléatoire. | VIDEO |
+| `textes` | Textes mélangés dans le même nouvel ordre que les vidéos. | STRING |
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ShuffleVideoTextDataset/fr.md)
 

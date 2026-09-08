@@ -8,7 +8,7 @@ O nó Load Video carrega arquivos de vídeo do diretório de entrada e os torna 
 
 | Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
 | --- | --- | --- | --- | --- |
-| `file` | O arquivo de vídeo a ser carregado do diretório de entrada. A lista suspensa é populada dinamicamente com todos os arquivos de vídeo encontrados na pasta de entrada do ComfyUI, e novos arquivos de vídeo podem ser carregados diretamente através do seletor de arquivos. | COMBO | Sim | Múltiplas opções disponíveis (todos os arquivos de vídeo no diretório de entrada) |
+| `arquivo` | O arquivo de vídeo a ser carregado do diretório de entrada. A lista suspensa é populada dinamicamente com todos os arquivos de vídeo encontrados na pasta de entrada do ComfyUI, e novos arquivos de vídeo podem ser carregados diretamente através do seletor de arquivos. | COMBO | Sim | Múltiplas opções disponíveis (todos os arquivos de vídeo no diretório de entrada) |
 
 **Nota:** As opções disponíveis para o parâmetro `file` são populadas dinamicamente a partir dos arquivos de vídeo presentes no diretório de entrada. Apenas arquivos de vídeo com tipos de conteúdo suportados são exibidos. Você também pode carregar um novo arquivo de vídeo diretamente através da interface de seletor de arquivos do nó. Se um arquivo de vídeo previamente selecionado não puder ser encontrado, o nó reporta um erro de arquivo inválido.
 

@@ -8,12 +8,12 @@ TripoTextureNode 노드는 Tripo API를 사용하여 기존 Tripo 3D 모델에 �
 
 | 매개변수 | 설명 | 데이터 타입 | 필수 여부 | 범위 |
 |-----------|-------------|-----------|----------|-------|
-| `model_task_id` | 텍스처를 입힐 모델의 Tripo 작업 ID입니다. 모델 작업 ID와 분할(segmentation) 작업 ID를 허용합니다. | MODEL_TASK_ID | 예 | - |
-| `texture` | 무시됩니다. 이 노드는 항상 텍스처를 생성합니다. 이전 워크플로우와의 호환을 위해 유지됩니다. (기본값: True) | BOOLEAN | 아니요 | true<br>false |
-| `pbr` | PBR 재질 맵(기본 색상, 금속성, 거칠기, 법선)을 생성합니다. 끄면 단색 텍스처가 생성됩니다. (기본값: True) | BOOLEAN | 아니요 | true<br>false |
-| `texture_seed` | 텍스처 생성용 난수 시드입니다. 동일한 시드와 동일한 입력을 사용하면 동일한 결과가 생성됩니다. (기본값: 42) | INT | 아니요 | 0 – 2147483647 |
-| `texture_quality` | 텍스처 해상도 품질입니다. detailed = HD 텍스처, extreme = 8K Ultra 텍스처. (기본값: "standard"). 대략적인 비용: standard $0.10, detailed $0.20, extreme $0.30. | COMBO | 아니요 | "standard"<br>"detailed"<br>"extreme" |
-| `texture_alignment` | 생성된 텍스처를 모델에 정렬하는 데 사용되는 방법입니다. (기본값: "original_image") | COMBO | 아니요 | "original_image"<br>"geometry" |
+| `모델 작업 ID` | 텍스처를 입힐 모델의 Tripo 작업 ID입니다. 모델 작업 ID와 분할(segmentation) 작업 ID를 허용합니다. | MODEL_TASK_ID | 예 | - |
+| `텍스처` | 무시됩니다. 이 노드는 항상 텍스처를 생성합니다. 이전 워크플로우와의 호환을 위해 유지됩니다. (기본값: True) | BOOLEAN | 아니요 | true<br>false |
+| `PBR` | PBR 재질 맵(기본 색상, 금속성, 거칠기, 법선)을 생성합니다. 끄면 단색 텍스처가 생성됩니다. (기본값: True) | BOOLEAN | 아니요 | true<br>false |
+| `텍스처 시드` | 텍스처 생성용 난수 시드입니다. 동일한 시드와 동일한 입력을 사용하면 동일한 결과가 생성됩니다. (기본값: 42) | INT | 아니요 | 0 – 2147483647 |
+| `텍스처 품질` | 텍스처 해상도 품질입니다. detailed = HD 텍스처, extreme = 8K Ultra 텍스처. (기본값: "standard"). 대략적인 비용: standard $0.10, detailed $0.20, extreme $0.30. | COMBO | 아니요 | "standard"<br>"detailed"<br>"extreme" |
+| `텍스처 정렬` | 생성된 텍스처를 모델에 정렬하는 데 사용되는 방법입니다. (기본값: "original_image") | COMBO | 아니요 | "original_image"<br>"geometry" |
 | `texture_prompt` | 텍스처링을 위한 선택적 텍스트 안내입니다. 색상을 추론할 소스 이미지가 없는 가져온 모델(Tripo: Import Model)에는 실무상 필수입니다. 참조 이미지와 함께 사용할 수 없습니다. (기본값: "") | STRING | 아니요 | - |
 | `model_version` | 텍스처 모델: v3.x로 생성된 메시에는 v3.0, v2.5로 생성된 메시에는 v2.5를 사용합니다. (기본값: 최신 v3.0 버전) | COMBO | 아니요 | 여러 옵션 사용 가능 |
 | `style_image` | 텍스처의 예술적 스타일을 위한 참조 이미지입니다. `texture_prompt`와 함께 지정한 경우에만 적용됩니다. | IMAGE | 아니요 | - |
@@ -45,8 +45,8 @@ TripoTextureNode 노드는 Tripo API를 사용하여 기존 Tripo 3D 모델에 �
 
 | 출력 이름 | 설명 | 데이터 타입 |
 |-------------|-------------|-----------|
-| `model_file` | 생성된 모델 파일입니다(이전 버전과의 호환 전용). | STRING |
-| `model task_id` | 완료된 텍스처 생성 작업의 작업 ID로, 다른 Tripo 노드의 입력으로 사용할 수 있습니다. | MODEL_TASK_ID |
+| `모델 파일` | 생성된 모델 파일입니다(이전 버전과의 호환 전용). | STRING |
+| `모델 task_id` | 완료된 텍스처 생성 작업의 작업 ID로, 다른 Tripo 노드의 입력으로 사용할 수 있습니다. | MODEL_TASK_ID |
 | `GLB` | 생성된 텍스처 적용 모델(GLB 형식)입니다. 소스가 쿼드 메시 또는 FBX 가져오기 모델인 경우 비어 있습니다. | FILE3DGLB |
 | `FBX` | 생성된 텍스처 적용 모델(FBX 형식)입니다. Tripo는 쿼드 메시 및 FBX 가져오기 모델에 대해 FBX를 반환하며, 그 외에는 비어 있습니다. | FILE3DFBX |
 

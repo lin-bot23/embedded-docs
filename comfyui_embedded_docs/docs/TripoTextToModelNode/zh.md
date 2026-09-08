@@ -6,19 +6,19 @@
 
 | 参数 | 描述 | 数据类型 | 必填 | 范围 |
 |-----------|-------------|-----------|----------|-------|
-| `prompt` | 要生成的 3D 模型的文本描述（多行）。此参数为必需项，不能为空。 | STRING | 是 | - |
-| `negative_prompt` | 要避免在生成的模型中出现的文本描述（多行）。最多 255 个字符。仅在非空时发送给 API。 | STRING | 否 | 最多 255 个字符 |
-| `model_version` | 用于生成的 Tripo 模型版本（默认：v3.1-20260211）。 | COMBO | 否 | 有多个选项可选 |
-| `style` | 应用于生成模型的样式（默认：None）。Tripo 已不再支持该参数，因此会被忽略；仅为旧工作流保留。 | COMBO | 否 | 有多个选项可选 |
-| `texture` | 是否生成纹理贴图。关闭时返回纯几何体，并忽略 `pbr`（默认：True）。 | BOOLEAN | 否 | true / false |
-| `pbr` | 是否生成 PBR 材质贴图（基础色、金属度、粗糙度、法线）。需要启用 `texture`；当 `texture` 关闭时强制关闭（默认：True）。 | BOOLEAN | 否 | true / false |
-| `image_seed` | 用于图像生成阶段的种子（默认：42）。 | INT | 否 | 0 到 2147483647 |
-| `model_seed` | 用于模型生成阶段的种子（默认：42）。 | INT | 否 | 0 到 2147483647 |
-| `texture_seed` | 用于纹理生成阶段的种子（默认：42）。 | INT | 否 | 0 到 2147483647 |
-| `texture_quality` | 生成纹理的质量。detailed = 高清纹理，extreme = 8K 超高清纹理（默认：standard）。 | COMBO | 否 | "standard"<br>"detailed"<br>"extreme" |
-| `face_limit` | 最大面数。-1 表示由 Tripo 自适应选择（在 v3.x 的 standard 模式下约 140 万面，detailed 模式下约 200 万面）。Tripo 会静默限制上限：v2.5 限制为 500,000 面，四边形网格限制为 150,000 面。（默认：-1） | INT | 否 | -1 到 2000000 |
-| `quad` | 是否输出四边形网格。Tripo 以 FBX 格式提供四边形网格，因此结果会出现在 FBX 输出上，而 GLB 输出保持为空。（默认：False） | BOOLEAN | 否 | true / false |
-| `geometry_quality` | 生成几何体的质量（默认：standard）。 | COMBO | 否 | "standard"<br>"detailed" |
+| `提示词` | 要生成的 3D 模型的文本描述（多行）。此参数为必需项，不能为空。 | STRING | 是 | - |
+| `负面提示词` | 要避免在生成的模型中出现的文本描述（多行）。最多 255 个字符。仅在非空时发送给 API。 | STRING | 否 | 最多 255 个字符 |
+| `模型版本` | 用于生成的 Tripo 模型版本（默认：v3.1-20260211）。 | COMBO | 否 | 有多个选项可选 |
+| `风格` | 应用于生成模型的样式（默认：None）。Tripo 已不再支持该参数，因此会被忽略；仅为旧工作流保留。 | COMBO | 否 | 有多个选项可选 |
+| `纹理` | 是否生成纹理贴图。关闭时返回纯几何体，并忽略 `pbr`（默认：True）。 | BOOLEAN | 否 | true / false |
+| `PBR` | 是否生成 PBR 材质贴图（基础色、金属度、粗糙度、法线）。需要启用 `texture`；当 `texture` 关闭时强制关闭（默认：True）。 | BOOLEAN | 否 | true / false |
+| `图像种子` | 用于图像生成阶段的种子（默认：42）。 | INT | 否 | 0 到 2147483647 |
+| `模型种子` | 用于模型生成阶段的种子（默认：42）。 | INT | 否 | 0 到 2147483647 |
+| `纹理种子` | 用于纹理生成阶段的种子（默认：42）。 | INT | 否 | 0 到 2147483647 |
+| `纹理质量` | 生成纹理的质量。detailed = 高清纹理，extreme = 8K 超高清纹理（默认：standard）。 | COMBO | 否 | "standard"<br>"detailed"<br>"extreme" |
+| `面数限制` | 最大面数。-1 表示由 Tripo 自适应选择（在 v3.x 的 standard 模式下约 140 万面，detailed 模式下约 200 万面）。Tripo 会静默限制上限：v2.5 限制为 500,000 面，四边形网格限制为 150,000 面。（默认：-1） | INT | 否 | -1 到 2000000 |
+| `四边形` | 是否输出四边形网格。Tripo 以 FBX 格式提供四边形网格，因此结果会出现在 FBX 输出上，而 GLB 输出保持为空。（默认：False） | BOOLEAN | 否 | true / false |
+| `几何质量` | 生成几何体的质量（默认：standard）。 | COMBO | 否 | "standard"<br>"detailed" |
 | `smart_low_poly` | 使用整洁、手工风格的拓扑，生成低多边形网格（500–20,000 个面；启用 `quad` 时为 500–10,000）。最适合简单对象；复杂对象可能会失败。（默认：False） | BOOLEAN | 否 | true / false |
 | `auto_size` | 将带纹理的模型按其真实世界尺寸（以米为单位）缩放。Tripo 将尺寸存储为模型的场景变换，并在模型被转换、绑定或重定向时将其烘焙到模型内；没有纹理时忽略此参数。（默认：True） | BOOLEAN | 否 | true / false |
 
@@ -32,8 +32,8 @@
 
 | 输出名称 | 描述 | 数据类型 |
 |-------------|-------------|-----------|
-| `model_file` | 生成的 3D 模型文件，仅为向后兼容而保留。 | STRING |
-| `model task_id` | 模型生成过程的唯一任务标识符。 | MODEL_TASK_ID |
+| `模型文件` | 生成的 3D 模型文件，仅为向后兼容而保留。 | STRING |
+| `模型任务ID` | 模型生成过程的唯一任务标识符。 | MODEL_TASK_ID |
 | `GLB` | 以 GLB 格式生成的 3D 模型。启用 `quad` 时为空。 | FILE3DGLB |
 | `FBX` | 以 FBX 格式生成的 3D 模型。仅在启用 `quad` 时填充。 | FILE3DFBX |
 

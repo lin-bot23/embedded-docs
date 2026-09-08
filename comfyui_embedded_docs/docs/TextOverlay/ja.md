@@ -13,7 +13,7 @@
 | `位置` | 画像上のテキストの垂直位置（デフォルト："top"） | COMBO | はい | `"top"`<br>`"bottom"` |
 | `整列` | テキストの水平配置（デフォルト："left"） | COMBO | はい | `"left"`<br>`"center"`<br>`"right"` |
 | `アウトライン` | テキストの周りに黒い輪郭を描画するかどうか（デフォルト：True） | BOOLEAN | はい | |
-注意：`text` が空または空白のみの場合、ノードは入力画像を変更せずに返します。同じテキストオーバーレイがバッチ内のすべての画像に適用されます。
+注意：`text` が空または空白のみの場合、ノードは入力画像を変更せずに返します。同じテキストオーバーレイがバッチ内のすべての画像に適用されます。アルファチャンネル（RGBA）を持つ画像の場合、テキストは source-over アルファブレンディングで合成されるため、既存の透明度が保持されます。
 
 ## 出力
 
@@ -24,4 +24,4 @@
 > このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TextOverlay/ja.md)
 
 ---
-**Source fingerprint (SHA-256):** `baffaa4ec9d3565e3533673658399271234def8c49e2e4a5f16767ec3f98cb22`
+**Source fingerprint (SHA-256):** `b347f563fa26e098a310892f3e7fff41b83722800d67e5af9debad14fc9d01e7`

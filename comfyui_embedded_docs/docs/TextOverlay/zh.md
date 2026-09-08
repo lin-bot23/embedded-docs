@@ -13,7 +13,7 @@
 | `位置` | 文本在图像上的垂直位置（默认："top"） | COMBO | 是 | `"top"`<br>`"bottom"` |
 | `对齐` | 文本的水平对齐方式（默认："left"） | COMBO | 是 | `"left"`<br>`"center"`<br>`"right"` |
 | `描边` | 在文本周围绘制黑色描边（默认：True） | BOOLEAN | 是 | |
-注意：如果 `text` 为空或仅包含空白字符，节点将原样返回输入图像。相同的文本叠加会应用于批次中的每张图像。
+注意：如果 `text` 为空或仅包含空白字符，节点将原样返回输入图像。相同的文本叠加会应用于批次中的每张图像。对于带有透明通道（RGBA）的图像，文本使用 source-over alpha 混合进行合成，因此现有的透明度会被保留。
 
 ## 输出
 
@@ -24,4 +24,4 @@
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TextOverlay/zh.md)
 
 ---
-**Source fingerprint (SHA-256):** `baffaa4ec9d3565e3533673658399271234def8c49e2e4a5f16767ec3f98cb22`
+**Source fingerprint (SHA-256):** `b347f563fa26e098a310892f3e7fff41b83722800d67e5af9debad14fc9d01e7`

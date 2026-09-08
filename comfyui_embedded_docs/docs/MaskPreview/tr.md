@@ -6,7 +6,7 @@ MaskPreview düğümü, maske verilerinin görsel bir önizlemesini çıktı diz
 
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 |-----------|-------------|-----------|----------|-------|
-| `mask` | Önizlenecek maske verileri | MASK | Evet | - |
+| `maske` | Önizlenecek maske verileri | MASK | Evet | - |
 | `filename_prefix` | Önizleme için kullanılan dosya adı öneki (varsayılan: "ComfyUI") | STRING | Hayır | - |
 | `prompt` | Meta veriler için istem bilgisi (otomatik sağlanır) | PROMPT | Hayır | - |
 | `extra_pnginfo` | Meta veriler için ek PNG bilgisi (otomatik sağlanır) | EXTRA_PNGINFO | Hayır | - |

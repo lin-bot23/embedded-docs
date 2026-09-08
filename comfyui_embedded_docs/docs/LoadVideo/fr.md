@@ -6,7 +6,7 @@ Le nœud Load Video charge des fichiers vidéo depuis le répertoire d’entrée
 
 | Paramètre | Description | Type de données | Requis | Plage |
 | --- | --- | --- | --- | --- |
-| `file` | Le fichier vidéo à charger depuis le répertoire d’entrée. La liste déroulante est remplie dynamiquement avec tous les fichiers vidéo trouvés dans le dossier d’entrée de ComfyUI, et de nouveaux fichiers vidéo peuvent être téléversés directement via le sélecteur de fichiers. | COMBO | Oui | Plusieurs options disponibles (tous les fichiers vidéo du répertoire d’entrée) |
+| `fichier` | Le fichier vidéo à charger depuis le répertoire d’entrée. La liste déroulante est remplie dynamiquement avec tous les fichiers vidéo trouvés dans le dossier d’entrée de ComfyUI, et de nouveaux fichiers vidéo peuvent être téléversés directement via le sélecteur de fichiers. | COMBO | Oui | Plusieurs options disponibles (tous les fichiers vidéo du répertoire d’entrée) |
 
 **Remarque :** Les options disponibles pour le paramètre `file` sont remplies dynamiquement à partir des fichiers vidéo présents dans le répertoire d’entrée. Seuls les fichiers vidéo dont les types de contenu sont pris en charge sont affichés. Vous pouvez également téléverser un nouveau fichier vidéo directement via l’interface du sélecteur de fichiers du nœud. Si un fichier vidéo précédemment sélectionné est introuvable, le nœud signale une erreur de fichier invalide.
 

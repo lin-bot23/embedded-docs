@@ -6,12 +6,12 @@ El nodo Preview Point Cloud le permite ver un archivo de nube de puntos 3D en la
 
 | Parámetro | Descripción | Tipo de datos | Requerido | Rango |
 |-----------|-------------|---------------|-----------|-------|
-| `model_3d` | Archivo de nube de puntos (.ply) | FILE3D | Sí | - |
-| `model_3d_info` | Información sobre el modelo 3D | LOAD3DMODELINFO | No | - |
-| `viewport_state` | El estado actual de la ventana gráfica 3D | LOAD3D | Sí | - |
-| `camera_info` | Información de la cámara para la vista 3D | LOAD3DCAMERA | No | - |
-| `width` | Ancho de la ventana de vista previa (por defecto: 1024) | INT | Sí | 1 a 4096 |
-| `height` | Alto de la ventana de vista previa (por defecto: 1024) | INT | Sí | 1 a 4096 |
+| `modelo_3d` | Archivo de nube de puntos (.ply) | FILE3D | Sí | - |
+| `info_modelo_3d` | Información sobre el modelo 3D | LOAD3DMODELINFO | No | - |
+| `estado_de_vista` | El estado actual de la ventana gráfica 3D | LOAD3D | Sí | - |
+| `info_cámara` | Información de la cámara para la vista 3D | LOAD3DCAMERA | No | - |
+| `ancho` | Ancho de la ventana de vista previa (por defecto: 1024) | INT | Sí | 1 a 4096 |
+| `alto` | Alto de la ventana de vista previa (por defecto: 1024) | INT | Sí | 1 a 4096 |
 
 Nota: `model_3d_info` y `camera_info` son entradas avanzadas opcionales. Cuando no están conectadas, el nodo recurre a los valores correspondientes almacenados en `viewport_state`. El archivo de nube de puntos se escribe en el directorio temporal de ComfyUI en lugar del directorio de salida. Este es un nodo de salida (terminal), por lo que se utiliza principalmente para mostrar la vista previa en la interfaz.
 
@@ -19,11 +19,11 @@ Nota: `model_3d_info` y `camera_info` son entradas avanzadas opcionales. Cuando 
 
 | Nombre de salida | Descripción | Tipo de datos |
 |------------------|-------------|---------------|
-| `model_3d` | Datos del modelo de nube de puntos | FILE3D |
-| `model_3d_info` | Información sobre el modelo 3D | LOAD3DMODELINFO |
-| `camera_info` | Información de la cámara para la vista 3D | LOAD3DCAMERA |
-| `width` | Ancho de la ventana de vista previa | INT |
-| `height` | Alto de la ventana de vista previa | INT |
+| `modelo_3d` | Datos del modelo de nube de puntos | FILE3D |
+| `info_modelo_3d` | Información sobre el modelo 3D | LOAD3DMODELINFO |
+| `info_cámara` | Información de la cámara para la vista 3D | LOAD3DCAMERA |
+| `ancho` | Ancho de la ventana de vista previa | INT |
+| `alto` | Alto de la ventana de vista previa | INT |
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/PreviewPointCloud/es.md)
 

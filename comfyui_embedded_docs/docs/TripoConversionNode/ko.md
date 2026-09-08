@@ -6,12 +6,12 @@
 
 | 매개변수 | 설명 | 데이터 타입 | 필수 | 범위 |
 |-----------|-------------|-----------|----------|-------|
-| `original_model_task_id` | 변환할 Tripo 모델의 작업 ID입니다. 이전 Tripo 모델 생성, 리깅, 리타게팅 또는 세그멘테이션 작업에서 가져와야 합니다. ID가 누락되었거나 비어 있으면 노드에서 오류를 발생시킵니다. | STRING (Tripo 작업 ID) | 예 | MODEL_TASK_ID<br>RIG_TASK_ID<br>RETARGET_TASK_ID<br>SEGMENT_TASK_ID |
-| `format` | 변환된 3D 모델의 대상 파일 형식입니다. | COMBO | 예 | GLTF<br>USDZ<br>FBX<br>OBJ<br>STL<br>3MF |
-| `quad` | 활성화하면 삼각형을 사각형으로 변환합니다(기본값: False). | BOOLEAN | 아니요 | True or False |
-| `face_limit` | 변환된 모델의 최대 면 수입니다. 제한 없음은 -1로 설정합니다(기본값: -1). | INT | 아니요 | -1 ~ 2000000 |
-| `texture_size` | 출력 텍스처의 해상도(픽셀)입니다(기본값: 4096). | INT | 아니요 | 128 ~ 8192 |
-| `texture_format` | 내보낸 텍스처에 사용되는 파일 형식입니다(기본값: JPEG). | COMBO | 아니요 | BMP<br>DPX<br>HDR<br>JPEG<br>OPEN_EXR<br>PNG<br>TARGA<br>TIFF<br>WEBP |
+| `원본 모델 작업 ID` | 변환할 Tripo 모델의 작업 ID입니다. 이전 Tripo 모델 생성, 리깅, 리타게팅 또는 세그멘테이션 작업에서 가져와야 합니다. ID가 누락되었거나 비어 있으면 노드에서 오류를 발생시킵니다. | STRING (Tripo 작업 ID) | 예 | MODEL_TASK_ID<br>RIG_TASK_ID<br>RETARGET_TASK_ID<br>SEGMENT_TASK_ID |
+| `형식` | 변환된 3D 모델의 대상 파일 형식입니다. | COMBO | 예 | GLTF<br>USDZ<br>FBX<br>OBJ<br>STL<br>3MF |
+| `쿼드` | 활성화하면 삼각형을 사각형으로 변환합니다(기본값: False). | BOOLEAN | 아니요 | True or False |
+| `면 제한` | 변환된 모델의 최대 면 수입니다. 제한 없음은 -1로 설정합니다(기본값: -1). | INT | 아니요 | -1 ~ 2000000 |
+| `텍스처 크기` | 출력 텍스처의 해상도(픽셀)입니다(기본값: 4096). | INT | 아니요 | 128 ~ 8192 |
+| `텍스처 형식` | 내보낸 텍스처에 사용되는 파일 형식입니다(기본값: JPEG). | COMBO | 아니요 | BMP<br>DPX<br>HDR<br>JPEG<br>OPEN_EXR<br>PNG<br>TARGA<br>TIFF<br>WEBP |
 | `force_symmetry` | 활성화하면 모델이 대칭이 되도록 강제합니다(기본값: False). | BOOLEAN | 아니요 | True or False |
 | `flatten_bottom` | 활성화하면 모델의 바닥을 평평하게 만듭니다(기본값: False). | BOOLEAN | 아니요 | True or False |
 | `flatten_bottom_threshold` | `flatten_bottom`과 함께 사용되는 평탄화 깊이입니다(기본값: 0.01). 이 값은 `flatten_bottom`이 활성화된 경우에만 적용됩니다. | FLOAT | 아니요 | 0.01 ~ 1.0 |

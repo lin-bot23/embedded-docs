@@ -6,8 +6,8 @@ TripoRetargetNode 节点会将预设动画应用于已绑定的现有 3D 模型�
 
 | 参数 | 描述 | 数据类型 | 是否必需 | 取值范围 |
 |-----------|-------------|-----------|----------|-------|
-| `original_model_task_id` | 要重定向的先前已绑定 3D 模型的任务 ID。引用的任务必须是绑定任务；使用 Mixamo 规范在模型版本 v1.0 上创建的绑定模型不能用于重定向。 | RIG_TASK_ID | 是 | - |
-| `animation` | 要应用于绑定模型的动画预设。`preset:*` 动画适用于两种绑定模型；`preset:biped:*` 动画需要使用模型 v1.0-20240301 创建的绑定模型。 | COMBO | 是 | `"preset:idle"`<br>`"preset:walk"`<br>`"preset:run"`<br>`"preset:dive"`<br>`"preset:climb"`<br>`"preset:jump"`<br>`"preset:slash"`<br>`"preset:shoot"`<br>`"preset:hurt"`<br>`"preset:fall"`<br>`"preset:turn"`<br>`"preset:quadruped:walk"`<br>`"preset:hexapod:walk"`<br>`"preset:octopod:walk"`<br>`"preset:serpentine:march"`<br>`"preset:aquatic:march"`<br>以及界面中显示的其他 `"preset:biped:*"` 选项 |
+| `原始模型任务ID` | 要重定向的先前已绑定 3D 模型的任务 ID。引用的任务必须是绑定任务；使用 Mixamo 规范在模型版本 v1.0 上创建的绑定模型不能用于重定向。 | RIG_TASK_ID | 是 | - |
+| `动画` | 要应用于绑定模型的动画预设。`preset:*` 动画适用于两种绑定模型；`preset:biped:*` 动画需要使用模型 v1.0-20240301 创建的绑定模型。 | COMBO | 是 | `"preset:idle"`<br>`"preset:walk"`<br>`"preset:run"`<br>`"preset:dive"`<br>`"preset:climb"`<br>`"preset:jump"`<br>`"preset:slash"`<br>`"preset:shoot"`<br>`"preset:hurt"`<br>`"preset:fall"`<br>`"preset:turn"`<br>`"preset:quadruped:walk"`<br>`"preset:hexapod:walk"`<br>`"preset:octopod:walk"`<br>`"preset:serpentine:march"`<br>`"preset:aquatic:march"`<br>以及界面中显示的其他 `"preset:biped:*"` 选项 |
 | `out_format` | 输出文件格式；结果会通过对应的输出返回。（默认值：glb） | COMBO | 否 | `"glb"`<br>`"fbx"` |
 | `export_with_geometry` | 在导出中包含网格；关闭时仅导出带动画的骨骼。（默认值：True） | BOOLEAN | 否 | True<br>False |
 | `animate_in_place` | 原地播放动画，不产生根部位移。（默认值：False） | BOOLEAN | 否 | True<br>False |
@@ -21,8 +21,8 @@ TripoRetargetNode 节点会将预设动画应用于已绑定的现有 3D 模型�
 
 | 输出名 | 描述 | 数据类型 |
 |-------------|-------------|-----------|
-| `model_file` | 生成的带动画的 3D 模型文件（仅用于向后兼容）。 | STRING |
-| `retarget task_id` | 用于跟踪重定向操作的任务 ID。 | RETARGET_TASK_ID |
+| `模型文件` | 生成的带动画的 3D 模型文件（仅用于向后兼容）。 | STRING |
+| `重定向任务ID` | 用于跟踪重定向操作的任务 ID。 | RETARGET_TASK_ID |
 | `GLB` | GLB 格式的带动画 3D 模型。当 `out_format` 为 glb 时填充。 | FILE3DGLB |
 | `FBX` | FBX 格式的带动画 3D 模型。当 `out_format` 为 fbx 时填充。 | FILE3DFBX |
 

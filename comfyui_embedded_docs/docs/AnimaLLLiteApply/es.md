@@ -7,13 +7,13 @@ AnimaLLLiteApply aplica un parche de animación ligero a un modelo de difusión,
 
 | Parámetro | Descripción | Tipo de datos | Requerido | Rango |
 |-----------|-------------|---------------|-----------|-------|
-| `model` | El modelo de difusión base al que se le aplicará el parche | MODEL | Sí | |
-| `model_patch` | El parche de animación preconfigurado que se aplicará | MODEL_PATCH | Sí | |
-| `image` | La imagen de referencia para guiar la generación. Solo se utilizan los primeros 3 canales de color (RGB) | IMAGE | Sí | |
-| `strength` | La fuerza del efecto del parche (por defecto: 1.0) | FLOAT | Sí | -10.0 a 10.0 |
-| `start_percent` | El porcentaje del proceso de denoizado en el que el parche comienza a surtir efecto (por defecto: 0.0) | FLOAT | Sí | 0.0 a 1.0 |
-| `end_percent` | El porcentaje del proceso de denoizado en el que el parche deja de surtir efecto (por defecto: 1.0) | FLOAT | Sí | 0.0 a 1.0 |
-| `mask` | Una máscara opcional para limitar el efecto del parche a áreas específicas de la imagen | MASK | No | |
+| `modelo` | El modelo de difusión base al que se le aplicará el parche | MODEL | Sí | |
+| `parche de modelo` | El parche de animación preconfigurado que se aplicará | MODEL_PATCH | Sí | |
+| `imagen` | La imagen de referencia para guiar la generación. Solo se utilizan los primeros 3 canales de color (RGB) | IMAGE | Sí | |
+| `intensidad` | La fuerza del efecto del parche (por defecto: 1.0) | FLOAT | Sí | -10.0 a 10.0 |
+| `porcentaje de inicio` | El porcentaje del proceso de denoizado en el que el parche comienza a surtir efecto (por defecto: 0.0) | FLOAT | Sí | 0.0 a 1.0 |
+| `porcentaje final` | El porcentaje del proceso de denoizado en el que el parche deja de surtir efecto (por defecto: 1.0) | FLOAT | Sí | 0.0 a 1.0 |
+| `máscara` | Una máscara opcional para limitar el efecto del parche a áreas específicas de la imagen | MASK | No | |
 
 **Nota sobre las restricciones de los parámetros:** Si el `model_patch` tiene 4 canales de entrada y no se proporciona una `mask`, se crea automáticamente una máscara cero para que coincida con las dimensiones de la imagen. Si el `model_patch` no tiene 4 canales de entrada, el parámetro `mask` se ignora y se establece en `None`. Este nodo está marcado como experimental en ComfyUI.
 

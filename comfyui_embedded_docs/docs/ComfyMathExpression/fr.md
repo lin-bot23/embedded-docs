@@ -7,7 +7,7 @@ Le nœud `ComfyMathExpression` évalue une formule mathématique que vous écriv
 | Paramètre | Description | Type de données | Requis | Plage |
 |-----------|-------------|-----------------|--------|-------|
 | `expression` | La formule mathématique à évaluer, écrite sous forme de texte (par exemple `a + b`), en utilisant les noms de lettres des valeurs d’entrée comme variables. Saisie multiligne. (défaut : « a + b ») | STRING | Oui | N/A |
-| `values` | Groupe extensible de valeurs d’entrée qui fournit les variables de l’expression. Chaque valeur ajoutée au groupe reçoit automatiquement le nom de lettre minuscule suivant en partant de `a` (`a`, `b`, `c`, …), et ce nom peut ensuite être utilisé dans `expression`. Chaque élément accepte un nombre (INT ou FLOAT) ou un booléen (TRUE/FALSE). | FLOAT, INT, BOOLEAN | Oui | 1 à 26 valeurs, nommées `a` à `z` |
+| `valeurs` | Groupe extensible de valeurs d’entrée qui fournit les variables de l’expression. Chaque valeur ajoutée au groupe reçoit automatiquement le nom de lettre minuscule suivant en partant de `a` (`a`, `b`, `c`, …), et ce nom peut ensuite être utilisé dans `expression`. Chaque élément accepte un nombre (INT ou FLOAT) ou un booléen (TRUE/FALSE). | FLOAT, INT, BOOLEAN | Oui | 1 à 26 valeurs, nommées `a` à `z` |
 
 ### Notes et contraintes
 

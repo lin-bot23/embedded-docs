@@ -21,7 +21,7 @@
 | 출력 이름 | 설명 | 데이터 유형 |
 |-------------|-------------|-----------|
 | `mesh` | 디코딩된 3D 메시로, 정점 위치와 면 인덱스를 포함합니다. 여러 셰이프를 디코딩할 때 모든 메시가 동일한 형태(shape)를 공유하면 단일 스택 텐서로 반환되고, 그렇지 않으면 패킹된 가변 크기 배치로 반환됩니다. | MESH |
-| `shape_subdivides` | 디코딩 과정의 각 단계에서 생성된 셰이프 세분화 데이터입니다. | SHAPE_SUBDIVIDES |
+| `형상 세분화` | 디코딩 과정의 각 단계에서 생성된 셰이프 세분화 데이터입니다. | SHAPE_SUBDIVIDES |
 
 > 이 문서는 AI에 의해 생성되었습니다. 오류를 발견하거나 개선 제안이 있으시면 기여해 주세요! [GitHub에서 편집](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/VaeDecodeShapeTrellis/ko.md)
 

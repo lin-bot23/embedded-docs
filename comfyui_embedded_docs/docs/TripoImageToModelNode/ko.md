@@ -6,18 +6,18 @@ Tripo의 API를 사용하여 단일 이미지를 기반으로 3D 모델을 동�
 
 | 매개변수 | 설명 | 데이터 타입 | 필수 | 범위 |
 |-----------|-------------|-----------|----------|-------|
-| `image` | 3D 모델을 생성하는 데 사용되는 입력 이미지입니다. 이미지를 반드시 제공해야 하며, 그렇지 않으면 노드가 오류를 발생시킵니다. | IMAGE | 예 | - |
-| `model_version` | 생성에 사용할 모델 버전입니다. | COMBO | 아니요 | `"v1.4"`<br>`"v3.0"`<br>`"v3.5"`<br>`"v3.6"` |
-| `style` | Tripo에서 더 이상 지원되지 않으며 무시됩니다. 이전 워크플로를 위해 유지됩니다. (기본값: `"None"`) | COMBO | 아니요 | `"None"`<br>`"realistic"`<br>`"cartoon"`<br>`"sculpture"`<br>`"low_poly"` |
-| `texture` | 텍스처 맵을 생성합니다. 해제하면 기하학(geometry)만 반환되며 `pbr`은 무시됩니다. (기본값: True) | BOOLEAN | 아니요 | True<br>False |
-| `pbr` | PBR 재질 맵(기본 색상, 금속성, 거칠기, 법선)입니다. `texture`가 필요합니다. (기본값: True) | BOOLEAN | 아니요 | True<br>False |
-| `model_seed` | 모델 생성용 무작위 시드입니다. (기본값: 42) | INT | 아니요 | 0 ~ 2147483647 |
-| `orientation` | 생성된 모델의 방향 설정입니다. (기본값: `"default"`) | COMBO | 아니요 | `"default"`<br>`"front"`<br>`"back"`<br>`"left"`<br>`"right"`<br>`"top"`<br>`"bottom"` |
-| `texture_seed` | 텍스처 생성용 무작위 시드입니다. (기본값: 42) | INT | 아니요 | 0 ~ 2147483647 |
-| `texture_quality` | 텍스처 생성 품질 수준입니다. `detailed`는 HD 텍스처, `extreme`은 8K Ultra 텍스처입니다. (기본값: `"standard"`) | COMBO | 아니요 | `"standard"`<br>`"detailed"`<br>`"extreme"` |
-| `texture_alignment` | 텍스처 매핑의 정렬 방법입니다. (기본값: `"original_image"`) | COMBO | 아니요 | `"original_image"`<br>`"geometry"` |
-| `face_limit` | 최대 면(face) 수입니다. -1이면 Tripo가 적응형으로 선택합니다(v3.x standard에서는 약 140만 개 면, detailed에서는 약 200만 개 면). Tripo는 자동으로 상한을 적용합니다. v2.5는 500,000개, 쿼드(quad) 메시는 150,000개입니다. (기본값: -1) | INT | 아니요 | -1 ~ 2000000 |
-| `quad` | 쿼드(quad) 메시 출력입니다. Tripo는 쿼드 메시를 FBX로 전달하므로 결과는 FBX 출력으로 도착하며 GLB 출력은 비어 있습니다. (기본값: False) | BOOLEAN | 아니요 | True<br>False |
+| `이미지` | 3D 모델을 생성하는 데 사용되는 입력 이미지입니다. 이미지를 반드시 제공해야 하며, 그렇지 않으면 노드가 오류를 발생시킵니다. | IMAGE | 예 | - |
+| `모델 버전` | 생성에 사용할 모델 버전입니다. | COMBO | 아니요 | `"v1.4"`<br>`"v3.0"`<br>`"v3.5"`<br>`"v3.6"` |
+| `스타일` | Tripo에서 더 이상 지원되지 않으며 무시됩니다. 이전 워크플로를 위해 유지됩니다. (기본값: `"None"`) | COMBO | 아니요 | `"None"`<br>`"realistic"`<br>`"cartoon"`<br>`"sculpture"`<br>`"low_poly"` |
+| `텍스처` | 텍스처 맵을 생성합니다. 해제하면 기하학(geometry)만 반환되며 `pbr`은 무시됩니다. (기본값: True) | BOOLEAN | 아니요 | True<br>False |
+| `PBR` | PBR 재질 맵(기본 색상, 금속성, 거칠기, 법선)입니다. `texture`가 필요합니다. (기본값: True) | BOOLEAN | 아니요 | True<br>False |
+| `모델 시드` | 모델 생성용 무작위 시드입니다. (기본값: 42) | INT | 아니요 | 0 ~ 2147483647 |
+| `방향` | 생성된 모델의 방향 설정입니다. (기본값: `"default"`) | COMBO | 아니요 | `"default"`<br>`"front"`<br>`"back"`<br>`"left"`<br>`"right"`<br>`"top"`<br>`"bottom"` |
+| `텍스처 시드` | 텍스처 생성용 무작위 시드입니다. (기본값: 42) | INT | 아니요 | 0 ~ 2147483647 |
+| `텍스처 품질` | 텍스처 생성 품질 수준입니다. `detailed`는 HD 텍스처, `extreme`은 8K Ultra 텍스처입니다. (기본값: `"standard"`) | COMBO | 아니요 | `"standard"`<br>`"detailed"`<br>`"extreme"` |
+| `텍스처 정렬` | 텍스처 매핑의 정렬 방법입니다. (기본값: `"original_image"`) | COMBO | 아니요 | `"original_image"`<br>`"geometry"` |
+| `얼굴 제한` | 최대 면(face) 수입니다. -1이면 Tripo가 적응형으로 선택합니다(v3.x standard에서는 약 140만 개 면, detailed에서는 약 200만 개 면). Tripo는 자동으로 상한을 적용합니다. v2.5는 500,000개, 쿼드(quad) 메시는 150,000개입니다. (기본값: -1) | INT | 아니요 | -1 ~ 2000000 |
+| `쿼드` | 쿼드(quad) 메시 출력입니다. Tripo는 쿼드 메시를 FBX로 전달하므로 결과는 FBX 출력으로 도착하며 GLB 출력은 비어 있습니다. (기본값: False) | BOOLEAN | 아니요 | True<br>False |
 | `geometry_quality` | 기하학(geometry) 생성 품질 수준입니다. (기본값: `"standard"`) | COMBO | 아니요 | `"standard"`<br>`"detailed"` |
 | `smart_low_poly` | 깔끔하고 수작업으로 제작된 스타일의 토폴로지를 가진 저폴리(low-poly) 메시입니다(500–20,000개 면, 쿼드는 500–10,000개). 단순한 대상에 가장 적합하며 복잡한 대상은 실패할 수 있습니다. (기본값: False) | BOOLEAN | 아니요 | True<br>False |
 | `auto_size` | 텍스처가 적용된 모델을 실제 세계 크기(미터)로 조정합니다. Tripo는 크기를 모델의 씬 변환(scene transform)으로 저장하며, 모델을 변환, 리깅 또는 리타겟팅할 때 이를 굽습니다. 텍스처가 없으면 무시됩니다. (기본값: True) | BOOLEAN | 아니요 | True<br>False |
@@ -28,8 +28,8 @@ Tripo의 API를 사용하여 단일 이미지를 기반으로 3D 모델을 동�
 
 | 출력 이름 | 설명 | 데이터 타입 |
 |-------------|-------------|-----------|
-| `model_file` | 생성된 3D 모델 파일입니다(하위 호환성 전용). | STRING |
-| `model task_id` | 모델 생성 프로세스를 추적하기 위한 작업 ID입니다. | MODEL_TASK_ID |
+| `모델 파일` | 생성된 3D 모델 파일입니다(하위 호환성 전용). | STRING |
+| `모델 task_id` | 모델 생성 프로세스를 추적하기 위한 작업 ID입니다. | MODEL_TASK_ID |
 | `GLB` | GLB 형식의 생성된 3D 모델입니다. `quad`가 활성화되면 비어 있습니다. | FILE3DGLB |
 | `FBX` | FBX 형식의 생성된 3D 모델입니다. `quad`가 활성화된 경우에만 채워집니다. | FILE3DFBX |
 

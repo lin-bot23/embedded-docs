@@ -8,15 +8,15 @@
 
 | 매개변수 | 설명 | 데이터 타입 | 필수 | 범위 |
 |-----------|-------------|-----------|----------|-------|
-| `output_mode` | 생성된 모델에 지오메트리만 포함할지 또는 색상/PBR 텍스처도 포함할지 제어합니다. "Textured"를 선택하면 아래에 텍스처 입력이 추가됩니다. "Geometry only"는 텍스처가 없는 메시를 반환하고, "Textured"는 색상/PBR 맵을 추가합니다. | DYNAMIC_COMBO | 예 | `"Geometry only"`<br>`"Textured"` |
-| `prompt` | 생성하려는 3D 모델에 대한 텍스트 설명입니다. 최대 1024자까지 입력할 수 있습니다. | STRING | 예 | Up to 1024 characters |
-| `negative_prompt` | 생성된 모델에 포함되지 않아야 할 내용에 대한 텍스트 설명입니다. 최대 255자까지 입력할 수 있습니다. | STRING | 아니요 | Up to 255 characters |
-| `image_seed` | 이미지 생성을 위한 시드 값으로, 무작위성을 제어하는 데 사용됩니다. 기본값은 42입니다. | INT | 아니요 | 0 ~ 2147483647 |
-| `face_limit` | 대상 면 수(48~20000)입니다. -1로 설정하면 Tripo가 적응형으로 선택합니다. 기본값은 -1입니다. | INT | 아니요 | -1 ~ 20000 |
-| `model_seed` | 모델 생성을 위한 시드 값으로, 무작위성을 제어하는 데 사용됩니다. 기본값은 42입니다. | INT | 아니요 | 0 ~ 2147483647 |
-| `auto_size` | 출력을 실제 세계의 미터 단위에 근사하도록 크기를 조정합니다. 기본값은 False입니다. | BOOLEAN | 아니요 | True / False |
-| `export_uv` | 생성 중 UV 언랩을 수행합니다. 지오메트리 전용 실행의 속도를 높이려면 끄십시오. 기본값은 True입니다. | BOOLEAN | 아니요 | True / False |
-| `compress_geometry` | meshopt 지오메트리 압축(EXT_meshopt_compression)을 적용합니다. 파일 크기는 줄어들지만 ComfyUI의 3D 미리보기에서 표시할 수 없으므로 편집 전에 압축을 해제해야 합니다. 기본값은 False입니다. | BOOLEAN | 아니요 | True / False |
+| `출력 모드` | 생성된 모델에 지오메트리만 포함할지 또는 색상/PBR 텍스처도 포함할지 제어합니다. "Textured"를 선택하면 아래에 텍스처 입력이 추가됩니다. "Geometry only"는 텍스처가 없는 메시를 반환하고, "Textured"는 색상/PBR 맵을 추가합니다. | DYNAMIC_COMBO | 예 | `"Geometry only"`<br>`"Textured"` |
+| `프롬프트` | 생성하려는 3D 모델에 대한 텍스트 설명입니다. 최대 1024자까지 입력할 수 있습니다. | STRING | 예 | Up to 1024 characters |
+| `네거티브 프롬프트` | 생성된 모델에 포함되지 않아야 할 내용에 대한 텍스트 설명입니다. 최대 255자까지 입력할 수 있습니다. | STRING | 아니요 | Up to 255 characters |
+| `이미지 시드` | 이미지 생성을 위한 시드 값으로, 무작위성을 제어하는 데 사용됩니다. 기본값은 42입니다. | INT | 아니요 | 0 ~ 2147483647 |
+| `페이스 제한` | 대상 면 수(48~20000)입니다. -1로 설정하면 Tripo가 적응형으로 선택합니다. 기본값은 -1입니다. | INT | 아니요 | -1 ~ 20000 |
+| `모델 시드` | 모델 생성을 위한 시드 값으로, 무작위성을 제어하는 데 사용됩니다. 기본값은 42입니다. | INT | 아니요 | 0 ~ 2147483647 |
+| `자동 크기 조정` | 출력을 실제 세계의 미터 단위에 근사하도록 크기를 조정합니다. 기본값은 False입니다. | BOOLEAN | 아니요 | True / False |
+| `UV 내보내기` | 생성 중 UV 언랩을 수행합니다. 지오메트리 전용 실행의 속도를 높이려면 끄십시오. 기본값은 True입니다. | BOOLEAN | 아니요 | True / False |
+| `지오메트리 압축` | meshopt 지오메트리 압축(EXT_meshopt_compression)을 적용합니다. 파일 크기는 줄어들지만 ComfyUI의 3D 미리보기에서 표시할 수 없으므로 편집 전에 압축을 해제해야 합니다. 기본값은 False입니다. | BOOLEAN | 아니요 | True / False |
 
 ### 지오메트리 전용 입력
 
@@ -36,8 +36,8 @@
 
 | 출력 이름 | 설명 | 데이터 타입 |
 |-------------|-------------|-----------|
-| `model_file` | 생성된 3D 모델의 파일 경로입니다. 이전 버전과의 호환성을 위해서만 유지됩니다. | STRING |
-| `model task_id` | 모델 생성 요청에 대한 고유 작업 ID입니다. | MODEL_TASK_ID |
+| `모델 파일` | 생성된 3D 모델의 파일 경로입니다. 이전 버전과의 호환성을 위해서만 유지됩니다. | STRING |
+| `모델 task_id` | 모델 생성 요청에 대한 고유 작업 ID입니다. | MODEL_TASK_ID |
 | `GLB` | 생성된 3D 모델의 GLB 형식입니다. | FILE3DGLB |
 
 > 이 문서는 AI에 의해 생성되었습니다. 오류를 발견하거나 개선 제안이 있으시면 기여해 주세요! [GitHub에서 편집](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1TextToModelNode/ko.md)

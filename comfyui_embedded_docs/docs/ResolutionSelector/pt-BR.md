@@ -8,17 +8,17 @@ O nó Resolução do Seletor calcula a largura e a altura em pixels com base em 
 
 | Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
 |-----------|-------------|-----------|----------|-------|
-| `aspect_ratio` | A proporção de aspecto para as dimensões de saída (padrão: `"1:1 (Quadrado)"`). | COMBO | Sim | `"1:1 (Quadrado)"`<br>`"2:3 (Retrato)"`<br>`"3:2 (Fotografia)"`<br>`"3:4 (Retrato Padrão)"`<br>`"4:3 (Padrão)"`<br>`"9:16 (Retrato de Cinema)"`<br>`"16:9 (Cinema)"`<br>`"21:9 (Ultrawide)"` |
+| `proporção_de_aspecto` | A proporção de aspecto para as dimensões de saída (padrão: `"1:1 (Quadrado)"`). | COMBO | Sim | `"1:1 (Quadrado)"`<br>`"2:3 (Retrato)"`<br>`"3:2 (Fotografia)"`<br>`"3:4 (Retrato Padrão)"`<br>`"4:3 (Padrão)"`<br>`"9:16 (Retrato de Cinema)"`<br>`"16:9 (Cinema)"`<br>`"21:9 (Ultrawide)"` |
 | `megapixels` | Megapixels totais alvo. 1.0 MP ≈ 1024x1024 para quadrado (padrão: 1.0). | FLOAT | Sim | 0.1 - 16.0 (passo: 0.1) |
-| `preview` | Visualização ao vivo da resolução calculada. Este widget de leitura-only atualiza automaticamente e não aceita entrada do usuário. | RESOLUÇÃO_VISUALIZAÇÃO | Não | N/A |
-| `multiple` | Multiplo mais próximo do resultado para definir a resolução selecionada (padrão: 8). | INT | Não | 8 - 128 (passo: 4) |
+| `pré-visualização` | Visualização ao vivo da resolução calculada. Este widget de leitura-only atualiza automaticamente e não aceita entrada do usuário. | RESOLUÇÃO_VISUALIZAÇÃO | Não | N/A |
+| `múltiplo` | Multiplo mais próximo do resultado para definir a resolução selecionada (padrão: 8). | INT | Não | 8 - 128 (passo: 4) |
 
 ## Saídas
 
 | Nome da Saída | Descrição | Tipo de Dados |
 |-------------|-------------|-----------|
-| `width` | Largura calculada em pixels multiplicada pelo múltiplo selecionado. | INT |
-| `height` | Altura calculada em pixels multiplicada pelo múltiplo selecionado. | INT |
+| `largura` | Largura calculada em pixels multiplicada pelo múltiplo selecionado. | INT |
+| `altura` | Altura calculada em pixels multiplicada pelo múltiplo selecionado. | INT |
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ResolutionSelector/pt-BR.md)
 

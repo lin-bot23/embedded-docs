@@ -6,10 +6,10 @@
 |-----------|-------------|-----------|----------|-------|
 | `model` | O modelo de difusão base ao qual aplicar o patch | MODEL | Sim | |
 | `model_patch` | O patch de animação pré-configurado a ser aplicado | MODEL_PATCH | Sim | |
-| `image` | A imagem de referência para guiar a geração. Apenas os primeiros 3 canais de cor (RGB) são usados | IMAGE | Sim | |
-| `strength` | A força do efeito do patch (padrão: 1.0) | FLOAT | Sim | -10.0 a 10.0 |
-| `start_percent` | A porcentagem do processo de denoising na qual o patch começa a ter efeito (padrão: 0.0) | FLOAT | Sim | 0.0 a 1.0 |
-| `end_percent` | A porcentagem do processo de denoising na qual o patch para de ter efeito (padrão: 1.0) | FLOAT | Sim | 0.0 a 1.0 |
+| `imagem` | A imagem de referência para guiar a geração. Apenas os primeiros 3 canais de cor (RGB) são usados | IMAGE | Sim | |
+| `intensidade` | A força do efeito do patch (padrão: 1.0) | FLOAT | Sim | -10.0 a 10.0 |
+| `percentual_inicial` | A porcentagem do processo de denoising na qual o patch começa a ter efeito (padrão: 0.0) | FLOAT | Sim | 0.0 a 1.0 |
+| `percentual_final` | A porcentagem do processo de denoising na qual o patch para de ter efeito (padrão: 1.0) | FLOAT | Sim | 0.0 a 1.0 |
 | `mask` | Uma máscara opcional para limitar o efeito do patch a áreas específicas da imagem | MASK | Não | |
 
 **Nota sobre restrições de parâmetros:** Se o `model_patch` tiver 4 canais de entrada e nenhuma `mask` for fornecida, uma máscara zero é automaticamente criada para coincidir com as dimensões da imagem. Se o `model_patch` não tiver 4 canais de entrada, o parâmetro `mask` é ignorado e definido como `None`. Este nó é marcado como experimental no ComfyUI.

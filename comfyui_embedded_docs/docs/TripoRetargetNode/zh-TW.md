@@ -21,8 +21,8 @@ TripoRetargetNode 可將預設動畫套用於現有的已綁定 3D 模型。它�
 
 | 輸出名 | 描述 | 資料型別 |
 |-------------|-------------|-----------|
-| `model_file` | 產生的動畫 3D 模型檔案（僅用於回溯相容）。 | STRING |
-| `retarget task_id` | 用於追蹤重定向操作的任務 ID。 | RETARGET_TASK_ID |
+| `模型檔案` | 產生的動畫 3D 模型檔案（僅用於回溯相容）。 | STRING |
+| `重定向任務 ID` | 用於追蹤重定向操作的任務 ID。 | RETARGET_TASK_ID |
 | `GLB` | GLB 格式的動畫 3D 模型。當 `out_format` 為 glb 時填充。 | FILE3DGLB |
 | `FBX` | FBX 格式的動畫 3D 模型。當 `out_format` 為 fbx 時填充。 | FILE3DFBX |
 

@@ -6,9 +6,9 @@ Switch ノードは、boolean 条件に基づいて 2 つの入力のうち 1 �
 
 | パラメータ | 説明 | データ型 | 必須 | 範囲 |
 | --- | --- | --- | --- | --- |
-| `switch` | どの入力を通すかを決定する boolean 条件です。有効（true）の場合、`on_true` 入力が選択されます。無効（false）の場合、`on_false` 入力が選択されます。 | BOOLEAN | はい |  |
-| `on_false` | `switch` が無効（false）の場合に出力へ渡されるデータです。この入力は、`switch` が false の場合にのみ必要です。 | MATCH_TYPE | いいえ |  |
-| `on_true` | `switch` が有効（true）の場合に出力へ渡されるデータです。この入力は、`switch` が true の場合にのみ必要です。 | MATCH_TYPE | いいえ |  |
+| `スイッチ` | どの入力を通すかを決定する boolean 条件です。有効（true）の場合、`on_true` 入力が選択されます。無効（false）の場合、`on_false` 入力が選択されます。 | BOOLEAN | はい |  |
+| `偽の場合` | `switch` が無効（false）の場合に出力へ渡されるデータです。この入力は、`switch` が false の場合にのみ必要です。 | MATCH_TYPE | いいえ |  |
+| `真の場合` | `switch` が有効（true）の場合に出力へ渡されるデータです。この入力は、`switch` が true の場合にのみ必要です。 | MATCH_TYPE | いいえ |  |
 
 **入力要件に関する注意：** `on_false` 入力と `on_true` 入力は、条件付きで必須です。ノードは、`switch` が true の場合にのみ `on_true` 入力を要求し、`switch` が false の場合にのみ `on_false` 入力を要求します。両方の入力は同じデータ型でなければならず、出力データ型とも一致する必要があります。選択された入力が接続されていない場合、ノードは値を出力しません。
 
@@ -16,7 +16,7 @@ Switch ノードは、boolean 条件に基づいて 2 つの入力のうち 1 �
 
 | 出力名 | 説明 | データ型 |
 | --- | --- | --- |
-| `output` | 選択されたデータです。`switch` が true の場合は `on_true` 入力の値、`switch` が false の場合は `on_false` 入力の値です。 | MATCH_TYPE |
+| `出力` | 選択されたデータです。`switch` が true の場合は `on_true` 入力の値、`switch` が false の場合は `on_false` 入力の値です。 | MATCH_TYPE |
 
 > このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ComfySwitchNode/ja.md)
 

@@ -12,9 +12,9 @@ GetImageSize lit une image d’entrée et renvoie sa largeur, sa hauteur et sa t
 
 | Nom de sortie | Description | Type de données |
 |-------------|-------------|-----------|
-| `width` | La largeur de l’image d’entrée en pixels | INT |
-| `height` | La hauteur de l’image d’entrée en pixels | INT |
-| `batch_size` | Le nombre d’images contenues dans le lot d’entrée | INT |
+| `largeur` | La largeur de l’image d’entrée en pixels | INT |
+| `hauteur` | La hauteur de l’image d’entrée en pixels | INT |
+| `taille du lot` | Le nombre d’images contenues dans le lot d’entrée | INT |
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/GetImageSize/fr.md)
 

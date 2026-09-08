@@ -21,8 +21,8 @@ TripoRetargetNode は、既にリギング済みの 3D モデルにプリセッ�
 
 | 出力名 | 説明 | データ型 |
 |-------------|-------------|-----------|
-| `model_file` | 生成されたアニメーション付き 3D モデルファイル(下位互換性のためのみ)。 | STRING |
-| `retarget task_id` | リターゲット操作を追跡するためのタスク ID。 | RETARGET_TASK_ID |
+| `リターゲットタスクID` | 生成されたアニメーション付き 3D モデルファイル(下位互換性のためのみ)。 | STRING |
+| `リターゲット タスクID` | リターゲット操作を追跡するためのタスク ID。 | RETARGET_TASK_ID |
 | `GLB` | GLB 形式のアニメーション付き 3D モデル。`out_format` が glb の場合に値が設定されます。 | FILE3DGLB |
 | `FBX` | FBX 形式のアニメーション付き 3D モデル。`out_format` が fbx の場合に値が設定されます。 | FILE3DFBX |
 

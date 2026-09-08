@@ -10,14 +10,14 @@ Tripo P1：Image to Model 使用 Tripo P1 API 將單張 2D 影像轉換為 3D �
 
 | 參數 | 說明 | 資料類型 | 必要 | 範圍 |
 |-----------|-------------|-----------|----------|-------|
-| `output_mode` | 選擇結果類型。"Geometry only" 會回傳未貼紋理的網格；"Textured" 則加入顏色與 PBR 貼圖，並顯示額外的紋理設定。 | DYNAMIC_COMBO | 是 | `"Geometry only"`<br>`"Textured"` |
-| `image` | 用於生成 3D 模型的來源 2D 影像。此節點需要單張影像，若未提供則會引發錯誤。 | IMAGE | 是 | - |
-| `enable_image_autofix` | 預先處理輸入影像，以獲得更好的生成品質。(預設值：False) | BOOLEAN | 否 | True<br>False |
-| `face_limit` | 目標面數，範圍 48-20000。-1 表示讓 Tripo 自適應選擇。(預設值：-1) | INT | 否 | -1 至 20000 |
-| `model_seed` | 用於幾何生成的種子，以便結果可重現。(預設值：42) | INT | 否 | 0 至 2147483647 |
-| `auto_size` | 將輸出縮放至接近真實世界的公尺單位。(預設值：False) | BOOLEAN | 否 | True<br>False |
-| `export_uv` | 在生成期間進行 UV 展開。若只想更快地執行僅幾何模式，請關閉此選項。(預設值：True) | BOOLEAN | 否 | True<br>False |
-| `compress_geometry` | 套用 meshopt 幾何壓縮 (EXT_meshopt_compression)。檔案較小，但 ComfyUI 的 3D 預覽無法顯示；請在編輯前先解壓縮。(預設值：False) | BOOLEAN | 否 | True<br>False |
+| `輸出模式` | 選擇結果類型。"Geometry only" 會回傳未貼紋理的網格；"Textured" 則加入顏色與 PBR 貼圖，並顯示額外的紋理設定。 | DYNAMIC_COMBO | 是 | `"Geometry only"`<br>`"Textured"` |
+| `圖片` | 用於生成 3D 模型的來源 2D 影像。此節點需要單張影像，若未提供則會引發錯誤。 | IMAGE | 是 | - |
+| `啟用圖片自動修正` | 預先處理輸入影像，以獲得更好的生成品質。(預設值：False) | BOOLEAN | 否 | True<br>False |
+| `面數上限` | 目標面數，範圍 48-20000。-1 表示讓 Tripo 自適應選擇。(預設值：-1) | INT | 否 | -1 至 20000 |
+| `模型種子` | 用於幾何生成的種子，以便結果可重現。(預設值：42) | INT | 否 | 0 至 2147483647 |
+| `自動尺寸` | 將輸出縮放至接近真實世界的公尺單位。(預設值：False) | BOOLEAN | 否 | True<br>False |
+| `匯出 UV` | 在生成期間進行 UV 展開。若只想更快地執行僅幾何模式，請關閉此選項。(預設值：True) | BOOLEAN | 否 | True<br>False |
+| `壓縮幾何` | 套用 meshopt 幾何壓縮 (EXT_meshopt_compression)。檔案較小，但 ComfyUI 的 3D 預覽無法顯示；請在編輯前先解壓縮。(預設值：False) | BOOLEAN | 否 | True<br>False |
 
 ### 紋理輸入
 
@@ -37,8 +37,8 @@ Tripo P1：Image to Model 使用 Tripo P1 API 將單張 2D 影像轉換為 3D �
 
 | 輸出名稱 | 說明 | 資料類型 |
 |-------------|-------------|-----------|
-| `model_file` | 生成的 3D 模型結果。僅為向後相容而保留。 | STRING |
-| `model task_id` | Tripo API 為已完成的生成作業回傳的唯一任務 ID。 | MODEL_TASK_ID |
+| `模型檔案` | 生成的 3D 模型結果。僅為向後相容而保留。 | STRING |
+| `模型任務 ID` | Tripo API 為已完成的生成作業回傳的唯一任務 ID。 | MODEL_TASK_ID |
 | `GLB` | 以 GLB 格式生成的 3D 模型。 | FILE3DGLB |
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1ImageToModelNode/zh-TW.md)

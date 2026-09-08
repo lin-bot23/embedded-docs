@@ -6,7 +6,7 @@ ModelPatchLoader 节点从 `model_patches` 文件夹加载模型补丁文件，�
 
 | 参数 | 描述 | 数据类型 | 是否必填 | 范围 |
 | --- | --- | --- | --- | --- |
-| `name` | 要从 model_patches 目录加载的模型补丁文件名。从列表中选择一个可用的补丁文件。 | COMBO | 是 | 动态生成的列表，包含 model_patches 文件夹中找到的所有模型补丁文件 |
+| `名称` | 要从 model_patches 目录加载的模型补丁文件名。从列表中选择一个可用的补丁文件。 | COMBO | 是 | 动态生成的列表，包含 model_patches 文件夹中找到的所有模型补丁文件 |
 
 注意：此节点标记为实验性。补丁类型会根据文件内容自动检测，因此无需手动选择类型。
 
@@ -19,4 +19,4 @@ ModelPatchLoader 节点从 `model_patches` 文件夹加载模型补丁文件，�
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ModelPatchLoader/zh.md)
 
 ---
-**Source fingerprint (SHA-256):** `2994f076f8b28e2576304d308a2a4d630a0e6cc330afbc8d11d799241dc27469`
+**Source fingerprint (SHA-256):** `069f40b1f108ecd74fc58c12aa2f74edff07f743aa1ed6352ff7bcf0c39341d4`

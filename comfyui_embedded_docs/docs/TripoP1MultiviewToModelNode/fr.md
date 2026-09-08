@@ -42,7 +42,7 @@ Ces entrées apparaissent lorsque `output_mode` est défini sur `"Textured"`.
 | Nom de sortie | Description | Type de données |
 |---------------|-------------|-----------------|
 | `model_file` | Le nom de fichier du modèle GLB généré (uniquement pour la rétrocompatibilité). | STRING |
-| `model_task_id` | L’identifiant de tâche unique pour cette demande de génération de modèle. | MODEL_TASK_ID |
+| `model task_id` | L’identifiant de tâche unique pour cette demande de génération de modèle. | MODEL_TASK_ID |
 | `GLB` | Le modèle 3D généré au format GLB. | FILE3DGLB |
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1MultiviewToModelNode/fr.md)

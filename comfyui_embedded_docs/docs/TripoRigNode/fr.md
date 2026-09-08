@@ -6,7 +6,7 @@ Ce nœud prend un modèle 3D Tripo existant et en crée une version riggée (ave
 
 | Paramètre | Description | Type de données | Requis | Plage |
 |-----------|-------------|-----------|----------|-------|
-| `original_model_task_id` | L’identifiant de tâche du modèle 3D d’origine à rigger. Il s’agit généralement de l’identifiant produit par un nœud précédent de génération de modèle Tripo. | MODEL_TASK_ID | Oui | - |
+| `ID_tâche_modèle_original` | L’identifiant de tâche du modèle 3D d’origine à rigger. Il s’agit généralement de l’identifiant produit par un nœud précédent de génération de modèle Tripo. | MODEL_TASK_ID | Oui | - |
 | `model_version` | Version du modèle de rig à utiliser. v1.0 : personnages humanoïdes (bipèdes) uniquement, plus de 90 préréglages d’animation. v2.5 : créatures non humanoïdes (quadrupèdes, hexapodes, octopodes, aviaires, serpentines, aquatiques). Par défaut : `v1.0-20240301`. | COMBO | Non | "v1.0-20240301"<br>"v2.5-20260210" |
 | `rig_type` | Type de squelette. « auto » lance d’abord une vérification gratuite de rigging de Tripo et utilise le type recommandé. Les autres valeurs imposent un type de squelette spécifique, par exemple « biped » pour les personnages humanoïdes. Par défaut : « auto ». | COMBO | Non | "auto"<br>"biped"<br>"quadruped"<br>"hexapod"<br>"octopod"<br>"avian"<br>"serpentine"<br>"aquatic" |
 | `spec` | Convention de nommage des os : Tripo native ou compatible Mixamo. Tripo ne peut pas réutiliser (retarget) ses préréglages d’animation sur un rig v1.0 créé avec la spécification mixamo ; utilisez tripo pour le nœud « Tripo: Retarget rigged model ». Par défaut : « tripo ». | COMBO | Non | "tripo"<br>"mixamo" |
@@ -20,7 +20,7 @@ Ce nœud prend un modèle 3D Tripo existant et en crée une version riggée (ave
 
 | Nom de sortie | Description | Type de données |
 |-------------|-------------|-----------|
-| `model_file` | Le fichier de modèle 3D riggé généré. Conservé uniquement pour la rétrocompatibilité. | STRING |
+| `fichier_modèle` | Le fichier de modèle 3D riggé généré. Conservé uniquement pour la rétrocompatibilité. | STRING |
 | `rig task_id` | L’identifiant de tâche pour suivre le processus de génération du rig. | RIG_TASK_ID |
 | `GLB` | Le modèle riggé sous forme de fichier 3D GLB. Rempli lorsque `out_format` est « glb ». | FILE3DGLB |
 | `FBX` | Le modèle riggé sous forme de fichier 3D FBX. Rempli lorsque `out_format` est « fbx ». | FILE3DFBX |

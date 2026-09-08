@@ -1,50 +1,36 @@
 # Opciones Avanzadas de OpenAI ChatGPT
 
-Eres un experto en traducción técnica especializado en documentación de nodos ComfyUI del inglés al español.
+# Opciones Avanzadas de ChatGPT de OpenAI
 
-## Reglas de Traducción
+El nodo Opciones Avanzadas de ChatGPT de OpenAI permite configurar opciones adicionales para los Nodos de Chat de OpenAI. Este nodo proporciona configuraciones avanzadas que controlan cómo el modelo genera respuestas, incluyendo el comportamiento de truncamiento, límites de longitud de salida y instrucciones personalizadas.
 
-1. **Contenido que NO debe traducirse:**
-   - Nombres de parámetros entre comillas invertidas: `image`, `seed`, `model`
-   - Tipos de datos en MAYÚSCULAS: IMAGE, STRING, INT, FLOAT, MODEL, CONDITIONING, etc.
-   - Valores en columna Range: números, "auto", nombres de opciones
-   - Código, rutas de archivos
+## Resumen
 
-2. **Contenido que SÍ debe traducirse:**
-   - Títulos de secciones: ## Descripción general, ## Entradas, ## Salidas
-   - Todo el texto descriptivo y explicativo
-   - Descripciones de parámetros
-
-3. **Calidad de traducción:**
-   - Usar español estándar y neutral
-   - Mantener tono profesional pero accesible
-   - Asegurar precisión técnica
-   - Usar terminología técnica estándar en español
-
-4. **Formato:**
-   - Mantener todo el formato Markdown
-   - Preservar estructura de tablas
-   - No agregar ninguna nota o enlace al inicio del documento (será agregado automáticamente)
-
-Por favor traduce la siguiente documentación al español, sin incluir la nota inicial del documento:
-
-El nodo OpenAIChatConfig permite establecer opciones de configuración adicionales para el Nodo de Chat OpenAI. Proporciona ajustes avanzados que controlan cómo el modelo genera respuestas, incluyendo el comportamiento de truncamiento, los límites de longitud de salida y las instrucciones personalizadas.
+El nodo Opciones Avanzadas de ChatGPT de OpenAI está diseñado para mejorar la funcionalidad de los Nodos de Chat de OpenAI, permitiendo a los usuarios especificar opciones de configuración avanzadas. Estas configuraciones pueden ayudar a ajustar la generación de respuestas del modelo a requisitos específicos.
 
 ## Entradas
 
-| Parámetro | Descripción | Tipo de Dato | Obligatorio | Rango |
-| --- | --- | --- | --- | --- |
-| `truncamiento` | La estrategia de truncamiento a utilizar para la respuesta del modelo. auto: Si el contexto de esta respuesta y las anteriores supera el tamaño de la ventana de contexto del modelo, el modelo truncará la respuesta para ajustarse a la ventana de contexto eliminando elementos de entrada en medio de la conversación. disabled: Si una respuesta del modelo supera el tamaño de la ventana de contexto para un modelo, la solicitud fallará con un error 400 (valor predeterminado: "auto") | COMBO | Sí | `"auto"`<br>`"disabled"` |
-| `tokens_salida_max` | Un límite superior para la cantidad de tokens que se pueden generar para una respuesta, incluyendo los tokens de salida visibles (valor predeterminado: 4096) | INT | No | 16 a 16384 |
-| `instrucciones` | Instrucciones para el modelo sobre cómo generar la respuesta (se admite entrada multilínea) | STRING | No | - |
+| Parámetro | Descripción | Tipo de Datos | Requerido | Rango |
+|-----------|-------------|-----------|----------|-------|
+| `truncamiento` | La estrategia de truncamiento a usar para la respuesta del modelo. auto: Si el contexto de esta respuesta y las anteriores excede el tamaño de la ventana de contexto del modelo, el modelo truncará la respuesta para ajustarse a la ventana de contexto eliminando elementos de entrada en el medio de la conversación. disabled: Si una respuesta del modelo excederá el tamaño de la ventana de contexto de un modelo, la solicitud fallará con un error 400 (por defecto: "auto") | STRING | Sí | "auto"<br>"disabled" |
+| `tokens_salida_max` | Un límite superior para el número de tokens que pueden generarse para una respuesta, incluyendo tokens de salida visibles y tokens de razonamiento (por defecto: 4096) | INT | No | 16 a 16384 |
+| `instrucciones` | Instrucciones para el modelo sobre cómo generar la respuesta (se admite entrada multilinea) | STRING | No | - |
+| `reasoning_effort` | Cuánto razona el modelo antes de responder. 'default' deja la elección al modelo. Los niveles de soporte varían según el modelo: GPT-6 Astra low-max, GPT-5.6 none-max (sin mínimo), GPT-5.5 none-xhigh, GPT-5.5 Pro medium-xhigh, GPT-5 minimal-high, o-series low-high; GPT-4.1 no tiene razonamiento. Los niveles no soportados se rechazan antes de que se envíe la solicitud (por defecto: "default") | STRING | No | "default"<br>"none"<br>"minimal"<br>"low"<br>"medium"<br>"high"<br>"xhigh"<br>"max" |
 
 ## Salidas
 
-| Nombre de Salida | Descripción | Tipo de Dato |
-| --- | --- | --- |
-| `OPENAI_CHAT_CONFIG` | Objeto de configuración que contiene los ajustes especificados para su uso con Nodos de Chat OpenAI | OPENAI_CHAT_CONFIG |
+| Nombre de Salida | Descripción | Tipo de Datos |
+|-------------|-------------|-----------|
+| `OPENAI_CHAT_CONFIG` | Objeto de configuración que contiene las configuraciones especificadas para su uso con los Nodos de Chat de OpenAI | OPENAI_CHAT_CONFIG |
+
+## Notas
+
+- El parámetro `max_output_tokens` establece un límite superior en el número total de tokens, incluyendo tanto tokens de salida visibles como tokens de razonamiento.
+- El parámetro `reasoning_effort` permite especificar el nivel de razonamiento que debe aplicar el modelo antes de generar una respuesta. Los niveles de soporte varían dependiendo del modelo utilizado.
+- El parámetro `instructions` se puede usar para proporcionar instrucciones detalladas al modelo para guiar el proceso de generación de respuestas.
+- El parámetro `truncation` determina si el modelo debe truncar automáticamente la respuesta si excede el tamaño de la ventana de contexto o fallar con un error 400.
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/OpenAIChatConfig/es.md)
 
 ---
-**Source fingerprint (SHA-256):** `6d956aa1bc7f822c18ddaa55cd2345dad947fd93833de25a957f49878484af97`
+**Source fingerprint (SHA-256):** `37d18a13b9d5bb36359603e5bab5918e7fea200ac552ea8439fff1488a88263c`

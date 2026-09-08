@@ -6,17 +6,17 @@
 
 | 参数 | 描述 | 数据类型 | 是否必需 | 范围 |
 |------|------|----------|----------|------|
-| `aspect_ratio` | 输出尺寸的宽高比（默认：`"1:1 (Square)"`）。 | COMBO | 是 | `"1:1 (Square)"`<br>`"2:3 (Portrait Photo)"`<br>`"3:2 (Photo)"`<br>`"3:4 (Portrait Standard)"`<br>`"4:3 (Standard)"`<br>`"9:16 (Portrait Widescreen)"`<br>`"16:9 (Widescreen)"`<br>`"21:9 (Ultrawide)"` |
-| `megapixels` | 目标总百万像素数。对于正方形，1.0 MP ≈ 1024x1024（默认：1.0）。 | FLOAT | 是 | 0.1 - 16.0 (step: 0.1) |
-| `preview` | 计算输出分辨率的实时预览。此只读控件会自动更新，不接受用户输入。 | RESOLUTION_PREVIEW | 否 | N/A |
-| `multiple` | 将所选分辨率设置为与计算结果最接近的该数值的倍数（默认：8）。 | INT | 否 | 8 - 128 (step: 4) |
+| `宽高比` | 输出尺寸的宽高比（默认：`"1:1 (Square)"`）。 | COMBO | 是 | `"1:1 (Square)"`<br>`"2:3 (Portrait Photo)"`<br>`"3:2 (Photo)"`<br>`"3:4 (Portrait Standard)"`<br>`"4:3 (Standard)"`<br>`"9:16 (Portrait Widescreen)"`<br>`"16:9 (Widescreen)"`<br>`"21:9 (Ultrawide)"` |
+| `百万像素` | 目标总百万像素数。对于正方形，1.0 MP ≈ 1024x1024（默认：1.0）。 | FLOAT | 是 | 0.1 - 16.0 (step: 0.1) |
+| `预览` | 计算输出分辨率的实时预览。此只读控件会自动更新，不接受用户输入。 | RESOLUTION_PREVIEW | 否 | N/A |
+| `倍数` | 将所选分辨率设置为与计算结果最接近的该数值的倍数（默认：8）。 | INT | 否 | 8 - 128 (step: 4) |
 
 ## 输出
 
 | 输出名称 | 描述 | 数据类型 |
 |----------|------|----------|
-| `width` | 计算出的像素宽度，按所选倍数取整。 | INT |
-| `height` | 计算出的像素高度，按所选倍数取整。 | INT |
+| `宽度` | 计算出的像素宽度，按所选倍数取整。 | INT |
+| `高度` | 计算出的像素高度，按所选倍数取整。 | INT |
 
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ResolutionSelector/zh.md)
 

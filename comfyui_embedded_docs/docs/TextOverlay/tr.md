@@ -13,7 +13,7 @@ Bu düğüm, bir görüntü veya görüntü grubu üzerine metin çizer. Özelle
 | `konum` | Metnin görüntü üzerindeki dikey konumu (varsayılan: "top") | COMBO | Evet | `"top"`<br>`"bottom"` |
 | `hizalama` | Metnin yatay hizalaması (varsayılan: "left") | COMBO | Evet | `"left"`<br>`"center"`<br>`"right"` |
 | `dış çizgi` | Metnin etrafına siyah bir anahat çizer (varsayılan: True) | BOOLEAN | Evet | |
-Not: `text` boşsa veya yalnızca boşluk içeriyorsa, düğüm giriş görüntülerini değiştirmeden döndürür. Aynı metin yerleşimi yığındaki her görüntüye uygulanır.
+Not: `text` boşsa veya yalnızca boşluk içeriyorsa, düğüm giriş görüntülerini değiştirmeden döndürür. Aynı metin yerleşimi yığındaki her görüntüye uygulanır. Alfa kanalına (RGBA) sahip görüntülerde metin, source-over alfa harmanlaması ile birleştirilir, böylece mevcut şeffaflık korunur.
 
 ## Çıktılar
 
@@ -24,4 +24,4 @@ Not: `text` boşsa veya yalnızca boşluk içeriyorsa, düğüm giriş görünt�
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TextOverlay/tr.md)
 
 ---
-**Source fingerprint (SHA-256):** `baffaa4ec9d3565e3533673658399271234def8c49e2e4a5f16767ec3f98cb22`
+**Source fingerprint (SHA-256):** `b347f563fa26e098a310892f3e7fff41b83722800d67e5af9debad14fc9d01e7`

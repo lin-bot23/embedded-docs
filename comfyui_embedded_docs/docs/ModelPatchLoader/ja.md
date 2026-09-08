@@ -6,7 +6,7 @@ ModelPatchLoader ノードは、`model_patches` フォルダからモデルパ�
 
 | パラメータ | 説明 | データ型 | 必須 | 範囲 |
 | --- | --- | --- | --- | --- |
-| `name` | `model_patches` ディレクトリから読み込むモデルパッチのファイル名です。利用可能なパッチファイルをリストから選択してください。 | COMBO | はい | `model_patches` フォルダ内で見つかったすべてのモデルパッチファイルの動的生成リスト |
+| `名前` | `model_patches` ディレクトリから読み込むモデルパッチのファイル名です。利用可能なパッチファイルをリストから選択してください。 | COMBO | はい | `model_patches` フォルダ内で見つかったすべてのモデルパッチファイルの動的生成リスト |
 
 注：このノードは実験的としてマークされています。パッチの種類はファイルの内容から自動的に検出されるため、手動での種類選択は不要です。
 
@@ -19,4 +19,4 @@ ModelPatchLoader ノードは、`model_patches` フォルダからモデルパ�
 > このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ModelPatchLoader/ja.md)
 
 ---
-**Source fingerprint (SHA-256):** `2994f076f8b28e2576304d308a2a4d630a0e6cc330afbc8d11d799241dc27469`
+**Source fingerprint (SHA-256):** `069f40b1f108ecd74fc58c12aa2f74edff07f743aa1ed6352ff7bcf0c39341d4`

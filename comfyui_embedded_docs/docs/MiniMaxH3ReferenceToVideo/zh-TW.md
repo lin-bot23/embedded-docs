@@ -9,15 +9,15 @@ MiniMax H3 Reference to Video 節點會建立 MiniMax H3 參考轉影片生成�
 | `clip` | 用於將提示詞標記化，並將參考媒體編碼為條件 token 的 CLIP 模型。 | CLIP | 是 | |
 | `vae` | 用於編碼參考圖片與參考影片幀的影片 VAE。若未提供，參考圖片/影片只會做為文字編碼器的條件輸入。 | VAE | 否 | |
 | `audio_vae` | 用於編碼參考音訊的音訊 VAE。音訊會重新取樣至音訊 VAE 的取樣率（預設 32 kHz）。若未提供，參考音訊只會做為文字編碼器的條件輸入。 | VAE | 否 | |
-| `prompt` | 影片的文字提示詞。可透過 `<Picture i>`、`<Video k>` 與 `<Audio j>` 標籤引用參考媒體（每種類型從 1 開始編號）。支援多行與動態提示詞。 | STRING | 是 | |
-| `width` | 生成影片的寬度（像素），預設 1344。 | INT | 是 | 32 至 16384 (步進值 32) |
-| `height` | 生成影片的高度（像素），預設 768。 | INT | 是 | 32 至 16384 (步進值 32) |
-| `length` | 以 24 fps 計算的幀數；124 約為 5 秒，訓練範圍約為 124-362（預設 124）。 | INT | 是 | 5 至 3600 (步進值 17) |
-| `ref_image_size` | 參考圖片的尺寸調整方式。`match` 只將每張參考圖片依長寬比縮小至生成畫面的像素面積；`max` 使用參考管線的 2048px 短邊以獲得最佳身分保真度。參考 token 會伴隨每個取樣步驟，因此 `max` 可能慢上數倍（預設：`match`）。 | COMBO | 是 | `"match"`<br>`"max"` |
-| `ref_images` | 可擴充插槽：最多連接 9 張參考圖片（`ref_image_1` ... `ref_image_9`）。參考圖片若超過 2048px 短邊便會縮小，且絕不放大。 | IMAGE | 否 | 0 至 9 |
-| `ref_videos` | 可擴充插槽：最多連接 3 部參考影片（`ref_video_1` ... `ref_video_3`）。參考影片幀（24 fps，時長 2-15 秒）。 | IMAGE | 否 | 0 至 3 |
-| `ref_video_audios` | 可擴充插槽：最多連接 3 段配樂（`ref_video_audio_1` ... `ref_video_audio_3`）。配樂對應於相同編號的參考影片。 | AUDIO | 否 | 0 至 3 |
-| `ref_audios` | 可擴充插槽：最多連接 3 段獨立參考音訊（`ref_audio_1` ... `ref_audio_3`）。 | AUDIO | 否 | 0 至 3 |
+| `提示詞` | 影片的文字提示詞。可透過 `<Picture i>`、`<Video k>` 與 `<Audio j>` 標籤引用參考媒體（每種類型從 1 開始編號）。支援多行與動態提示詞。 | STRING | 是 | |
+| `寬度` | 生成影片的寬度（像素），預設 1344。 | INT | 是 | 32 至 16384 (步進值 32) |
+| `高度` | 生成影片的高度（像素），預設 768。 | INT | 是 | 32 至 16384 (步進值 32) |
+| `長度` | 以 24 fps 計算的幀數；124 約為 5 秒，訓練範圍約為 124-362（預設 124）。 | INT | 是 | 5 至 3600 (步進值 17) |
+| `參考圖片尺寸` | 參考圖片的尺寸調整方式。`match` 只將每張參考圖片依長寬比縮小至生成畫面的像素面積；`max` 使用參考管線的 2048px 短邊以獲得最佳身分保真度。參考 token 會伴隨每個取樣步驟，因此 `max` 可能慢上數倍（預設：`match`）。 | COMBO | 是 | `"match"`<br>`"max"` |
+| `參考圖片` | 可擴充插槽：最多連接 9 張參考圖片（`ref_image_1` ... `ref_image_9`）。參考圖片若超過 2048px 短邊便會縮小，且絕不放大。 | IMAGE | 否 | 0 至 9 |
+| `參考影片` | 可擴充插槽：最多連接 3 部參考影片（`ref_video_1` ... `ref_video_3`）。參考影片幀（24 fps，時長 2-15 秒）。 | IMAGE | 否 | 0 至 3 |
+| `參考影片音訊` | 可擴充插槽：最多連接 3 段配樂（`ref_video_audio_1` ... `ref_video_audio_3`）。配樂對應於相同編號的參考影片。 | AUDIO | 否 | 0 至 3 |
+| `參考音訊` | 可擴充插槽：最多連接 3 段獨立參考音訊（`ref_audio_1` ... `ref_audio_3`）。 | AUDIO | 否 | 0 至 3 |
 
 注意事項：
 
@@ -30,7 +30,7 @@ MiniMax H3 Reference to Video 節點會建立 MiniMax H3 參考轉影片生成�
 
 | 輸出名稱 | 描述 | 資料型別 |
 |-------------|-------------|-----------|
-| `positive` | 包含已編碼提示詞的條件。當提供參考媒體與相關 VAE 時，也會包含 MiniMax H3 模型使用的已編碼參考圖片、影片與音訊內容。 | CONDITIONING |
+| `正向` | 包含已編碼提示詞的條件。當提供參考媒體與相關 VAE 時，也會包含 MiniMax H3 模型使用的已編碼參考圖片、影片與音訊內容。 | CONDITIONING |
 | `latent` | 空的音訊-影片 latent，具有所要求的 `width`、`height` 與 `length`（幀數）。 | LATENT |
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/MiniMaxH3ReferenceToVideo/zh-TW.md)

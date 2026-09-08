@@ -10,14 +10,14 @@ Estos parámetros están siempre disponibles.
 
 | Parámetro | Descripción | Tipo de datos | Obligatorio | Rango |
 |-----------|-------------|---------------|-------------|-------|
-| `output_mode` | Selecciona el tipo de resultado. "Geometry only" devuelve una malla sin texturizar; "Textured" añade color y mapas PBR y muestra ajustes adicionales de textura. | DYNAMIC_COMBO | Sí | `"Geometry only"`<br>`"Textured"` |
-| `image` | La imagen 2D de origen utilizada para generar el modelo 3D. El nodo requiere una sola imagen y devuelve un error si no se proporciona ninguna. | IMAGE | Sí | - |
-| `enable_image_autofix` | Preprocesa la imagen de entrada para mejorar la calidad de generación. (por defecto: False) | BOOLEAN | No | True<br>False |
-| `face_limit` | Número de caras objetivo, entre 48 y 20000. -1 permite que Tripo lo seleccione de forma adaptativa. (por defecto: -1) | INT | No | -1 a 20000 |
-| `model_seed` | Semilla utilizada para la generación de geometría, de modo que los resultados puedan reproducirse. (por defecto: 42) | INT | No | 0 a 2147483647 |
-| `auto_size` | Escala la salida para que se aproxime a los metros del mundo real. (por defecto: False) | BOOLEAN | No | True<br>False |
-| `export_uv` | Despliegue UV durante la generación. Se puede desactivar para acelerar las ejecuciones solo de geometría. (por defecto: True) | BOOLEAN | No | True<br>False |
-| `compress_geometry` | Aplica compresión de geometría meshopt (EXT_meshopt_compression). Genera archivos más pequeños, pero la vista previa 3D de ComfyUI no puede mostrarlos; deben descomprimirse antes de editarlos. (por defecto: False) | BOOLEAN | No | True<br>False |
+| `modo_de_salida` | Selecciona el tipo de resultado. "Geometry only" devuelve una malla sin texturizar; "Textured" añade color y mapas PBR y muestra ajustes adicionales de textura. | DYNAMIC_COMBO | Sí | `"Geometry only"`<br>`"Textured"` |
+| `imagen` | La imagen 2D de origen utilizada para generar el modelo 3D. El nodo requiere una sola imagen y devuelve un error si no se proporciona ninguna. | IMAGE | Sí | - |
+| `activar_autocorrección_imagen` | Preprocesa la imagen de entrada para mejorar la calidad de generación. (por defecto: False) | BOOLEAN | No | True<br>False |
+| `límite_de_caras` | Número de caras objetivo, entre 48 y 20000. -1 permite que Tripo lo seleccione de forma adaptativa. (por defecto: -1) | INT | No | -1 a 20000 |
+| `semilla_modelo` | Semilla utilizada para la generación de geometría, de modo que los resultados puedan reproducirse. (por defecto: 42) | INT | No | 0 a 2147483647 |
+| `auto_escala` | Escala la salida para que se aproxime a los metros del mundo real. (por defecto: False) | BOOLEAN | No | True<br>False |
+| `exportar_uv` | Despliegue UV durante la generación. Se puede desactivar para acelerar las ejecuciones solo de geometría. (por defecto: True) | BOOLEAN | No | True<br>False |
+| `comprimir_geometría` | Aplica compresión de geometría meshopt (EXT_meshopt_compression). Genera archivos más pequeños, pero la vista previa 3D de ComfyUI no puede mostrarlos; deben descomprimirse antes de editarlos. (por defecto: False) | BOOLEAN | No | True<br>False |
 
 ### Entradas de textura
 
@@ -37,8 +37,8 @@ Nota: cuando `output_mode` es "Geometry only", la texturización está deshabili
 
 | Nombre de salida | Descripción | Tipo de datos |
 |------------------|-------------|---------------|
-| `model_file` | El resultado del modelo 3D generado. Se mantiene únicamente por compatibilidad con versiones anteriores. | STRING |
-| `model task_id` | El ID de tarea único devuelto por la API de Tripo para el trabajo de generación completado. | MODEL_TASK_ID |
+| `archivo_modelo` | El resultado del modelo 3D generado. Se mantiene únicamente por compatibilidad con versiones anteriores. | STRING |
+| `id_tarea_modelo` | El ID de tarea único devuelto por la API de Tripo para el trabajo de generación completado. | MODEL_TASK_ID |
 | `GLB` | El modelo 3D generado en formato GLB. | FILE3DGLB |
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1ImageToModelNode/es.md)

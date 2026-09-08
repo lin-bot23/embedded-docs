@@ -6,7 +6,7 @@ Ce nœud décode les représentations latentes de forme Trellis2 en un maillage 
 
 | Paramètre | Description | Type de données | Requis | Plage |
 |-----------|-------------|-----------------|--------|-------|
-| `samples` | Les échantillons latents à décoder, y compris le tenseur d’échantillons et les données de coordonnées éparses. Le dictionnaire latent peut également contenir des champs facultatifs : `coord_counts` pour les formes par lots, `coord_resolution` pour contrôler la résolution du maillage, et `model_frame` pour l’orientation des coordonnées. | LATENT | Oui | None |
+| `échantillons` | Les échantillons latents à décoder, y compris le tenseur d’échantillons et les données de coordonnées éparses. Le dictionnaire latent peut également contenir des champs facultatifs : `coord_counts` pour les formes par lots, `coord_resolution` pour contrôler la résolution du maillage, et `model_frame` pour l’orientation des coordonnées. | LATENT | Oui | None |
 | `vae` | Le modèle VAE utilisé pour décoder le latent de forme en un maillage. | VAE | Oui | None |
 
 ### Remarques sur `samples`
@@ -20,7 +20,7 @@ Ce nœud décode les représentations latentes de forme Trellis2 en un maillage 
 
 | Nom de sortie | Description | Type de données |
 |---------------|-------------|-----------------|
-| `mesh` | Le maillage 3D décodé, contenant les positions des sommets et les indices de faces. Lors du décodage de plusieurs formes, les maillages sont renvoyés sous la forme d’un seul tenseur empilé s’ils partagent tous la même forme, ou d’un lot empaqueté de taille variable sinon. | MESH |
+| `maillage` | Le maillage 3D décodé, contenant les positions des sommets et les indices de faces. Lors du décodage de plusieurs formes, les maillages sont renvoyés sous la forme d’un seul tenseur empilé s’ils partagent tous la même forme, ou d’un lot empaqueté de taille variable sinon. | MESH |
 | `shape_subdivides` | Données de subdivision de forme produites à chaque étape du processus de décodage. | SHAPE_SUBDIVIDES |
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/VaeDecodeShapeTrellis/fr.md)

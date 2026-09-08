@@ -6,7 +6,7 @@ Este nó decodifica um latente de textura Trellis2 em cores de voxels usando um 
 
 | Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
 |-----------|-------------|-----------|----------|-------|
-| `samples` | O latente de textura a ser decodificado. Contém amostras de características e coordenadas esparsas, e pode incluir metadados opcionais, como contagens de coordenadas, frame de modelo e resolução de coordenadas. | LATENT | Sim | — |
+| `Amostras` | O latente de textura a ser decodificado. Contém amostras de características e coordenadas esparsas, e pode incluir metadados opcionais, como contagens de coordenadas, frame de modelo e resolução de coordenadas. | LATENT | Sim | — |
 | `vae` | O VAE Trellis2 usado para decodificar o latente de textura em cores de voxels. | VAE | Sim | — |
 | `shape_subdivides` | Informações de forma usadas para guiar a reconstrução de maior detalhe durante a decodificação. Ajuda a preservar a consistência da estrutura em resoluções mais altas. | SHAPE_SUBDIVIDES | Sim | — |
 

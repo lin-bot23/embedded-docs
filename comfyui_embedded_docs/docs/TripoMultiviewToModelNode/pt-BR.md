@@ -6,21 +6,21 @@ Este nó gera modelos 3D de forma síncrona usando a API da Tripo, processando a
 
 | Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
 |-----------|-------------|-----------|----------|-------|
-| `image` | Imagem da vista da frente do objeto. | IMAGEM | Sim | - |
-| `image_left` | Imagem da vista da esquerda do objeto. | IMAGEM | Não | - |
-| `image_back` | Imagem da vista da traseira do objeto. | IMAGEM | Não | - |
-| `image_right` | Imagem da vista da direita do objeto. | IMAGEM | Não | - |
-| `model_version` | Versão do modelo a ser usada para a geração. | COMBO | Não | Múltiplas opções disponíveis |
-| `orientation` | Configuração de orientação para o modelo 3D (padrão: `"default"`). | COMBO | Não | Múltiplas opções disponíveis |
-| `texture` | Gera mapas de textura. Desligar retorna geometria nua e ignora PBR. (padrão: True) | BOOLEAN | Não | - |
+| `imagem` | Imagem da vista da frente do objeto. | IMAGEM | Sim | - |
+| `imagem_esquerda` | Imagem da vista da esquerda do objeto. | IMAGEM | Não | - |
+| `imagem_traseira` | Imagem da vista da traseira do objeto. | IMAGEM | Não | - |
+| `imagem_direita` | Imagem da vista da direita do objeto. | IMAGEM | Não | - |
+| `versão_do_modelo` | Versão do modelo a ser usada para a geração. | COMBO | Não | Múltiplas opções disponíveis |
+| `orientação` | Configuração de orientação para o modelo 3D (padrão: `"default"`). | COMBO | Não | Múltiplas opções disponíveis |
+| `textura` | Gera mapas de textura. Desligar retorna geometria nua e ignora PBR. (padrão: True) | BOOLEAN | Não | - |
 | `pbr` | Mapas de material PBR (cor de base, metálico, rugosidade, normal). Requer textura. (padrão: True) | BOOLEAN | Não | - |
-| `model_seed` | Semente aleatória para a geração do modelo (padrão: 42). | INT | Não | 0 a 2,147,483,647 |
-| `texture_seed` | Semente aleatória para a geração da textura (padrão: 42). | INT | Não | 0 a 2,147,483,647 |
-| `texture_quality` | Nível de qualidade para a geração da textura (padrão: `"standard"`). `"detailed"` = Texturas em HD, `"extreme"` = Texturas Ultra em 8K. | COMBO | Não | `"standard"`<br>`"detailed"`<br>`"extreme"` |
-| `texture_alignment` | Método usado para alinhar as texturas ao modelo (padrão: `"original_image"`). | COMBO | Não | `"original_image"`<br>`"geometry"` |
-| `face_limit` | Número máximo de faces. -1 permite que a Tripo escolha adaptativamente (aproximadamente 1,4M faces na versão 3.x padrão, 2M na detalhada). A Tripo limita silenciosamente: v2.5 em 500.000, malhas quadrangulares em 150.000. (padrão: -1) | INT | Não | -1 a 2.000.000 |
+| `semente_do_modelo` | Semente aleatória para a geração do modelo (padrão: 42). | INT | Não | 0 a 2,147,483,647 |
+| `semente_da_textura` | Semente aleatória para a geração da textura (padrão: 42). | INT | Não | 0 a 2,147,483,647 |
+| `qualidade_da_textura` | Nível de qualidade para a geração da textura (padrão: `"standard"`). `"detailed"` = Texturas em HD, `"extreme"` = Texturas Ultra em 8K. | COMBO | Não | `"standard"`<br>`"detailed"`<br>`"extreme"` |
+| `alinhamento_da_textura` | Método usado para alinhar as texturas ao modelo (padrão: `"original_image"`). | COMBO | Não | `"original_image"`<br>`"geometry"` |
+| `limite_de_faces` | Número máximo de faces. -1 permite que a Tripo escolha adaptativamente (aproximadamente 1,4M faces na versão 3.x padrão, 2M na detalhada). A Tripo limita silenciosamente: v2.5 em 500.000, malhas quadrangulares em 150.000. (padrão: -1) | INT | Não | -1 a 2.000.000 |
 | `quad` | Saída de malha quadrangular. A Tripo fornece malhas quadrangulares em FBX, então o resultado chega no saída FBX e a saída GLB permanece vazia. (padrão: False) | BOOLEAN | Não | - |
-| `geometry_quality` | Nível de qualidade para a geração da geometria (padrão: `"standard"`). | COMBO | Não | `"standard"`<br>`"detailed"` |
+| `qualidade_da_geometria` | Nível de qualidade para a geração da geometria (padrão: `"standard"`). | COMBO | Não | `"standard"`<br>`"detailed"` |
 | `smart_low_poly` | Malha low-poly com estilo topologia manualmente fabricada limpa (500-20.000 faces, quadrangulares 500-10.000). Melhor para sujeitos simples; os complexos podem falhar. (padrão: False) | BOOLEAN | Não | - |
 | `auto_size` | Escala modelos texturizados para o tamanho real do mundo em metros. A Tripo armazena o tamanho como a transformação da cena do modelo e cozinha isso quando o modelo é convertido, rigado ou retargetado; ignorado sem textura. (padrão: False) | BOOLEAN | Não | - |
 
@@ -30,8 +30,8 @@ Este nó gera modelos 3D de forma síncrona usando a API da Tripo, processando a
 
 | Nome da Saída | Descrição | Tipo de Dados |
 |-------------|-------------|-----------|
-| `model_file` | Caminho ou identificador do arquivo do modelo 3D gerado (apenas para compatibilidade reversa). | STRING |
-| `model task_id` | Identificador da tarefa para rastreamento do processo de geração do modelo. | ID_TAREFA_MODELO |
+| `arquivo_do_modelo` | Caminho ou identificador do arquivo do modelo 3D gerado (apenas para compatibilidade reversa). | STRING |
+| `task_id_do_modelo` | Identificador da tarefa para rastreamento do processo de geração do modelo. | ID_TAREFA_MODELO |
 | `GLB` | O modelo 3D gerado no formato GLB. Fica vazio quando `quad` está ativado. | ARQUIVO3DGLB |
 | `FBX` | O modelo 3D gerado no formato FBX. Somente preenchido quando `quad` está ativado. | ARQUIVO3DFBX |
 

@@ -6,13 +6,13 @@ AnimaLLLiteApply applique un patch d'animation léger à un modèle de diffusion
 
 | Paramètre | Description | Type de données | Requis | Plage |
 |-----------|-------------|-----------------|--------|-------|
-| `model` | Le modèle de diffusion de base auquel appliquer le patch | MODEL | Oui | |
-| `model_patch` | Le patch d'animation préconfiguré à appliquer | MODEL_PATCH | Oui | |
+| `modèle` | Le modèle de diffusion de base auquel appliquer le patch | MODEL | Oui | |
+| `correctif du modèle` | Le patch d'animation préconfiguré à appliquer | MODEL_PATCH | Oui | |
 | `image` | L'image de référence pour guider la génération. Seuls les 3 premiers canaux de couleur (RVB) sont utilisés | IMAGE | Oui | |
-| `strength` | La force de l'effet du patch (par défaut : 1.0) | FLOAT | Oui | -10.0 à 10.0 |
-| `start_percent` | Le pourcentage du processus de débruitage à partir duquel le patch commence à agir (par défaut : 0.0) | FLOAT | Oui | 0.0 à 1.0 |
-| `end_percent` | Le pourcentage du processus de débruitage auquel le patch cesse d'agir (par défaut : 1.0) | FLOAT | Oui | 0.0 à 1.0 |
-| `mask` | Un masque optionnel pour limiter l'effet du patch à des zones spécifiques de l'image | MASK | Non | |
+| `intensité` | La force de l'effet du patch (par défaut : 1.0) | FLOAT | Oui | -10.0 à 10.0 |
+| `pourcentage de début` | Le pourcentage du processus de débruitage à partir duquel le patch commence à agir (par défaut : 0.0) | FLOAT | Oui | 0.0 à 1.0 |
+| `pourcentage de fin` | Le pourcentage du processus de débruitage auquel le patch cesse d'agir (par défaut : 1.0) | FLOAT | Oui | 0.0 à 1.0 |
+| `masque` | Un masque optionnel pour limiter l'effet du patch à des zones spécifiques de l'image | MASK | Non | |
 
 **Remarque sur les contraintes des paramètres :** Si le `model_patch` possède 4 canaux d'entrée et qu'aucun `mask` n'est fourni, un masque nul est automatiquement créé pour correspondre aux dimensions de l'image. Si le `model_patch` n'a pas 4 canaux d'entrée, le paramètre `mask` est ignoré et défini sur `None`. Ce nœud est marqué comme expérimental dans ComfyUI.
 

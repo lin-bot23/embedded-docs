@@ -6,18 +6,18 @@ Genera modelos 3D sincrónicamente basándose en una única imagen mediante la A
 
 | Parámetro | Descripción | Tipo de datos | Requerido | Rango |
 |-----------|-------------|---------------|-----------|-------|
-| `image` | La imagen de entrada utilizada para generar el modelo 3D. Debe proporcionarse una imagen; de lo contrario, el nodo mostrará un error. | IMAGE | Sí | - |
-| `model_version` | La versión del modelo que se usará para la generación. | COMBO | No | `"v1.4"`<br>`"v3.0"`<br>`"v3.5"`<br>`"v3.6"` |
-| `style` | Ya no es compatible con Tripo y se ignora. Se conserva para flujos de trabajo antiguos. (predeterminado: `"None"`) | COMBO | No | `"None"`<br>`"realistic"`<br>`"cartoon"`<br>`"sculpture"`<br>`"low_poly"` |
-| `texture` | Genera mapas de textura. Si está desactivado, devuelve solo geometría sin texturizar y omite `pbr`. (predeterminado: True) | BOOLEAN | No | True<br>False |
+| `imagen` | La imagen de entrada utilizada para generar el modelo 3D. Debe proporcionarse una imagen; de lo contrario, el nodo mostrará un error. | IMAGE | Sí | - |
+| `versión_modelo` | La versión del modelo que se usará para la generación. | COMBO | No | `"v1.4"`<br>`"v3.0"`<br>`"v3.5"`<br>`"v3.6"` |
+| `estilo` | Ya no es compatible con Tripo y se ignora. Se conserva para flujos de trabajo antiguos. (predeterminado: `"None"`) | COMBO | No | `"None"`<br>`"realistic"`<br>`"cartoon"`<br>`"sculpture"`<br>`"low_poly"` |
+| `textura` | Genera mapas de textura. Si está desactivado, devuelve solo geometría sin texturizar y omite `pbr`. (predeterminado: True) | BOOLEAN | No | True<br>False |
 | `pbr` | Mapas de materiales PBR (color base, metálico, rugosidad, normal). Requiere `texture`. (predeterminado: True) | BOOLEAN | No | True<br>False |
-| `model_seed` | Semilla aleatoria para la generación del modelo. (predeterminado: 42) | INT | No | 0 a 2147483647 |
-| `orientation` | Configuración de orientación para el modelo generado. (predeterminado: `"default"`) | COMBO | No | `"default"`<br>`"front"`<br>`"back"`<br>`"left"`<br>`"right"`<br>`"top"`<br>`"bottom"` |
-| `texture_seed` | Semilla aleatoria para la generación de texturas. (predeterminado: 42) | INT | No | 0 a 2147483647 |
-| `texture_quality` | Nivel de calidad para la generación de texturas: `detailed` = texturas HD, `extreme` = texturas Ultra 8K. (predeterminado: `"standard"`) | COMBO | No | `"standard"`<br>`"detailed"`<br>`"extreme"` |
-| `texture_alignment` | Método de alineación para el mapeado de texturas. (predeterminado: `"original_image"`) | COMBO | No | `"original_image"`<br>`"geometry"` |
-| `face_limit` | Número máximo de caras. -1 permite que Tripo elija adaptativamente (alrededor de 1.4M de caras en v3.x estándar, 2M en detallado). Tripo ajusta silenciosamente: v2.5 en 500,000, mallas quad en 150,000. (predeterminado: -1) | INT | No | -1 a 2000000 |
-| `quad` | Salida de malla quad. Tripo entrega las mallas quad como FBX, por lo que el resultado llega por la salida FBX y la salida GLB permanece vacía. (predeterminado: False) | BOOLEAN | No | True<br>False |
+| `semilla_modelo` | Semilla aleatoria para la generación del modelo. (predeterminado: 42) | INT | No | 0 a 2147483647 |
+| `orientación` | Configuración de orientación para el modelo generado. (predeterminado: `"default"`) | COMBO | No | `"default"`<br>`"front"`<br>`"back"`<br>`"left"`<br>`"right"`<br>`"top"`<br>`"bottom"` |
+| `semilla_textura` | Semilla aleatoria para la generación de texturas. (predeterminado: 42) | INT | No | 0 a 2147483647 |
+| `calidad_textura` | Nivel de calidad para la generación de texturas: `detailed` = texturas HD, `extreme` = texturas Ultra 8K. (predeterminado: `"standard"`) | COMBO | No | `"standard"`<br>`"detailed"`<br>`"extreme"` |
+| `alineación_de_textura` | Método de alineación para el mapeado de texturas. (predeterminado: `"original_image"`) | COMBO | No | `"original_image"`<br>`"geometry"` |
+| `límite_de_caras` | Número máximo de caras. -1 permite que Tripo elija adaptativamente (alrededor de 1.4M de caras en v3.x estándar, 2M en detallado). Tripo ajusta silenciosamente: v2.5 en 500,000, mallas quad en 150,000. (predeterminado: -1) | INT | No | -1 a 2000000 |
+| `cuadrilátero` | Salida de malla quad. Tripo entrega las mallas quad como FBX, por lo que el resultado llega por la salida FBX y la salida GLB permanece vacía. (predeterminado: False) | BOOLEAN | No | True<br>False |
 | `geometry_quality` | Nivel de calidad para la generación de geometría. (predeterminado: `"standard"`) | COMBO | No | `"standard"`<br>`"detailed"` |
 | `smart_low_poly` | Malla low-poly con topología limpia y de estilo artesanal (500-20,000 caras, quad 500-10,000). Ideal para sujetos sencillos; los complejos pueden fallar. (predeterminado: False) | BOOLEAN | No | True<br>False |
 | `auto_size` | Escala los modelos texturizados a su tamaño real en metros. Tripo guarda el tamaño como transformación de escena del modelo y lo incorpora cuando el modelo se convierte, se le aplica rigging o retargeting; se ignora si no hay textura. (predeterminado: True) | BOOLEAN | No | True<br>False |
@@ -28,8 +28,8 @@ Nota: Se requiere una `image`; si falta, el nodo lanza un RuntimeError. Cuando `
 
 | Nombre de salida | Descripción | Tipo de datos |
 |------------------|-------------|---------------|
-| `model_file` | El archivo de modelo 3D generado (solo por compatibilidad con versiones anteriores). | STRING |
-| `model task_id` | El ID de la tarea para el seguimiento del proceso de generación del modelo. | MODEL_TASK_ID |
+| `archivo_de_modelo` | El archivo de modelo 3D generado (solo por compatibilidad con versiones anteriores). | STRING |
+| `id_de_tarea_de_modelo` | El ID de la tarea para el seguimiento del proceso de generación del modelo. | MODEL_TASK_ID |
 | `GLB` | El modelo 3D generado en formato GLB. Vacío cuando `quad` está habilitado. | FILE3DGLB |
 | `FBX` | El modelo 3D generado en formato FBX. Solo se completa cuando `quad` está habilitado. | FILE3DFBX |
 

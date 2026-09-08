@@ -8,16 +8,16 @@ El nodo TripoTextureNode agrega texturas a un modelo 3D de Tripo existente media
 
 | Parámetro | Descripción | Tipo de datos | Requerido | Rango |
 |-----------|-------------|-----------|----------|-------|
-| `model_task_id` | El ID de tarea de Tripo del modelo a texturizar. Acepta IDs de tarea de modelo y de segmentación. | MODEL_TASK_ID | Sí | - |
-| `texture` | Se ignora: este nodo siempre genera texturas. Se conserva para flujos de trabajo antiguos. (por defecto: True) | BOOLEAN | No | true<br>false |
+| `id_de_tarea_del_modelo` | El ID de tarea de Tripo del modelo a texturizar. Acepta IDs de tarea de modelo y de segmentación. | MODEL_TASK_ID | Sí | - |
+| `textura` | Se ignora: este nodo siempre genera texturas. Se conserva para flujos de trabajo antiguos. (por defecto: True) | BOOLEAN | No | true<br>false |
 | `pbr` | Mapas de materiales PBR (color base, metalizado, rugosidad, normal). Desactivado, produce una textura de color plano. (por defecto: True) | BOOLEAN | No | true<br>false |
-| `texture_seed` | Semilla aleatoria para la generación de texturas. Usar la misma semilla con las mismas entradas produce el mismo resultado. (por defecto: 42) | INT | No | 0 – 2147483647 |
-| `texture_quality` | Calidad de resolución de textura: detailed = texturas HD, extreme = texturas 8K Ultra. (por defecto: "standard"). Costo aproximado: standard $0.10, detailed $0.20, extreme $0.30. | COMBO | No | "standard"<br>"detailed"<br>"extreme" |
-| `texture_alignment` | Método utilizado para alinear las texturas generadas con el modelo. (por defecto: "original_image"). | COMBO | No | "original_image"<br>"geometry" |
+| `semilla_de_textura` | Semilla aleatoria para la generación de texturas. Usar la misma semilla con las mismas entradas produce el mismo resultado. (por defecto: 42) | INT | No | 0 – 2147483647 |
+| `calidad_de_textura` | Calidad de resolución de textura: detailed = texturas HD, extreme = texturas 8K Ultra. (por defecto: "standard"). Costo aproximado: standard $0.10, detailed $0.20, extreme $0.30. | COMBO | No | "standard"<br>"detailed"<br>"extreme" |
+| `alineación_de_textura` | Método utilizado para alinear las texturas generadas con el modelo. (por defecto: "original_image"). | COMBO | No | "original_image"<br>"geometry" |
 | `texture_prompt` | Indicación de texto opcional para el texturizado. En la práctica, es necesaria para modelos importados (Tripo: Import Model), que no tienen una imagen de origen de la que inferir colores. No puede combinarse con imágenes de referencia. (por defecto: "") | STRING | No | - |
 | `model_version` | Modelo de texturizado: v3.0 para mallas generadas con v3.x, v2.5 para mallas generadas con v2.5. (por defecto: la versión más reciente de v3.0) | COMBO | No | Múltiples opciones disponibles |
 | `style_image` | Imagen de referencia para el estilo artístico de las texturas. Solo se usa junto con `texture_prompt`. | IMAGE | No | - |
-| `reference` | Imágenes de referencia que guían las texturas. No puede combinarse con `texture_prompt` ni con `style_image`. (por defecto: "none") | DYNAMIC_COMBO | No | "none"<br>"image"<br>"multiview" |
+| `referencia` | Imágenes de referencia que guían las texturas. No puede combinarse con `texture_prompt` ni con `style_image`. (por defecto: "none") | DYNAMIC_COMBO | No | "none"<br>"image"<br>"multiview" |
 | `part_names` | Nombres de piezas separados por comas de Tripo: Segment Model para texturizar. Si se deja vacío, se texturizan todas las piezas. (por defecto: "") | STRING | No | - |
 
 ### Entradas de referencia "image"
@@ -45,8 +45,8 @@ Estas entradas están disponibles cuando `reference` se define como `"multiview"
 
 | Nombre de salida | Descripción | Tipo de datos |
 |-------------|-------------|-----------|
-| `model_file` | El archivo de modelo generado (solo por compatibilidad hacia atrás). | STRING |
-| `model task_id` | El ID de la tarea de generación de texturas completada, utilizable como entrada para otros nodos de Tripo. | MODEL_TASK_ID |
+| `archivo_de_modelo` | El archivo de modelo generado (solo por compatibilidad hacia atrás). | STRING |
+| `id_de_tarea_de_modelo` | El ID de la tarea de generación de texturas completada, utilizable como entrada para otros nodos de Tripo. | MODEL_TASK_ID |
 | `GLB` | El modelo texturizado generado en formato GLB. Vacío cuando el modelo de origen es una malla de cuadriláteros o una importación FBX. | FILE3DGLB |
 | `FBX` | El modelo texturizado generado en formato FBX. Tripo devuelve FBX para mallas de cuadriláteros e importaciones FBX; vacío en caso contrario. | FILE3DFBX |
 

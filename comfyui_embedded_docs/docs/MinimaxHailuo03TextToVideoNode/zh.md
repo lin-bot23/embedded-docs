@@ -7,9 +7,9 @@
 
 | 参数 | 描述 | 数据类型 | 是否必需 | 取值范围 |
 |-----------|-------------|-----------|----------|-------|
-| `model` | 用于视频生成的模型（默认值："MiniMax H3"）。选择模型后，还会显示下文各节中所述的模型专属设置。 | DYNAMIC_COMBO | 是 | "MiniMax H3"<br>"MiniMax H3 Max"<br>"MiniMax H3 Max Turbo" |
-| `seed` | 随机种子。相同请求使用相同种子会得到相似但不保证完全相同的结果（默认值：42）。 | INT | 是 | 0 到 4294967295 |
-| `watermark` | 是否在视频中添加 AIGC 水印（默认值：false）。启用后，仅支持 "MiniMax H3" 模型。 | BOOLEAN | 否 | true<br>false |
+| `模型` | 用于视频生成的模型（默认值："MiniMax H3"）。选择模型后，还会显示下文各节中所述的模型专属设置。 | DYNAMIC_COMBO | 是 | "MiniMax H3"<br>"MiniMax H3 Max"<br>"MiniMax H3 Max Turbo" |
+| `随机种子` | 随机种子。相同请求使用相同种子会得到相似但不保证完全相同的结果（默认值：42）。 | INT | 是 | 0 到 4294967295 |
+| `水印` | 是否在视频中添加 AIGC 水印（默认值：false）。启用后，仅支持 "MiniMax H3" 模型。 | BOOLEAN | 否 | true<br>false |
 
 ### MiniMax H3 输入
 

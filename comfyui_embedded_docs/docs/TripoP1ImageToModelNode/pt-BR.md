@@ -10,14 +10,14 @@ Esses parâmetros estão sempre disponíveis.
 
 | Parâmetro | Descrição | Tipo de dados | Obrigatório | Intervalo |
 |-----------|-------------|-----------|----------|-------|
-| `output_mode` | Escolhe o tipo de resultado. "Geometry only" retorna uma malha não texturizada; "Textured" adiciona cores e mapas PBR e revela configurações extras de textura. | COMBO DINÂMICO | Sim | `"Geometry only"`<br>`"Textured"` |
-| `image` | A imagem 2D de origem usada para gerar o modelo 3D. O nó requer uma única imagem e gera um erro se nenhuma for fornecida. | IMAGEM | Sim | - |
-| `enable_image_autofix` | Pré-processa a imagem de entrada para melhorar a qualidade da geração. (padrão: Falso) | BOOLEAN | Não | True<br>False |
-| `face_limit` | Número alvo de faces, 48-20000. -1 permite que o Tripo escolha adaptivamente. (padrão: -1) | INT | Não | -1 a 20000 |
-| `model_seed` | Semente usada para a geração geométrica para que os resultados possam ser reproduzidos. (padrão: 42) | INT | Não | 0 a 2147483647 |
-| `auto_size` | Escala a saída para aproximar metros do mundo real. (padrão: Falso) | BOOLEAN | Não | True<br>False |
-| `export_uv` | Desenvolve UV durante a geração. Desative para execução mais rápida de malhas geométricas apenas. (padrão: True) | BOOLEAN | Não | True<br>False |
-| `compress_geometry` | Aplica compressão geométrica meshopt (EXT_meshopt_compression). Arquivos menores, mas o preview 3D do ComfyUI não pode exibi-los; descomprima antes de editar. (padrão: Falso) | BOOLEAN | Não | True<br>False |
+| `modo_de_saida` | Escolhe o tipo de resultado. "Geometry only" retorna uma malha não texturizada; "Textured" adiciona cores e mapas PBR e revela configurações extras de textura. | COMBO DINÂMICO | Sim | `"Geometry only"`<br>`"Textured"` |
+| `imagem` | A imagem 2D de origem usada para gerar o modelo 3D. O nó requer uma única imagem e gera um erro se nenhuma for fornecida. | IMAGEM | Sim | - |
+| `habilitar_autoajuste_imagem` | Pré-processa a imagem de entrada para melhorar a qualidade da geração. (padrão: Falso) | BOOLEAN | Não | True<br>False |
+| `limite_de_faces` | Número alvo de faces, 48-20000. -1 permite que o Tripo escolha adaptivamente. (padrão: -1) | INT | Não | -1 a 20000 |
+| `semente_do_modelo` | Semente usada para a geração geométrica para que os resultados possam ser reproduzidos. (padrão: 42) | INT | Não | 0 a 2147483647 |
+| `tamanho_automático` | Escala a saída para aproximar metros do mundo real. (padrão: Falso) | BOOLEAN | Não | True<br>False |
+| `exportar_uv` | Desenvolve UV durante a geração. Desative para execução mais rápida de malhas geométricas apenas. (padrão: True) | BOOLEAN | Não | True<br>False |
+| `comprimir_geometria` | Aplica compressão geométrica meshopt (EXT_meshopt_compression). Arquivos menores, mas o preview 3D do ComfyUI não pode exibi-los; descomprima antes de editar. (padrão: Falso) | BOOLEAN | Não | True<br>False |
 
 ### Entradas texturizadas
 
@@ -37,8 +37,8 @@ Nota: Quando `output_mode` é "Geometry only", a textura é desativada para a so
 
 | Nome da saída | Descrição | Tipo de dados |
 |-------------|-------------|-----------|
-| `model_file` | O resultado do modelo 3D gerado. Mantido apenas por compatibilidade reversa. | STRING |
-| `model task_id` | O ID de tarefa único retornado pela API do Tripo para o trabalho de geração completo. | ID_TAREFA_MODELO |
+| `arquivo_modelo` | O resultado do modelo 3D gerado. Mantido apenas por compatibilidade reversa. | STRING |
+| `id_tarefa_modelo` | O ID de tarefa único retornado pela API do Tripo para o trabalho de geração completo. | ID_TAREFA_MODELO |
 | `GLB` | O modelo 3D gerado no formato GLB. | ARQUIVO3DGLB |
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1ImageToModelNode/pt-BR.md)

@@ -8,16 +8,16 @@
 
 | パラメータ | 説明 | データ型 | 必須 | 範囲 |
 |-----------|-------------|-----------|----------|-------|
-| `image` | 正面ビュー（0°）。必須です。 | IMAGE | はい | - |
-| `image_left` | 左ビュー（90°）、つまり被写体の左側です。 | IMAGE | いいえ | - |
-| `image_back` | 背面ビュー（180°）。 | IMAGE | いいえ | - |
-| `image_right` | 右ビュー（270°）、つまり被写体の右側です。 | IMAGE | いいえ | - |
-| `output_mode` | 生成するモデルの種類を選択します。「Geometry only」はテクスチャなしのメッシュを返します。「Textured」はカラー/PBRマップを追加します。 | DYNAMIC_COMBO | はい | "Geometry only"<br>"Textured" |
-| `face_limit` | 目標の面数（48〜20000）。-1を指定すると、Tripoが適応的に選択します。（デフォルト: -1） | INT | いいえ | -1 〜 20000 |
-| `model_seed` | 再現可能なモデル生成のためのシードです。（デフォルト: 42） | INT | いいえ | 0 〜 2147483647 |
-| `auto_size` | 出力を現実世界のメートル単位に近いスケールに調整します。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
-| `export_uv` | 生成中にUV展開を行います。ジオメトリのみの実行を高速化するにはオフにします。（デフォルト: True） | BOOLEAN | いいえ | True<br>False |
-| `compress_geometry` | meshoptジオメトリ圧縮（EXT_meshopt_compression）を適用します。ファイルサイズは小さくなりますが、ComfyUIの3Dプレビューでは表示できません。編集前に圧縮を解除してください。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
+| `画像` | 正面ビュー（0°）。必須です。 | IMAGE | はい | - |
+| `左側画像` | 左ビュー（90°）、つまり被写体の左側です。 | IMAGE | いいえ | - |
+| `背面画像` | 背面ビュー（180°）。 | IMAGE | いいえ | - |
+| `右側画像` | 右ビュー（270°）、つまり被写体の右側です。 | IMAGE | いいえ | - |
+| `出力モード` | 生成するモデルの種類を選択します。「Geometry only」はテクスチャなしのメッシュを返します。「Textured」はカラー/PBRマップを追加します。 | DYNAMIC_COMBO | はい | "Geometry only"<br>"Textured" |
+| `面数制限` | 目標の面数（48〜20000）。-1を指定すると、Tripoが適応的に選択します。（デフォルト: -1） | INT | いいえ | -1 〜 20000 |
+| `モデルシード` | 再現可能なモデル生成のためのシードです。（デフォルト: 42） | INT | いいえ | 0 〜 2147483647 |
+| `自動サイズ調整` | 出力を現実世界のメートル単位に近いスケールに調整します。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
+| `UV展開を出力` | 生成中にUV展開を行います。ジオメトリのみの実行を高速化するにはオフにします。（デフォルト: True） | BOOLEAN | いいえ | True<br>False |
+| `ジオメトリ圧縮` | meshoptジオメトリ圧縮（EXT_meshopt_compression）を適用します。ファイルサイズは小さくなりますが、ComfyUIの3Dプレビューでは表示できません。編集前に圧縮を解除してください。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
 
 ### ジオメトリのみ入力
 
@@ -41,8 +41,8 @@
 
 | 出力名 | 説明 | データ型 |
 |-------------|-------------|-----------|
-| `model_file` | 生成されたGLBモデルのファイル名です（後方互換性のためだけにあります）。 | STRING |
-| `model_task_id` | このモデル生成リクエストの一意なタスクIDです。 | MODEL_TASK_ID |
+| `モデルファイル` | 生成されたGLBモデルのファイル名です（後方互換性のためだけにあります）。 | STRING |
+| `モデルタスクID` | このモデル生成リクエストの一意なタスクIDです。 | MODEL_TASK_ID |
 | `GLB` | GLB形式で生成された3Dモデルです。 | FILE3DGLB |
 
 > このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1MultiviewToModelNode/ja.md)

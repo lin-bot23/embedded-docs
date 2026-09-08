@@ -12,19 +12,19 @@
 | `face_limit` | 変換後のモデルの最大フェース数。制限なしにするには -1 を設定します（デフォルト: -1）。 | INT | いいえ | -1 〜 2000000 |
 | `texture_size` | 出力テクスチャの解像度（ピクセル単位）（デフォルト: 4096）。 | INT | いいえ | 128 〜 8192 |
 | `texture_format` | エクスポートされたテクスチャのファイル形式（デフォルト: JPEG）。 | COMBO | いいえ | BMP<br>DPX<br>HDR<br>JPEG<br>OPEN_EXR<br>PNG<br>TARGA<br>TIFF<br>WEBP |
-| `force_symmetry` | 有効にすると、モデルを対称にします（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
-| `flatten_bottom` | 有効にすると、モデルの底面を平らにします（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
-| `flatten_bottom_threshold` | `flatten_bottom` と一緒に使用する平坦化の深さ（デフォルト: 0.01）。この値は `flatten_bottom` が有効な場合にのみ適用されます。 | FLOAT | いいえ | 0.01 〜 1.0 |
-| `pivot_to_center_bottom` | 有効にすると、ピボットポイントをモデルの下端中央に移動します（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
-| `scale_factor` | 変換後のモデルに適用されるスケール係数（デフォルト: 1.0）。 | FLOAT | いいえ | 0.01 and above |
-| `with_animation` | リギングまたはリターゲティングされたモデルのスケルトンとアニメーションを保持します（デフォルト: True）。 | BOOLEAN | いいえ | True or False |
-| `pack_uv` | 有効にすると、UV座標を再パックします（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
-| `bake` | 高度なマテリアルをベーステクスチャにベイクして、互換性を高めます（デフォルト: True）。 | BOOLEAN | いいえ | True or False |
-| `part_names` | 変換に送信するモデルパーツ名のカンマ区切りリスト。空のエントリは無視され、重複する名前は削除されます。このオプションを省略するには空のままにします（デフォルト: 空）。 | STRING | いいえ | Comma-separated list of part names |
-| `fbx_preset` | FBX互換性プリセット。bake_scale はスケール変換をジオメトリにベイクします（デフォルト: blender）。 | COMBO | いいえ | blender<br>mixamo<br>3dsmax<br>bake_scale |
-| `export_vertex_colors` | 有効にすると、頂点カラーをエクスポートします（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
-| `export_orientation` | エクスポートされたモデルの前方軸。default は Tripo の +x を維持します（デフォルト: default）。 | COMBO | いいえ | default<br>+x<br>-x<br>+y<br>-y |
-| `animate_in_place` | 有効にすると、モデルをその場でアニメーションさせます（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
+| `対称性を強制` | 有効にすると、モデルを対称にします（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
+| `底面を平坦化` | 有効にすると、モデルの底面を平らにします（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
+| `底面平坦化しきい値` | `flatten_bottom` と一緒に使用する平坦化の深さ（デフォルト: 0.01）。この値は `flatten_bottom` が有効な場合にのみ適用されます。 | FLOAT | いいえ | 0.01 〜 1.0 |
+| `ピボットを底面中央へ` | 有効にすると、ピボットポイントをモデルの下端中央に移動します（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
+| `スケール係数` | 変換後のモデルに適用されるスケール係数（デフォルト: 1.0）。 | FLOAT | いいえ | 0.01 and above |
+| `アニメーション付き` | リギングまたはリターゲティングされたモデルのスケルトンとアニメーションを保持します（デフォルト: True）。 | BOOLEAN | いいえ | True or False |
+| `UVパック` | 有効にすると、UV座標を再パックします（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
+| `ベイク` | 高度なマテリアルをベーステクスチャにベイクして、互換性を高めます（デフォルト: True）。 | BOOLEAN | いいえ | True or False |
+| `パーツ名` | 変換に送信するモデルパーツ名のカンマ区切りリスト。空のエントリは無視され、重複する名前は削除されます。このオプションを省略するには空のままにします（デフォルト: 空）。 | STRING | いいえ | Comma-separated list of part names |
+| `FBXプリセット` | FBX互換性プリセット。bake_scale はスケール変換をジオメトリにベイクします（デフォルト: blender）。 | COMBO | いいえ | blender<br>mixamo<br>3dsmax<br>bake_scale |
+| `頂点カラーをエクスポート` | 有効にすると、頂点カラーをエクスポートします（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
+| `エクスポート方向` | エクスポートされたモデルの前方軸。default は Tripo の +x を維持します（デフォルト: default）。 | COMBO | いいえ | default<br>+x<br>-x<br>+y<br>-y |
+| `その場でアニメーション` | 有効にすると、モデルをその場でアニメーションさせます（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
 
 **注:** `original_model_task_id` と `format` を除くすべての入力は、オプションの詳細設定です。デフォルト値のままの設定は変換リクエストから除外されるため、Tripo API は標準の動作を使用します。入力 `flatten_bottom_threshold` は、`flatten_bottom` が有効な場合にのみ意味を持ちます。
 

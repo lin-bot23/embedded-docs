@@ -7,16 +7,16 @@ Génère des modèles 3D de manière synchrone à partir d'une seule image via l
 | Paramètre | Description | Type de données | Obligatoire | Plage |
 |-----------|-------------|-----------------|-------------|-------|
 | `image` | L'image d'entrée utilisée pour générer le modèle 3D. Une image doit être fournie, sinon le nœud lève une erreur. | IMAGE | Oui | - |
-| `model_version` | La version du modèle à utiliser pour la génération. | COMBO | Non | `"v1.4"`<br>`"v3.0"`<br>`"v3.5"`<br>`"v3.6"` |
+| `version_modèle` | La version du modèle à utiliser pour la génération. | COMBO | Non | `"v1.4"`<br>`"v3.0"`<br>`"v3.5"`<br>`"v3.6"` |
 | `style` | N'est plus pris en charge par Tripo et est ignoré. Conservé pour les anciens workflows. (défaut : `"None"`) | COMBO | Non | `"None"`<br>`"realistic"`<br>`"cartoon"`<br>`"sculpture"`<br>`"low_poly"` |
 | `texture` | Génère les cartes de texture. Désactivé renvoie une géométrie nue et ignore `pbr`. (défaut : True) | BOOLEAN | Non | True<br>False |
 | `pbr` | Cartes de matériaux PBR (couleur de base, métallique, rugosité, normale). Nécessite `texture`. (défaut : True) | BOOLEAN | Non | True<br>False |
-| `model_seed` | Graine aléatoire pour la génération du modèle. (défaut : 42) | INT | Non | 0 à 2147483647 |
+| `graine_modèle` | Graine aléatoire pour la génération du modèle. (défaut : 42) | INT | Non | 0 à 2147483647 |
 | `orientation` | Paramètre d'orientation du modèle généré. (défaut : `"default"`) | COMBO | Non | `"default"`<br>`"front"`<br>`"back"`<br>`"left"`<br>`"right"`<br>`"top"`<br>`"bottom"` |
-| `texture_seed` | Graine aléatoire pour la génération de la texture. (défaut : 42) | INT | Non | 0 à 2147483647 |
-| `texture_quality` | Qualité de la génération de textures : `detailed` = textures HD, `extreme` = textures Ultra 8K. (défaut : `"standard"`) | COMBO | Non | `"standard"`<br>`"detailed"`<br>`"extreme"` |
-| `texture_alignment` | Méthode d'alignement pour le mappage de texture. (défaut : `"original_image"`) | COMBO | Non | `"original_image"`<br>`"geometry"` |
-| `face_limit` | Nombre maximal de faces. -1 permet à Tripo de choisir de manière adaptative (environ 1,4 M de faces sur la version standard v3.x, 2 M sur `detailed`). Tripo limite silencieusement : v2.5 à 500 000, les maillages quad à 150 000. (défaut : -1) | INT | Non | -1 à 2000000 |
+| `graine_texture` | Graine aléatoire pour la génération de la texture. (défaut : 42) | INT | Non | 0 à 2147483647 |
+| `qualité_texture` | Qualité de la génération de textures : `detailed` = textures HD, `extreme` = textures Ultra 8K. (défaut : `"standard"`) | COMBO | Non | `"standard"`<br>`"detailed"`<br>`"extreme"` |
+| `alignement_texture` | Méthode d'alignement pour le mappage de texture. (défaut : `"original_image"`) | COMBO | Non | `"original_image"`<br>`"geometry"` |
+| `limite_faces` | Nombre maximal de faces. -1 permet à Tripo de choisir de manière adaptative (environ 1,4 M de faces sur la version standard v3.x, 2 M sur `detailed`). Tripo limite silencieusement : v2.5 à 500 000, les maillages quad à 150 000. (défaut : -1) | INT | Non | -1 à 2000000 |
 | `quad` | Sortie en maillage quad. Tripo fournit les maillages quad en FBX, donc le résultat arrive sur la sortie FBX et la sortie GLB reste vide. (défaut : False) | BOOLEAN | Non | True<br>False |
 | `geometry_quality` | Niveau de qualité pour la génération de la géométrie. (défaut : `"standard"`) | COMBO | Non | `"standard"`<br>`"detailed"` |
 | `smart_low_poly` | Maillage low-poly avec une topologie propre, de style artisanal (500 à 20 000 faces, quad 500 à 10 000). Idéal pour les sujets simples ; les sujets complexes peuvent échouer. (défaut : False) | BOOLEAN | Non | True<br>False |
@@ -28,8 +28,8 @@ Remarque : une `image` est obligatoire ; si elle manque, le nœud lève une Runt
 
 | Nom de sortie | Description | Type de données |
 |---------------|-------------|-----------------|
-| `model_file` | Le fichier de modèle 3D généré (uniquement pour la rétrocompatibilité). | STRING |
-| `model task_id` | L'ID de tâche permettant de suivre le processus de génération du modèle. | MODEL_TASK_ID |
+| `fichier_modèle` | Le fichier de modèle 3D généré (uniquement pour la rétrocompatibilité). | STRING |
+| `modèle task_id` | L'ID de tâche permettant de suivre le processus de génération du modèle. | MODEL_TASK_ID |
 | `GLB` | Le modèle 3D généré au format GLB. Vide lorsque `quad` est activé. | FILE3DGLB |
 | `FBX` | Le modèle 3D généré au format FBX. Rempli uniquement lorsque `quad` est activé. | FILE3DFBX |
 

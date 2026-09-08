@@ -6,7 +6,7 @@ The Preview Audio düğümü, sesi çıktı dizinine kaydetmeden doğrudan Comfy
 
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 | --- | --- | --- | --- | --- |
-| `audio` | Önizlenecek ses verisi. Kaynak videoda ses parçası yoksa girdi None olduğunda düğüm bir ValueError yükseltir. | AUDIO | Evet | - |
+| `ses` | Önizlenecek ses verisi. Kaynak videoda ses parçası yoksa girdi None olduğunda düğüm bir ValueError yükseltir. | AUDIO | Evet | - |
 
 ## Çıktılar
 

@@ -8,7 +8,7 @@
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `image` | نمای جلو (۰ درجه). الزامی. | IMAGE | بله | - |
+| `تصویر` | نمای جلو (۰ درجه). الزامی. | IMAGE | بله | - |
 | `image_left` | نمای چپ (۹۰ درجه)، یعنی سمت چپ سوژه. | IMAGE | خیر | - |
 | `image_back` | نمای پشت (۱۸۰ درجه). | IMAGE | خیر | - |
 | `image_right` | نمای راست (۲۷۰ درجه)، یعنی سمت راست سوژه. | IMAGE | خیر | - |
@@ -42,7 +42,7 @@
 | Output Name | Description | Data Type |
 |-------------|-------------|-----------|
 | `model_file` | نام فایل مدل GLB تولیدشده (فقط برای سازگاری معکوس). | STRING |
-| `model_task_id` | شناسه وظیفه منحصر‌به‌فرد برای این درخواست تولید مدل. | MODEL_TASK_ID |
+| `model task_id` | شناسه وظیفه منحصر‌به‌فرد برای این درخواست تولید مدل. | MODEL_TASK_ID |
 | `GLB` | مدل سه‌بعدی تولیدشده در فرمت GLB. | FILE3DGLB |
 
 > این مستند با هوش مصنوعی تهیه شده است. اگر خطایی دیدید یا پیشنهادی برای بهبود دارید، خوشحال می‌شویم مشارکت کنید! [ویرایش در GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1MultiviewToModelNode/fa.md)

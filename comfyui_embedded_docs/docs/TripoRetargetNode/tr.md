@@ -6,8 +6,8 @@ TripoRetargetNode, önceden riglenmiş bir 3D modele hazır bir animasyon uygula
 
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 |-----------|-------------|-----------|----------|-------|
-| `original_model_task_id` | Yeniden hedefleme yapılacak, daha önce riglenmiş 3D modelin görev kimliği. Referans verilen görev bir rig görevi olmalıdır; Mixamo spec ile model sürümü v1.0 üzerinde oluşturulmuş bir rig, yeniden hedefleme için kullanılamaz. | RIG_TASK_ID | Evet | - |
-| `animation` | Riglenmiş modele uygulanacak animasyon ön ayarı. `preset:*` animasyonları her iki rig modeliyle de çalışır; `preset:biped:*` animasyonları, model v1.0-20240301 ile oluşturulmuş bir rig gerektirir. | COMBO | Evet | `"preset:idle"`<br>`"preset:walk"`<br>`"preset:run"`<br>`"preset:dive"`<br>`"preset:climb"`<br>`"preset:jump"`<br>`"preset:slash"`<br>`"preset:shoot"`<br>`"preset:hurt"`<br>`"preset:fall"`<br>`"preset:turn"`<br>`"preset:quadruped:walk"`<br>`"preset:hexapod:walk"`<br>`"preset:octopod:walk"`<br>`"preset:serpentine:march"`<br>`"preset:aquatic:march"`<br>ayrıca UI'da gösterilen ek `"preset:biped:*"` seçenekleri |
+| `orijinal_model_görev_id` | Yeniden hedefleme yapılacak, daha önce riglenmiş 3D modelin görev kimliği. Referans verilen görev bir rig görevi olmalıdır; Mixamo spec ile model sürümü v1.0 üzerinde oluşturulmuş bir rig, yeniden hedefleme için kullanılamaz. | RIG_TASK_ID | Evet | - |
+| `animasyon` | Riglenmiş modele uygulanacak animasyon ön ayarı. `preset:*` animasyonları her iki rig modeliyle de çalışır; `preset:biped:*` animasyonları, model v1.0-20240301 ile oluşturulmuş bir rig gerektirir. | COMBO | Evet | `"preset:idle"`<br>`"preset:walk"`<br>`"preset:run"`<br>`"preset:dive"`<br>`"preset:climb"`<br>`"preset:jump"`<br>`"preset:slash"`<br>`"preset:shoot"`<br>`"preset:hurt"`<br>`"preset:fall"`<br>`"preset:turn"`<br>`"preset:quadruped:walk"`<br>`"preset:hexapod:walk"`<br>`"preset:octopod:walk"`<br>`"preset:serpentine:march"`<br>`"preset:aquatic:march"`<br>ayrıca UI'da gösterilen ek `"preset:biped:*"` seçenekleri |
 | `out_format` | Çıktı dosyası biçimi; sonuç eşleşen çıktıya ulaşır. (varsayılan: glb) | COMBO | Hayır | `"glb"`<br>`"fbx"` |
 | `export_with_geometry` | Dışa aktarıma mesh'i dahil eder; kapalıyken yalnızca animasyonlu iskelet dışa aktarılır. (varsayılan: True) | BOOLEAN | Hayır | True<br>False |
 | `animate_in_place` | Animasyonu, kök yer değiştirmesi olmadan yerinde oynatır. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
@@ -21,8 +21,8 @@ Not: `preset:*` grubundaki animasyonlar her iki rig modeliyle de çalışırken,
 
 | Çıktı Adı | Açıklama | Veri Türü |
 |-------------|-------------|-----------|
-| `model_file` | Oluşturulan animasyonlu 3D model dosyası (yalnızca geriye dönük uyumluluk için). | STRING |
-| `retarget task_id` | Yeniden hedefleme işlemini izlemek için görev kimliği. | RETARGET_TASK_ID |
+| `retarget_görev_id` | Oluşturulan animasyonlu 3D model dosyası (yalnızca geriye dönük uyumluluk için). | STRING |
+| `yeniden hedefleme task_id` | Yeniden hedefleme işlemini izlemek için görev kimliği. | RETARGET_TASK_ID |
 | `GLB` | GLB biçiminde animasyonlu 3D model. `out_format` glb olduğunda doldurulur. | FILE3DGLB |
 | `FBX` | FBX biçiminde animasyonlu 3D model. `out_format` fbx olduğunda doldurulur. | FILE3DFBX |
 

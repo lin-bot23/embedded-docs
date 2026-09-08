@@ -19,9 +19,9 @@
 
 | 출력 이름 | 설명 | 데이터 유형 |
 |-------------|-------------|-----------|
-| `model_3d` | 입력에서 그대로 전달된 3D 모델 파일입니다. | FILE3D |
-| `model_3d_info` | 입력 또는 뷰포트 상태에서 가져온 모델 정보 메타데이터입니다. | LOAD3DMODELINFO |
-| `camera_info` | 입력 또는 뷰포트 상태에서 가져온 카메라 구성입니다. | LOAD3DCAMERA |
+| `model_file` | 입력에서 그대로 전달된 3D 모델 파일입니다. | FILE3D |
+| `camera_info` | 입력 또는 뷰포트 상태에서 가져온 모델 정보 메타데이터입니다. | LOAD3DMODELINFO |
+| `model_3d_info` | 입력 또는 뷰포트 상태에서 가져온 카메라 구성입니다. | LOAD3DCAMERA |
 | `width` | 미리보기의 픽셀 너비입니다. | INT |
 | `height` | 미리보기의 픽셀 높이입니다. | INT |
 

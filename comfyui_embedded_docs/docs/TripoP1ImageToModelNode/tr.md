@@ -10,14 +10,14 @@ Bu parametreler her zaman kullanılabilir.
 
 | Parametre | Açıklama | Veri Türü | Zorunlu | Aralık |
 |-----------|-------------|-----------|----------|-------|
-| `output_mode` | Sonucun türünü seçer. "Geometry only" dokusuz bir mesh döndürür; "Textured" renk ve PBR haritaları ekler ve ek doku ayarlarını ortaya çıkarır. | DYNAMIC_COMBO | Evet | `"Geometry only"`<br>`"Textured"` |
-| `image` | 3D modeli oluşturmak için kullanılan kaynak 2D görüntü. Düğüm tek bir görüntü gerektirir ve hiçbir görüntü sağlanmazsa hata verir. | IMAGE | Evet | - |
-| `enable_image_autofix` | Daha iyi üretim kalitesi için girdi görüntüsünü ön işler. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
-| `face_limit` | Hedef yüz sayısı, 48-20000. -1 değeri Tripo'nun uyarlamalı seçim yapmasını sağlar. (varsayılan: -1) | INT | Hayır | -1 ile 20000 |
-| `model_seed` | Sonuçların yeniden üretilebilmesi için geometri üretiminde kullanılan tohum değeri. (varsayılan: 42) | INT | Hayır | 0 ile 2147483647 |
-| `auto_size` | Çıktıyı gerçek dünya metrelerine yaklaşık olarak ölçekler. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
-| `export_uv` | Üretim sırasında UV açılımı (unwrap) uygular. Yalnızca geometri içeren işlemleri hızlandırmak için kapatın. (varsayılan: True) | BOOLEAN | Hayır | True<br>False |
-| `compress_geometry` | meshopt geometri sıkıştırması (EXT_meshopt_compression) uygular. Dosyalar daha küçük olur ancak ComfyUI'nin 3D önizlemesi bunları görüntüleyemez; düzenlemeden önce sıkıştırmayı çözün. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
+| `çıktı_modu` | Sonucun türünü seçer. "Geometry only" dokusuz bir mesh döndürür; "Textured" renk ve PBR haritaları ekler ve ek doku ayarlarını ortaya çıkarır. | DYNAMIC_COMBO | Evet | `"Geometry only"`<br>`"Textured"` |
+| `görüntü` | 3D modeli oluşturmak için kullanılan kaynak 2D görüntü. Düğüm tek bir görüntü gerektirir ve hiçbir görüntü sağlanmazsa hata verir. | IMAGE | Evet | - |
+| `görüntü_oto_düzeltme_aktif` | Daha iyi üretim kalitesi için girdi görüntüsünü ön işler. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
+| `yüz_sınırı` | Hedef yüz sayısı, 48-20000. -1 değeri Tripo'nun uyarlamalı seçim yapmasını sağlar. (varsayılan: -1) | INT | Hayır | -1 ile 20000 |
+| `model_tohumu` | Sonuçların yeniden üretilebilmesi için geometri üretiminde kullanılan tohum değeri. (varsayılan: 42) | INT | Hayır | 0 ile 2147483647 |
+| `oto_boyut` | Çıktıyı gerçek dünya metrelerine yaklaşık olarak ölçekler. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
+| `uv_dışa_aktar` | Üretim sırasında UV açılımı (unwrap) uygular. Yalnızca geometri içeren işlemleri hızlandırmak için kapatın. (varsayılan: True) | BOOLEAN | Hayır | True<br>False |
+| `geometriyi_sıkıştır` | meshopt geometri sıkıştırması (EXT_meshopt_compression) uygular. Dosyalar daha küçük olur ancak ComfyUI'nin 3D önizlemesi bunları görüntüleyemez; düzenlemeden önce sıkıştırmayı çözün. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
 
 ### Dokulu Girdiler
 
@@ -37,8 +37,8 @@ Not: `output_mode` "Geometry only" olduğunda bu istek için dokulama devre dı�
 
 | Çıktı Adı | Açıklama | Veri Türü |
 |-------------|-------------|-----------|
-| `model_file` | Oluşturulan 3D model sonucu. Yalnızca geriye dönük uyumluluk için saklanır. | STRING |
-| `model task_id` | Tripo API tarafından tamamlanan üretim işi için döndürülen benzersiz görev kimliği. | MODEL_TASK_ID |
+| `model_dosyası` | Oluşturulan 3D model sonucu. Yalnızca geriye dönük uyumluluk için saklanır. | STRING |
+| `model_task_id` | Tripo API tarafından tamamlanan üretim işi için döndürülen benzersiz görev kimliği. | MODEL_TASK_ID |
 | `GLB` | GLB formatında oluşturulan 3D model. | FILE3DGLB |
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1ImageToModelNode/tr.md)

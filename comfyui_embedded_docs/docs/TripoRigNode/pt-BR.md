@@ -8,7 +8,7 @@ Este nó recebe um modelo 3D existente do Tripo e cria uma versão equipada dele
 
 | Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
 |-----------|-------------|-----------|----------|-------|
-| `original_model_task_id` | O ID da tarefa do modelo 3D original a ser equipado. Este é geralmente o ID gerado por um nó de geração de modelo do Tripo anterior. | MODEL_TASK_ID | Sim | - |
+| `id_da_tarefa_do_modelo_original` | O ID da tarefa do modelo 3D original a ser equipado. Este é geralmente o ID gerado por um nó de geração de modelo do Tripo anterior. | MODEL_TASK_ID | Sim | - |
 | `model_version` | Versão do modelo de equipamento a ser usada. v1.0: personagens humanoides (bipedes) apenas, 90+ presets de animação. v2.5: criaturas não humanoides (quadrúpedes, hexápodes, octópodes, aves, serpentes, aquáticos). Padrão: `v1.0-20240301`. | COMBO | Não | "v1.0-20240301"<br>"v2.5-20260210" |
 | `rig_type` | Tipo de esqueleto. "auto" executa primeiro a verificação de equipamento livre do Tripo e usa o tipo recomendado. Outros valores forçam um tipo de esqueleto específico, como bipede para personagens humanoides. Padrão: "auto". | COMBO | Não | "auto"<br>"biped"<br>"quadruped"<br>"hexapod"<br>"octopod"<br>"avian"<br>"serpentine"<br>"aquatic" |
 | `spec` | Esquema de nomeação dos ossos: nativo do Tripo ou compatível com Mixamo. O Tripo não pode retarget seus presets de animação em um esqueleto v1.0 feito com o spec do Mixamo; use tripo para Tripo: Retarget rigged model. Padrão: "tripo". | COMBO | Não | "tripo"<br>"mixamo" |
@@ -22,8 +22,8 @@ Este nó recebe um modelo 3D existente do Tripo e cria uma versão equipada dele
 
 | Nome da Saída | Descrição | Tipo de Dados |
 |-------------|-------------|-----------|
-| `model_file` | O arquivo de modelo 3D gerado. Mantido apenas por compatibilidade com versões anteriores. | STRING |
-| `rig task_id` | O ID da tarefa para rastrear o processo de geração de equipamento. | RIG_TASK_ID |
+| `arquivo_do_modelo` | O arquivo de modelo 3D gerado. Mantido apenas por compatibilidade com versões anteriores. | STRING |
+| `task_id_de_rig` | O ID da tarefa para rastrear o processo de geração de equipamento. | RIG_TASK_ID |
 | `GLB` | O modelo equipado como um arquivo 3D GLB. Populado quando `out_format` é "glb". | FILE3DGLB |
 | `FBX` | O modelo equipado como um arquivo 3D FBX. Populado quando `out_format` é "fbx". | FILE3DFBX |
 

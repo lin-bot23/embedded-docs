@@ -6,18 +6,18 @@ Tripo'nun API'sini kullanarak tek bir görüntüden eşzamanlı olarak 3B modell
 
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 |-----------|-------------|-----------|----------|-------|
-| `image` | 3B modeli üretmek için kullanılan girdi görüntüsü. Bir görüntü sağlanmalıdır, aksi takdirde düğüm bir hata oluşturur. | IMAGE | Evet | - |
-| `model_version` | Üretim için kullanılacak model sürümü. | COMBO | Hayır | `"v1.4"`<br>`"v3.0"`<br>`"v3.5"`<br>`"v3.6"` |
-| `style` | Artık Tripo tarafından desteklenmiyor ve yok sayılıyor. Eski iş akışları için saklandı. (varsayılan: `"None"`) | COMBO | Hayır | `"None"`<br>`"realistic"`<br>`"cartoon"`<br>`"sculpture"`<br>`"low_poly"` |
-| `texture` | Doku haritaları üretir. Kapalıyken yalnızca geometri döndürür ve `pbr` yok sayılır. (varsayılan: True) | BOOLEAN | Hayır | True<br>False |
+| `görüntü` | 3B modeli üretmek için kullanılan girdi görüntüsü. Bir görüntü sağlanmalıdır, aksi takdirde düğüm bir hata oluşturur. | IMAGE | Evet | - |
+| `model_sürümü` | Üretim için kullanılacak model sürümü. | COMBO | Hayır | `"v1.4"`<br>`"v3.0"`<br>`"v3.5"`<br>`"v3.6"` |
+| `stil` | Artık Tripo tarafından desteklenmiyor ve yok sayılıyor. Eski iş akışları için saklandı. (varsayılan: `"None"`) | COMBO | Hayır | `"None"`<br>`"realistic"`<br>`"cartoon"`<br>`"sculpture"`<br>`"low_poly"` |
+| `doku` | Doku haritaları üretir. Kapalıyken yalnızca geometri döndürür ve `pbr` yok sayılır. (varsayılan: True) | BOOLEAN | Hayır | True<br>False |
 | `pbr` | PBR malzeme haritaları (temel renk, metalik, pürüzlülük, normal). `texture` gerektirir. (varsayılan: True) | BOOLEAN | Hayır | True<br>False |
-| `model_seed` | Model üretimi için rastgele tohum. (varsayılan: 42) | INT | Hayır | 0 ile 2147483647 |
-| `orientation` | Üretilen model için yön ayarı. (varsayılan: `"default"`) | COMBO | Hayır | `"default"`<br>`"front"`<br>`"back"`<br>`"left"`<br>`"right"`<br>`"top"`<br>`"bottom"` |
-| `texture_seed` | Doku üretimi için rastgele tohum. (varsayılan: 42) | INT | Hayır | 0 ile 2147483647 |
-| `texture_quality` | Doku üretimi için kalite düzeyi: `detailed` = HD dokular, `extreme` = 8K Ultra dokular. (varsayılan: `"standard"`) | COMBO | Hayır | `"standard"`<br>`"detailed"`<br>`"extreme"` |
-| `texture_alignment` | Doku haritalama için hizalama yöntemi. (varsayılan: `"original_image"`) | COMBO | Hayır | `"original_image"`<br>`"geometry"` |
-| `face_limit` | Maksimum yüz sayısı. -1, Tripo'nun uyarlamalı olarak seçim yapmasını sağlar (v3.x standart sürümünde yaklaşık 1,4 milyon yüz, detaylı sürümde 2 milyon). Tripo sınırı sessizce uygular: v2.5 için 500.000, dörtgen ağlar için 150.000. (varsayılan: -1) | INT | Hayır | -1 ile 2000000 |
-| `quad` | Dörtgen ağ çıktısı. Tripo dörtgen ağları FBX olarak teslim eder; bu nedenle sonuç FBX çıktısına gelir ve GLB çıktısı boş kalır. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
+| `model_tohumu` | Model üretimi için rastgele tohum. (varsayılan: 42) | INT | Hayır | 0 ile 2147483647 |
+| `yönlendirme` | Üretilen model için yön ayarı. (varsayılan: `"default"`) | COMBO | Hayır | `"default"`<br>`"front"`<br>`"back"`<br>`"left"`<br>`"right"`<br>`"top"`<br>`"bottom"` |
+| `doku_tohumu` | Doku üretimi için rastgele tohum. (varsayılan: 42) | INT | Hayır | 0 ile 2147483647 |
+| `doku_kalitesi` | Doku üretimi için kalite düzeyi: `detailed` = HD dokular, `extreme` = 8K Ultra dokular. (varsayılan: `"standard"`) | COMBO | Hayır | `"standard"`<br>`"detailed"`<br>`"extreme"` |
+| `doku_hizalama` | Doku haritalama için hizalama yöntemi. (varsayılan: `"original_image"`) | COMBO | Hayır | `"original_image"`<br>`"geometry"` |
+| `yüz_sınırı` | Maksimum yüz sayısı. -1, Tripo'nun uyarlamalı olarak seçim yapmasını sağlar (v3.x standart sürümünde yaklaşık 1,4 milyon yüz, detaylı sürümde 2 milyon). Tripo sınırı sessizce uygular: v2.5 için 500.000, dörtgen ağlar için 150.000. (varsayılan: -1) | INT | Hayır | -1 ile 2000000 |
+| `dörtlü` | Dörtgen ağ çıktısı. Tripo dörtgen ağları FBX olarak teslim eder; bu nedenle sonuç FBX çıktısına gelir ve GLB çıktısı boş kalır. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
 | `geometry_quality` | Geometri üretimi için kalite düzeyi. (varsayılan: `"standard"`) | COMBO | Hayır | `"standard"`<br>`"detailed"` |
 | `smart_low_poly` | Temiz, el yapımı tarzda topolojiye sahip düşük poligonlu (low-poly) ağ (500-20.000 yüz, quad 500-10.000). Basit nesneler için idealdir; karmaşık olanlarda başarısız olabilir. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
 | `auto_size` | Dokulu modelleri metre cinsinden gerçek dünya boyutlarına ölçekler. Tripo, boyutu modelin sahne dönüşümü olarak saklar ve model dönüştürüldüğünde, donatıldığında veya yeniden hedeflendiğinde bunu kalıcı olarak uygular; doku yoksa yok sayılır. (varsayılan: True) | BOOLEAN | Hayır | True<br>False |
@@ -28,8 +28,8 @@ Not: Bir `image` gereklidir; eksikse düğüm bir RuntimeError fırlatır. `text
 
 | Çıktı Adı | Açıklama | Veri Türü |
 |-------------|-------------|-----------|
-| `model_file` | Oluşturulan 3B model dosyası (yalnızca geriye dönük uyumluluk için). | STRING |
-| `model task_id` | Model üretim sürecini izlemek için görev kimliği. | MODEL_TASK_ID |
+| `model_dosyası` | Oluşturulan 3B model dosyası (yalnızca geriye dönük uyumluluk için). | STRING |
+| `model_görev_id` | Model üretim sürecini izlemek için görev kimliği. | MODEL_TASK_ID |
 | `GLB` | GLB biçiminde oluşturulan 3B model. `quad` etkinleştirildiğinde boştur. | FILE3DGLB |
 | `FBX` | FBX biçiminde oluşturulan 3B model. Yalnızca `quad` etkinleştirildiğinde doldurulur. | FILE3DFBX |
 

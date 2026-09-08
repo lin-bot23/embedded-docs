@@ -8,12 +8,12 @@ Le nœud OpenAIVideoSora2 génère des vidéos à l'aide des modèles Sora d'Ope
 
 | Paramètre | Description | Type de données | Requis | Plage |
 | --- | --- | --- | --- | --- |
-| `model` | Le modèle OpenAI Sora à utiliser pour la génération vidéo (défaut : "sora-2") | COMBO | Oui | "sora-2"<br>"sora-2-pro" |
-| `prompt` | Texte d'orientation ; peut être vide si une image d'entrée est présente (défaut : vide) | STRING | Oui | - |
-| `size` | La résolution de la vidéo générée (défaut : "1280x720") | COMBO | Oui | "720x1280"<br>"1280x720"<br>"1024x1792"<br>"1792x1024" |
-| `duration` | La durée de la vidéo générée en secondes (défaut : 8) | COMBO | Oui | 4<br>8<br>12 |
+| `modèle` | Le modèle OpenAI Sora à utiliser pour la génération vidéo (défaut : "sora-2") | COMBO | Oui | "sora-2"<br>"sora-2-pro" |
+| `invite` | Texte d'orientation ; peut être vide si une image d'entrée est présente (défaut : vide) | STRING | Oui | - |
+| `taille` | La résolution de la vidéo générée (défaut : "1280x720") | COMBO | Oui | "720x1280"<br>"1280x720"<br>"1024x1792"<br>"1792x1024" |
+| `durée` | La durée de la vidéo générée en secondes (défaut : 8) | COMBO | Oui | 4<br>8<br>12 |
 | `image` | Image de référence d'entrée facultative utilisée pour la génération vidéo (référence de tenue, de personnage, de scène, etc.) ; une seule image est prise en charge | IMAGE | Non | - |
-| `seed` | Valeur seed pour déterminer si le nœud doit être réexécuté ; les résultats réels sont non déterministes quelle que soit la valeur seed (défaut : 0) | INT | Non | 0 à 2147483647 |
+| `graine` | Valeur seed pour déterminer si le nœud doit être réexécuté ; les résultats réels sont non déterministes quelle que soit la valeur seed (défaut : 0) | INT | Non | 0 à 2147483647 |
 
 **Contraintes et limites :**
 

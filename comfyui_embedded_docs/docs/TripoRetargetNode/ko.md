@@ -6,8 +6,8 @@ TripoRetargetNode는 기존에 리깅된 3D 모델에 사전 설정된 애니메
 
 | 매개변수 | 설명 | 데이터 타입 | 필수 | 범위 |
 |-----------|-------------|-----------|----------|-------|
-| `original_model_task_id` | 리타겟할 이전에 리깅된 3D 모델의 작업 ID입니다. 참조하는 작업은 리그 작업이어야 하며, 모델 버전 v1.0에서 Mixamo 사양으로 제작된 리그는 리타겟팅에 사용할 수 없습니다. | RIG_TASK_ID | 예 | - |
-| `animation` | 리깅된 모델에 적용할 사전 설정 애니메이션입니다. `preset:*` 애니메이션은 두 리그 모델 모두에서 작동하고, `preset:biped:*` 애니메이션은 모델 v1.0-20240301로 제작된 리그가 필요합니다. | COMBO | 예 | `"preset:idle"`<br>`"preset:walk"`<br>`"preset:run"`<br>`"preset:dive"`<br>`"preset:climb"`<br>`"preset:jump"`<br>`"preset:slash"`<br>`"preset:shoot"`<br>`"preset:hurt"`<br>`"preset:fall"`<br>`"preset:turn"`<br>`"preset:quadruped:walk"`<br>`"preset:hexapod:walk"`<br>`"preset:octopod:walk"`<br>`"preset:serpentine:march"`<br>`"preset:aquatic:march"`<br>UI에 표시되는 추가 `"preset:biped:*"` 옵션 |
+| `원본 모델 작업 ID` | 리타겟할 이전에 리깅된 3D 모델의 작업 ID입니다. 참조하는 작업은 리그 작업이어야 하며, 모델 버전 v1.0에서 Mixamo 사양으로 제작된 리그는 리타겟팅에 사용할 수 없습니다. | RIG_TASK_ID | 예 | - |
+| `애니메이션` | 리깅된 모델에 적용할 사전 설정 애니메이션입니다. `preset:*` 애니메이션은 두 리그 모델 모두에서 작동하고, `preset:biped:*` 애니메이션은 모델 v1.0-20240301로 제작된 리그가 필요합니다. | COMBO | 예 | `"preset:idle"`<br>`"preset:walk"`<br>`"preset:run"`<br>`"preset:dive"`<br>`"preset:climb"`<br>`"preset:jump"`<br>`"preset:slash"`<br>`"preset:shoot"`<br>`"preset:hurt"`<br>`"preset:fall"`<br>`"preset:turn"`<br>`"preset:quadruped:walk"`<br>`"preset:hexapod:walk"`<br>`"preset:octopod:walk"`<br>`"preset:serpentine:march"`<br>`"preset:aquatic:march"`<br>UI에 표시되는 추가 `"preset:biped:*"` 옵션 |
 | `out_format` | 출력 파일 형식입니다. 결과는 해당 형식의 출력으로 전달됩니다. (기본값: glb) | COMBO | 아니요 | `"glb"`<br>`"fbx"` |
 | `export_with_geometry` | 내보내기에 메시를 포함합니다. 끄면 애니메이션 골격만 내보냅니다. (기본값: True) | BOOLEAN | 아니요 | True<br>False |
 | `animate_in_place` | 루트 변위 없이 제자리에서 애니메이션을 재생합니다. (기본값: False) | BOOLEAN | 아니요 | True<br>False |
@@ -21,8 +21,8 @@ TripoRetargetNode는 기존에 리깅된 3D 모델에 사전 설정된 애니메
 
 | 출력 이름 | 설명 | 데이터 타입 |
 |-------------|-------------|-----------|
-| `model_file` | 생성된 애니메이션 3D 모델 파일입니다(이전 버전과의 호환성 전용). | STRING |
-| `retarget task_id` | 리타겟팅 작업 추적을 위한 작업 ID입니다. | RETARGET_TASK_ID |
+| `모델 파일` | 생성된 애니메이션 3D 모델 파일입니다(이전 버전과의 호환성 전용). | STRING |
+| `리타겟 task_id` | 리타겟팅 작업 추적을 위한 작업 ID입니다. | RETARGET_TASK_ID |
 | `GLB` | GLB 형식의 애니메이션 3D 모델입니다. `out_format`이 glb일 때 값이 채워집니다. | FILE3DGLB |
 | `FBX` | FBX 형식의 애니메이션 3D 모델입니다. `out_format`이 fbx일 때 값이 채워집니다. | FILE3DFBX |
 

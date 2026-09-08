@@ -8,16 +8,16 @@ TripoTextureNode, Tripo API'yi kullanarak mevcut bir Tripo 3D modeline dokular e
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `model_task_id` | Dokulanacak modelin Tripo görev kimliği. Model görev kimliklerini ve segmentasyon görev kimliklerini kabul eder. | MODEL_TASK_ID | Evet | - |
-| `texture` | Yoksayılır: bu düğüm her zaman dokular oluşturur. Eski iş akışları için korunmuştur. (varsayılan: True) | BOOLEAN | Hayır | true<br>false |
+| `model_görev_id` | Dokulanacak modelin Tripo görev kimliği. Model görev kimliklerini ve segmentasyon görev kimliklerini kabul eder. | MODEL_TASK_ID | Evet | - |
+| `doku` | Yoksayılır: bu düğüm her zaman dokular oluşturur. Eski iş akışları için korunmuştur. (varsayılan: True) | BOOLEAN | Hayır | true<br>false |
 | `pbr` | PBR malzeme haritaları (temel renk, metalik, pürüzlülük, normal); kapalı düz renk doku verir. (varsayılan: True) | BOOLEAN | Hayır | true<br>false |
-| `texture_seed` | Doku oluşturma için rastgele seed. Aynı girdilerle aynı seed'i kullanmak aynı sonucu üretir. (varsayılan: 42) | INT | Hayır | 0 – 2147483647 |
-| `texture_quality` | Doku çözünürlük kalitesi: detailed = HD dokular, extreme = 8K Ultra dokular. (varsayılan: "standard"). Yaklaşık maliyet: standard $0.10, detailed $0.20, extreme $0.30. | COMBO | Hayır | "standard"<br>"detailed"<br>"extreme" |
-| `texture_alignment` | Oluşturulan dokuları modele hizalamak için kullanılan yöntem. (varsayılan: "original_image"). | COMBO | Hayır | "original_image"<br>"geometry" |
+| `doku_tohumu` | Doku oluşturma için rastgele seed. Aynı girdilerle aynı seed'i kullanmak aynı sonucu üretir. (varsayılan: 42) | INT | Hayır | 0 – 2147483647 |
+| `doku_kalitesi` | Doku çözünürlük kalitesi: detailed = HD dokular, extreme = 8K Ultra dokular. (varsayılan: "standard"). Yaklaşık maliyet: standard $0.10, detailed $0.20, extreme $0.30. | COMBO | Hayır | "standard"<br>"detailed"<br>"extreme" |
+| `doku_hizalama` | Oluşturulan dokuları modele hizalamak için kullanılan yöntem. (varsayılan: "original_image"). | COMBO | Hayır | "original_image"<br>"geometry" |
 | `texture_prompt` | Dokulama için isteğe bağlı metin rehberi. Pratikte renk çıkarımı yapılacak kaynak görseli taşımayan içe aktarılan modeller (Tripo: Import Model) için gereklidir. Referans görsellerle kombinlenemez. (varsayılan: "") | STRING | Hayır | - |
 | `model_version` | Doku modeli: v3.x ile oluşturulan mesh'ler için v3.0, v2.5 ile oluşturulan mesh'ler için v2.5. (varsayılan: en son v3.0 sürümü) | COMBO | Hayır | Multiple options available |
 | `style_image` | Dokuların sanatsal stili için referans görsel. Yalnızca `texture_prompt` ile birlikte kullanılır. | IMAGE | Hayır | - |
-| `reference` | Dokuları yönlendiren referans görseller. `texture_prompt` veya `style_image` ile kombinlenemez. (varsayılan: "none") | DYNAMIC_COMBO | Hayır | "none"<br>"image"<br>"multiview" |
+| `referans` | Dokuları yönlendiren referans görseller. `texture_prompt` veya `style_image` ile kombinlenemez. (varsayılan: "none") | DYNAMIC_COMBO | Hayır | "none"<br>"image"<br>"multiview" |
 | `part_names` | Dokulanacak Tripo: Segment Model'den virgülle ayrılmış parça adları. Boş bırakılırsa her parçayı dokular. (varsayılan: "") | STRING | Hayır | - |
 
 ### "image" Referans Girdileri
@@ -45,8 +45,8 @@ Bu girdiler `reference` `"multiview"` olarak ayarlandığında kullanılabilir.
 
 | Output Name | Description | Data Type |
 |-------------|-------------|-----------|
-| `model_file` | Oluşturulan model dosyası (yalnızca geriye dönük uyumluluk için). | STRING |
-| `model task_id` | Tamamlanan doku oluşturma görevinin görev kimliği, diğer Tripo düğümleri için girdi olarak kullanılabilir. | MODEL_TASK_ID |
+| `model_dosyası` | Oluşturulan model dosyası (yalnızca geriye dönük uyumluluk için). | STRING |
+| `model_görev_id` | Tamamlanan doku oluşturma görevinin görev kimliği, diğer Tripo düğümleri için girdi olarak kullanılabilir. | MODEL_TASK_ID |
 | `GLB` | GLB formatında oluşturulan dokulu model. Kaynak bir quad mesh veya bir FBX içe aktarma ise boş olur. | FILE3DGLB |
 | `FBX` | FBX formatında oluşturulan dokulu model. Tripo, quad mesh'ler ve FBX içe aktarmaları için FBX döndürür; aksi halde boş olur. | FILE3DFBX |
 

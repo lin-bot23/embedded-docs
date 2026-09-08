@@ -9,7 +9,7 @@ Remesh Mesh, orijinal yüzeyin çevresindeki dar bantlı bir mesafe alanını ö
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 |-----------|-------------|-----------|----------|-------|
 | `mesh` | Remesh uygulanacak girdi mesh'i. | MESH | Evet | — |
-| `resolution` | Voksel ızgara çözünürlüğü (çıktı yoğunluğu). 256 ~ 100 bin yüz, 512 ~ 1 milyon. Tam bir yüz sayısı için ardından Decimate Mesh kullanın. (varsayılan: 512) | INT | Evet | 32 - 2048 |
+| `çözünürlük` | Voksel ızgara çözünürlüğü (çıktı yoğunluğu). 256 ~ 100 bin yüz, 512 ~ 1 milyon. Tam bir yüz sayısı için ardından Decimate Mesh kullanın. (varsayılan: 512) | INT | Evet | 32 - 2048 |
 | `sign_mode` | Yüzey çıkarma modu. "udf", dağınık/manifold olmayan girdilere karşı dayanıklıdır; "sdf", QEF (İkinci Dereceden Hata Fonksiyonu) keskin özellik kurtarma ile temiz bir tek yüzey üretir, ancak tutarlı bir yüzey yönlendirmesi (winding) gerektirir. Bir mod seçildiğinde, o moda özel alt seçenekler görüntülenir. (varsayılan: "udf") | DYNAMIC_COMBO | Evet | "udf"<br>"sdf" |
 | `band` | Voksel birimi cinsinden dar bant genişliği. UDF modunda yüzeyi de öteler. (gelişmiş, varsayılan: 1.0) | FLOAT | Evet | 0.5 - 4.0 |
 | `project_back` | Köşeleri orijinal yüzeye doğru doğrusal olarak enterpole eder (0 = saf DC, 1 = orijinal yüzeye oturtulmuş). (gelişmiş, varsayılan: 0.0) | FLOAT | Evet | 0.0 - 1.0 |
@@ -43,7 +43,7 @@ Not: `qef` seçeneğinin varsayılan değeri seçilen moda göre farklıdır —
 
 | Çıktı Adı | Açıklama | Veri Türü |
 |-------------|-------------|-----------|
-| `mesh` | Düzgün mozaiklemeli ve kaynaklı topolojiye sahip, yeniden oluşturulmuş mesh. Girdide mevcut olduğunda köşe renkleri korunur; UV'ler, normaller ve teğetlerin hiçbiri aktarılmaz. | MESH |
+| `ağ` | Düzgün mozaiklemeli ve kaynaklı topolojiye sahip, yeniden oluşturulmuş mesh. Girdide mevcut olduğunda köşe renkleri korunur; UV'ler, normaller ve teğetlerin hiçbiri aktarılmaz. | MESH |
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/RemeshMesh/tr.md)
 
