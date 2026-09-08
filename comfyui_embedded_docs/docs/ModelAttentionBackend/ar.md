@@ -1,25 +1,34 @@
-# ModelAttentionBackend
+# الواجهة الخلفية لانتباه النموذج
 
-This node lets you choose which attention backend a model uses for its attention computations. It creates a copy of the model and swaps in the attention function you select, which can affect performance or behavior. If the chosen backend is not available, it automatically falls back to PyTorch attention and logs a warning.
+```markdown
+# واجهة إدارة نموذج التركيز
 
-تسمح لك هذه العقدة باختيار الخلفية (backend) التي يستخدمها النموذج لعمليات الانتباه الخاصة به. وهي تنشئ نسخة من النموذج وتستبدل دالة الانتباه التي تختارها، مما قد يؤثر على الأداء أو السلوك. إذا لم تكن الخلفية المحددة متاحة، فإنها تتراجع تلقائيًا إلى انتباه PyTorch وتُسجّل تحذيرًا.
+## نظرة عامة
+
+تتيح لك وحدة ModelAttentionBackend اختيار تنفيذ التركيز الكثيف لنموذج. تقوم الوحدة بتعديل النموذج باستخدام واجهة التركيز الكثيف المختارة، والتي يمكن أن تكون PyTorch attention أو Comfy Kitchen attention عند توفرها. هذه الوحدة مفيدة بشكل خاص عندما يكون التركيز الفارغ غير نشط أو غير مدعوم، مما يضمن تشغيل النموذج باستخدام آلية التركيز الكثيف المحددة.
 
 ## المدخلات
 
-| المعامل | الوصف | نوع البيانات | إلزامي | النطاق |
+| المعامل | الوصف | نوع البيانات | إلزامي | نطاق |
 |-----------|-------------|-----------|----------|-------|
-| `النموذج` | النموذج الذي سيتم تطبيق خلفية الانتباه المحددة عليه. | MODEL | نعم |  |
-| `الانتباه` | خلفية الانتباه المستخدمة (الافتراضي: "pytorch attention"). إذا كانت الخلفية المحددة غير متاحة، يتم استخدام انتباه PyTorch كخيار احتياطي. | STRING | نعم | "pytorch attention"<br>"comfy kitchen attention" |
+| `النموذج` | النموذج الذي سيتم تعديله بواسطة واجهة التركيز الكثيف المختارة. | نموذج | نعم |  |
+| `الانتباه` | واجهة التركيز الكثيف التي سيتم تطبيقها على النموذج. الخيارات المتاحة هي "pytorch attention" و "comfy kitchen attention" إذا كان متاحًا في البيئة. | STRING | نعم | "pytorch attention"<br> "comfy kitchen attention" (عند توفرها) |
 
-ملاحظة: يُدرج خيار "comfy kitchen attention" فقط عندما تكون وحدة انتباه comfy kitchen int8 متاحة في البيئة الحالية.
+- يُستخدم خيار "comfy kitchen attention" لاستخدام التركيز المقاس بالINT8 ويدعم فقط أجهزة Nvidia وAMD.
 
 ## المخرجات
 
 | اسم المخرج | الوصف | نوع البيانات |
-|-------------|-----------|-----------|
-| `MODEL` | نسخة طبق الأصل من نموذج الإدخال مع تطبيق خلفية الانتباه المحددة. | MODEL |
+|-------------|-------------|-----------|
+| `model` | النموذج المدخل مع تطبيق واجهة التركيز الكثيف المختارة. | نموذج |
+
+## ملاحظة
+
+- إذا لم تكن واجهة التركيز الكثيف المختارة متاحة، ستقوم الوحدة تلقائيًا بالتراجع إلى استخدام PyTorch attention وسيتم تسجيل تحذير.
+- وحدة ModelAttentionBackend تجريبية وقد تتعرض لتغييرات في إصدارات المستقبل.
+```
 
 > تم إنشاء هذه الوثيقة بواسطة الذكاء الاصطناعي. إذا وجدت أي أخطاء أو لديك اقتراحات للتحسين، فلا تتردد في المساهمة! [تحرير على GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ModelAttentionBackend/ar.md)
 
 ---
-**Source fingerprint (SHA-256):** `4ba613cc0bf5b3e7f9effa895b98b3a3bd302e5d20e9d7e18d1633906c783244`
+**Source fingerprint (SHA-256):** `4f6e4800c2a3bb09b47b7c8f0481e1b6de3070f57234e610df5d3ce60dfdb309`

@@ -1,25 +1,31 @@
 # Pixal3DConditioning
 
-Bu düğüm, Trellis2 3B üretim hattı için görüntü koşullandırması hazırlar. Girdi görüntüsünden DINOv3 görüş modeli ile iki çözünürlükte görsel özellikler çıkarır, bunları aşama başına özellik haritaları halinde düzenler (isteğe bağlı olarak bir NAF modeliyle geliştirilmiş) ve yatay görüş alanından türetilen kamera verileriyle birleştirir. Pozitif ve negatif olmak üzere bir çift koşullandırma çıktısı üretir; negatif koşullandırma, sınıflandırıcısız rehberlik için sıfırlanmış özellikler kullanır.
+```markdown
+# Pixal3DConditioning
+
+## Özet
+
+Pixal3DConditioning düğümü, Trellis2 3D oluşturma pipeline'ı için görüntü koşullandırma hazırlamak için tasarlanmıştır. DINOv3 görsel modelini kullanarak girdi görüntüsünden iki çözünürlükte görsel özellikler çıkarır. Bu özellikler, isteğe bağlı olarak NAF modeli ile güçlendirilmiş olarak her aşamaya özel özellik haritalarına organize edilir. Düğüm, yatay açısal genişlikten elde edilen kamera verilerini kullanarak projeksiyon dönüş matrisini hesaplamak için entegre edilmiştir. Düğüm, görüntüden elde edilen özellik haritaları ve projeksiyon verilerini içeren pozitif koşullandırma çifti ile birlikte, sınıflandırıcısız rehberlik için sıfırlanmış özellik tensorları içeren negatif koşullandırma çifti üretir.
 
 ## Girdiler
 
-| Parametre | Açıklama | Veri Tipi | Zorunlu | Aralık |
+| Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 |-----------|-------------|-----------|----------|-------|
-| `clip_vision_model` | DINOv3 ViT-L/16 ClipVision modeli. | CLIP_VISION | Evet | — |
-| `görüntü` | ImageCropToMask'ten ön işlenmiş görüntü (Pixal3D için pad_factor=1.1). | IMAGE | Evet | — |
-| `camera_angle_x` | Derece cinsinden yatay görüş alanı (görünen ad: fov). Görüntü başına bir FoV için bir MoGeGeometryToFOV (axis='horizontal', unit='degrees') bağlayın (üst akış varsayılanıyla eşleşir). Varsayılan: 49.13. | FLOAT | Evet | 1.0 – 170.0 |
-
-Not: `camera_angle_x` değeri dahili olarak radyana dönüştürülür ve projeksiyon dönüşüm matrisi için kamera mesafesini hesaplamak üzere kullanılır. Sağlanan görüş modeli bir NAF bileşeni içerdiğinde, düğüm ayrıca şekil ve doku aşamaları için yüksek çözünürlüklü özellik haritaları üretir.
+| `clip_vision_model` | Görüntü özellik çıkarımı için kullanılan DINOv3 ViT-L/16 ClipVision modeli. | CLIP_VISION | Evet | — |
+| `görüntü` | ImageCropToMask düğümünden gelen ön işlenmiş görüntü, Pixal3D için bir pad_factor'ı 1.1 olan amaçlanmıştır. | GÖRÜNTÜ | Evet | — |
+| `camera_angle_x` | Derecelerde yatay açısal genişlik. Bu parametre, her görüntü için bir açısal genişlik için MoGeGeometryToFOV düğümüne bağlanabilir. Standart: 49.13. | FLOAT | Evet | 1.0 – 170.0 |
 
 ## Çıktılar
 
-| Çıktı Adı | Açıklama | Veri Tipi |
+| Çıktı Adı | Açıklama | Veri Türü |
 |-------------|-------------|-----------|
-| `pozitif` | Trellis2 üretimi için görüntüden türetilmiş özellik haritalarını ve projeksiyon verilerini içeren pozitif koşullandırma. | CONDITIONING |
-| `negatif` | Sınıflandırıcısız rehberlik için kullanılan, sıfırlanmış özellik tensörlerine sahip negatif koşullandırma. | CONDITIONING |
+| `pozitif` | Trellis2 oluşturma için görüntüden elde edilen özellik haritaları ve projeksiyon verilerini içeren pozitif koşullandırma çıktısı. | KOŞULLANDIRMA |
+| `negatif` | Sınıflandırıcısız rehberlik için sıfırlanmış özellik tensorları içeren negatif koşullandırma çıktısı. | KOŞULLANDIRMA |
+
+Not: `camera_angle_x` değeri içsel olarak radianlara dönüştürülür ve projeksiyon dönüş matrisi için kamera mesafesi hesaplanmak üzere kullanılır. Sağlanan görüntü modeli NAF bileşeni içeriyorsa, düğüm, şekil ve tekstür aşamaları için yüksek çözünürlüklü özellik haritaları da üretir.
+```
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Pixal3DConditioning/tr.md)
 
 ---
-**Source fingerprint (SHA-256):** `3eba711620f6c56a21bbf7df89f8d406ce6f90908298b1a295a1dbbddd042472`
+**Source fingerprint (SHA-256):** `88e82b48fbe297c8e32ddd1b6659f196bda6f77fd53480bc021e85170d1923c7`

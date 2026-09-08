@@ -1,34 +1,42 @@
 # LTXVAddGuide
 
-O nó LTXVAddGuide adiciona orientação de condicionamento de vídeo a sequências latentes, codificando imagens ou vídeos de entrada e incorporando-os como keyframes nos dados de condicionamento. Ele processa a entrada por meio de um codificador VAE e posiciona estrategicamente os latents resultantes em posições de quadro especificadas, atualizando tanto o condicionamento positivo quanto o negativo com informações de keyframe. O nó lida com restrições de alinhamento de quadros e permite controlar a força da influência do condicionamento.
+```markdown
+# LTXVAddGuide
+
+O nó LTXVAddGuide foi projetado para adicionar guia de condição de vídeo a sequências latentes, codificando imagens ou vídeos de entrada e incorporando-as como quadros-chave na dados de condição. Ele processa a entrada por meio de um encoder VAE e coloca estratégicamente os latentes resultantes em posições de quadros específicas, atualizando tanto a condição positiva quanto negativa com informações de quadro-chave. O nó lida com restrições de alinhamento de quadros e permite controle sobre a força da influência da condição.
+
+## Visão Geral
+
+O nó LTXVAddGuide codifica imagens ou vídeos de entrada, os processa por meio de um encoder VAE e usa os latentes codificados para condicionar uma sequência de vídeo latente. Ele permite especificar um índice de quadro para começar a condição e ajusta a força da influência da condição. O nó também suporta máscaras espaciais optativas para influência de condição por região e pode lidar com parâmetros IC-LoRA para ajustes de processamento de guia específicos.
 
 ## Entradas
 
-| Parâmetro | Descrição | Tipo de Dado | Obrigatório | Intervalo |
-| --- | --- | --- | --- | --- |
-| `positive` | Entrada de condicionamento positivo a ser modificada com a orientação por keyframes | CONDITIONING | Sim | - |
-| `negative` | Entrada de condicionamento negativo a ser modificada com a orientação por keyframes | CONDITIONING | Sim | - |
-| `vae` | Modelo VAE usado para codificar os quadros de imagem/vídeo de entrada | VAE | Sim | - |
-| `latent` | Sequência latente de entrada que receberá os quadros de condicionamento | LATENT | Sim | - |
-| `image` | Imagem ou vídeo para condicionar o vídeo latente. Deve ter 8*n + 1 quadros. Se o vídeo não tiver 8*n + 1 quadros, ele será cortado para o valor mais próximo de 8*n + 1 quadros. | IMAGE | Sim | - |
-| `frame_idx` | Índice do quadro no qual o condicionamento começará. Para imagens de quadro único ou vídeos com 1 a 8 quadros, qualquer valor de `frame_idx` é aceitável. Para vídeos com 9 ou mais quadros, `frame_idx` deve ser divisível por 8; caso contrário, será arredondado para baixo até o múltiplo de 8 mais próximo. Valores negativos são contados a partir do final do vídeo. (padrão: 0) | INT | Sim | -9999 a 9999 |
-| `strength` | Força da influência do condicionamento, em que 1.0 aplica condicionamento total e 0.0 não aplica condicionamento (padrão: 1.0) | FLOAT | Sim | 0.0 a 10.0 |
-| `attention_mask` | Máscara espacial opcional no espaço dos pixels. Controla a influência do condicionamento por região por meio da autoatenção, multiplicada pela `strength`. | MASK | Não | - |
-| `iclora_parameters` | Parâmetros IC-LoRA opcionais de um nó Get IC-LoRA Parameters. Usados para ajustar o processamento da orientação conforme exigido por determinados IC-LoRAs (por exemplo, aqueles com `reference_downscale_factor` > 1). Quando encadeados, cada LTXVAddGuide usa apenas os parâmetros conectados a ele. | IC_LORA_PARAMETERS | Não | - |
+| Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
+|-----------|-------------|-----------|----------|-------|
+| `positive` | Entrada de condição positiva a ser modificada com guia de quadro-chave | CONDIÇÃO | Sim | - |
+| `negative` | Entrada de condição negativa a ser modificada com guia de quadro-chave | CONDIÇÃO | Sim | - |
+| `vae` | Modelo VAE usado para codificar os quadros de entrada de imagem/vídeo | VAE | Sim | - |
+| `latent` | Sequência latente de entrada que receberá os quadros de condição | LATENTE | Sim | - |
+| `image` | Imagem ou vídeo para condicionar a sequência de vídeo latente. Deve ter 8*n + 1 quadros. Se o vídeo não tiver 8*n + 1 quadros, ele será cortado para o número mais próximo de 8*n + 1 quadros. | IMAGEM | Sim | - |
+| `frame_idx` | Índice de quadro para começar a condição. Para imagens ou vídeos com 1-8 quadros, qualquer valor de frame_idx é aceitável. Para vídeos com 9+ quadros, frame_idx deve ser divisível por 8, caso contrário, ele será arredondado para o múltiplo mais próximo de 8. Valores negativos são contados a partir do final do vídeo. (padrão: 0) | INTEIRO | Sim | -9999 a 9999 |
+| `strength` | Força da influência da condição, onde 1.0 aplica condição completa e 0.0 aplica nenhuma condição (padrão: 1.0) | FLUTUANTE | Sim | 0.0 a 10.0 |
+| `attention_mask` | Máscara espacial optativa. Controla a influência de condição por região via auto-atenção, multiplicada por força. | MÁSCARA | Não | - |
+| `iclora_parameters` | Parâmetros IC-LoRA optativos de um nó Get IC-LoRA Parameters. Usados para ajustar o processamento de guia conforme necessário por certos IC-LoRAs (por exemplo, aqueles com um reference_downscale_factor > 1). Quando encadeados, cada LTXVAddGuide usa apenas os parâmetros conectados a ele. | PARÂMETROS_IC_LORA | Não | - |
 
-**Observação:** A imagem/vídeo de entrada deve ter uma contagem de quadros seguindo o padrão 8*n + 1 (por exemplo, 1, 9, 17, 25 quadros). Se a entrada exceder esse padrão, ela será automaticamente cortada para a contagem de quadros válida mais próxima.
+**Nota:** A imagem/vídeo de entrada deve ter um número de quadros seguindo o padrão 8*n + 1 (por exemplo, 1, 9, 17, 25 quadros). Se a entrada exceder esse padrão, ela será automaticamente cortada para o número mais próximo de validade.
 
-**Observação sobre `iclora_parameters`:** Ao usar parâmetros IC-LoRA com `reference_downscale_factor` maior que 1, as dimensões espaciais latentes (largura e altura) devem ser divisíveis por esse fator. O nó gerará um erro se essa condição não for atendida.
+**Nota sobre `iclora_parameters`:** Quando usar parâmetros IC-LoRA com um `reference_downscale_factor` maior que 1, as dimensões espaciais latentes (largura e altura) devem ser divisíveis por esse fator. O nó levantará um erro se essa condição não for atendida.
 
 ## Saídas
 
-| Nome da Saída | Descrição | Tipo de Dado |
-| --- | --- | --- |
-| `positive` | Condicionamento positivo atualizado com informações de orientação por keyframes | CONDITIONING |
-| `negative` | Condicionamento negativo atualizado com informações de orientação por keyframes | CONDITIONING |
-| `latent` | Sequência latente com quadros de condicionamento incorporados e máscara de ruído atualizada | LATENT |
+| Nome da Saída | Descrição | Tipo de Dados |
+|-------------|-------------|-----------|
+| `positive` | Condição positiva atualizada com informações de guia de quadro-chave | CONDIÇÃO |
+| `negative` | Condição negativa atualizada com informações de guia de quadro-chave | CONDIÇÃO |
+| `latent` | Sequência latente com quadros de condição incorporados e máscara de ruído atualizada | LATENTE |
+```
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddGuide/pt-BR.md)
 
 ---
-**Source fingerprint (SHA-256):** `3e0d1422fbd1b5b3e4c69e641af2ecdb5ae8de3f4368b336917a0dce4286771e`
+**Source fingerprint (SHA-256):** `031bc9030dafed85b5ff1cbceae36234e9d5f77f7f4b040267067ecd16a27929`
