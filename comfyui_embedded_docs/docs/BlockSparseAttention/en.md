@@ -1,8 +1,5 @@
 # Block Sparse Attention
 
-```markdown
-# Block Sparse Attention
-
 ## Overview
 
 The Block Sparse Attention node modifies a ComfyUI model to apply a block-sparse attention mechanism. This mechanism reduces the computational load by allowing each query block to focus on a subset of key blocks, rather than attending to all possible blocks, which is particularly beneficial for long sequences.
@@ -46,10 +43,9 @@ The Block Sparse Attention node modifies a ComfyUI model to apply a block-sparse
 - The `sol-attn` method requires a `tau` value between 0.0 and 4.0.
 - The `sla` method requires a `keep_percent` value between 0.5 and 95.0.
 - The `vsa` method is only compatible with MiniMax-H3 models and requires the model to have a `to_gate_compress` layer.
-- The `min_tokens` parameter must be a positive integer.
+- The `min_tokens` parameter must be a non-negative integer (setting it to 0 keeps attention fully dense).
 - The `extra_tokens` parameter must be a non-negative integer.
 - The `sink_conditioning` options are only applicable to MiniMax-H3 models.
-```
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/BlockSparseAttention/en.md)
 

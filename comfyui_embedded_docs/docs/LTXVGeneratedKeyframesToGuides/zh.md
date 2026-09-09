@@ -1,8 +1,5 @@
 # LTXVGeneratedKeyframesToGuides
 
-```markdown
-# LTXV 生成关键帧到引导
-
 ## 概述
 
 LTXV 生成关键帧到引导节点将早期阶段生成的关键帧作为冻结图像引导固定在后续画布上。它将关键帧解码为独立的帧，如果需要则调整大小，并使用噪声掩码为 0 写入，以防止进一步的降噪。记录的索引从生成它们的画布缩放到目标画布，您可以覆盖帧索引以显式设置位置。
@@ -40,7 +37,6 @@ LTXV 生成关键帧到引导节点将早期阶段生成的关键帧作为冻结
 - 如果 `override_frame_indices` 参数不是逗号分隔的整数列表或索引数量与关键帧数量不匹配，节点将引发 `ValueError`。
 - 如果 `override_frame_indices` 参数中的任何索引超出目标画布中像素帧的范围，节点将引发 `ValueError`。
 - 如果 `override_frame_indices` 参数中的最大索引大于目标画布中像素帧的数量，节点将引发 `ValueError`。
-```
 
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVGeneratedKeyframesToGuides/zh.md)
 

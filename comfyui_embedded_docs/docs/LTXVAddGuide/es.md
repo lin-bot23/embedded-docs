@@ -1,8 +1,5 @@
 # LTXVAddGuide
 
-```markdown
-# LTXVAddGuide
-
 El nodo LTXVAddGuide está diseñado para agregar guía de condicionamiento de video a secuencias latentes mediante la codificación de imágenes o videos de entrada y la incorporación de los marcos clave como datos de condicionamiento. Procesa la entrada a través de un codificador VAE y coloca estratégicamente los latentes resultantes en posiciones de cuadro específicas mientras actualiza tanto el condicionamiento positivo como negativo con información de marcos clave. El nodo maneja las restricciones de alineación de cuadro y permite controlar la fuerza del influjo de condicionamiento.
 
 ## Resumen
@@ -34,7 +31,6 @@ El nodo LTXVAddGuide codifica imágenes o videos de entrada, los procesa a trav�
 | `positivo` | Condicionamiento positivo actualizado con información de guía de marcos clave | CONDITIONING |
 | `negativo` | Condicionamiento negativo actualizado con información de guía de marcos clave | CONDITIONING |
 | `latente` | Secuencia latente con marcos de condicionamiento incorporados y máscara de ruido actualizada | LATENT |
-```
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddGuide/es.md)
 

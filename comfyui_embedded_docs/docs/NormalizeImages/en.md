@@ -1,8 +1,5 @@
 # Normalize Image Colors
 
-```markdown
-# Normalize Image Colors
-
 This node adjusts the pixel values of an input image using a mathematical normalization process. It subtracts a specified mean value from each pixel and then divides the result by a specified standard deviation. This is a common preprocessing step to prepare image data for other machine learning models. If the input image has an alpha channel, the alpha channel is passed through unchanged so transparency is preserved.
 
 ## Overview
@@ -30,7 +27,6 @@ The output from the Normalize Images node is the normalized image. The pixel val
 ## Note
 
 The Normalize Images node is designed to handle any batch size of images, making it suitable for batch processing tasks.
-```
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/NormalizeImages/en.md)
 

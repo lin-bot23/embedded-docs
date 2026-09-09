@@ -1,8 +1,5 @@
 # LTXVSeparateGeneratedKeyframes
 
-```markdown
-# LTXV 분리된 생성된 키프레임
-
 ## 개요
 
 LTXV Separate Generated Keyframes 노드는 샘플된 latent과 조건부에서 생성된 키프레임을 제거하여, 공간적으로 업스케일링 전에 별도로 처리할 수 있도록 합니다. 공간 업스케일링 전에 사용되어야 하며, LTXV Crop Guides 이후에 실행되지 않도록 해야 합니다. 이 노드는 생성된 키프레임을 버리는 가이드로 처리하여 제거합니다.
@@ -32,7 +29,6 @@ LTXV Separate Generated Keyframes 노드는 샘플된 latent과 조건부에서 
 - `keyframes` 출력은 생성된 키프레임의 새로운 슬롯을 초기화하거나, 고정된 이미지 가이드로 사용할 수 있습니다.
 - latent이 생성된 키프레임을 포함하지 않거나, 키프레임이 예상된 형식과 일치하지 않으면 노드는 `ValueError`를 발생시킵니다.
 - 노드는 LTXV Add Generated Keyframes 노드를 사용하여 추가된 생성된 키프레임이며, 현재 latent과 호환되는 것을 가정합니다.
-```
 
 > 이 문서는 AI에 의해 생성되었습니다. 오류를 발견하거나 개선 제안이 있으시면 기여해 주세요! [GitHub에서 편집](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVSeparateGeneratedKeyframes/ko.md)
 

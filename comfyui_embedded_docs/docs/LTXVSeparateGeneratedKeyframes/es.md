@@ -1,8 +1,5 @@
 # LTXVSeparateGeneratedKeyframes
 
-```markdown
-# LTXV Separar Claves Generadas
-
 ## Resumen
 
 El nodo LTXV Separar Claves Generadas elimina las claves generadas de un latente muestreado y la condición, permitiendo su manejo separado antes de escalar espacialmente el latente del video. Está diseñado para usarse antes de la escalada espacial y no debe ejecutarse después de LTXV Recortar Guías, ya que trata las claves generadas como guías desechables y las elimina.
@@ -32,7 +29,6 @@ El nodo LTXV Separar Claves Generadas elimina las claves generadas de un latente
 - La salida `keyframes` se puede usar para inicializar nuevos espacios para las claves generadas o para fijarlas como guías de imagen congelada.
 - El nodo lanza un `ValueError` si el latente no contiene claves generadas o si las claves no coinciden con el formato esperado.
 - El nodo asume que las claves generadas se agregaron usando el nodo LTXV Agregar Claves Generadas y que son compatibles con el latente actual.
-```
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVSeparateGeneratedKeyframes/es.md)
 

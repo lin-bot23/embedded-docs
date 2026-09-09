@@ -1,8 +1,5 @@
 # LTXVGeneratedKeyframesToGuides
 
-```markdown
-# LTXV Generados Claveframes a Guías
-
 ## Resumen
 
 El nodo LTXV Generados Claveframes a Guías fija los claveframes generados en una etapa anterior como guías de imagen congeladas en un lienzo posterior. Decodifica los claveframes como cuadros independientes, los redimensiona si es necesario y los escribe con una máscara de ruido de 0 para evitar el desenoising adicional. Los índices grabados se escalan desde el lienzo en el que se generaron al lienzo objetivo, y puedes anular los índices de cuadros para establecer posiciones explícitamente.
@@ -40,7 +37,6 @@ El nodo LTXV Generados Claveframes a Guías fija los claveframes generados en un
 - El nodo lanzará un `ValueError` si el parámetro `override_frame_indices` no es una lista de enteros separados por comas o si el número de índices no coincide con el número de claveframes.
 - El nodo lanzará un `ValueError` si algún índice en el parámetro `override_frame_indices` está fuera del rango de 1 al número de cuadros de píxeles en el lienzo objetivo.
 - El nodo lanzará un `ValueError` si el índice máximo en el parámetro `override_frame_indices` es mayor que el número de cuadros de píxeles en el lienzo objetivo.
-```
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVGeneratedKeyframesToGuides/es.md)
 

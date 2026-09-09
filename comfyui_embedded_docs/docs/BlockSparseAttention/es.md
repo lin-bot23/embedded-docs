@@ -1,8 +1,5 @@
 # Atención dispersa por bloques del modelo
 
-```markdown
-# Nodo de Atención Esparsa de Bloque
-
 ## Resumen
 
 El nodo de Atención Esparsa de Bloque modifica un modelo de ComfyUI para aplicar un mecanismo de atención esparsa de bloque. Este mecanismo reduce la carga computacional permitiendo que cada bloque de consulta se centre en un subconjunto de bloques clave, en lugar de atender a todos los posibles bloques, lo cual es particularmente beneficioso para secuencias largas.
@@ -46,10 +43,9 @@ El nodo de Atención Esparsa de Bloque modifica un modelo de ComfyUI para aplica
 - El método `sol-attn` requiere un valor de `tau` entre 0.0 y 4.0.
 - El método `sla` requiere un valor de `keep_percent` entre 0.5 y 95.0.
 - El método `vsa` es compatible solo con modelos MiniMax-H3 y requiere que el modelo tenga una capa `to_gate_compress`.
-- El parámetro `min_tokens` debe ser un entero positivo.
+- El parámetro `min_tokens` debe ser un entero no negativo (con 0, toda la atención permanece densa).
 - El parámetro `extra_tokens` debe ser un entero no negativo.
 - Las opciones de `sink_conditioning` solo son aplicables a modelos MiniMax-H3.
-```
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/BlockSparseAttention/es.md)
 

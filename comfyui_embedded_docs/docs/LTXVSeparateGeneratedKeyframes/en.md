@@ -1,8 +1,5 @@
 # LTXVSeparateGeneratedKeyframes
 
-```markdown
-# LTXV Separate Generated Keyframes
-
 ## Overview
 
 The LTXV Separate Generated Keyframes node removes generated keyframes from a sampled latent and conditioning, allowing for separate handling before spatially upscaling the video latent. It is designed to be used before spatial upscaling and should not be run after LTXV Crop Guides, as it treats generated keyframes as disposable guides and drops them.
@@ -32,7 +29,6 @@ The LTXV Separate Generated Keyframes node removes generated keyframes from a sa
 - The `keyframes` output can be used to initialize new slots for generated keyframes or to pin them as frozen image guides.
 - The node raises a `ValueError` if the latent does not contain generated keyframes or if the keyframes do not match the expected format.
 - The node assumes that the generated keyframes were added using the LTXV Add Generated Keyframes node and that they are compatible with the current latent.
-```
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVSeparateGeneratedKeyframes/en.md)
 

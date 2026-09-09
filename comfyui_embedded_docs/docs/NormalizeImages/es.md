@@ -1,8 +1,5 @@
 # Normalizar Imágenes
 
-```markdown
-# Normalizar Colores de la Imagen
-
 Este nodo ajusta los valores de píxeles de una imagen de entrada utilizando un proceso de normalización matemática. Restablece un valor medio especificado de cada píxel y luego divide el resultado por una desviación estándar especificada. Este es un paso de preprocesamiento común para preparar datos de imagen para otros modelos de aprendizaje automático. Si la imagen de entrada tiene un canal alfa, el canal alfa se pasa sin cambios, preservando la transparencia.
 
 ## Resumen
@@ -30,7 +27,6 @@ La salida del nodo Normalizar Imágenes es la imagen normalizada. Los valores de
 ## Nota
 
 El nodo Normalizar Imágenes está diseñado para manejar cualquier tamaño de lote de imágenes, lo que lo hace adecuado para tareas de procesamiento por lotes.
-```
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/NormalizeImages/es.md)
 

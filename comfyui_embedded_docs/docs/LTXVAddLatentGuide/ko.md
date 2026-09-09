@@ -1,8 +1,5 @@
 # LTXVAddLatentGuide
 
-```markdown
-# LTXV 추가 잠재 지침
-
 ## 개요
 
 LTXV Add Latent Guide 노드는 이미编码된 잠재 변수를 지침으로 고정하여, 이전 단계에서 나오는 지침을 사용할 수 있게 합니다. 이 노드는 VAE 디코딩/인코딩 라운드 트립을 피하고, 공간적으로 작은 지침을 희소 그리드에 확장하여 타겟 캔버스를 덮을 수 있습니다.
@@ -34,7 +31,6 @@ LTXV Add Latent Guide 노드는 이미编码된 잠재 변수를 지침으로 �
 - `latent_idx` 매개변수는 지침이 잠재 프레임 내에서 정확하게 배치되도록 합니다.
 - `strength` 매개변수는 지침의 강도를 제어하며, 1.0 이상의 값은 `attention_mask`를 사용하여 음수 위치를 피해야 합니다.
 - `attention_mask` 매개변수는 선택 사항이지만, 이미지의 특정 지역에서 지침의 영향을 미세 조정할 수 있습니다.
-```
 
 > 이 문서는 AI에 의해 생성되었습니다. 오류를 발견하거나 개선 제안이 있으시면 기여해 주세요! [GitHub에서 편집](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddLatentGuide/ko.md)
 

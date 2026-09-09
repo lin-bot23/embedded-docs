@@ -1,8 +1,5 @@
 # 모델 어텐션 백엔드
 
-```markdown
-# 모델어ention백엔드
-
 ## 개요
 
 ModelAttentionBackend 노드는 모델에 사용할 다단계 주목력 구현을 선택할 수 있게 합니다. 이 노드는 선택한 주목력 백엔드로 모델을 패치하며, 사용 가능한 경우 PyTorch 주목력 또는 Comfy Kitchen 주목력을 사용할 수 있습니다. 이 노드는 희소 주목력이 비활성이거나 지원되지 않는 경우에 특히 유용하며, 모델이 지정된 다단계 주목력 기계로 작동하게 합니다.
@@ -26,7 +23,6 @@ ModelAttentionBackend 노드는 모델에 사용할 다단계 주목력 구현�
 
 - 선택한 주목력 백엔드가 사용 가능하지 않으면, 노드는 자동으로 PyTorch 주목력을 사용하며 경고 메시지를 로그에 기록합니다.
 - ModelAttentionBackend 노드는 실험적이며, 향후 출시에서 변경될 수 있습니다.
-```
 
 > 이 문서는 AI에 의해 생성되었습니다. 오류를 발견하거나 개선 제안이 있으시면 기여해 주세요! [GitHub에서 편집](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ModelAttentionBackend/ko.md)
 

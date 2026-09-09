@@ -1,8 +1,5 @@
 # LTXVAddGeneratedKeyframes
 
-```markdown
-# LTXV アド ゲネレートド キーフレームの追加
-
 ## 概要
 
 LTXV Add Generated Keyframes ノードは、ビデオのラテンシティに詳細なキーフレームを追加します。各キーフレームは、単一のピクセルフレームを跨ぐトークンのラテンシティフレームを表し、ビデオとともにデノイズされますが、デコードされた出力の一部ではありません。配置は interval_frames パラメータによって決定され、自動配置のためのピクセルフレームのストライドを指定します。
@@ -34,7 +31,6 @@ LTXV Add Generated Keyframes ノードは、ビデオのラテンシティに詳
 - `frame_indices` パラメータは、キーフレームが配置される正確なピクセルフレームインデックスを指定するために使用できます。提供された場合、`interval_frames` パラメータは無視されます。
 - `positive` と `negative` 出力は、生成されたキーフレームのアテンションが付加された条件付けを含み、さらなる処理や分析に使用できます。
 - `latent` 出力は、生成されたキーフレームが T に追加されたビデオラテンシティを含み、さらなる処理や分析に使用できます。
-```
 
 > このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddGeneratedKeyframes/ja.md)
 

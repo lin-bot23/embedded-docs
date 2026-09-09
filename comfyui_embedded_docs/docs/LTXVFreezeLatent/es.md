@@ -1,8 +1,5 @@
 # LTXVFreezeLatent
 
-```markdown
-# LTXV Freeze Latent
-
 ## Resumen
 
 El nodo LTXV Freeze Latent está diseñado para establecer el noise_mask en 0 para un latente dado, asegurando que el latente permanezca limpio durante la muestreo. Es particularmente útil para congelar latentes de audio o video para evitar la desENOISE, que puede aplicarse antes de concatenar audio y video para la atención cruzada o para cualquier latente que no deba ser desenoisado.

@@ -1,8 +1,5 @@
 # Pixal3DConditioning
 
-```markdown
-# Pixal3DConditioning
-
 ## Özet
 
 Pixal3DConditioning düğümü, Trellis2 3D oluşturma pipeline'ı için görüntü koşullandırma hazırlamak için tasarlanmıştır. DINOv3 görsel modelini kullanarak girdi görüntüsünden iki çözünürlükte görsel özellikler çıkarır. Bu özellikler, isteğe bağlı olarak NAF modeli ile güçlendirilmiş olarak her aşamaya özel özellik haritalarına organize edilir. Düğüm, yatay açısal genişlikten elde edilen kamera verilerini kullanarak projeksiyon dönüş matrisini hesaplamak için entegre edilmiştir. Düğüm, görüntüden elde edilen özellik haritaları ve projeksiyon verilerini içeren pozitif koşullandırma çifti ile birlikte, sınıflandırıcısız rehberlik için sıfırlanmış özellik tensorları içeren negatif koşullandırma çifti üretir.
@@ -23,7 +20,6 @@ Pixal3DConditioning düğümü, Trellis2 3D oluşturma pipeline'ı için görün
 | `negatif` | Sınıflandırıcısız rehberlik için sıfırlanmış özellik tensorları içeren negatif koşullandırma çıktısı. | KOŞULLANDIRMA |
 
 Not: `camera_angle_x` değeri içsel olarak radianlara dönüştürülür ve projeksiyon dönüş matrisi için kamera mesafesi hesaplanmak üzere kullanılır. Sağlanan görüntü modeli NAF bileşeni içeriyorsa, düğüm, şekil ve tekstür aşamaları için yüksek çözünürlüklü özellik haritaları da üretir.
-```
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Pixal3DConditioning/tr.md)
 

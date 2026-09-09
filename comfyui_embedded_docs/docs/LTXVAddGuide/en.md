@@ -1,8 +1,5 @@
 # LTXVAddGuide
 
-```markdown
-# LTXVAddGuide
-
 The LTXVAddGuide node is designed to add video conditioning guidance to latent sequences by encoding input images or videos and incorporating them as keyframes into the conditioning data. It processes the input through a VAE encoder and strategically places the resulting latents at specified frame positions while updating both positive and negative conditioning with keyframe information. The node handles frame alignment constraints and allows control over the strength of the conditioning influence.
 
 ## Overview

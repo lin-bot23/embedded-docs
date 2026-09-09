@@ -1,8 +1,5 @@
 # 標準化圖片
 
-```markdown
-# 正規化圖像顏色
-
 此節點使用數學正規化過程調整輸入圖像的像素值。它從每個像素中減去指定的平均值，然後將結果除以指定的標準差。這是一個常見的預處理步驟，用於為其他機器學習模型準備圖像數據。如果輸入圖像有 alpha 通道，則 alpha 通道將保持不變，以保留透明度。
 
 ## 概述
@@ -30,7 +27,6 @@ Normalize Images 節點的輸出是正規化後的圖像。像素值將根據指
 ## 注意
 
 Normalize Images 節點設計用於處理任何批次的圖像大小，使其適合批處理任務。
-```
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/NormalizeImages/zh-TW.md)
 

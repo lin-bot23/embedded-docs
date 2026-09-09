@@ -1,8 +1,5 @@
 # LTXVSeparateGeneratedKeyframes
 
-```markdown
-# LTXV Séparer les Keyframes Générés
-
 ## Aperçu
 
 Le nœud LTXV Séparer les Keyframes Générés supprime les keyframes générés d'un latent échantillonné et de la condition, permettant un traitement séparé avant l'upscale spatiale du latent vidéo. Il est conçu pour être utilisé avant l'upscale spatiale et ne doit pas être exécuté après LTXV Coupe des Guides, car il traite les keyframes générés comme des guides jetables et les supprime.
@@ -32,7 +29,6 @@ Le nœud LTXV Séparer les Keyframes Générés supprime les keyframes généré
 - La sortie `keyframes` peut être utilisée pour initialiser de nouveaux emplacements pour les keyframes générés ou pour les fixer comme guides d'image figées.
 - Le nœud lève une `ValueError` si le latent ne contient pas de keyframes générés ou si les keyframes ne correspondent pas au format attendu.
 - Le nœud suppose que les keyframes générés ont été ajoutés à l'aide du nœud LTXV Add Generated Keyframes et qu'ils sont compatibles avec le latent actuel.
-```
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVSeparateGeneratedKeyframes/fr.md)
 

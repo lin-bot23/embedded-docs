@@ -1,8 +1,5 @@
 # Pixal3DMultiViewConditioning
 
-```markdown
-# Pixal3D Multi-View Conditioning
-
 ## Aperçu
 
 Le nœud Pixal3D Multi-View Conditioning est un cadre d'orbitation fixe qui génère des vues avant, gauche, arrière et droite d'un objet à des intervalles de 90 degrés. Il est utilisé pour créer des vues encadrées pour les applications Pixal3D, où l'objet occupe environ 1/1.1 de la frame à son plus large, en maintenant la même échelle dans chaque vue.
@@ -32,7 +29,6 @@ Le nœud Pixal3D Multi-View Conditioning est un cadre d'orbitation fixe qui gén
 - Si aucune vue avant n'est fournie, un avertissement est enregistré, et le maillage sera posé avec la première vue connectée comme sa vue avant.
 - Le nœud suppose que les vues sont carrées et encadrées comme le cadre. L'objet devrait occuper environ 1/1.1 de la frame à son plus large, et la même échelle devrait être maintenue dans chaque vue.
 - Le nœud produit deux objets de conditionnement, l'un pour le conditionnement positif et l'autre pour le conditionnement négatif. Ces derniers peuvent être utilisés pour conditionner des modèles Pixal3D ou d'autres nœuds qui acceptent des entrées de conditionnement.
-```
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Pixal3DMultiViewConditioning/fr.md)
 

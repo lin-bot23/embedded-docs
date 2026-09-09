@@ -1,8 +1,5 @@
 # 模型區塊稀疏注意力
 
-```markdown
-# Block Sparse Attention
-
 ## 概述
 
 Block Sparse Attention 節點用於修改 ComfyUI 模型，以應用塊稀疏注意力機制。此機制透過允許每個查詢塊只關注鍵塊的子集，而不是關注所有可能的塊，從而減少計算負擔，對於長序列特別有益。
@@ -46,10 +43,9 @@ Block Sparse Attention 節點用於修改 ComfyUI 模型，以應用塊稀疏注
 - `sol-attn` 方法需要介於 0.0 和 4.0 之間的 `tau` 值。
 - `sla` 方法需要介於 0.5 和 95.0 之間的 `keep_percent` 值。
 - `vsa` 方法僅與 MiniMax-H3 模型兼容，並要求模型具有 `to_gate_compress` 層。
-- `min_tokens` 參數必須是正整數。
+- `min_tokens` 參數必須是非負整數（設為 0 時所有注意力都保持稠密）。
 - `extra_tokens` 參數必須是非負整數。
 - `sink_conditioning` 選項僅適用於 MiniMax-H3 模型。
-```
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/BlockSparseAttention/zh-TW.md)
 

@@ -43,7 +43,7 @@ Blok Düzenli Dikkat düğümü, bir ComfyUI modeline blok-düzenli dikkat mekan
 - `sol-attn` yöntemi için `tau` değeri 0.0 ile 4.0 arasında olmalıdır.
 - `sla` yöntemi için `keep_percent` değeri 0.5 ile 95.0 arasında olmalıdır.
 - `vsa` yöntemi yalnızca MiniMax-H3 modelleri ile uyumludur ve modelin `to_gate_compress` katmanına sahip olması gerekmektedir.
-- `min_tokens` parametresi pozitif bir tamsayı olmalıdır.
+- `min_tokens` parametresi negatif olmayan bir tamsayı olmalıdır (0 ayarlanırsa tüm dikkat işlemi yoğun kalır).
 - `extra_tokens` parametresi negatif olmayan bir tamsayı olmalıdır.
 - `sink_conditioning` seçenekleri yalnızca MiniMax-H3 modelleri için geçerlidir.
 

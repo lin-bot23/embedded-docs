@@ -1,8 +1,5 @@
 # Pixal3DMultiViewConditioning
 
-```markdown
-# Pixal3D Multi-View Conditioning
-
 ## Resumen
 
 El nodo Pixal3D Multi-View Conditioning es una estructura de órbita fija que genera vistas frontales, laterales, traseras y laterales de un objeto a intervalos de 90 grados. Se utiliza para crear vistas enmarcadas para aplicaciones Pixal3D, donde el objeto abarca aproximadamente 1/1.1 de la imagen en su anchura máxima, manteniendo la misma escala en cada vista.
@@ -32,7 +29,6 @@ El nodo Pixal3D Multi-View Conditioning es una estructura de órbita fija que ge
 - Si no se proporciona una vista frontal, se genera un aviso y la malla se coloca con la primera vista conectada como su frontal.
 - El nodo asume que las vistas son cuadradas y enmarcadas como la estructura. El objeto debe abarcar aproximadamente 1/1.1 de la imagen en su anchura máxima, y la misma escala debe mantenerse en cada vista.
 - El nodo genera dos objetos de condicionamiento, uno para el condicionamiento positivo y otro para el negativo. Estos pueden utilizarse para condicionar modelos Pixal3D u otros nodos que acepten entradas de condicionamiento.
-```
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Pixal3DMultiViewConditioning/es.md)
 

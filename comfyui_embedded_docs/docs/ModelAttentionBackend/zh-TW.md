@@ -1,8 +1,5 @@
 # 模型注意力後端
 
-```markdown
-# ModelAttentionBackend
-
 ## 概述
 
 ModelAttentionBackend 節點允許您為模型選擇一種稠密注意力實現。它將選定的注意力後端補丁到模型上，當可用時，可以是 PyTorch 注意力或 Comfy Kitchen 注意力。此節點在稀疏注意力無法使用或不支持時尤其有用，確保模型使用指定的稠密注意力機制運作。
@@ -26,7 +23,6 @@ ModelAttentionBackend 節點允許您為模型選擇一種稠密注意力實現�
 
 - 如果選定的注意力後端不可用，節點將自動回退到使用 PyTorch 注意力並記錄警告。
 - ModelAttentionBackend 節點為實驗性質，可能會在未來版本中發生變化。
-```
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ModelAttentionBackend/zh-TW.md)
 

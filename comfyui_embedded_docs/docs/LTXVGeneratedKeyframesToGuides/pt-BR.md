@@ -1,8 +1,5 @@
 # LTXVGeneratedKeyframesToGuides
 
-```markdown
-# LTXV Gerados Keyframes para Guias
-
 ## Visão Geral
 
 O nó LTXV Gerados Keyframes para Guias fixa os keyframes gerados em uma etapa anterior como guias de imagem congelados em um canvas posterior. Ele decodifica os keyframes como quadros independentes, redimensiona-os se necessário e os escreve com uma máscara de ruído de 0 para evitar denoising adicional. Os índices registrados são escalados do canvas onde foram gerados para o canvas alvo, e você pode sobrescrever os índices de quadro para definir posições explicitamente.
@@ -40,7 +37,6 @@ O nó LTXV Gerados Keyframes para Guias fixa os keyframes gerados em uma etapa a
 - O nó levantará um `ValueError` se o parâmetro `override_frame_indices` não for uma lista de inteiros separados por vírgula ou se o número de índices não coincidir com o número de keyframes.
 - O nó levantará um `ValueError` se algum dos índices no parâmetro `override_frame_indices` estiver fora do intervalo de 1 a o número de quadros de pixel no canvas alvo.
 - O nó levantará um `ValueError` se o índice máximo no parâmetro `override_frame_indices` for maior que o número de quadros de pixel no canvas alvo.
-```
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVGeneratedKeyframesToGuides/pt-BR.md)
 

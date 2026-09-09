@@ -1,8 +1,5 @@
 # ModelAttentionBackend
 
-```markdown
-# ModelAttentionBackend
-
 ## Overview
 
 The ModelAttentionBackend node allows you to select a dense attention implementation for a model. It patches the model with the chosen attention backend, which can be either PyTorch attention or Comfy Kitchen attention when available. This node is particularly useful when sparse attention is inactive or unsupported, ensuring that the model operates with the specified dense attention mechanism.
@@ -26,7 +23,6 @@ The ModelAttentionBackend node allows you to select a dense attention implementa
 
 - If the selected attention backend is not available, the node will automatically fall back to using PyTorch attention and log a warning.
 - The ModelAttentionBackend node is experimental and may be subject to changes in future releases.
-```
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ModelAttentionBackend/en.md)
 

@@ -1,8 +1,5 @@
 # LTXVAddLatentGuide
 
-```markdown
-# LTXV Add Latent Guide
-
 ## Overview
 
 The LTXV Add Latent Guide node pins an already-encoded latent as a guide, allowing for the use of a guide that comes out of an earlier stage rather than an image. This node avoids the VAE decode/encode round trip, and it can dilate a spatially smaller guide onto a sparse grid to cover the target canvas.
@@ -34,7 +31,6 @@ The LTXV Add Latent Guide node pins an already-encoded latent as a guide, allowi
 - The `latent_idx` parameter allows for precise placement of the guide within the latent frames.
 - The `strength` parameter controls the intensity of the guide, with values above 1.0 requiring the use of `attention_mask` to avoid negative positions.
 - The `attention_mask` parameter is optional but can be used to fine-tune the influence of the guide in specific regions of the image.
-```
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddLatentGuide/en.md)
 

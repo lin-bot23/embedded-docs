@@ -1,8 +1,5 @@
 # LTXVAddGeneratedKeyframes
 
-```markdown
-# LTXV Adicionar Chaves Geradas
-
 ## Visão Geral
 
 O nó LTXV Adicionar Chaves Geradas anexa detalhes de chaves a um vídeo latente. Cada chave representa um quadro latente de tokens que span um único quadro de pixel, que são desnuvidos com o vídeo e não fazem parte da saída decodificada. A localização é determinada pelo parâmetro interval_frames, que especifica o passo do quadro de pixel para a localização automática.
@@ -34,7 +31,6 @@ O nó LTXV Adicionar Chaves Geradas anexa detalhes de chaves a um vídeo latente
 - O parâmetro `frame_indices` permite que você especifique os índices exatos de quadro de pixel onde as chaves devem ser colocadas. Se fornecido, o parâmetro `interval_frames` é ignorado.
 - As saídas `positive` e `negative` contêm o condicionamento com atenção de chave gerada anexada, que pode ser usado para processamento ou análise adicional.
 - A saída `latent` contém o vídeo latente com chaves geradas anexadas no T, que pode ser usado para processamento ou análise adicional.
-```
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddGeneratedKeyframes/pt-BR.md)
 

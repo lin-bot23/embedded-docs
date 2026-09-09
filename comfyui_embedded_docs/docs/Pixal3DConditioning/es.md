@@ -1,8 +1,5 @@
 # Pixal3DConditioning
 
-```markdown
-# Pixal3DConditioning
-
 ## Resumen
 
 El nodo Pixal3DConditioning está diseñado para preparar la condición de imágenes para el flujo de generación 3D de Trellis2. Utiliza el modelo de visión DINOv3 para extraer características visuales de la imagen de entrada en dos resoluciones. Estas características se organizan en mapas de características por etapa, que pueden mejorarse opcionalmente con un modelo NAF. El nodo también incorpora datos de cámara derivados del campo de visión horizontal para calcular la matriz de transformación de proyección. Produce una condición positiva que incluye los mapas de características derivados de la imagen y los datos de proyección, así como una condición negativa con tensores de características cerosos para la guía sin clasificador.
@@ -23,7 +20,6 @@ El nodo Pixal3DConditioning está diseñado para preparar la condición de imág
 | `negativo` | La salida de condición negativa con tensores de características cerosos, utilizada para la guía sin clasificador. | CONDITIONING |
 
 Nota: El valor de `camera_angle_x` se convierte internamente a radianes y se utiliza para calcular la distancia de la cámara para la matriz de transformación de proyección. Cuando el modelo de visión proporcionado incluye un componente NAF, el nodo también produce mapas de características de alta resolución para las etapas de forma y textura.
-```
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Pixal3DConditioning/es.md)
 

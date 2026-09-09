@@ -1,8 +1,5 @@
 # Pixal3DConditioning
 
-```markdown
-# Pixal3DConditioning
-
 ## 개요
 
 Pixal3DConditioning 노드는 Trellis2 3D 생성 파이프라인에 이미지 조건을 준비하기 위해 설계되었습니다. 이 노드는 DINOv3 시각 모델을 사용하여 입력 이미지에서 두 가지 해상도에서 시각적 특징을 추출합니다. 이 특징들은 단계별로 특징 맵으로 구성되며, 선택적으로 NAF 모델로 강화할 수 있습니다. 노드는 또한 수평 시야각에서 추출된 카메라 데이터를 사용하여 투영 변환 행렬을 계산합니다. 노드는 이미지에서 추출된 특징 맵과 투영 데이터를 포함한 긍정 조건 쌍을 출력하며, 분류자 없는 가이드로 사용되는 특징 텐서가 0으로 초기화된 부정 조건 쌍도 출력합니다.
@@ -23,7 +20,6 @@ Pixal3DConditioning 노드는 Trellis2 3D 생성 파이프라인에 이미지 �
 | `부정` | 분류자 없는 가이드로 사용되는 특징 텐서가 0으로 초기화된 부정 조건 출력. | CONDITIONING |
 
 참고: `camera_angle_x` 값은 내부적으로 라디안으로 변환되어 투영 변환 행렬을 계산하는 카메라 거리로 사용됩니다. 제공된 시각 모델이 NAF 구성 요소를 포함하고 있을 때, 노드는 형상 및 텍스처 단계에 대해 고해상도 특징 맵도 생성합니다.
-```
 
 > 이 문서는 AI에 의해 생성되었습니다. 오류를 발견하거나 개선 제안이 있으시면 기여해 주세요! [GitHub에서 편집](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Pixal3DConditioning/ko.md)
 

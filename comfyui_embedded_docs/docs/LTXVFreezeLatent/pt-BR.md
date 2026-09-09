@@ -1,8 +1,5 @@
 # LTXVFreezeLatent
 
-```markdown
-# LTXV Freeze Latent
-
 ## Visão Geral
 
 O nó LTXV Freeze Latent foi projetado para definir o noise_mask como 0 para um latent específico, garantindo que o latent permaneça limpo durante a amostragem. É particularmente útil para congelar latentes de áudio ou vídeo para evitar a desnuvem, que pode ser aplicada antes de concatenar áudio e vídeo para cross-attention ou para qualquer latent que não deve ser desnuvem.
@@ -26,7 +23,6 @@ O nó LTXV Freeze Latent foi projetado para definir o noise_mask como 0 para um 
 - A saída `latent` terá um noise_mask de zeros, que impede a desnuvem para o latent especificado.
 - O nó suporta tanto latentes de áudio quanto de vídeo, com diferentes formas de tensor para cada um.
 - Se a forma do tensor `samples` não corresponder à forma esperada de áudio ou vídeo, um ValueError será levantado.
-```
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVFreezeLatent/pt-BR.md)
 

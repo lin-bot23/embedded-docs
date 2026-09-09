@@ -1,8 +1,5 @@
 # LTXVAddLatentGuide
 
-```markdown
-# LTXV 添加潛在導引
-
 ## 概述
 
 LTXV 添加潛在導引節點將已編碼的潛在量作為導引，允許使用來自早期階段的導引而不是圖像。此節點避免 VAE 解碼/編碼迴圈，並能將空間較小的導引擴散到稀疏網格上，以覆蓋目標畫布。
@@ -34,7 +31,6 @@ LTXV 添加潛在導引節點將已編碼的潛在量作為導引，允許使用
 - `latent_idx` 參數允許在潛在框架內精確放置導引。
 - `strength` 參數控制導引的強度，值大於 1.0 需要使用 `attention_mask` 以避免負位置。
 - `attention_mask` 參數是可選的，但可以用來精調導引在圖像特定區域的影響。
-```
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddLatentGuide/zh-TW.md)
 

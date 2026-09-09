@@ -1,8 +1,5 @@
 # LTXVGeneratedKeyframesToGuides
 
-```markdown
-# LTXV Generated Keyframes to Guides
-
 ## Overview
 
 The LTXV Generated Keyframes to Guides node pins generated keyframes from an earlier stage as frozen image guides on a later canvas. It decodes the keyframes as standalone frames, resizes them if needed, and writes them with a noise mask of 0 to prevent further denoising. The recorded indices are scaled from the canvas they were generated on to the target canvas, and you can override the frame indices to set positions explicitly.
@@ -40,7 +37,6 @@ The LTXV Generated Keyframes to Guides node pins generated keyframes from an ear
 - The node will raise a `ValueError` if the `override_frame_indices` parameter is not a comma-separated list of integers or if the number of indices does not match the number of keyframes.
 - The node will raise a `ValueError` if any of the indices in the `override_frame_indices` parameter are outside the range of 1 to the number of pixel frames in the target canvas.
 - The node will raise a `ValueError` if the maximum index in the `override_frame_indices` parameter is greater than the number of pixel frames in the target canvas.
-```
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVGeneratedKeyframesToGuides/en.md)
 

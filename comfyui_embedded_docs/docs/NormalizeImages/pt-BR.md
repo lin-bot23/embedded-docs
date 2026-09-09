@@ -1,8 +1,5 @@
 # Normalizar Imagens
 
-```markdown
-# Normalizar Cores da Imagem
-
 Este nó ajusta os valores dos pixels de uma imagem de entrada usando um processo de normalização matemática. Subtrai um valor médio especificado de cada pixel e, em seguida, divide o resultado pela desvio padrão especificada. Este é um passo comum de pré-processamento para preparar dados de imagem para outros modelos de aprendizado de máquina. Se a imagem de entrada tiver um canal alfa, o canal alfa é passado inalterado, preservando a transparência.
 
 ## Visão Geral
@@ -30,7 +27,6 @@ A saída do nó Normalizar Imagens é a imagem normalizada. Os valores de pixel 
 ## Nota
 
 O nó Normalizar Imagens foi projetado para lidar com qualquer tamanho de lote de imagens, tornando-o adequado para tarefas de processamento em lote.
-```
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/NormalizeImages/pt-BR.md)
 

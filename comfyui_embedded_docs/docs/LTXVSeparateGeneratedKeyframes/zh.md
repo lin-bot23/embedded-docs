@@ -1,8 +1,5 @@
 # LTXVSeparateGeneratedKeyframes
 
-```markdown
-# LTXV 分离生成的关键帧
-
 ## 概述
 
 LTXV 分离生成的关键帧节点从采样的潜在和条件中移除生成的关键帧，允许在空间上采样视频潜在之前进行单独处理。它设计用于在空间上采样之前使用，不应在 LTXV 裁剪引导之后运行，因为它将生成的关键帧视为可丢弃的引导并丢弃它们。
@@ -32,7 +29,6 @@ LTXV 分离生成的关键帧节点从采样的潜在和条件中移除生成的
 - `keyframes` 输出可用于初始化生成关键帧的新槽位或将它们固定为冻结图像引导。
 - 如果潜在不包含生成关键帧或关键帧不符合预期的格式，节点将引发 `ValueError`。
 - 节点假定生成的关键帧是使用 LTXV 添加生成关键帧节点添加的，并且与当前潜在兼容。
-```
 
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVSeparateGeneratedKeyframes/zh.md)
 

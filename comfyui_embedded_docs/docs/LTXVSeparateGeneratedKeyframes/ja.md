@@ -1,8 +1,5 @@
 # LTXVSeparateGeneratedKeyframes
 
-```markdown
-# LTXV 分離生成キーフレーム
-
 ## 概要
 
 LTXV 分離生成キーフレームノードは、サンプリングされたラテントと条件付けから生成キーフレームを削除し、空間アップスケーリング前に個別に処理を可能にします。空間アップスケーリングの前に使用されることを設計されており、LTXV Crop Guidesの後に実行すべきではありません。なぜなら、生成キーフレームを一時的なガイドとして扱い、削除するからです。
@@ -32,7 +29,6 @@ LTXV 分離生成キーフレームノードは、サンプリングされたラ
 - `keyframes`出力は、生成キーフレームの新しいスロットを初期化するか、フリーズした画像ガイドとしてピン留めるために使用できます。
 - ラテントに生成キーフレームが含まれていない場合や、キーフレームが期待される形式に一致しない場合、ノードは`ValueError`を発生させます。
 - ノードは、LTXV Add Generated Keyframesノードを使用して追加された生成キーフレームと、現在のラテントが互換性があると仮定します。
-```
 
 > このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVSeparateGeneratedKeyframes/ja.md)
 

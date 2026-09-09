@@ -1,8 +1,5 @@
 # LTXVAddGeneratedKeyframes
 
-```markdown
-# LTXV 添加生成的关键帧
-
 ## 概述
 
 LTXV 添加生成的关键帧节点将详细关键帧附加到视频潜在数据上。每个关键帧代表一个跨越单个像素帧的潜在帧，这些帧与视频一起去噪，但不属于解码输出的一部分。位置由 interval_frames 参数确定，该参数指定了自动放置的像素帧步长。
@@ -34,7 +31,6 @@ LTXV 添加生成的关键帧节点将详细关键帧附加到视频潜在数据
 - `frame_indices` 参数允许您指定关键帧应放置的确切像素帧索引。如果提供，则忽略 `interval_frames` 参数。
 - `positive` 和 `negative` 输出包含附加了生成关键帧注意力的条件，可用于进一步处理或分析。
 - `latent` 输出包含附加了生成关键帧的视频潜在数据，可用于进一步处理或分析。
-```
 
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddGeneratedKeyframes/zh.md)
 

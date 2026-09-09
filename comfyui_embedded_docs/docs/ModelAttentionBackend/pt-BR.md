@@ -1,8 +1,5 @@
 # Backend de Atenção do Modelo
 
-```markdown
-# ModelAttentionBackend
-
 ## Visão Geral
 
 O nó ModelAttentionBackend permite que você selecione uma implementação de atenção densa para um modelo. Ele patcha o modelo com o backend de atenção escolhido, que pode ser atenção PyTorch ou atenção Comfy Kitchen, quando disponível. Este nó é particularmente útil quando a atenção esparsa está inativa ou não suportada, garantindo que o modelo operate com o mecanismo de atenção densa especificado.
@@ -26,7 +23,6 @@ O nó ModelAttentionBackend permite que você selecione uma implementação de a
 
 - Se o backend de atenção escolhido não estiver disponível, o nó recorrerá automaticamente ao uso da atenção PyTorch e logará um aviso.
 - O nó ModelAttentionBackend é experimental e pode sofrer mudanças em futuras versões.
-```
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ModelAttentionBackend/pt-BR.md)
 

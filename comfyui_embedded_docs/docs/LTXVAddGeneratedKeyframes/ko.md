@@ -1,8 +1,5 @@
 # LTXVAddGeneratedKeyframes
 
-```markdown
-# LTXV 추가된 키 프레임
-
 ## 개요
 
 LTXV 추가된 키 프레임 노드는 비디오 레이턴에 키 프레임을 추가합니다. 각 키 프레임은 단일 픽셀 프레임을 범위로 한 토큰 레이턴 프레임을 나타내며, 비디오와 함께 데노이즈되지만 디코딩된 출력의 일부는 아닙니다. 배치는 `interval_frames` 매개변수에 의해 결정되며, 이 매개변수는 자동 배치를 위한 픽셀 프레임 스타일을 지정합니다.
@@ -34,7 +31,6 @@ LTXV 추가된 키 프레임 노드는 비디오 레이턴에 키 프레임을 �
 - `frame_indices` 매개변수는 키 프레임이 배치되는 정확한 픽셀 프레임 인덱스를 지정할 수 있습니다. 제공되면, `interval_frames` 매개변수는 무시됩니다.
 - `positive`과 `negative` 출력은 생성된 키 프레임 주의를 부착한 조건부를 포함하며, 이는 추가 처리나 분석에 사용할 수 있습니다.
 - `latent` 출력은 생성된 키 프레임이 추가된 비디오 레이턴을 포함하며, 추가 처리나 분석에 사용할 수 있습니다.
-```
 
 > 이 문서는 AI에 의해 생성되었습니다. 오류를 발견하거나 개선 제안이 있으시면 기여해 주세요! [GitHub에서 편집](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddGeneratedKeyframes/ko.md)
 

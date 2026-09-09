@@ -1,8 +1,5 @@
 # LTXVSeparateGeneratedKeyframes
 
-```markdown
-# LTXV 分離生成的關鍵幀
-
 ## 概述
 
 LTXV 分離生成的關鍵幀節點從採樣的潛在變數和條件中移除生成的關鍵幀，允許在空間上提升視頻潛在變數之前進行分離處理。它設計用於在空間上提升之前使用，並不應在 LTXV 剪裁導向後運行，因為它將生成的關鍵幀視為可棄導向並丟棄它們。
@@ -32,7 +29,6 @@ LTXV 分離生成的關鍵幀節點從採樣的潛在變數和條件中移除生
 - `keyframes` 輸出可以用於初始化生成關鍵幀的新插槽或將其固定為凍結圖像導向。
 - 如果潛在變數不包含生成的關鍵幀或如果關鍵幀不匹配預期的格式，節點將引發 `ValueError`。
 - 節點假設生成的關鍵幀是使用 LTXV 添加生成的關鍵幀節點添加的，並且與當前的潛在變數相兼容。
-```
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVSeparateGeneratedKeyframes/zh-TW.md)
 

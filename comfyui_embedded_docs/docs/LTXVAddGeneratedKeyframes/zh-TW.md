@@ -1,8 +1,5 @@
 # LTXVAddGeneratedKeyframes
 
-```markdown
-# LTXV 添加生成的關鍵幀
-
 ## 概述
 
 LTXV 添加生成的關鍵幀節點將詳細關鍵幀附加到視頻潛在變數上。每個關鍵幀代表一個潛在的像素幀的 token，這些 token 會與視頻進行去噪，但不屬於解碼輸出的部分。位置由 interval_frames 參數決定，該參數指定了像素幀步進以進行自動放置。
@@ -34,7 +31,6 @@ LTXV 添加生成的關鍵幀節點將詳細關鍵幀附加到視頻潛在變數
 - `frame_indices` 參數允許您指定關鍵幀應該放置的確切像素幀索引。如果提供，將忽略 `interval_frames` 參數。
 - `positive` 和 `negative` 輸出包含附加了生成關鍵幀注意力的條件，可以用於進一步處理或分析。
 - `latent` 輸出包含附加了生成關鍵幀的視頻潛在變數，可以用於進一步處理或分析。
-```
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddGeneratedKeyframes/zh-TW.md)
 

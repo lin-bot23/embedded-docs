@@ -1,8 +1,5 @@
 # LTXVGeneratedKeyframesToGuides
 
-```markdown
-# LTXV 生成關鍵幀至導向
-
 ## 概述
 
 LTXV 生成關鍵幀至導向節點將早期階段的生成關鍵幀作為凍結圖像導向，固定在後續的畫布上。它將關鍵幀解碼為獨立幀，如果需要則調整大小，並使用 0 的噪聲掩罩寫入，以防止進一步去噪。記錄的索引會從生成它的畫布縮放到目標畫布，並可以覆蓋幀索引以明確設置位置。
@@ -40,7 +37,6 @@ LTXV 生成關鍵幀至導向節點將早期階段的生成關鍵幀作為凍結
 - 如果 `override_frame_indices` 參數不是逗號分隔的整數列表或索引數量與關鍵幀數量不匹配，節點將引發 `ValueError`。
 - 如果 `override_frame_indices` 參數中的任何索引超出目標畫布中像素幀的範圍，節點將引發 `ValueError`。
 - 如果 `override_frame_indices` 參數中的最大索引大於目標畫布中像素幀的數量，節點將引發 `ValueError`。
-```
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVGeneratedKeyframesToGuides/zh-TW.md)
 

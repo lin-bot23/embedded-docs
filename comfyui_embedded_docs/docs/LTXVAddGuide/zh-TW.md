@@ -1,8 +1,5 @@
 # LTXV 添加引導
 
-```markdown
-# LTXVAddGuide
-
 LTXVAddGuide 節點設計用於將視頻條件化指導添加到潛在序列中，透過編碼輸入圖像或視頻，並將其作為關鍵幀編入條件數據。它通過 VAE 编碼器處理輸入，並在指定的幀位置策略性地放置結果潛在值，同時更新正負條件以包含關鍵幀信息。此節點處理幀對齊約束，並允許控制條件影響的強度。
 
 ## 概述
@@ -34,7 +31,6 @@ LTXVAddGuide 節點編碼輸入圖像或視頻，通過 VAE 编碼器處理它�
 | `正向` | 用關鍵幀指導信息更新的正條件 | CONDITIONING |
 | `負向` | 用關鍵幀指導信息更新的負條件 | CONDITIONING |
 | `潛在空間` | 經過條件幀和更新噪聲掩罩後的潛在序列 | LATENT |
-```
 
 > 本文檔由 AI 生成。如果您發現任何錯誤或有改進建議，歡迎貢獻！ [在 GitHub 上編輯](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddGuide/zh-TW.md)
 

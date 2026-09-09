@@ -1,8 +1,5 @@
 # Normaliser les images
 
-```markdown
-# Normaliser les couleurs d'image
-
 Ce nœud ajuste les valeurs des pixels d'une image d'entrée en utilisant un processus de normalisation mathématique. Il soustrait une valeur moyenne spécifiée de chaque pixel et divise ensuite le résultat par une déviation standard spécifiée. Il s'agit d'une étape de prétraitement courante pour préparer les données d'image pour d'autres modèles de machine learning. Si l'image d'entrée possède un canal alpha, ce canal est passé en tant que tel, ce qui préserve la transparence.
 
 ## Aperçu
@@ -30,7 +27,6 @@ La sortie du nœud Normaliser les couleurs d'image est l'image normalisée. Les 
 ## Note
 
 Le nœud Normaliser les couleurs d'image est conçu pour gérer toute taille de lot d'images, ce qui le rend adapté aux tâches de traitement par lot.
-```
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/NormalizeImages/fr.md)
 

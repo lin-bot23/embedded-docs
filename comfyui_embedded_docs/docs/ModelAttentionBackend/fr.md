@@ -1,8 +1,5 @@
 # Backend d’attention du modèle
 
-```markdown
-# ModelAttentionBackend
-
 ## Aperçu
 
 Le nœud ModelAttentionBackend vous permet de sélectionner une implémentation d'attention dense pour un modèle. Il applique le backend d'attention sélectionné au modèle, ce qui peut être soit l'attention PyTorch ou l'attention Comfy Kitchen lorsque disponible. Ce nœud est particulièrement utile lorsque l'attention sparse est inactive ou non prise en charge, assurant ainsi que le modèle fonctionne avec le mécanisme d'attention dense spécifié.

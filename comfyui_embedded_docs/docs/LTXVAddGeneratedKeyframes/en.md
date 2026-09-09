@@ -1,8 +1,5 @@
 # LTXVAddGeneratedKeyframes
 
-```markdown
-# LTXV Add Generated Keyframes
-
 ## Overview
 
 The LTXV Add Generated Keyframes node appends detailing keyframes to a video latent. Each keyframe represents one latent frame of tokens spanning a single pixel frame, which are denoised with the video and not part of the decoded output. Placement is determined by the interval_frames parameter, which specifies the pixel-frame stride for auto placement.
@@ -34,7 +31,6 @@ The LTXV Add Generated Keyframes node appends detailing keyframes to a video lat
 - The `frame_indices` parameter allows you to specify the exact pixel-frame indices where keyframes should be placed. If provided, the `interval_frames` parameter is ignored.
 - The `positive` and `negative` outputs contain the conditioning with generated-keyframe attention attached, which can be used for further processing or analysis.
 - The `latent` output contains the video latent with generated keyframes appended on T, which can be used for further processing or analysis.
-```
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddGeneratedKeyframes/en.md)
 

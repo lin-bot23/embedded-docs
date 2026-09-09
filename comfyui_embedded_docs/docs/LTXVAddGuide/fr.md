@@ -1,8 +1,5 @@
 # LTXVAddGuide
 
-```markdown
-# Guide de LTXVAddGuide
-
 Le nœud LTXVAddGuide est conçu pour ajouter une guidance de conditionnement vidéo aux séquences latentes en encodant des images ou des vidéos d'entrée et en intégrant les clés de frame dans les données de conditionnement. Il traite l'entrée à travers un encodeur VAE et place stratégiquement les latents obtenus à des positions de frame spécifiées tout en mettant à jour à la fois le conditionnement positif et négatif avec des informations de clé de frame. Le nœud gère les contraintes d'alignement de frame et permet de contrôler la force de l'influence de conditionnement.
 
 ## Aperçu
@@ -34,7 +31,6 @@ Le nœud LTXVAddGuide encode des images ou des vidéos d'entrée, les traite à 
 | `positive` | Conditionnement positif mis à jour avec des informations de guidance de clé de frame | CONDITIONING |
 | `négatif` | Conditionnement négatif mis à jour avec des informations de guidance de clé de frame | CONDITIONING |
 | `latent` | Séquence latente avec des frames de conditionnement intégrées et un masque de bruit mis à jour | LATENT |
-```
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddGuide/fr.md)
 

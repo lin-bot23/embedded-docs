@@ -1,8 +1,5 @@
 # LTXVAddLatentGuide
 
-```markdown
-# LTXV Add Latent Guide
-
 ## Aperçu
 
 Le nœud LTXV Add Latent Guide fixe un latent déjà encodé comme guide, permettant d'utiliser un guide provenant d'une étape précédente plutôt qu'une image. Ce nœud évite le voyage d'encodage/décodage du VAE et peut dilater un guide spatialement plus petit sur une grille rare pour couvrir le canevas cible.
@@ -34,7 +31,6 @@ Le nœud LTXV Add Latent Guide fixe un latent déjà encodé comme guide, permet
 - Le paramètre `latent_idx` permet de placer précisément le guide au sein des trames latentes.
 - Le paramètre `strength` contrôle l'intensité du guide, avec des valeurs au-delà de 1.0 nécessitant l'utilisation de `attention_mask` pour éviter des positions négatives.
 - Le paramètre `attention_mask` est optionnel mais peut être utilisé pour affiner l'influence du guide dans des régions spécifiques de l'image.
-```
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddLatentGuide/fr.md)
 

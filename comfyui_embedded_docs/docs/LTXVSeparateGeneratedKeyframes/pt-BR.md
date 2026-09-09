@@ -1,8 +1,5 @@
 # LTXVSeparateGeneratedKeyframes
 
-```markdown
-# LTXV Separar Geral de Chaves Geradas
-
 ## Visão Geral
 
 O nó LTXV Separar Geral de Chaves Geradas remove chaves geradas de um latente amostrado e conditioning, permitindo que sejam tratadas separadamente antes de escalonar espacialmente o latente do vídeo. Ele é projetado para ser usado antes da escalonagem espacial e não deve ser executado após LTXV Recortar Guias, pois trata as chaves geradas como guias descartáveis e as descarta.
@@ -32,7 +29,6 @@ O nó LTXV Separar Geral de Chaves Geradas remove chaves geradas de um latente a
 - A saída `keyframes` pode ser usada para inicializar novos slots para chaves geradas ou para fixá-las como guias de imagem congelada.
 - O nó lança um `ValueError` se o latente não conter chaves geradas ou se as chaves não coincidirem com o formato esperado.
 - O nó assume que as chaves geradas foram adicionadas usando o nó LTXV Adicionar Chaves Geradas e que são compatíveis com o latente atual.
-```
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVSeparateGeneratedKeyframes/pt-BR.md)
 

@@ -1,8 +1,5 @@
 # LTXVAddLatentGuide
 
-```markdown
-# LTXV 添加潜在引导
-
 ## 概述
 
 LTXV 添加潜在引导节点将已编码的潜在变量作为引导，允许使用来自早期阶段的引导而不是图像。此节点避免了 VAE 解码/编码往返，并且可以将空间上较小的引导扩展到稀疏网格上，以覆盖目标画布。
@@ -34,7 +31,6 @@ LTXV 添加潜在引导节点将已编码的潜在变量作为引导，允许使
 - `latent_idx` 参数允许在潜在帧内精确放置引导。
 - `strength` 参数控制引导的强度，值超过 1.0 需要使用 `attention_mask` 以避免出现负数位置。
 - `attention_mask` 参数是可选的，但可用于微调图像特定区域的引导影响。
-```
 
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddLatentGuide/zh.md)
 

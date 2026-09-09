@@ -1,8 +1,5 @@
 # LTXVAddGeneratedKeyframes
 
-```markdown
-# LTXV Agregar Keyframes Generados
-
 ## Resumen
 
 El nodo LTXV Agregar Keyframes Generados añade detalles de keyframes a un video latente. Cada keyframe representa un solo cuadro latente de tokens que abarca un solo cuadro de píxeles, que se suaviza con el video y no forma parte de la salida decodificada. La ubicación se determina por el parámetro interval_frames, que especifica el paso de cuadro de píxeles para el autoajuste.
@@ -34,7 +31,6 @@ El nodo LTXV Agregar Keyframes Generados añade detalles de keyframes a un video
 - El parámetro `frame_indices` le permite especificar los índices de cuadro de píxeles exactos donde deben ubicarse los keyframes. Si se proporciona, se ignora el parámetro `interval_frames`.
 - Las salidas `positive` y `negative` contienen el condicionamiento con atención de keyframes generados adjunta, que se puede utilizar para procesamiento o análisis adicionales.
 - La salida `latent` contiene el latente de video con keyframes generados añadidos en T, que se puede utilizar para procesamiento o análisis adicionales.
-```
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddGeneratedKeyframes/es.md)
 

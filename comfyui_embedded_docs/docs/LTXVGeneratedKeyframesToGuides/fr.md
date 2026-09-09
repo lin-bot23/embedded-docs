@@ -1,8 +1,5 @@
 # LTXVGeneratedKeyframesToGuides
 
-```markdown
-# LTXV Générés Clés à Guides
-
 ## Aperçu
 
 Le nœud LTXV Générés Clés à Guides fixe les clés générées à une étape précédente en tant que guides d'image figées sur un canevas ultérieur. Il décode les clés comme des images indépendantes, les redimensionne si nécessaire, et les écrit avec un masque de bruit à 0 pour éviter un débruitage supplémentaire. Les indices enregistrés sont étalonnés à partir du canevas où ils ont été générés vers le canevas cible, et vous pouvez remplacer les indices de cadre pour définir des positions explicitement.
@@ -40,7 +37,6 @@ Le nœud LTXV Générés Clés à Guides fixe les clés générées à une étap
 - Le nœud lèvera une `ValueError` si le paramètre `override_frame_indices` n'est pas une liste de nombres entiers séparés par des virgules ou si le nombre d'indices ne correspond pas au nombre de clés.
 - Le nœud lèvera une `ValueError` si l'un des indices dans le paramètre `override_frame_indices` est en dehors de la gamme de 1 à la nombre de cadres pixeliques dans le canevas cible.
 - Le nœud lèvera une `ValueError` si l'index maximal dans le paramètre `override_frame_indices` est supérieur au nombre de cadres pixeliques dans le canevas cible.
-```
 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVGeneratedKeyframesToGuides/fr.md)
 

@@ -1,8 +1,5 @@
 # Görüntüleri Normalleştir
 
-```markdown
-# Resim Renklerini Normalleştirme
-
 Bu düğüm, bir giriş resminin piksel değerlerini matematiksel bir normalleştirme süreci kullanarak ayarlar. Her bir pikselden belirtilen ortalama değeri çıkarılır ve ardından sonuç standart sapma tarafından bölünür. Bu, diğer makine öğrenim modellerine hazırlık için yaygın bir ön işleme adımıdır. Eğer giriş resmi bir alpha kanalı içeriyorsa, alpha kanalı değişmez şekilde geçirilir ve şeffaflık korunur.
 
 ## Genel Bakış
@@ -30,7 +27,6 @@ Normalize Images düğümünden elde edilen çıktı, normalleştirilmiş resmdi
 ## Not
 
 Normalize Images düğümü, herhangi bir grup büyüklüğüne sahip resimleri işlemek için tasarlanmıştır, bu nedenle grup işleme görevleri için uygundur.
-```
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/NormalizeImages/tr.md)
 
