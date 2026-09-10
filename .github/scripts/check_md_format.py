@@ -11,6 +11,11 @@ AI-generation defects that have shipped to production:
 5. English Required-column residue in translations (| Yes | / | No | where localized)
 6. Missing source fingerprint footer (en.md must carry the SHA-256 of its source)
 
+Fence-aware: content inside ``` / ```markdown code fences is ignored for
+structural checks (tables, headings), so legitimate fenced examples in docs
+never trigger false positives. An outer fence is only reported when it wraps
+the entire document (first fence-before-content opens it, last fence closes it).
+
 Exit code 1 if any error-level check fails. Warnings do not fail the run.
 """
 import os
@@ -51,6 +56,68 @@ EN_RESIDUE_LANGS = {"zh", "zh-TW", "ja", "ko", "ru", "ar", "tr", "fa", "pt-BR"}
 
 FP_RE = re.compile(r"Source fingerprint[^\n]*`([a-f0-9]{64})`")
 
+FENCE_RE = re.compile(r"^\s*(```|~~~)")
+
+
+def split_fenced(text: str):
+    """Split text into (is_inside_fence, line) pairs.
+
+    Returns a list of (fenced: bool, line: str). Only ```/~~~ fence markers
+    toggle state; the fence marker line itself is marked as fenced content.
+    """
+    result = []
+    inside = False
+    for line in text.splitlines():
+        if FENCE_RE.match(line):
+            result.append((True, line))
+            inside = not inside
+            continue
+        result.append((inside, line))
+    return result
+
+
+def find_outer_fence(text: str):
+    """Return True if a \`\`\`markdown fence wraps the whole document.
+
+    The known defect pattern (PR #142) is: H1 title, then \`\`\`markdown opener
+    enclosing the whole body, then a closing fence, then only footer lines
+    (disclaimer / --- / fingerprint). We require exactly that shape:
+
+    - a standalone \`\`\`markdown opener
+    - a matching closing fence
+    - only the H1 title line before the opener
+    - only footer-ish lines after the closer
+
+    Anything else (fenced examples mid-document, docs that start with a fence,
+    prose before the fence) is a legitimate use and not flagged.
+    """
+    lines = text.splitlines()
+    if not re.search(r"^```markdown\s*$", text, re.M):
+        return False
+    try:
+        open_idx = next(i for i, l in enumerate(lines) if l.strip() == "```markdown")
+    except StopIteration:
+        return False
+    close_idx = None
+    for i in range(open_idx + 1, len(lines)):
+        if lines[i].strip() == "```":
+            close_idx = i
+            break
+    if close_idx is None or close_idx - open_idx < 2:
+        return False
+    # content before opener: only the H1 title line (and blanks) allowed
+    before = [lines[i].strip() for i in range(open_idx) if lines[i].strip()]
+    if not all(re.match(r"^# [^#]", b) for b in before):
+        return False
+    # content after closer: only footer-ish lines (disclaimer, ---, fingerprint)
+    after = [lines[i].strip() for i in range(close_idx + 1, len(lines)) if lines[i].strip()]
+    for a in after:
+        low = a.lower()
+        if a == "---" or "fingerprint" in low or low.startswith(">"):
+            continue
+        return False
+    return True
+
 
 def check_file(path: Path):
     """Return (errors, warnings) for one doc file."""
@@ -64,23 +131,30 @@ def check_file(path: Path):
 
     lang = path.stem  # en, zh, ja, pt-BR, ...
 
-    # 1. outer markdown fence
-    if re.search(r"^```markdown\s*$", text, re.M):
+    # 1. outer markdown fence (fence-aware: only when it wraps the whole doc)
+    if find_outer_fence(text):
         errors.append(f"{rel}: document wrapped in ```markdown fence "
                       f"(strips to render properly)")
 
+    # Structural checks run on non-fenced lines only, so legitimate fenced
+    # examples (workflow JSON, code samples) never trigger them.
+    unfenced = [(i, line) for i, (fenced, line) in
+                enumerate(split_fenced(text)) if not fenced]
+
     # 2. translated data-type names in table cells
-    for line in text.splitlines():
+    reported_lines = set()
+    for i, line in unfenced:
         if line.startswith("|"):
             for cell in line.split("|"):
                 if cell.strip() in TRANSLATED_TYPES:
                     errors.append(f"{rel}: translated data type "
                                   f"'{cell.strip()}' (keep English schema names)")
+                    reported_lines.add(i)
                     break
 
     # 3. translated output identifiers in Outputs tables
     in_outputs = False
-    for line in text.splitlines():
+    for i, line in unfenced:
         if line.startswith("## "):
             in_outputs = "output" in line.lower() or "出力" in line or "输出" in line
             continue
@@ -90,16 +164,16 @@ def check_file(path: Path):
                 errors.append(f"{rel}: translated output identifier "
                               f"'{cells[0]}' (keep English programmatic names)")
 
-    # 4. duplicate H1
-    h1s = re.findall(r"^# .+", text, re.M)
+    # 4. duplicate H1 (unfenced headings only)
+    h1s = [line for _, line in unfenced if re.match(r"^# .+", line)]
     if len(h1s) > 1:
         errors.append(f"{rel}: {len(h1s)} H1 headings (expected exactly 1)")
 
     # 5. English Yes/No residue in the Required column of translations
     if lang in EN_RESIDUE_LANGS:
-        for i, line in enumerate(text.splitlines(), 1):
+        for i, line in unfenced:
             if line.startswith("|") and re.search(r"\|\s*Yes\s*\|", line):
-                errors.append(f"{rel}:{i}: English 'Yes' in Required column "
+                errors.append(f"{rel}:{i+1}: English 'Yes' in Required column "
                               f"(translate: 是/はい/예/Да/نعم/...)")
 
     # 6. fingerprint footer (en.md only; translations inherit via sync)
