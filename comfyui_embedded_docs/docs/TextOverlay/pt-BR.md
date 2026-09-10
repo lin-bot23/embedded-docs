@@ -8,7 +8,7 @@ Este nó desenha texto sobre uma imagem ou um lote de imagens. Ele constrói uma
 |-----------|-------------|-----------|----------|-------|
 | `imagens` | A imagem de entrada ou lote de imagens sobre o qual desenhar o texto | IMAGE | Sim | |
 | `texto` | O texto a ser sobreposto na imagem (padrão: ""). Suporta múltiplas linhas: as sequências de escape `\n` e `\t` são convertidas em quebras de linha e tabulações, e linhas longas são quebradas automaticamente para caber dentro da largura da imagem. | STRING | Sim | |
-| `tamanho_da_fonte` | Tamanho da fonte como porcentagem da altura da imagem (padrão: 5.0) | FLOAT | Sim | 0.5 to 50.0 (step 0.5) |
+| `tamanho_da_fonte` | Tamanho da fonte como porcentagem da altura da imagem (padrão: 5.0) | FLOAT | Sim | 0.5 a 50.0 (passo 0.5) |
 | `cor` | Cor do texto (padrão: "#ffffff") | STRING | Sim | |
 | `posição` | Posição vertical do texto na imagem (padrão: "top") | COMBO | Sim | "top"<br>"bottom" |
 | `alinhamento` | Alinhamento horizontal do texto (padrão: "left") | COMBO | Sim | "left"<br>"center"<br>"right" |

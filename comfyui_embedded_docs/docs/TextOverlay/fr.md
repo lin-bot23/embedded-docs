@@ -8,7 +8,7 @@ Ce nœud dessine du texte par-dessus une image ou un lot d'images. Il crée une 
 |-----------|-------------|----------------|--------|-------|
 | `images` | L'image ou le lot d'images d'entrée sur lequel dessiner du texte | IMAGE | Oui | |
 | `texte` | Texte à superposer sur l'image (défaut : ""). Prend en charge plusieurs lignes : les séquences d'échappement `\n` et `\t` sont converties en sauts de ligne et en tabulations, et les lignes longues sont automatiquement renvoyées à la ligne pour tenir dans la largeur de l'image. | STRING | Oui | |
-| `taille_de_police` | Taille de police en pourcentage de la hauteur de l'image (défaut : 5.0) | FLOAT | Oui | 0.5 to 50.0 (step 0.5) |
+| `taille_de_police` | Taille de police en pourcentage de la hauteur de l'image (défaut : 5.0) | FLOAT | Oui | 0.5 à 50.0 (pas 0.5) |
 | `couleur` | Couleur du texte (défaut : "#ffffff") | STRING | Oui | |
 | `position` | Position verticale du texte sur l'image (défaut : "top") | COMBO | Oui | "top"<br>"bottom" |
 | `alignement` | Alignement horizontal du texte (défaut : "left") | COMBO | Oui | "left"<br>"center"<br>"right" |

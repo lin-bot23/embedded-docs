@@ -10,8 +10,8 @@
 | `model_3d_info` | 씬에서 각 모델의 배치(위치, 회전, 크기, Y-up 월드 공간)입니다. 선택 사항이며 고급 옵션입니다. | LOAD3DMODELINFO | 아니요 | - |
 | `viewport_state` | 카메라 및 모델 정보를 포함하는 현재 뷰포트 상태입니다. | LOAD3D | 예 | - |
 | `camera_info` | 뷰포트 카메라 정보(위치, 시선 대상, 줌, 유형)입니다. 선택 사항이며 고급 옵션입니다. | LOAD3DCAMERA | 아니요 | - |
-| `width` | 뷰포트의 렌더링 너비(픽셀)입니다. 기본값: 1024. | INT | 예 | 1 to 4096 |
-| `height` | 뷰포트의 렌더링 높이(픽셀)입니다. 기본값: 1024. | INT | 예 | 1 to 4096 |
+| `width` | 뷰포트의 렌더링 너비(픽셀)입니다. 기본값: 1024. | INT | 예 | 1~4096 |
+| `height` | 뷰포트의 렌더링 높이(픽셀)입니다. 기본값: 1024. | INT | 예 | 1~4096 |
 
 참고: `camera_info` 또는 `model_3d_info`가 연결되지 않은 경우, 사용 가능한 `viewport_state`에서 값을 가져옵니다. `viewport_state`에 카메라 정보가 없으면 `camera_info`는 None입니다. `viewport_state`에 모델 정보가 없으면 `model_3d_info`는 빈 목록으로 기본 설정됩니다. `viewport_state`가 딕셔너리가 아니면 빈 값으로 처리됩니다.
 

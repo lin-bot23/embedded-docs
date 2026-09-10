@@ -11,8 +11,8 @@ Save3DAdvanced, bir 3D modeli ComfyUI çıktı dizinindeki bir dosyaya kaydeder 
 | `görünüm durumu` | Kamera ve model yerleşim bilgilerini içeren görünüm alanı durumu; genellikle bir Load 3D düğümünden gelir. | LOAD3D | Evet | - |
 | `3D model bilgisi` | Sahnedeki her modelin yerleşimi: konum, dönüş ve ölçek (Y-up dünya uzayı). Bağlandığında `viewport_state` içinde saklanan model yerleşimini geçersiz kılar. | LOAD3DMODELINFO | Hayır | - |
 | `kamera bilgisi` | Görünüm alanı kamera bilgileri: konum, bakış hedefi, yakınlaştırma ve tür. Bağlandığında `viewport_state` içinde saklanan kamera bilgilerini geçersiz kılar. | LOAD3DCAMERA | Hayır | - |
-| `genişlik` | Görünüm alanının piksel cinsinden render genişliği (varsayılan: 1024). | INT | Evet | 1 to 4096 |
-| `yükseklik` | Görünüm alanının piksel cinsinden render yüksekliği (varsayılan: 1024). | INT | Evet | 1 to 4096 |
+| `genişlik` | Görünüm alanının piksel cinsinden render genişliği (varsayılan: 1024). | INT | Evet | 1 ile 4096 |
+| `yükseklik` | Görünüm alanının piksel cinsinden render yüksekliği (varsayılan: 1024). | INT | Evet | 1 ile 4096 |
 
 Not: `model_3d_info` ve `camera_info` isteğe bağlıdır. Bu girdilerden herhangi biri bağlanmadığında, düğüm `viewport_state` içinde saklanan karşılık gelen değerleri kullanır.
 

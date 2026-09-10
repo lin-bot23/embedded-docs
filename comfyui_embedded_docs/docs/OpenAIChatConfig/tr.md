@@ -7,7 +7,7 @@ OpenAIChatConfig düğümü, OpenAI Chat Node'un yanıtları nasıl oluşturaca�
 | Parameter | Açıklama | Veri Türü | Zorunlu | Aralık |
 |-----------|-------------|-----------|----------|-------|
 | `kırpma` | Model yanıtı için kullanılacak kırpma stratejisi. auto: Bu yanıtın ve önceki yanıtların bağlamı, modelin bağlam penceresi boyutunu aşarsa, model, konuşmanın ortasındaki girdi öğelerini atarak yanıtı bağlam penceresine sığacak şekilde kırpar. disabled: Bir model yanıtı, söz konusu model için bağlam penceresi boyutunu aşarsa istek 400 hatasıyla başarısız olur (varsayılan: "auto") | COMBO | Evet | "auto"<br>"disabled" |
-| `maksimum_çıktı_tokenları` | Bir yanıt için oluşturulabilecek token sayısının üst sınırı; görünür çıktı tokenleri ve akıl yürütme tokenleri dahildir (varsayılan: 4096) | INT | Hayır | 16 to 16384 |
+| `maksimum_çıktı_tokenları` | Bir yanıt için oluşturulabilecek token sayısının üst sınırı; görünür çıktı tokenleri ve akıl yürütme tokenleri dahildir (varsayılan: 4096) | INT | Hayır | 16 ile 16384 |
 | `talimatlar` | Modelin yanıtı nasıl oluşturacağına ilişkin talimatlar (çok satırlı girdi desteklenir) | STRING | Hayır | - |
 | `reasoning_effort` | Modelin yanıtlamadan önce ne kadar akıl yürüteceği. "default", seçimi modele bırakır. Desteklenen düzeyler modele göre farklılık gösterir: GPT-6 Astra low-max, GPT-5.6 none-max (minimal düzeyi yok), GPT-5.5 none-xhigh, GPT-5.5 Pro medium-xhigh, GPT-5 minimal-high, o-series low-high; GPT-4.1 akıl yürütmeyi desteklemez. Desteklenmeyen düzeyler, istek gönderilmeden önce reddedilir. (varsayılan: "default") | COMBO | Hayır | "default"<br>"none"<br>"minimal"<br>"low"<br>"medium"<br>"high"<br>"xhigh"<br>"max" |
 

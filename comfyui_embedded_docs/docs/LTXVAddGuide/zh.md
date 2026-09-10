@@ -11,8 +11,8 @@ LTXVAddGuide 节点通过编码输入图像或视频，并将其作为关键帧�
 | `vae` | 用于编码输入图像/视频帧的 VAE 模型 | VAE | 是 | - |
 | `潜在空间` | 将接收 conditioning 帧的输入潜在序列 | LATENT | 是 | - |
 | `图像` | 用于对潜在视频进行条件化的图像或视频。必须为 8*n + 1 帧。如果视频不是 8*n + 1 帧，则会被裁剪到最接近的 8*n + 1 帧。 | IMAGE | 是 | - |
-| `帧索引` | 开始 condition 的帧索引。对于单帧图像或包含 1-8 帧的视频，任何 `frame_idx` 值均可接受。对于包含 9 帧及以上的视频，`frame_idx` 必须能被 8 整除，否则将向下舍入到最接近的 8 的倍数。负值从视频末尾开始计数。（默认值：0） | INT | 是 | -9999 到 9999 |
-| `强度` | conditioning 影响的强度，其中 1.0 表示应用完整 conditioning，0.0 表示不应用 conditioning（默认值：1.0） | FLOAT | 是 | 0.0 到 10.0 |
+| `帧索引` | 开始 condition 的帧索引。对于单帧图像或包含 1-8 帧的视频，任何 `frame_idx` 值均可接受。对于包含 9 帧及以上的视频，`frame_idx` 必须能被 8 整除，否则将向下舍入到最接近的 8 的倍数。负值从视频末尾开始计数。（默认值：0） | INT | 是 | -9999到9999 |
+| `强度` | conditioning 影响的强度，其中 1.0 表示应用完整 conditioning，0.0 表示不应用 conditioning（默认值：1.0） | FLOAT | 是 | 0.0到10.0 |
 | `attention_mask` | 可选的像素空间空间掩码。通过自注意力控制每个区域的 conditioning 影响，并与 `strength` 相乘。 | MASK | 否 | - |
 | `iclora_parameters` | 可选的 IC-LoRA 参数，来自“获取 IC-LoRA 参数”节点。用于根据特定 IC-LoRA 的要求调整引导处理（例如，具有 `reference_downscale_factor` > 1 的 IC-LoRA）。当链式连接时，每个 LTXVAddGuide 仅使用与其连接的参数。 | IC_LORA_PARAMETERS | 否 | - |
 

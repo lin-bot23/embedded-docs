@@ -11,8 +11,8 @@ Save3DAdvanced enregistre un modèle 3D dans un fichier du répertoire de sortie
 | `viewport_state` | État de la fenêtre d’affichage contenant les informations de caméra et de placement du modèle, généralement issu d’un nœud Load 3D. | LOAD3D | Oui | - |
 | `model_3d_info` | Placement de chaque modèle dans la scène : position, rotation et échelle (espace monde, Y vers le haut). Remplace le placement du modèle stocké dans `viewport_state` lorsqu’il est connecté. | LOAD3DMODELINFO | Non | - |
 | `camera_info` | Informations de caméra de la fenêtre d’affichage : position, point visé, zoom et type. Remplace les informations de caméra stockées dans `viewport_state` lorsqu’il est connecté. | LOAD3DCAMERA | Non | - |
-| `width` | Largeur de rendu de la fenêtre d’affichage en pixels (par défaut : 1024). | INT | Oui | 1 to 4096 |
-| `height` | Hauteur de rendu de la fenêtre d’affichage en pixels (par défaut : 1024). | INT | Oui | 1 to 4096 |
+| `width` | Largeur de rendu de la fenêtre d’affichage en pixels (par défaut : 1024). | INT | Oui | 1 à 4096 |
+| `height` | Hauteur de rendu de la fenêtre d’affichage en pixels (par défaut : 1024). | INT | Oui | 1 à 4096 |
 
 Remarque : `model_3d_info` et `camera_info` sont facultatifs. Lorsque l’une de ces entrées n’est pas connectée, le nœud utilise par défaut les valeurs correspondantes stockées dans `viewport_state`.
 

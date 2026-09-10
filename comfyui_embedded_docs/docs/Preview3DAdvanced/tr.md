@@ -10,8 +10,8 @@ Bu düğüm, dosyayı ComfyUI çıktı dizinine kaydetmeden kullanıcı arayüz�
 | `model_3d_bilgisi` | Sahnedeki her modelin yerleşimi: konum, dönüş ve ölçek (Y-up dünya uzayı). İsteğe bağlı. Gelişmiş seçenek. | LOAD3DMODELINFO | Hayır | - |
 | `viewport_state` | Kamera ve model bilgilerini içeren mevcut görünüm alanı durumu. | LOAD3D | Evet | - |
 | `kamera_bilgisi` | Görünüm alanı kamera bilgileri: konum, bakış hedefi, yakınlaştırma ve tür. İsteğe bağlı. Gelişmiş seçenek. | LOAD3DCAMERA | Hayır | - |
-| `genişlik` | Görünüm alanının piksel cinsinden işleme genişliği. Varsayılan: 1024. | INT | Evet | 1 to 4096 |
-| `yükseklik` | Görünüm alanının piksel cinsinden işleme yüksekliği. Varsayılan: 1024. | INT | Evet | 1 to 4096 |
+| `genişlik` | Görünüm alanının piksel cinsinden işleme genişliği. Varsayılan: 1024. | INT | Evet | 1 ile 4096 |
+| `yükseklik` | Görünüm alanının piksel cinsinden işleme yüksekliği. Varsayılan: 1024. | INT | Evet | 1 ile 4096 |
 
 Not: `camera_info` veya `model_3d_info` bağlı değilse, değerleri `viewport_state` içinde mevcut olduğunda oradan alınır. Eğer `viewport_state` kamera bilgisi içermiyorsa, `camera_info` None olur. Eğer `viewport_state` model bilgisi içermiyorsa, `model_3d_info` varsayılan olarak boş bir liste olur. Eğer `viewport_state` bir sözlük değilse, boş olarak kabul edilir.
 

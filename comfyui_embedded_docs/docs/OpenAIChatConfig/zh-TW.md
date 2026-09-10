@@ -7,7 +7,7 @@
 | 參數 | 描述 | 資料類型 | 必要 | 範圍 |
 |-----------|-------------|-----------|----------|-------|
 | `truncation` | 用於模型回應的截斷策略。auto：如果此回應及先前回應的上下文超過模型的上下文視窗大小，模型將透過捨棄對話中間的輸入項目來截斷回應，以符合上下文視窗。disabled：如果模型回應將超過模型的上下文視窗大小，請求將失敗並返回 400 錯誤（預設值："auto"） | COMBO | 是 | "auto"<br>"disabled" |
-| `max_output_tokens` | 回應可產生的 token 數量上限，包含可見輸出 token 與推理 token（預設值：4096） | INT | 否 | 16 to 16384 |
+| `max_output_tokens` | 回應可產生的 token 數量上限，包含可見輸出 token 與推理 token（預設值：4096） | INT | 否 | 16至16384 |
 | `instructions` | 提供給模型如何產生回應的指示（支援多行輸入） | STRING | 否 | - |
 | `reasoning_effort` | 模型在回答前的推理程度。「default」將選擇權留給模型。支援的程度依模型而異：GPT-6 Astra low-max、GPT-5.6 none-max（無 minimal）、GPT-5.5 none-xhigh、GPT-5.5 Pro medium-xhigh、GPT-5 minimal-high、o-series low-high；GPT-4.1 不進行推理。不支援的程度會於請求送出前被拒絕。（預設值："default"） | COMBO | 否 | "default"<br>"none"<br>"minimal"<br>"low"<br>"medium"<br>"high"<br>"xhigh"<br>"max" |
 

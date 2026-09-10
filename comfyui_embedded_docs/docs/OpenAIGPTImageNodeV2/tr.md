@@ -12,8 +12,8 @@ Bu girdiler her zaman görünür.
 | --- | --- | --- | --- | --- |
 | `model` | Kullanılacak OpenAI GPT Image modeli. Bir model seçmek, o modele özgü ek parametreleri ortaya çıkarır. | DYNAMIC_COMBO | Evet | `"gpt-image-2.5-flare"`<br>`"gpt-image-2.5-sunburst"`<br>`"gpt-image-2"`<br>`"gpt-image-1.5"`<br>`"gpt-image-1"` |
 | `istem` | GPT Image için metin istemi (varsayılan: `""`). | STRING | Evet | N/A |
-| `n` | Üretilecek görüntü sayısı (varsayılan: `1`). | INT | Evet | 1 to 8 |
-| `tohum` | Tekrarlanabilirlik için tohum (seed) değeri (varsayılan: `0`). Henüz arka uçta uygulanmadı. | INT | Evet | 0 to 2147483647 |
+| `n` | Üretilecek görüntü sayısı (varsayılan: `1`). | INT | Evet | 1 ile 8 |
+| `tohum` | Tekrarlanabilirlik için tohum (seed) değeri (varsayılan: `0`). Henüz arka uçta uygulanmadı. | INT | Evet | 0 ile 2147483647 |
 
 ### gpt-image-2.5-flare ve gpt-image-2.5-sunburst Girdileri
 
@@ -22,11 +22,11 @@ Bu girdiler, `model` `gpt-image-2.5-flare` veya `gpt-image-2.5-sunburst` olarak 
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 | --- | --- | --- | --- | --- |
 | `boyut` | Görüntü boyutu. Özel genişlik ve yüksekliği kullanmak için "Custom" seçin (varsayılan: `"auto"`). | COMBO | Evet | `"auto"`<br>`"1024x1024"`<br>`"1024x1536"`<br>`"1536x1024"`<br>`"2048x2048"`<br>`"2048x1152"`<br>`"1152x2048"`<br>`"3840x2160"`<br>`"2160x3840"`<br>`"Custom"` |
-| `özel_genişlik` | Yalnızca `model.size` "Custom" olduğunda kullanılır. 16'nın katı olmalıdır (varsayılan: `1024`). | INT | Hayır | 480 to 3840 (step 16) |
-| `özel_yükseklik` | Yalnızca `model.size` "Custom" olduğunda kullanılır. 16'nın katı olmalıdır (varsayılan: `1024`). | INT | Hayır | 480 to 3840 (step 16) |
+| `özel_genişlik` | Yalnızca `model.size` "Custom" olduğunda kullanılır. 16'nın katı olmalıdır (varsayılan: `1024`). | INT | Hayır | 480 ile 3840 (adım 16) |
+| `özel_yükseklik` | Yalnızca `model.size` "Custom" olduğunda kullanılır. 16'nın katı olmalıdır (varsayılan: `1024`). | INT | Hayır | 480 ile 3840 (adım 16) |
 | `arka_plan` | Görüntüyü arka planlı veya arka plansız döndürür (varsayılan: `"auto"`). | COMBO | Evet | `"auto"`<br>`"opaque"`<br>`"transparent"` |
 | `kalite` | Görüntü kalitesi; maliyeti ve üretim süresini etkiler (varsayılan: `"low"`). | COMBO | Evet | `"low"`<br>`"medium"`<br>`"high"`<br>`"xhigh"`<br>`"max"` |
-| `model.images` | Görüntü düzenleme için isteğe bağlı referans görüntü(ler). En fazla 16 görüntü. Ayrıntılar için Referans Girdileri bölümüne bakın. | IMAGE | Hayır | 0 to 16 |
+| `model.images` | Görüntü düzenleme için isteğe bağlı referans görüntü(ler). En fazla 16 görüntü. Ayrıntılar için Referans Girdileri bölümüne bakın. | IMAGE | Hayır | 0 ile 16 |
 | `model.mask` | Inpainting için isteğe bağlı maske (beyaz alanlar değiştirilir). Tam olarak bir referans görüntü gerektirir. | MASK | Hayır | N/A |
 
 ### gpt-image-2 Girdileri
@@ -36,11 +36,11 @@ Bu girdiler, `model` `gpt-image-2` olarak ayarlandığında görünür.
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 | --- | --- | --- | --- | --- |
 | `boyut` | Görüntü boyutu. Özel genişlik ve yüksekliği kullanmak için "Custom" seçin (varsayılan: `"auto"`). | COMBO | Evet | `"auto"`<br>`"1024x1024"`<br>`"1024x1536"`<br>`"1536x1024"`<br>`"2048x2048"`<br>`"2048x1152"`<br>`"1152x2048"`<br>`"3840x2160"`<br>`"2160x3840"`<br>`"Custom"` |
-| `özel_genişlik` | Yalnızca `model.size` "Custom" olduğunda kullanılır. 16'nın katı olmalıdır (varsayılan: `1024`). | INT | Hayır | 480 to 3840 (step 16) |
-| `özel_yükseklik` | Yalnızca `model.size` "Custom" olduğunda kullanılır. 16'nın katı olmalıdır (varsayılan: `1024`). | INT | Hayır | 480 to 3840 (step 16) |
+| `özel_genişlik` | Yalnızca `model.size` "Custom" olduğunda kullanılır. 16'nın katı olmalıdır (varsayılan: `1024`). | INT | Hayır | 480 ile 3840 (adım 16) |
+| `özel_yükseklik` | Yalnızca `model.size` "Custom" olduğunda kullanılır. 16'nın katı olmalıdır (varsayılan: `1024`). | INT | Hayır | 480 ile 3840 (adım 16) |
 | `arka_plan` | Görüntüyü arka planlı veya arka plansız döndürür (varsayılan: `"auto"`). | COMBO | Evet | `"auto"`<br>`"opaque"` |
 | `kalite` | Görüntü kalitesi; maliyeti ve üretim süresini etkiler (varsayılan: `"low"`). | COMBO | Evet | `"low"`<br>`"medium"`<br>`"high"` |
-| `model.images` | Görüntü düzenleme için isteğe bağlı referans görüntü(ler). En fazla 16 görüntü. Ayrıntılar için Referans Girdileri bölümüne bakın. | IMAGE | Hayır | 0 to 16 |
+| `model.images` | Görüntü düzenleme için isteğe bağlı referans görüntü(ler). En fazla 16 görüntü. Ayrıntılar için Referans Girdileri bölümüne bakın. | IMAGE | Hayır | 0 ile 16 |
 | `model.mask` | Inpainting için isteğe bağlı maske (beyaz alanlar değiştirilir). Tam olarak bir referans görüntü gerektirir. | MASK | Hayır | N/A |
 
 ### gpt-image-1.5 ve gpt-image-1 Girdileri
@@ -52,14 +52,14 @@ Bu girdiler, `model` `gpt-image-1.5` veya `gpt-image-1` olarak ayarlandığında
 | `boyut` | Görüntü boyutu (varsayılan: `"auto"`). | COMBO | Evet | `"auto"`<br>`"1024x1024"`<br>`"1024x1536"`<br>`"1536x1024"` |
 | `arka_plan` | Görüntüyü arka planlı veya arka plansız döndürür (varsayılan: `"auto"`). | COMBO | Evet | `"auto"`<br>`"opaque"`<br>`"transparent"` |
 | `kalite` | Görüntü kalitesi; maliyeti ve üretim süresini etkiler (varsayılan: `"low"`). | COMBO | Evet | `"low"`<br>`"medium"`<br>`"high"` |
-| `model.images` | Görüntü düzenleme için isteğe bağlı referans görüntü(ler). En fazla 16 görüntü. Ayrıntılar için Referans Girdileri bölümüne bakın. | IMAGE | Hayır | 0 to 16 |
+| `model.images` | Görüntü düzenleme için isteğe bağlı referans görüntü(ler). En fazla 16 görüntü. Ayrıntılar için Referans Girdileri bölümüne bakın. | IMAGE | Hayır | 0 ile 16 |
 | `model.mask` | Inpainting için isteğe bağlı maske (beyaz alanlar değiştirilir). Tam olarak bir referans görüntü gerektirir. | MASK | Hayır | N/A |
 
 ### Referans Girdileri
 
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 | --- | --- | --- | --- | --- |
-| `model.images` | Genişletilebilir yuva: 1..N öğe bağlayın (örn. `image_1`...`image_16`); tüm modeller için en fazla 16 referans görüntü. | IMAGE | Hayır | 1 to 16 |
+| `model.images` | Genişletilebilir yuva: 1..N öğe bağlayın (örn. `image_1`...`image_16`); tüm modeller için en fazla 16 referans görüntü. | IMAGE | Hayır | 1 ile 16 |
 | `model.mask` | Inpainting için isteğe bağlı maske (beyaz alanlar değiştirilir). Tam olarak bir referans görüntü gerektirir. | MASK | Hayır | N/A |
 
 **Parametre Kısıtlamaları ve Sınırlamalar:**

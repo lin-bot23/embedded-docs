@@ -11,8 +11,8 @@ Save3DAdvanced guarda un modelo 3D en un archivo en el directorio de salida de C
 | `viewport_state` | Estado del viewport que contiene información de la cámara y la ubicación del modelo, normalmente de un nodo Load 3D. | LOAD3D | Sí | - |
 | `model_3d_info` | Ubicación de cada modelo en la escena: posición, rotación y escala (espacio mundial con eje Y hacia arriba). Anula la ubicación del modelo almacenada en `viewport_state` cuando está conectado. | LOAD3DMODELINFO | No | - |
 | `camera_info` | Información de la cámara del viewport: posición, punto de mira, zoom y tipo. Anula la información de la cámara almacenada en `viewport_state` cuando está conectado. | LOAD3DCAMERA | No | - |
-| `width` | Ancho de renderizado del viewport en píxeles (por defecto: 1024). | INT | Sí | 1 to 4096 |
-| `height` | Alto de renderizado del viewport en píxeles (por defecto: 1024). | INT | Sí | 1 to 4096 |
+| `width` | Ancho de renderizado del viewport en píxeles (por defecto: 1024). | INT | Sí | 1 a 4096 |
+| `height` | Alto de renderizado del viewport en píxeles (por defecto: 1024). | INT | Sí | 1 a 4096 |
 
 Nota: `model_3d_info` y `camera_info` son opcionales. Cuando cualquiera de estas entradas no está conectada, el nodo recurre a los valores correspondientes almacenados en `viewport_state`.
 

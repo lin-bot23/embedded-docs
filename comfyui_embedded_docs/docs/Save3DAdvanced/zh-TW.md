@@ -11,8 +11,8 @@ Save3DAdvanced 會將 3D 模型儲存至 ComfyUI 輸出目錄中的檔案，並�
 | `viewport_state` | 包含相機與模型擺放資訊的視埠狀態，通常來自 Load 3D 節點。 | LOAD3D | 是 | - |
 | `model_3d_info` | 場景中每個模型的擺放資訊：位置、旋轉與縮放（Y 軸向上的世界空間）。連接時會覆寫儲存在 `viewport_state` 中的模型擺放資訊。 | LOAD3DMODELINFO | 否 | - |
 | `camera_info` | 視埠相機資訊：位置、凝視目標、縮放與類型。連接時會覆寫儲存在 `viewport_state` 中的相機資訊。 | LOAD3DCAMERA | 否 | - |
-| `width` | 視埠的渲染寬度（像素）（預設：1024）。 | INT | 是 | 1 to 4096 |
-| `height` | 視埠的渲染高度（像素）（預設：1024）。 | INT | 是 | 1 to 4096 |
+| `width` | 視埠的渲染寬度（像素）（預設：1024）。 | INT | 是 | 1至4096 |
+| `height` | 視埠的渲染高度（像素）（預設：1024）。 | INT | 是 | 1至4096 |
 
 注意：`model_3d_info` 與 `camera_info` 為選用。當任一輸入未連接時，此節點會改用儲存在 `viewport_state` 中的對應值。
 
