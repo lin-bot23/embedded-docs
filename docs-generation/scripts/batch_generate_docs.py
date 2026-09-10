@@ -39,6 +39,35 @@ BATCH_SIZE = int(os.getenv('BATCH_SIZE', '5'))
 MAX_RETRIES = int(os.getenv('MAX_RETRIES', '3'))
 DELAY_BETWEEN_REQUESTS = int(os.getenv('DELAY_BETWEEN_REQUESTS', '2'))
 
+
+def _strip_markdown_output_fence(text: str) -> str:
+    """Remove an outer ```markdown ... ``` fence that some LLMs wrap around
+    the entire generated document (sometimes right after the H1). Only strips
+    when the closing fence is the last standalone fence with balanced content
+    inside; leaves genuine inner code fences untouched."""
+    lines = text.split('\n')
+    open_idx = None
+    for i, line in enumerate(lines):
+        if line.strip() == '```markdown':
+            open_idx = i
+            break
+    if open_idx is None:
+        return text
+    # find the matching closing fence: the LAST standalone ``` in the file
+    close_idx = None
+    for i in range(len(lines) - 1, open_idx, -1):
+        if lines[i].strip() == '```':
+            close_idx = i
+            break
+    if close_idx is None or close_idx - open_idx < 2:
+        return text
+    inner = lines[open_idx + 1:close_idx]
+    # sanity: inner must not contain unbalanced ``` (would mean a real inner fence)
+    if sum(1 for l in inner if l.strip().startswith('```')) % 2 != 0:
+        return text
+    return '\n'.join(lines[:open_idx] + inner + lines[close_idx + 1:])
+DELAY_BETWEEN_REQUESTS = int(os.getenv('DELAY_BETWEEN_REQUESTS', '2'))
+
 # Path configuration
 AI_INPUT_PATH = AI_INPUT_DIR
 DOCS_OUTPUT_PATH = default_embedded_docs_path() / "comfyui_embedded_docs" / "docs"
@@ -135,7 +164,14 @@ class AIDocGenerator:
             )
             
             content = response.choices[0].message.content
-            
+
+            # Strip LLM output fence: some models (glm-4-flash etc.) wrap the whole
+            # document in ```markdown ... ``` which renders the doc as a code block.
+            fence_stripped = _strip_markdown_output_fence(content)
+            if fence_stripped != content:
+                self.logger.log("Stripped markdown output fence from generated doc")
+                content = fence_stripped
+
             # Validate generated content
             if not content or len(content) < 100:
                 raise ValueError("Generated documentation too short")

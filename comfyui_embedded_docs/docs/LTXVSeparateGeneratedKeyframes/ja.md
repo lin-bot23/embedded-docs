@@ -1,0 +1,36 @@
+# LTXVSeparateGeneratedKeyframes
+
+## 概要
+
+LTXV 分離生成キーフレームノードは、サンプリングされたラテントと条件付けから生成キーフレームを削除し、空間アップスケーリング前に個別に処理を可能にします。空間アップスケーリングの前に使用されることを設計されており、LTXV Crop Guidesの後に実行すべきではありません。なぜなら、生成キーフレームを一時的なガイドとして扱い、削除するからです。
+
+## 入力
+
+| パラメータ | 説明 | データ型 | 必須 | 范囲 |
+|------------|------|----------|------|-------|
+| `positive` | 生成キーフレームのメタデータを削除したポジティブな条件付け。 | CONDITIONING | はい | なし |
+| `negative` | 生成キーフレームのメタデータを削除したネガティブな条件付け。 | CONDITIONING | はい | なし |
+| `latent` | 生成キーフレームを削除したビデオラテント。 | LATENT | はい | なし |
+| `keyframes_to_batch` | キーフレームを単フレームのラテントのバッチとして返します。これをオフにすると、ラテントアップスケーラーや後の Add Generated Keyframesが期待するように、一つのマルチフレームのラテントとして取得されます。 | 布 információ | いいえ | デフォルト: False |
+
+## 出力
+
+| 出力名 | 説明 | データ型 |
+|--------|------|----------|
+| `positive` | 生成キーフレームのメタデータを削除したポジティブな条件付け。 | CONDITIONING |
+| `negative` | 生成キーフレームのメタデータを削除したネガティブな条件付け。 | CONDITIONING |
+| `latent` | 生成キーフレームを削除したビデオラテント。 | LATENT |
+| `keyframes` | 削除されたキーフレーム、生成_keyframe_indicesと生成_keyframe_num_framesでラベル付けされています。これらを後の Add Generated Keyframesにフィードして新しいスロットを初期化するか、Frozen Image Guidesとしてフリーズするために Generated Keyframes To Guidesにフィードします（キャンバスの長さが変更された場合、インデックスがリマップされます）。 | LATENT |
+
+## 注意事項
+
+- `keyframes_to_batch`パラメータは、キーフレームが単フレームのラテントのバッチとして返されるかどうかを決定します。
+- ノードは、生成キーフレームが条件付けやラテントから削除される前に、どの処理の前にもこれを行います。
+- `keyframes`出力は、生成キーフレームの新しいスロットを初期化するか、フリーズした画像ガイドとしてピン留めるために使用できます。
+- ラテントに生成キーフレームが含まれていない場合や、キーフレームが期待される形式に一致しない場合、ノードは`ValueError`を発生させます。
+- ノードは、LTXV Add Generated Keyframesノードを使用して追加された生成キーフレームと、現在のラテントが互換性があると仮定します。
+
+> このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVSeparateGeneratedKeyframes/ja.md)
+
+---
+**Source fingerprint (SHA-256):** `295e49181e87445a1c47b2e9413d95b20585b12e89f26f13129ac5d97f913007`

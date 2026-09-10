@@ -104,6 +104,30 @@ _PREAMBLE_PATTERNS: dict[str, list[str]] = {
 }
 
 
+def strip_markdown_output_fence(text: str) -> str:
+    """Remove an outer ```markdown ... ``` fence that some LLMs wrap around the
+    entire translated document. Keeps genuine inner code fences untouched."""
+    lines = text.split('\n')
+    open_idx = None
+    for i, line in enumerate(lines):
+        if line.strip() == '```markdown':
+            open_idx = i
+            break
+    if open_idx is None:
+        return text
+    close_idx = None
+    for i in range(len(lines) - 1, open_idx, -1):
+        if lines[i].strip() == '```':
+            close_idx = i
+            break
+    if close_idx is None or close_idx - open_idx < 2:
+        return text
+    inner = lines[open_idx + 1:close_idx]
+    if sum(1 for l in inner if l.strip().startswith('```')) % 2 != 0:
+        return text
+    return '\n'.join(lines[:open_idx] + inner + lines[close_idx + 1:])
+
+
 def strip_ai_preamble(content: str, lang: str) -> str:
     """Remove translation preamble that the AI sometimes prepends.
 
@@ -264,6 +288,10 @@ def translate_document(node_name, target_lang, lang_config, client, model):
             content = response.choices[0].message.content
             
             content = strip_ai_disclaimer(content)
+
+            # Strip LLM output fence: some models (glm-4-flash etc.) wrap the
+            # whole document in ```markdown ... ``` which renders as a code block.
+            content = strip_markdown_output_fence(content)
 
             # Strip AI preamble ("Here is the translation...") in the target language
             content = strip_ai_preamble(content, target_lang)
