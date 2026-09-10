@@ -1,29 +1,29 @@
-# TripoRetopologyNode
+# Tripo: Retopología
 
-Tripo: Retopology toma un modelo 3D high-poly generado por un nodo Tripo anterior y lo reconstruye como una versión low-poly con topología limpia. Envía el modelo al servicio de retopología de Tripo, espera a que la tarea finalice y, a continuación, descarga el modelo finalizado y expone su ID de tarea para que lo utilicen otros nodos Tripo.
+Tripo: Retopology toma un modelo 3D de alta poligonización que fue generado por un nodo Tripo anterior y lo reconstruye como una versión de baja poligonización con topología limpia. Envía el modelo al servicio de retopología de Tripo, espera a que finalice la tarea, luego descarga el modelo terminado y expone su ID de tarea para que lo usen otros nodos Tripo.
 
 ## Entradas
 
-| Parámetro | Descripción | Tipo de datos | Requerido | Rango |
+| Parámetro | Descripción | Tipo de datos | Obligatorio | Rango |
 |-----------|-------------|-----------|----------|-------|
-| `model_task_id` | ID de tarea del modelo high-poly de origen. Acepta un ID de tarea de modelo de un nodo de generación de Tripo o un ID de tarea de segmento de Tripo: Segment Model. | STRING | Sí | ID de tarea de Tripo |
-| `face_limit` | Número objetivo de caras: 500-20,000 triángulos o 500-10,000 quads. -1 permite que Tripo elija. (por defecto: -1) | INT | Sí | -1 (automático)<br>500 a 20,000 (triángulos)<br>500 a 10,000 (quads) |
-| `quad` | Salida de malla quad. Tripo entrega las mallas quad como FBX, por lo que el resultado llega por la salida FBX y la salida GLB permanece vacía. (por defecto: False) | BOOLEAN | Sí | True<br>False (por defecto) |
-| `bake` | Hornea las texturas de origen sobre la malla low-poly. (por defecto: True) | BOOLEAN | No | True (por defecto)<br>False |
-| `part_names` | Nombres de partes separados por comas procedentes de Tripo: Segment Model. Vacío procesa el modelo completo. (por defecto: "") | STRING | No | Nombres de partes del modelo o vacío |
+| `model_task_id` | ID de tarea del modelo de alta poligonización de origen. Acepta un ID de tarea de modelo de un nodo de generación de Tripo o un ID de tarea de segmentación de Tripo: Segment Model. | STRING | Sí | ID de tarea de Tripo |
+| `face_limit` | Recuento objetivo de caras: 500-20,000 triángulos o 500-10,000 cuadriláteros. -1 permite que Tripo elija. (predeterminado: -1) | INT | Sí | -1 (automático)<br>500 a 20,000 (triángulos)<br>500 a 10,000 (cuadriláteros) |
+| `quad` | Salida de malla de cuadriláteros. Tripo entrega las mallas de cuadriláteros como FBX, por lo que el resultado llega en la salida FBX y la salida GLB permanece vacía. (predeterminado: False) | BOOLEAN | Sí | True<br>False (predeterminado) |
+| `bake` | Aplicar bake a las texturas de origen sobre la malla de baja poligonización. (predeterminado: True) | BOOLEAN | No | True (predeterminado)<br>False |
+| `part_names` | Nombres de partes separados por comas de Tripo: Segment Model. Si está vacío, se procesa el modelo completo. (predeterminado: "") | STRING | No | Nombres de partes del modelo o vacío |
 
-Nota: cuando `face_limit` se establece en -1, Tripo decide automáticamente el número de caras. Cuando `quad` está habilitado, el límite máximo de caras es de 10,000 quads en lugar de 20,000 triángulos, y el resultado se proporciona como FBX (la salida GLB permanece vacía). Cuando `part_names` está vacío, se procesa el modelo completo.
+Nota: Cuando `face_limit` se establece en -1, Tripo decide el recuento de caras automáticamente. Cuando `quad` está habilitado, el límite máximo de caras es de 10,000 cuadriláteros en lugar de 20,000 triángulos, y el resultado se proporciona como FBX (la salida GLB permanece vacía). Cuando `part_names` está vacío, se procesa el modelo completo. Si `face_limit` es cualquier valor distinto de -1 y queda fuera del rango permitido, el nodo lanza un error.
 
 ## Salidas
 
 | Nombre de salida | Descripción | Tipo de datos |
 |-------------|-------------|-----------|
-| `model_file` | Salida retrocompatible que identifica el archivo del modelo finalizado. Los flujos de trabajo más recientes deberían usar las salidas GLB o FBX en su lugar. | STRING |
-| `model task_id` | ID de tarea del resultado de retopología finalizado. Se puede pasar a otros nodos Tripo para hacer referencia a este modelo. | STRING |
-| `GLB` | El modelo low-poly retopologizado en formato GLB. Vacío cuando `quad` está habilitado. | GLB FILE |
-| `FBX` | El modelo low-poly retopologizado en formato FBX. Solo se completa cuando `quad` está habilitado. | FBX FILE |
+| `model_file` | Salida compatible con versiones anteriores que identifica el archivo de modelo completado. Los flujos de trabajo más recientes deberían usar las salidas GLB o FBX en su lugar. | STRING |
+| `model task_id` | ID de tarea del resultado de retopología terminado. Se puede pasar a otros nodos Tripo para hacer referencia a este modelo. | STRING |
+| `GLB` | El modelo de baja poligonización retopologizado en formato GLB. Vacío cuando `quad` está habilitado. | GLB FILE |
+| `FBX` | El modelo de baja poligonización retopologizado en formato FBX. Solo se completa cuando `quad` está habilitado. | FBX FILE |
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoRetopologyNode/es.md)
 
 ---
-**Source fingerprint (SHA-256):** `dc15f469b160a1d738e8089cf18de4a8262721bc77ebafa45bf194f04c7726b6`
+**Source fingerprint (SHA-256):** `b0e967eb4987a70242b6cfce93f09e0caffb7f4bdd3e4f1439e68f33f9138bb5`

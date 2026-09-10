@@ -1,33 +1,35 @@
 # Tripo: Rig no modelo
 
-### Visão Geral
-
-Este nó recebe um modelo 3D existente do Tripo e cria uma versão equipada dele, o que significa que o modelo ganha um esqueleto para poder ser animado. Você fornece o ID da tarefa do modelo a ser equipado, escolhe a versão do equipamento, o tipo de esqueleto, o estilo de nomeação dos ossos e o formato do arquivo de saída, e o nó envia o trabalho para o Tripo, aguarda até que ele termine e, em seguida, retorna o resultado baixado.
+Este nó recebe um modelo 3D Tripo existente e cria uma versão com rig, ou seja, o modelo recebe um esqueleto para poder ser animado. Você fornece o ID da tarefa do modelo a ser rigado, escolhe a versão de rig, o tipo de esqueleto, o estilo de nomenclatura dos ossos e o formato do arquivo de saída; o nó envia a tarefa para a Tripo, aguarda até que ela seja concluída e então retorna o resultado baixado.
 
 ## Entradas
 
 | Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
 |-----------|-------------|-----------|----------|-------|
-| `id_da_tarefa_do_modelo_original` | O ID da tarefa do modelo 3D original a ser equipado. Este é geralmente o ID gerado por um nó de geração de modelo do Tripo anterior. | MODEL_TASK_ID | Sim | - |
-| `model_version` | Versão do modelo de equipamento a ser usada. v1.0: personagens humanoides (bipedes) apenas, 90+ presets de animação. v2.5: criaturas não humanoides (quadrúpedes, hexápodes, octópodes, aves, serpentes, aquáticos). Padrão: `v1.0-20240301`. | COMBO | Não | "v1.0-20240301"<br>"v2.5-20260210" |
-| `rig_type` | Tipo de esqueleto. "auto" executa primeiro a verificação de equipamento livre do Tripo e usa o tipo recomendado. Outros valores forçam um tipo de esqueleto específico, como bipede para personagens humanoides. Padrão: "auto". | COMBO | Não | "auto"<br>"biped"<br>"quadruped"<br>"hexapod"<br>"octopod"<br>"avian"<br>"serpentine"<br>"aquatic" |
-| `spec` | Esquema de nomeação dos ossos: nativo do Tripo ou compatível com Mixamo. O Tripo não pode retarget seus presets de animação em um esqueleto v1.0 feito com o spec do Mixamo; use tripo para Tripo: Retarget rigged model. Padrão: "tripo". | COMBO | Não | "tripo"<br>"mixamo" |
-| `out_format` | Formato do arquivo de saída; o resultado chega no matching de saída. Padrão: "glb". | COMBO | Não | "glb"<br>"fbx" |
+| `id_da_tarefa_do_modelo_original` | O ID da tarefa do modelo 3D original a ser rigado. Normalmente é o ID produzido por um nó anterior de geração de modelo Tripo. | MODEL_TASK_ID | Sim | - |
+| `model_version` | Versão do modelo de rig a usar. v1.0: apenas personagens humanoides (bípedes), mais de 90 predefinições de animação. v2.5: criaturas não humanoides (quadrúpedes, hexápodes, octópodes, aviárias, serpentinas, aquáticas). Padrão: `v1.0-20240301`. | COMBO | Não | "v1.0-20240301"<br>"v2.5-20260210" |
+| `rig_type` | Tipo de esqueleto. "auto" executa primeiro a verificação gratuita de rig da Tripo e usa o tipo recomendado. Padrão: "auto". | COMBO | Não | "auto"<br>"biped"<br>"quadruped"<br>"hexapod"<br>"octopod"<br>"avian"<br>"serpentine"<br>"aquatic" |
+| `spec` | Nomenclatura dos ossos: nativa da Tripo ou compatível com Mixamo. A Tripo não consegue fazer retarget de suas predefinições de animação para um rig v1.0 feito com a especificação mixamo; use `tripo` para o nó Tripo: Retarget rigged model. Padrão: "tripo". | COMBO | Não | "tripo"<br>"mixamo" |
+| `out_format` | Formato do arquivo de saída; o resultado chega na saída correspondente. Padrão: "glb". | COMBO | Não | "glb"<br>"fbx" |
 
-**Nota:** A versão do modelo v1.0 (`v1.0-20240301`) suporta apenas esqueletos bipedes. Se um `rig_type` não bipede for usado com esta versão, o nó gera um erro e instrui você a usar `v2.5-20260210` em vez disso.
+**Observação:** A versão de modelo v1.0 (`v1.0-20240301`) só oferece suporte a esqueletos bípedes. Se um `rig_type` não bípede for usado com esta versão, o nó lança um erro e instrui você a usar `v2.5-20260210` em vez disso.
 
-**Nota:** Quando `rig_type` é "auto", o Tripo verifica primeiro se o modelo pode ser equipado e escolhe o tipo de esqueleto recomendado. Se o Tripo informar que o modelo não pode ser equipado, o nó falha com um erro.
+**Observação:** Quando `rig_type` é "auto", a Tripo primeiro verifica se o modelo pode receber rig e escolhe o tipo de esqueleto recomendado. Se a Tripo informar que o modelo não pode receber rig, o nó falha com um erro.
+
+**Observação:** O nó espera que a Tripo retorne um arquivo GLB ou FBX. Se a Tripo retornar qualquer outro tipo de arquivo, o nó lança um erro.
+
+**Observação:** Apenas a saída correspondente a `out_format` é preenchida: `GLB` quando `out_format` é "glb", e `FBX` quando `out_format` é "fbx". A outra saída 3D fica vazia.
 
 ## Saídas
 
 | Nome da Saída | Descrição | Tipo de Dados |
 |-------------|-------------|-----------|
-| `arquivo_do_modelo` | O arquivo de modelo 3D gerado. Mantido apenas por compatibilidade com versões anteriores. | STRING |
-| `task_id_de_rig` | O ID da tarefa para rastrear o processo de geração de equipamento. | RIG_TASK_ID |
-| `GLB` | O modelo equipado como um arquivo 3D GLB. Populado quando `out_format` é "glb". | FILE3DGLB |
-| `FBX` | O modelo equipado como um arquivo 3D FBX. Populado quando `out_format` é "fbx". | FILE3DFBX |
+| `arquivo_do_modelo` | O nome do arquivo do modelo rigado gerado (ID da tarefa mais extensão de formato). Mantido apenas para compatibilidade com versões anteriores. | STRING |
+| `task_id_de_rig` | O ID da tarefa para acompanhar o processo de geração do rig. | RIG_TASK_ID |
+| `GLB` | O modelo rigado como arquivo 3D GLB. Preenchido quando `out_format` é "glb". | FILE3DGLB |
+| `FBX` | O modelo rigado como arquivo 3D FBX. Preenchido quando `out_format` é "fbx". | FILE3DFBX |
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoRigNode/pt-BR.md)
 
 ---
-**Source fingerprint (SHA-256):** `54c3b0984835160b74884d2c30191ad6dac6ea447862e9276253ace7367bc419`
+**Source fingerprint (SHA-256):** `b9c1b6d27b6278bcee4fc22e11c11e65cd22ea92cab3fc6c74f84d3deb2024d6`

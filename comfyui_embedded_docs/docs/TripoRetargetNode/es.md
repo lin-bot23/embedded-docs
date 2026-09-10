@@ -1,21 +1,21 @@
 # Tripo: Redireccionar modelo con rig
 
-El nodo TripoRetargetNode aplica una animación preestablecida a un modelo 3D existente que tiene un rig. Toma el ID de tarea de un modelo al que se le aplicó rig anteriormente, envía una solicitud de retargeting a la API de Tripo y descarga el archivo animado resultante. El modelo animado se puede devolver como GLB o FBX, con geometría de malla opcional y reproducción en el lugar opcional.
+TripoRetargetNode aplica una animación predefinida a un modelo 3D con rig existente. Toma el ID de tarea de un modelo que fue riggeado previamente, envía una solicitud de retargeting a la API de Tripo y descarga el archivo animado resultante. El modelo animado puede devolverse como GLB o FBX, con geometría de malla opcional y reproducción en el lugar opcional.
 
 ## Entradas
 
-| Parámetro | Descripción | Tipo de datos | Requerido | Rango |
-|-----------|-------------|---------------|-----------|-------|
-| `ID_de_tarea_del_modelo_original` | El ID de tarea del modelo 3D que ya tiene rig y al que se aplicará el retargeting. La tarea referenciada debe ser una tarea de rig; un rig creado con la especificación Mixamo en la versión de modelo v1.0 no puede utilizarse para retargeting. | RIG_TASK_ID | Sí | - |
-| `animación` | El preset de animación que se aplicará al modelo con rig. Las animaciones `preset:*` funcionan con ambos modelos con rig; las animaciones `preset:biped:*` requieren un rig creado con la versión de modelo v1.0-20240301. | COMBO | Sí | `"preset:idle"`<br>`"preset:walk"`<br>`"preset:run"`<br>`"preset:dive"`<br>`"preset:climb"`<br>`"preset:jump"`<br>`"preset:slash"`<br>`"preset:shoot"`<br>`"preset:hurt"`<br>`"preset:fall"`<br>`"preset:turn"`<br>`"preset:quadruped:walk"`<br>`"preset:hexapod:walk"`<br>`"preset:octopod:walk"`<br>`"preset:serpentine:march"`<br>`"preset:aquatic:march"`<br>más opciones `"preset:biped:*"` que se muestran en la interfaz |
-| `out_format` | Formato de archivo de salida; el resultado llega por la salida correspondiente. (por defecto: glb) | COMBO | No | `"glb"`<br>`"fbx"` |
-| `export_with_geometry` | Incluir la malla en la exportación; si está desactivado, exporta solo el esqueleto animado. (por defecto: True) | BOOLEAN | No | True<br>False |
-| `animate_in_place` | Reproducir la animación en el lugar, sin desplazamiento de la raíz. (por defecto: False) | BOOLEAN | No | True<br>False |
+| Parámetro | Descripción | Tipo de datos | Obligatorio | Rango |
+|-----------|-------------|---------------|-------------|-------|
+| `ID_de_tarea_del_modelo_original` | El ID de tarea del modelo 3D previamente riggeado que se va a retargetizar. La tarea referenciada debe ser una tarea de rig. | RIG_TASK_ID | Sí | - |
+| `animación` | La animación predefinida que se aplicará al modelo con rig. Las animaciones `preset:*` funcionan con ambos modelos de rig. Las animaciones `preset:biped:*` están hechas para rigs del modelo v1.0-20240301; un rig v2.5 acepta solo chop, climb, dive, fall, hurt, idle, jump, run, shoot, slash, turn y walk. | COMBO | Sí | `"preset:idle"`<br>`"preset:walk"`<br>`"preset:run"`<br>`"preset:dive"`<br>`"preset:climb"`<br>`"preset:jump"`<br>`"preset:slash"`<br>`"preset:shoot"`<br>`"preset:hurt"`<br>`"preset:fall"`<br>`"preset:turn"`<br>`"preset:quadruped:walk"`<br>`"preset:hexapod:walk"`<br>`"preset:octopod:walk"`<br>`"preset:serpentine:march"`<br>`"preset:aquatic:march"`<br>más opciones adicionales `"preset:biped:*"` que se muestran en la interfaz |
+| `out_format` | Formato del archivo de salida; el resultado llega en la salida correspondiente. (predeterminado: glb) | COMBO | No | `"glb"`<br>`"fbx"` |
+| `export_with_geometry` | Incluir la malla en la exportación; desactivado exporta solo el esqueleto animado. (predeterminado: True) | BOOLEAN | No | True<br>False |
+| `animate_in_place` | Reproducir la animación en el lugar, sin desplazamiento de la raíz. (predeterminado: False) | BOOLEAN | No | True<br>False |
 | `auth_token_comfy_org` | Token de autenticación para el acceso a la API de Comfy.org (parámetro oculto). | AUTH_TOKEN_COMFY_ORG | No | - |
 | `api_key_comfy_org` | Clave de API para el acceso al servicio de Comfy.org (parámetro oculto). | API_KEY_COMFY_ORG | No | - |
 | `unique_id` | Identificador único para el seguimiento de la operación (parámetro oculto). | UNIQUE_ID | No | - |
 
-Nota: Las animaciones del grupo `preset:*` funcionan con ambos modelos con rig, mientras que las animaciones del grupo `preset:biped:*` requieren un rig creado con la versión de modelo v1.0-20240301. Si el rig referenciado se creó con la especificación Mixamo y con una versión de modelo que empiece por `v1.0`, la llamada de retargeting falla con un error.
+Nota: Las animaciones del grupo `preset:*` funcionan con ambos modelos de rig. Las animaciones del grupo `preset:biped:*` están hechas para rigs del modelo v1.0-20240301; un rig v2.5 acepta solo chop, climb, dive, fall, hurt, idle, jump, run, shoot, slash, turn y walk. Si el rig referenciado se creó con la especificación de Mixamo y una versión de modelo que comienza con `v1.0`, la llamada de retargeting falla con un error. El formato de salida solicitado debe ser GLB o FBX; si el servicio devuelve cualquier otro tipo de archivo, el nodo genera un error.
 
 ## Salidas
 
@@ -29,4 +29,4 @@ Nota: Las animaciones del grupo `preset:*` funcionan con ambos modelos con rig, 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoRetargetNode/es.md)
 
 ---
-**Source fingerprint (SHA-256):** `e5417a8fa584285ba9e57526e65b091c2383374c70364df9053777a3ce09541a`
+**Source fingerprint (SHA-256):** `4814858b940ece13f85010ff81fcdac0258fe8550aebd914be2613e8f40c0e5a`

@@ -1,16 +1,20 @@
-# TripoEditMultiviewNode
+# Tripo : Modifier les vues multiples
+
+Modifie les vues d’un résultat Tripo: Image to Multiview à l’aide d’une instruction textuelle distincte pour chaque vue. Les vues sans instruction restent inchangées. Les images modifiées sont destinées à être connectées à Tripo: Multiview to Model pour créer un modèle 3D ; un ensemble multivue modifié ne peut pas être modifié à nouveau.
 
 ## Entrées
 
 | Paramètre | Description | Type de données | Requis | Plage |
 |-----------|-------------|-----------------|--------|-------|
-| `multiview_task_id` | ID de tâche du résultat Tripo : Image to Multiview dont les vues seront modifiées. | MULTIVIEW_TASK_ID | Oui | ID de tâche |
-| `front_prompt` | Instruction textuelle décrivant la modification à appliquer à la vue avant. Si elle est vide, la vue avant reste inchangée. Par défaut : vide. | STRING | Non | Texte multiligne |
-| `left_prompt` | Instruction textuelle décrivant la modification à appliquer à la vue gauche. Si elle est vide, la vue gauche reste inchangée. Par défaut : vide. | STRING | Non | Texte multiligne |
-| `back_prompt` | Instruction textuelle décrivant la modification à appliquer à la vue arrière. Si elle est vide, la vue arrière reste inchangée. Par défaut : vide. | STRING | Non | Texte multiligne |
-| `right_prompt` | Instruction textuelle décrivant la modification à appliquer à la vue droite. Si elle est vide, la vue droite reste inchangée. Par défaut : vide. | STRING | Non | Texte multiligne |
+| `multiview_task_id` | ID de tâche du résultat Tripo: Image to Multiview dont les vues seront modifiées. Doit provenir du nœud Tripo: Image to Multiview. | MULTIVIEW_TASK_ID | Oui | ID de tâche |
+| `front_prompt` | Instruction textuelle décrivant la modification à appliquer à la vue avant. Lorsqu’elle est vide, la vue avant reste inchangée. Par défaut : chaîne vide. | STRING | Non | Texte multiligne |
+| `left_prompt` | Instruction textuelle décrivant la modification à appliquer à la vue gauche. Lorsqu’elle est vide, la vue gauche reste inchangée. Par défaut : chaîne vide. | STRING | Non | Texte multiligne |
+| `back_prompt` | Instruction textuelle décrivant la modification à appliquer à la vue arrière. Lorsqu’elle est vide, la vue arrière reste inchangée. Par défaut : chaîne vide. | STRING | Non | Texte multiligne |
+| `right_prompt` | Instruction textuelle décrivant la modification à appliquer à la vue droite. Lorsqu’elle est vide, la vue droite reste inchangée. Par défaut : chaîne vide. | STRING | Non | Texte multiligne |
 
-Remarque : Au moins une des quatre instructions (`front_prompt`, `left_prompt`, `back_prompt`, `right_prompt`) doit contenir du texte non vide ; sinon, le nœud génère une erreur. Le `multiview_task_id` doit provenir du nœud Tripo : Image to Multiview. Un ensemble de vues modifié ne peut pas être modifié de nouveau.
+Remarque : au moins l’une des quatre instructions (`front_prompt`, `left_prompt`, `back_prompt`, `right_prompt`) doit contenir du texte non vide ; un texte composé uniquement d’espaces est traité comme vide, et si toutes les instructions sont vides, le nœud génère une erreur.
+
+Remarque : le coût est d’environ 0,05 USD par vue comportant une instruction de modification.
 
 ## Sorties
 
@@ -24,4 +28,4 @@ Remarque : Au moins une des quatre instructions (`front_prompt`, `left_prompt`, 
 > Cette documentation a été générée par IA. Si vous trouvez des erreurs ou avez des suggestions d'amélioration, n'hésitez pas à contribuer ! [Modifier sur GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoEditMultiviewNode/fr.md)
 
 ---
-**Source fingerprint (SHA-256):** `7a25f3867776c01ab606d43a988b5491e543b72d3eedac1779fa170453c1ca21`
+**Source fingerprint (SHA-256):** `db8b0a3ffe4332fcbcaac4da0d7b07217d01d2f05526750540f6036293e013ab`
