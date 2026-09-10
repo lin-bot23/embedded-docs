@@ -6,7 +6,7 @@ The ModelPatchLoader node loads a model patch file from the `model_patches` fold
 
 | Parameter | Description | Data Type | Required | Range |
 | --- | --- | --- | --- | --- |
-| `name` | The filename of the model patch to load from the model_patches directory. Select one of the available patch files from the list. | COMBO | Yes | Dynamically generated list of all model patch files found in the model_patches folder |
+| `name` | The filename of the model patch to load from the model_patches directory. Select one of the available patch files from the list. | COMBO | Yes | Dynamically generated list of all model patch files found in the `model_patches` folder |
 
 Note: This node is marked as experimental. The patch type is detected automatically from the file contents, so no manual type selection is required.
 

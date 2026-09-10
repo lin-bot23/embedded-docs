@@ -1,6 +1,6 @@
 # Normalize Image Colors
 
-This node adjusts the pixel values of an input image using a mathematical normalization process. It subtracts a specified mean value from each pixel and then divides the result by a specified standard deviation. This is a common preprocessing step to prepare image data for other machine learning models. If the input image has an alpha channel, the alpha channel is passed through unchanged so transparency is preserved.
+This node adjusts the pixel values of an input image using a mathematical normalization process. It subtracts a specified mean value from each pixel and then divides the result by a specified standard deviation. This is a common preprocessing step to prepare image data for other machine learning models.
 
 ## Inputs
 
@@ -9,6 +9,8 @@ This node adjusts the pixel values of an input image using a mathematical normal
 | `image` | The input image to be normalized. | IMAGE | Yes | - |
 | `mean` | Mean value for normalization (default: 0.5). | FLOAT | No | 0.0 - 1.0 |
 | `std` | Standard deviation for normalization (default: 0.5). | FLOAT | No | 0.001 - 1.0 |
+
+Note: When the input image includes an alpha (transparency) channel, the alpha channel is not normalized. It is kept unchanged in the output because alpha stores transparency rather than color.
 
 ## Outputs
 
@@ -19,4 +21,4 @@ This node adjusts the pixel values of an input image using a mathematical normal
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/NormalizeImages/en.md)
 
 ---
-**Source fingerprint (SHA-256):** `30c0587265754842d1e56d478b89e87c1d014fcaad01894a7a2f4a21fa17b83f`
+**Source fingerprint (SHA-256):** `30c0587265754842ff7d1e5f339fc934b58d59bb3ba18716c2a1f9679f2d561d`

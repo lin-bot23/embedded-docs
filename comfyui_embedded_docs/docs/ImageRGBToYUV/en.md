@@ -1,22 +1,22 @@
 # Image RGB to YUV
 
-The ImageRGBToYUV node performs a color space conversion from RGB to YUV. It takes an RGB image as input and outputs three separate images representing the YUV channels: Y (luminance), U (blue-difference), and V (red-difference).
+The ImageRGBToYUV node converts an RGB image into the YUV color space. It splits the image into three components — Y (luminance, or brightness), U (blue-difference chroma), and V (red-difference chroma) — and returns each component as a separate image of the same size as the input.
 
 ## Inputs
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `image`   | The input RGB image to be converted to YUV color space. This should be a 3-channel image. | IMAGE | Yes | - |
+| `image` | The input RGB image to convert to YUV. If the image contains an alpha channel, only the first three (RGB) channels are used. | IMAGE | Yes | - |
 
 ## Outputs
 
 | Output Name | Description | Data Type |
 |-------------|-------------|-----------|
-| `Y`         | The Y channel represents the luminance (brightness) of the image. | IMAGE |
-| `U`         | The U channel represents the blue-difference chroma component. | IMAGE |
-| `V`         | The V channel represents the red-difference chroma component. | IMAGE |
+| `Y` | The luminance (brightness) component of the YUV color space | IMAGE |
+| `U` | The blue-difference chroma component of the YUV color space | IMAGE |
+| `V` | The red-difference chroma component of the YUV color space | IMAGE |
 
-The output images will have the same dimensions as the input image.
+Each output has the same width, height, and number of channels as the input image. The corresponding Y, U, or V component is repeated across all channels so that every output is returned as a standard image.
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ImageRGBToYUV/en.md)
 

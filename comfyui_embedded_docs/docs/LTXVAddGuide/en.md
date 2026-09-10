@@ -20,6 +20,10 @@ The LTXVAddGuide node adds video conditioning guidance to latent sequences by en
 
 **Note on `iclora_parameters`:** When using IC-LoRA parameters with a `reference_downscale_factor` greater than 1, the latent spatial dimensions (width and height) must be divisible by that factor. The node will raise an error if this condition is not met.
 
+**Note:** The encoded guide frames must fit within the latent sequence at the selected frame position. If the conditioned frames exceed the length of the latent sequence, the node raises an error.
+
+**Note:** Adding a guide to a latent that combines audio and video channels is not supported and will raise an error.
+
 ## Outputs
 
 | Output Name | Description | Data Type |
@@ -31,4 +35,4 @@ The LTXVAddGuide node adds video conditioning guidance to latent sequences by en
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddGuide/en.md)
 
 ---
-**Source fingerprint (SHA-256):** `3e0d1422fbd1b5b3e4c69e641af2ecdb5ae8de3f4368b336917a0dce4286771e`
+**Source fingerprint (SHA-256):** `031bc9030dafed85b5ff1cbceae36234e9d5f77f7f4b040267067ecd16a27929`
