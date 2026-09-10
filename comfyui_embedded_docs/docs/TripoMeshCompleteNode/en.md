@@ -1,6 +1,6 @@
 # Tripo: Complete Mesh Parts
 
-Completes missing or incomplete parts of an already segmented 3D model and repairs damaged regions of the mesh. It takes the task ID of a Tripo mesh segmentation result, requests the completion job from Tripo, and waits for it to finish. You can optionally limit the work to specific part names. The completed model is returned as a GLB file.
+Completes the parts of a segmented 3D model and repairs missing or damaged regions of the mesh. It takes the task ID of a Tripo mesh segmentation result, requests the completion job from Tripo, and waits for it to finish. You can optionally limit the work to specific part names. The completed model is returned as a GLB file.
 
 ## Inputs
 
@@ -20,4 +20,4 @@ Completes missing or incomplete parts of an already segmented 3D model and repai
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoMeshCompleteNode/en.md)
 
 ---
-**Source fingerprint (SHA-256):** `aa7173f25f54d9fca9605e246a93fe319cf46c07d8d3aacc214a24a60c92e611`
+**Source fingerprint (SHA-256):** `c5709231fa2e33e6f3c9b25669acca1d4ae9adb882b90210d703aeddc0d11ecc`

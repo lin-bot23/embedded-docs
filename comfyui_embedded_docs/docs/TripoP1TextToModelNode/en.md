@@ -1,6 +1,6 @@
 # Tripo P1: Text to Model
 
-This node generates a 3D model from a text description using the Tripo P1 API. It is optimized for creating low-poly, game-ready meshes with stable topology, making it suitable for real-time applications.
+Tripo P1 text-to-3D. This node generates a 3D model from a text description using the Tripo P1 API. It is optimized for creating low-poly, game-ready meshes with stable topology, making it suitable for real-time applications.
 
 ## Inputs
 
@@ -43,4 +43,4 @@ These inputs appear only when `output_mode` is set to `"Textured"`.
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1TextToModelNode/en.md)
 
 ---
-**Source fingerprint (SHA-256):** `63781a990f892e6b1f241179039d1fb24778ba7aa7dccda7d14557cbf190b712`
+**Source fingerprint (SHA-256):** `53a5573384294612b912558436e82f3481717d2ba3d50b73f1e40c3065aff2a0`

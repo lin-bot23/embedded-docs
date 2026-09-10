@@ -11,7 +11,7 @@ These parameters are always available.
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
 | `output_mode` | Chooses the type of result. "Geometry only" returns an untextured mesh; "Textured" adds color/PBR maps and reveals extra texture settings. | DYNAMIC_COMBO | Yes | `"Geometry only"`<br>`"Textured"` |
-| `image` | The source 2D image used to generate the 3D model. The node requires a single image and raises an error if none is provided. | IMAGE | Yes | - |
+| `image` | The source 2D image used to generate the 3D model. A single image is required; the node raises an error if none is provided. | IMAGE | Yes | - |
 | `enable_image_autofix` | Pre-process the input image for better generation quality. (default: False) | BOOLEAN | No | True<br>False |
 | `face_limit` | Target face count, 48-20000. -1 lets Tripo pick adaptively. (default: -1) | INT | No | -1 to 20000 |
 | `model_seed` | Seed used for the geometry generation so results can be reproduced. (default: 42) | INT | No | 0 to 2147483647 |
@@ -48,4 +48,4 @@ Note: When `output_mode` is "Geometry only", texturing is disabled for the reque
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1ImageToModelNode/en.md)
 
 ---
-**Source fingerprint (SHA-256):** `db5dc76518a4efcd28d388dc00ad0810f619481482f20fa456c4ff2478192aa3`
+**Source fingerprint (SHA-256):** `1369da2ef732556896bce3415e7b99023f310544b8077ea4c6b1730bec59ee99`

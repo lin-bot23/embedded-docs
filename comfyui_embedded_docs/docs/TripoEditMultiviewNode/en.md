@@ -14,6 +14,8 @@ Edits the views of a Tripo: Image to Multiview result using a separate text inst
 
 Note: At least one of the four prompts (`front_prompt`, `left_prompt`, `back_prompt`, `right_prompt`) must contain non-empty text; whitespace-only text is treated as empty, and if all prompts are empty the node raises an error.
 
+Note: The cost is approximately 0.05 USD per view that has an edit instruction.
+
 ## Outputs
 
 | Output Name | Description | Data Type |
@@ -26,4 +28,4 @@ Note: At least one of the four prompts (`front_prompt`, `left_prompt`, `back_pro
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoEditMultiviewNode/en.md)
 
 ---
-**Source fingerprint (SHA-256):** `7a25f3867776c01ab606d43a988b5491e543b72d3eedac1779fa170453c1ca21`
+**Source fingerprint (SHA-256):** `db8b0a3ffe4332fcbcaac4da0d7b07217d01d2f05526750540f6036293e013ab`

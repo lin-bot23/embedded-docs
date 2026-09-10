@@ -17,8 +17,8 @@ Shared by both model options (`microsoft/mai-image-2.6` and `microsoft/mai-image
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
 | `prompt` | Describes the image to generate, or the edit to apply to the reference images. Up to 20000 characters. Default: `""` (empty). At least 1 character is required after removing surrounding whitespace. | STRING | Yes | 1 to 20000 characters |
-| `aspect_ratio` | Aspect ratio of the generated image, also applied when reference images are connected. Default: `"1:1"`. | COMBO | Yes | `"1:1"`<br>`"16:9"`<br>`"9:16"`<br>`"3:2"`<br>`"2:3"`<br>`"4:3"`<br>`"3:4"` |
-| `resolution` | Output size tier. 1K is about 1 megapixel (1:1 is 1024x1024, 16:9 is 1360x768); 1.5K is about 2.3 megapixels (1:1 is 1536x1536, 16:9 is 2048x1152). Default: `"1K"`. | COMBO | Yes | `"1K"`<br>`"1.5K"` |
+| `aspect_ratio` | Aspect ratio of the generated image, also applied when reference images are connected. Default: `"1:1"`. `"auto"` lets the model choose the ratio for text to image (rendered at the 1.5K size) and keeps the aspect ratio of the first reference image when editing. | COMBO | Yes | `"1:1"`<br>`"16:9"`<br>`"9:16"`<br>`"3:2"`<br>`"2:3"`<br>`"4:3"`<br>`"3:4"`<br>`"auto"` |
+| `resolution` | Output size tier. 1K is about 1 megapixel (1:1 is 1024x1024, 16:9 is 1360x768); 1.5K is about 2.3 megapixels (1:1 is 1536x1536, 16:9 is 2048x1152). Default: `"1K"`. Ignored when `aspect_ratio` is `"auto"`. | COMBO | Yes | `"1K"`<br>`"1.5K"` |
 | `seed` | Seed to determine if the node should re-run; the API has no seed, so actual results are nondeterministic regardless of this value. Default: `42`. | INT | Yes | 0 to 2147483647 |
 
 ### Reference Inputs
@@ -33,6 +33,7 @@ Shared by both model options (`microsoft/mai-image-2.6` and `microsoft/mai-image
 - The `prompt` must contain at least 1 character after surrounding whitespace is removed, and cannot exceed 20000 characters.
 - Reference images are sent as PNG data and are limited to a total of 2048 x 2048 pixels.
 - The `aspect_ratio` setting is applied to the output even when reference images are connected.
+- When `aspect_ratio` is `"auto"`, the `resolution` setting is ignored. With no reference images the model picks the ratio for text to image and renders at the 1.5K size; with reference images connected the aspect ratio of the first reference image is kept.
 - The seed value does not affect the API result; it only determines whether the node re-runs.
 
 ## Outputs
@@ -44,4 +45,4 @@ Shared by both model options (`microsoft/mai-image-2.6` and `microsoft/mai-image
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/OpenRouterImageNode/en.md)
 
 ---
-**Source fingerprint (SHA-256):** `f21dd6fa421065b48b270c89ce7b0d55bcf685d71db0c8360cf5d5a4d5ca1b51`
+**Source fingerprint (SHA-256):** `d201c18deccd2523041a24427996f51127ca201dfe10fad60c6f768ab79bf852`
