@@ -1,6 +1,6 @@
 # Create Video
 
-The Create Video node generates a video file from a sequence of images. You can set the playback speed in frames per second, optionally add audio, and choose the bit depth and color space of the resulting video.
+The Create Video node combines a sequence of images into a video. You can set the playback speed in frames per second, optionally add audio, and choose the bit depth and color space of the resulting video.
 
 ## Inputs
 
@@ -12,7 +12,7 @@ The Create Video node generates a video file from a sequence of images. You can 
 | `bit_depth` | Auto uses 8-bit for sRGB and 10-bit for HDR. Explicit 8-bit and 10-bit choices are independent of colorspace. (default: "auto") | COMBO | No | `"auto"`<br>8<br>10 |
 | `color_space` | Colorspace of the input images. HDR selects BT.2020/HLG and HDR PQ selects BT.2020/PQ. (default: "sRGB") | COMBO | No | `"sRGB"`<br>`"HDR"`<br>`"HDR PQ"` |
 
-Note: When `bit_depth` is set to "auto", the node uses 10-bit for HDR and HDR PQ color spaces, and 8-bit for sRGB.
+Note: When `bit_depth` is set to `"auto"`, the node automatically uses 10-bit for the HDR and HDR PQ color spaces, and 8-bit for sRGB.
 
 ## Outputs
 

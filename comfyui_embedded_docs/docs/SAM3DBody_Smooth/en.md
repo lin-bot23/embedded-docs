@@ -1,6 +1,6 @@
 # Smooth SAM3D Body Pose Data
 
-Smooth SAM3D Body Pose Data reduces frame-to-frame jitter in 3D body pose sequences by averaging motion over time. It applies full smoothing to camera and appearance data, while backing off on mesh geometry when the subject rotates quickly, so fast spins are not flattened.
+Smooth SAM3D Body Pose Data reduces frame-to-frame jitter in a sequence of 3D body poses by averaging motion over time. Camera and appearance data are smoothed fully, while mesh geometry is smoothed less when the subject rotates quickly, so fast spins are not flattened.
 
 ## Inputs
 

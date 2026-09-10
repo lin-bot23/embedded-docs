@@ -1,6 +1,6 @@
-# EmptyMiniMaxMusic3LatentAudio
+# Empty MiniMax Music3 Latent Audio
 
-This node creates an empty (zero-filled) audio latent for the MiniMax Music3 model. It converts the requested duration in seconds into the corresponding audio frames and produces a blank latent tensor of the correct size, ready to be used as the starting point for music generation.
+This node creates an empty (zero-filled) audio latent for the MiniMax Music3 model. It converts the requested duration in seconds into the corresponding number of audio frames and produces a blank latent tensor of the correct size, ready to be used as the starting point for music generation.
 
 ## Inputs
 

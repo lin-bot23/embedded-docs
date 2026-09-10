@@ -1,6 +1,6 @@
-# TripoImageToMultiviewNode
+# Tripo: Image to Multiview
 
-Generates front, left, back and right views of the subject from a single input image, using the Tripo API. This is a paid task billed at approximately 0.10 USD. The node uploads the image, waits for the Tripo generation task to finish, then returns the four views together with the multiview task ID.
+Generates front, left, back and right views of the subject from a single input image using the Tripo API. The image is uploaded, a multiview generation task is started and polled until it completes, and the four resulting views are returned together with the task ID. This is a paid task billed at approximately 0.10 USD.
 
 ## Inputs
 
@@ -8,13 +8,13 @@ Generates front, left, back and right views of the subject from a single input i
 |-----------|-------------|-----------|----------|-------|
 | `image` | The source image of the subject from which Tripo generates the front, left, back and right views. Exactly one image is used for the request. | IMAGE | Yes | Single image |
 
-Note: The node calls Tripo's cloud API and waits for the generation task to finish. A typical task takes around 25 seconds. Authentication is handled automatically through the node's hidden inputs, so no Tripo API key needs to be provided in the workflow.
+Note: The node calls Tripo's cloud API and waits for the generation task to finish. A typical task takes around 25 seconds. Authentication is handled automatically through the node's hidden inputs, so no Tripo API key needs to be provided in the workflow. The node requires all four view URLs in the Tripo response; if any view is missing, execution fails with an error.
 
 ## Outputs
 
 | Output Name | Description | Data Type |
 |-------------|-------------|-----------|
-| `MULTIVIEW_TASK_ID` | The task identifier returned by Tripo for the multiview image generation request. It is a string identifier that can be used to reference the completed task. | MULTIVIEW_TASK_ID |
+| `multiview task_id` | The task identifier returned by Tripo for the multiview image generation request. It can be used to reference the completed task. | MULTIVIEW_TASK_ID |
 | `front` | The generated front view of the subject. | IMAGE |
 | `left` | The generated left-side view of the subject. | IMAGE |
 | `back` | The generated back view of the subject. | IMAGE |

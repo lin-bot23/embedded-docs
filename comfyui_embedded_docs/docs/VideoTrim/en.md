@@ -1,4 +1,4 @@
-# VideoTrim
+# Trim Video (Advanced)
 
 This node cuts a video to a chosen time window by setting a start time and a duration. It also offers a strict mode that raises an error when the requested duration cannot be achieved.
 

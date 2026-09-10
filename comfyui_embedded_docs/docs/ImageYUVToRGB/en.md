@@ -6,11 +6,11 @@ The ImageYUVToRGB node converts YUV color space images to RGB color space. It ta
 
 | Parameter | Description | Data Type | Required | Range |
 | --- | --- | --- | --- | --- |
-| `Y` | The Y (luminance) component input image | IMAGE | Yes | - |
-| `U` | The U (blue projection) component input image | IMAGE | Yes | - |
-| `V` | The V (red projection) component input image | IMAGE | Yes | - |
+| `Y` | The Y (luminance) component input image. If the image has more than three channels, only the first three are used and averaged into a single channel. | IMAGE | Yes | - |
+| `U` | The U (blue projection) component input image. If the image has more than three channels, only the first three are used and averaged into a single channel. | IMAGE | Yes | - |
+| `V` | The V (red projection) component input image. If the image has more than three channels, only the first three are used and averaged into a single channel. | IMAGE | Yes | - |
 
-**Note:** All three input images (Y, U, and V) must be provided together and should have compatible dimensions for proper conversion.
+**Note:** All three input images (Y, U, and V) must be provided together and must have compatible dimensions (matching height, width, and batch size) for the conversion to succeed.
 
 ## Outputs
 

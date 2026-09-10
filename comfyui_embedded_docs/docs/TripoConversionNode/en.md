@@ -26,7 +26,7 @@ This node converts an existing Tripo 3D model into another 3D file format. It ta
 | `export_orientation` | Forward axis of the exported model. default keeps Tripo's +x (default: default). | COMBO | No | default<br>+x<br>-x<br>+y<br>-y |
 | `animate_in_place` | Animate the model in place when enabled (default: False). | BOOLEAN | No | True or False |
 
-**Note:** Except for `original_model_task_id` and `format`, all inputs are optional advanced settings. Settings left at their default values are omitted from the conversion request so the Tripo API uses its standard behavior. The input `flatten_bottom_threshold` is only meaningful when `flatten_bottom` is enabled.
+**Note:** Except for `original_model_task_id` and `format`, all inputs are optional advanced settings. Most settings left at their default values are omitted from the conversion request so the Tripo API can use its standard behavior. The `with_animation` and `bake` options are always sent. `flatten_bottom_threshold` is only applied when `flatten_bottom` is enabled.
 
 ## Outputs
 

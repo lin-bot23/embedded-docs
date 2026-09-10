@@ -1,4 +1,4 @@
-# MeshToFile3D
+# Create 3D File (from Mesh)
 
 This node serializes a mesh into a GLB file object that can be passed to Save 3D or Preview 3D nodes. It carries all mesh data along, including UVs, colors, normals, texture, normal/occlusion/emissive maps, and material settings. Only the first item of a multi-item batch is used.
 

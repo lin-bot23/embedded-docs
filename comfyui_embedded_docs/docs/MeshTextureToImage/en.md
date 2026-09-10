@@ -1,4 +1,4 @@
-# MeshTextureToImage
+# Mesh Texture to Image
 
 This node extracts a mesh's baked textures and returns them as separate images: base color, metallic, roughness, occlusion, and normal map. Texture channels that were not baked come back as neutral defaults — white for occlusion and a flat blue for the normal map.
 
@@ -8,7 +8,7 @@ This node extracts a mesh's baked textures and returns them as separate images: 
 |-----------|-------------|-----------|----------|-------|
 | `mesh` | The mesh whose baked textures are extracted. The mesh must have a base color texture; meshes that only have vertex colors (for example after a PaintMesh node) do not contain a texture and cause an error. | MESH | Yes | — |
 
-Note: The mesh must have a baked base color texture. If it does not, the node raises an error and recommends running BakeTextureFromVoxel first. When the metallic-roughness texture is missing, the `metallic` and `roughness` outputs are black (0). The `occlusion` output is white unless the mesh contains baked ambient occlusion. The `normal_map` output is a flat neutral blue when no normal map was baked.
+Note: The mesh must have a baked base color texture. If it does not, the node raises an error and recommends running BakeTextureFromVoxel first. When the metallic-roughness texture is missing, the `metallic` and `roughness` outputs are black (0). The `occlusion` output is white unless the mesh contains baked ambient occlusion (the mesh's occlusion-in-metallic-roughness flag is set). The `normal_map` output is a flat neutral blue when no normal map was baked.
 
 ## Outputs
 

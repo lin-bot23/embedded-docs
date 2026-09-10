@@ -1,6 +1,6 @@
-# TripoMeshCompleteNode
+# Tripo: Complete Mesh Parts
 
-Completes missing or incomplete parts of an already segmented 3D model and repairs damaged regions of the mesh. It takes the task ID of a Tripo mesh segmentation result and asks Tripo to complete the model, then waits for the job to finish. Completed parts are returned as a GLB file, and you can optionally limit the work to specific part names.
+Completes missing or incomplete parts of an already segmented 3D model and repairs damaged regions of the mesh. It takes the task ID of a Tripo mesh segmentation result, requests the completion job from Tripo, and waits for it to finish. You can optionally limit the work to specific part names. The completed model is returned as a GLB file.
 
 ## Inputs
 
@@ -14,7 +14,7 @@ Completes missing or incomplete parts of an already segmented 3D model and repai
 | Output Name | Description | Data Type |
 |-------------|-------------|-----------|
 | `model_file` | File name of the completed model. This output exists for backward compatibility only. | STRING |
-| `MODEL_TASK_ID` | Task ID of the completed Tripo mesh completion task. Can be used as input by other Tripo nodes that expect a model task ID. | MODEL_TASK_ID |
+| `model task_id` | Task ID of the completed Tripo mesh completion task. Can be used as input by other Tripo nodes that expect a model task ID. | MODEL_TASK_ID |
 | `GLB` | The completed 3D model with repaired parts, downloaded as a GLB file. | GLB |
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoMeshCompleteNode/en.md)

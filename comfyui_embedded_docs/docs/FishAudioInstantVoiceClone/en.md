@@ -1,4 +1,4 @@
-# FishAudioInstantVoiceClone
+# Fish Audio Instant Voice Clone
 
 This node creates a private cloned voice from your audio recordings using the Fish Audio API. You provide one or more audio samples, and the node builds a custom voice that can be immediately used for text-to-speech. It accepts 1 to 20 recordings, with a recommended length of 10 to 30 seconds each and a total limit of 270 seconds.
 

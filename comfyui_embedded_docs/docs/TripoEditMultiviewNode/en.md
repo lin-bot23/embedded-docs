@@ -1,18 +1,18 @@
-# TripoEditMultiviewNode
+# Tripo: Edit Multiview
 
-Tripo: Edit Multiview edits the four views of a Tripo: Image to Multiview result, using a separate text instruction for each view. Views without an instruction stay unchanged. The edited images are meant to be connected to Tripo: Multiview to Model to create a 3D model.
+Edits the views of a Tripo: Image to Multiview result using a separate text instruction for each view. Views without an instruction stay unchanged. The edited images are intended to be connected to Tripo: Multiview to Model to create a 3D model; an edited multiview set cannot be edited again.
 
 ## Inputs
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `multiview_task_id` | Task ID of the Tripo: Image to Multiview result whose views will be edited. | MULTIVIEW_TASK_ID | Yes | Task ID |
-| `front_prompt` | Text instruction describing the edit to apply to the front view. When empty, the front view stays unchanged. Default: empty. | STRING | No | Multiline text |
-| `left_prompt` | Text instruction describing the edit to apply to the left view. When empty, the left view stays unchanged. Default: empty. | STRING | No | Multiline text |
-| `back_prompt` | Text instruction describing the edit to apply to the back view. When empty, the back view stays unchanged. Default: empty. | STRING | No | Multiline text |
-| `right_prompt` | Text instruction describing the edit to apply to the right view. When empty, the right view stays unchanged. Default: empty. | STRING | No | Multiline text |
+| `multiview_task_id` | Task ID of the Tripo: Image to Multiview result whose views will be edited. Must come from the Tripo: Image to Multiview node. | MULTIVIEW_TASK_ID | Yes | Task ID |
+| `front_prompt` | Text instruction describing the edit to apply to the front view. When empty, the front view stays unchanged. Default: empty string. | STRING | No | Multiline text |
+| `left_prompt` | Text instruction describing the edit to apply to the left view. When empty, the left view stays unchanged. Default: empty string. | STRING | No | Multiline text |
+| `back_prompt` | Text instruction describing the edit to apply to the back view. When empty, the back view stays unchanged. Default: empty string. | STRING | No | Multiline text |
+| `right_prompt` | Text instruction describing the edit to apply to the right view. When empty, the right view stays unchanged. Default: empty string. | STRING | No | Multiline text |
 
-Note: At least one of the four prompts (`front_prompt`, `left_prompt`, `back_prompt`, `right_prompt`) must contain non-empty text; otherwise the node raises an error. The `multiview_task_id` must come from the Tripo: Image to Multiview node. An edited multiview set cannot be edited again.
+Note: At least one of the four prompts (`front_prompt`, `left_prompt`, `back_prompt`, `right_prompt`) must contain non-empty text; whitespace-only text is treated as empty, and if all prompts are empty the node raises an error.
 
 ## Outputs
 

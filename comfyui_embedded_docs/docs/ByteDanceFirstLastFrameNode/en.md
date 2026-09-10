@@ -7,7 +7,7 @@ This node generates a video using a text prompt along with first and last frame 
 | Parameter | Description | Data Type | Required | Range |
 | --- | --- | --- | --- | --- |
 | `model` | The model used for video generation (default: `"seedance-1-5-pro-251215"`). | COMBO | Yes | `"seedance-1-5-pro-251215"`<br>`"seedance-1-0-pro-250528"` |
-| `prompt` | The text prompt used to generate the video. Must not be empty. | STRING | Yes | - |
+| `prompt` | The text prompt used to generate the video. Must not be empty and must not contain reserved parameter keywords (`resolution`, `ratio`, `duration`, `seed`, `camerafixed`, `watermark`). | STRING | Yes | - |
 | `first_frame` | First frame to be used for the video. Must be between 300x300 and 6000x6000 pixels, with an aspect ratio between 0.4 and 2.5. | IMAGE | Yes | - |
 | `last_frame` | Last frame to be used for the video. Must be between 300x300 and 6000x6000 pixels, with an aspect ratio between 0.4 and 2.5. | IMAGE | Yes | - |
 | `resolution` | The resolution of the output video. | COMBO | Yes | `"480p"`<br>`"720p"`<br>`"1080p"` |
@@ -18,7 +18,7 @@ This node generates a video using a text prompt along with first and last frame 
 | `watermark` | Whether to add an "AI generated" watermark to the video. (default: False) | BOOLEAN | No | - |
 | `generate_audio` | This parameter is ignored for any model except `seedance-1-5-pro-251215`. (default: False) | BOOLEAN | No | - |
 
-**Note:** For the `seedance-1-5-pro-251215` model, `duration` must be 4 seconds or greater. Both `first_frame` and `last_frame` must be between 300x300 and 6000x6000 pixels and have an aspect ratio between 0.4 and 2.5.
+**Note:** For the `seedance-1-5-pro-251215` model, `duration` must be 4 seconds or greater. Both `first_frame` and `last_frame` must be between 300x300 and 6000x6000 pixels and have an aspect ratio between 0.4 and 2.5. The `prompt` is checked and rejected if it contains reserved parameter keywords.
 
 ## Outputs
 

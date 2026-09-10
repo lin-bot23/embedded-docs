@@ -1,4 +1,4 @@
-# BriaEraser
+# Bria Eraser
 
 Bria Eraser removes objects or areas from an image using the Bria API. You provide an image and a mask that outlines the regions to remove; the node uploads both to Bria, runs the erase job, waits for it to complete, and returns the edited image with the masked areas erased.
 

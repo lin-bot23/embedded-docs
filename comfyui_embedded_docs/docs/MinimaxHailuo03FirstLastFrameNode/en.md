@@ -1,6 +1,6 @@
 # MiniMax H3 First-Last-Frame to Video
 
-This node generates a video from a first frame image and, optionally, a last frame image using MiniMax H3 models. The `model` selector changes which generation settings and constraints apply, and the aspect ratio of the generated video follows the supplied images.
+This node generates a video from a first frame image and, optionally, a last frame image using the MiniMax H3 models. The `model` selector changes which generation settings and constraints apply, and the aspect ratio of the generated video follows the supplied images.
 
 ## Inputs
 
@@ -26,7 +26,7 @@ These settings are shown when `MiniMax H3` is selected in the `model` selector.
 
 ### MiniMax H3 Max and MiniMax H3 Max Turbo Inputs
 
-These settings are shown when either `MiniMax H3 Max` or `MiniMax H3 Max Turbo` is selected in the `model` selector. Both models expose the same settings.
+These settings are shared by both `MiniMax H3 Max` and `MiniMax H3 Max Turbo`. Selecting either model reveals the same settings.
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|

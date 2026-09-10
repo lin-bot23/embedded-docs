@@ -8,10 +8,10 @@ Generates finished 3D models from a text description using Tripo's API. The node
 |-----------|-------------|-----------|----------|-------|
 | `prompt` | Text description of the 3D model to generate (multiline). This parameter is required and cannot be empty. | STRING | Yes | - |
 | `negative_prompt` | Text description of what to avoid in the generated model (multiline). Up to 255 characters. Sent to the API only when non-empty. | STRING | No | Up to 255 characters |
-| `model_version` | Version of the Tripo model to use for generation (default: v3.1-20260211). | COMBO | No | Multiple options available |
-| `style` | Style applied to the generated model (default: None). No longer supported by Tripo and ignored; kept for older workflows. | COMBO | No | Multiple options available |
-| `texture` | Whether to generate texture maps. Off returns bare geometry and ignores `pbr` (default: True). | BOOLEAN | No | true / false |
-| `pbr` | Whether to generate PBR material maps (base color, metallic, roughness, normal). Requires `texture`; forced off when `texture` is off (default: True). | BOOLEAN | No | true / false |
+| `model_version` | Version of the Tripo model to use for generation (default: v3_1_20260211). | COMBO | No | Multiple options available |
+| `style` | No longer supported by Tripo and ignored. Kept for older workflows (default: None). | COMBO | No | Multiple options available |
+| `texture` | Generate texture maps. Off returns bare geometry and ignores `pbr` (default: True). | BOOLEAN | No | true / false |
+| `pbr` | PBR material maps (base color, metallic, roughness, normal). Requires `texture`; forced off when `texture` is off (default: True). | BOOLEAN | No | true / false |
 | `image_seed` | Seed used for the image generation stage (default: 42). | INT | No | 0 to 2147483647 |
 | `model_seed` | Seed used for the model generation stage (default: 42). | INT | No | 0 to 2147483647 |
 | `texture_seed` | Seed used for the texture generation stage (default: 42). | INT | No | 0 to 2147483647 |

@@ -1,4 +1,4 @@
-# ByteDance2ReferenceNodeV2
+# ByteDance Seedance 2.5 Reference to Video
 
 ByteDance Seedance 2.5 Reference to Video generates, edits, or extends videos using ByteDance Seedance models (Seedance 2.5, 2.0, 2.0 Fast, and 2.0 Mini) guided by a text prompt and optional reference images, videos, audio, or previously uploaded library assets. It uploads the references, submits a generation task, waits for completion, and returns the finished video file.
 

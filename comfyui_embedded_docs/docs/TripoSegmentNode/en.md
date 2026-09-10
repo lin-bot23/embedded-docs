@@ -1,4 +1,4 @@
-# TripoSegmentNode
+# Tripo: Segment Model
 
 This node splits a 3D model into individual parts. It sends the model to the Tripo segmentation service, waits for the job to finish, and returns the segmented model in GLB format with a comma-separated list of part names. These part names feed downstream steps such as Tripo: Complete Mesh Parts, Tripo: Retopology and Tripo: Convert model.
 
@@ -13,7 +13,7 @@ This node splits a 3D model into individual parts. It sends the model to the Tri
 | Output Name | Description | Data Type |
 |-------------|-------------|-----------|
 | `model_file` | Output file name of the segmented GLB model. Kept for backward compatibility only. | STRING |
-| `SEGMENT_TASK_ID` | The task ID of the segmentation job that produced the result. | SEGMENT_TASK_ID |
+| `segment task_id` | The task ID of the segmentation job that produced the result. | SEGMENT_TASK_ID |
 | `GLB` | The segmented 3D model, as a GLB file. | GLB |
 | `part_names` | Comma-separated names of the parts. | STRING |
 

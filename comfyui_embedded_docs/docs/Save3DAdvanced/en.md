@@ -1,6 +1,6 @@
 # Save 3D (Advanced)
 
-Save3DAdvanced saves a 3D model to a file in the ComfyUI output directory and creates a preview of the saved scene. It also passes the 3D model, its placement in the scene, camera information, and viewport dimensions through to downstream nodes. When model placement or camera information are not connected, the node uses the values stored in the viewport state.
+Saves a 3D model to a file in the ComfyUI output directory and produces a preview of the saved scene. It also passes the 3D model, its placement in the scene, camera information, and viewport dimensions through to downstream nodes. When model placement or camera information are not connected, the node uses the values stored in the viewport state.
 
 ## Inputs
 

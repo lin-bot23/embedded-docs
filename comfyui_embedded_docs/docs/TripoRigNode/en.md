@@ -16,6 +16,8 @@ This node takes an existing Tripo 3D model and creates a rigged version of it, m
 
 **Note:** When `rig_type` is "auto", Tripo first checks whether the model can be rigged and picks the recommended skeleton type. If Tripo reports that the model cannot be rigged, the node fails with an error.
 
+**Note:** The node expects Tripo to return a GLB or FBX file. If Tripo returns any other file type, the node raises an error.
+
 ## Outputs
 
 | Output Name | Description | Data Type |

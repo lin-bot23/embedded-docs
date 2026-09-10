@@ -1,6 +1,6 @@
 # Text
 
-The String node provides a simple way to input and pass through text data in your workflow. It takes a text string as input and outputs the same string unchanged, making it useful for providing text inputs to other nodes that require string parameters.
+The Text node provides a simple way to input and pass through text data in your workflow. It takes a text string as input and outputs the same string unchanged, making it useful for providing text inputs to other nodes that require string parameters.
 
 ## Inputs
 

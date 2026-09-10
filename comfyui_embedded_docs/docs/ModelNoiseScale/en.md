@@ -1,8 +1,6 @@
 # ModelNoiseScale
 
-## Overview
-
-This node adjusts the noise scale used during model sampling. It allows you to set a specific noise scale value, which controls the amount of noise applied to the model's sampling process.
+This node adjusts the noise scale used during model sampling. It creates a copy of the input model, applies the specified noise scale to its sampling configuration, and returns the modified model.
 
 ## Inputs
 

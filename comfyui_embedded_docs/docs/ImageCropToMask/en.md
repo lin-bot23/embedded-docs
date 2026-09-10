@@ -1,4 +1,4 @@
-# ImageCropToMask
+# Crop Image to Mask
 
 Crops an image to the bounding box of its mask, producing a centered subject over a solid background color. The node composites the masked image over the chosen background and resizes the result to the specified output dimensions, making it suitable for 3D pipelines that expect a centered, background-free subject at a fixed resolution.
 

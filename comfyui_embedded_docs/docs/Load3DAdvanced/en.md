@@ -6,7 +6,7 @@ The Load 3D (Advanced) node loads a 3D model file from ComfyUI's `input/3d` dire
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `model_file` | The 3D model file to load. Select "none" to skip loading a model file. | COMBO | Yes | `"none"`<br>Available 3D model files in the `input/3d` directory |
+| `model_file` | The 3D model file to load. Select "none" to skip loading a model file. Files can also be uploaded through the widget. | COMBO | Yes | `"none"`<br>Available 3D model files in the `input/3d` directory |
 | `viewport_state` | The current viewport state containing camera and model information from the 3D viewer. | LOAD3D | Yes | - |
 | `width` | Render width of the viewport in pixels (default: 1024). | INT | Yes | Min: 1<br>Max: 4096<br>Default: 1024<br>Step: 1 |
 | `height` | Render height of the viewport in pixels (default: 1024). | INT | Yes | Min: 1<br>Max: 4096<br>Default: 1024<br>Step: 1 |
@@ -16,6 +16,7 @@ The Load 3D (Advanced) node loads a 3D model file from ComfyUI's `input/3d` dire
 - Files must be placed in the `input/3d` directory of your ComfyUI installation; subfolders are searched as well, and file paths are shown relative to the input directory
 - If `model_file` is "none", no model data is loaded and the `model_3d` output will be empty
 - If `model_file` is set to a file that does not exist, the node returns a validation error: "Invalid 3D model file: {model_file}"
+- If `viewport_state` is not a valid viewport state object, it is treated as empty, so `model_3d_info` becomes an empty list and `camera_info` is returned as empty
 
 ## Outputs
 

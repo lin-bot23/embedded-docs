@@ -6,7 +6,7 @@ The TripoRetargetNode applies a preset animation to an existing rigged 3D model.
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `original_model_task_id` | The task ID of the previously rigged 3D model to retarget. The referenced task must be a rig task; a rig made with the Mixamo spec on model version v1.0 cannot be used for retargeting. | RIG_TASK_ID | Yes | - |
+| `original_model_task_id` | The task ID of the previously rigged 3D model to retarget. The referenced task must be a rig task. | RIG_TASK_ID | Yes | - |
 | `animation` | The animation preset to apply to the rigged model. `preset:*` animations work with both rig models; `preset:biped:*` animations require a rig made with model v1.0-20240301. | COMBO | Yes | `"preset:idle"`<br>`"preset:walk"`<br>`"preset:run"`<br>`"preset:dive"`<br>`"preset:climb"`<br>`"preset:jump"`<br>`"preset:slash"`<br>`"preset:shoot"`<br>`"preset:hurt"`<br>`"preset:fall"`<br>`"preset:turn"`<br>`"preset:quadruped:walk"`<br>`"preset:hexapod:walk"`<br>`"preset:octopod:walk"`<br>`"preset:serpentine:march"`<br>`"preset:aquatic:march"`<br>plus additional `"preset:biped:*"` options shown in the UI |
 | `out_format` | Output file format; the result arrives on the matching output. (default: glb) | COMBO | No | `"glb"`<br>`"fbx"` |
 | `export_with_geometry` | Include the mesh in the export; off exports the animated skeleton only. (default: True) | BOOLEAN | No | True<br>False |
@@ -15,7 +15,7 @@ The TripoRetargetNode applies a preset animation to an existing rigged 3D model.
 | `api_key_comfy_org` | API key for Comfy.org service access (hidden parameter). | API_KEY_COMFY_ORG | No | - |
 | `unique_id` | Unique identifier for tracking the operation (hidden parameter). | UNIQUE_ID | No | - |
 
-Note: Animations in the `preset:*` group work with both rig models, while animations in the `preset:biped:*` group require a rig made with model v1.0-20240301. If the referenced rig was created with the Mixamo spec and a model version starting with `v1.0`, the retargeting call fails with an error.
+Note: Animations in the `preset:*` group work with both rig models, while animations in the `preset:biped:*` group require a rig made with model v1.0-20240301. If the referenced rig was created with the Mixamo spec and a model version starting with `v1.0`, the retargeting call fails with an error. The requested output format must be GLB or FBX; if the service returns any other file type, the node raises an error.
 
 ## Outputs
 

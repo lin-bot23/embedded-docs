@@ -1,13 +1,13 @@
 # Model Attention Backend
 
-This node selects the dense attention backend that a model uses for its attention computations. It clones the given model, applies the chosen backend, and returns the patched clone. When used with Block Sparse Attention, this backend is used whenever sparse attention is inactive or unsupported. If the selected backend is unavailable, the node automatically falls back to PyTorch attention.
+This node selects the dense attention implementation for a model, clones the model, applies the chosen backend, and returns the patched clone. When used with Block Sparse Attention, this backend is used whenever sparse attention is inactive or unsupported. If the selected backend is unavailable, the node automatically falls back to PyTorch attention.
 
 ## Inputs
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
 | `model` | The model to patch. | MODEL | Yes |  |
-| `attention` | The dense attention backend to apply (default: "pytorch attention"). Comfy Kitchen attention uses quantized INT8 attention and is available only on Nvidia and AMD GPUs. If the selected backend is unavailable, PyTorch attention is used as a fallback. | COMBO | Yes | "pytorch attention"<br>"comfy kitchen attention" |
+| `attention` | The dense attention backend to apply. Comfy Kitchen attention uses quantized INT8 attention and is available only on Nvidia and AMD GPUs. Default: "pytorch attention". If the selected backend is unavailable, PyTorch attention is used as a fallback. | COMBO | Yes | "pytorch attention"<br>"comfy kitchen attention" |
 
 Note: The "comfy kitchen attention" option is only listed when the Comfy Kitchen INT8 attention module is available in the current environment.
 
@@ -15,7 +15,7 @@ Note: The "comfy kitchen attention" option is only listed when the Comfy Kitchen
 
 | Output Name | Description | Data Type |
 |-------------|-------------|-----------|
-| `MODEL` | A clone of the input model with the selected attention backend applied. | MODEL |
+| `model` | A clone of the input model with the selected attention backend applied. | MODEL |
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ModelAttentionBackend/en.md)
 

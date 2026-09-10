@@ -1,17 +1,25 @@
-# LTXVSeparateGeneratedKeyframes
+# LTXV Separate Generated Keyframes
 
 ## Overview
 
-The LTXV Separate Generated Keyframes node removes generated keyframes from a sampled latent and conditioning, allowing for separate handling before spatially upscaling the video latent. It is designed to be used before spatial upscaling and should not be run after LTXV Crop Guides, as it treats generated keyframes as disposable guides and drops them.
+The LTXV Separate Generated Keyframes node splits the generated keyframes added by LTXV Add Generated Keyframes back out of a sampled latent and removes them from the conditioning. Use it before spatially upscaling the video latent. Do not run LTXV Crop Guides first — it treats generated keyframes as disposable guides and drops them.
 
 ## Inputs
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `positive` | Positive conditioning with generated-keyframe metadata removed. | CONDITIONING | Yes | N/A |
-| `negative` | Negative conditioning with generated-keyframe metadata removed. | CONDITIONING | Yes | N/A |
-| `latent` | Video latent with the generated keyframes stripped. | LATENT | Yes | N/A |
+| `positive` | Positive conditioning that holds the generated-keyframe metadata. The metadata is removed from it on output. | CONDITIONING | Yes | N/A |
+| `negative` | Negative conditioning that holds the generated-keyframe metadata. The metadata is removed from it on output. | CONDITIONING | Yes | N/A |
+| `latent` | Video latent that contains the generated keyframes. The keyframes are stripped from it on output. | LATENT | Yes | N/A |
 | `keyframes_to_batch` | Return the keyframes as a batch of single-frame latents. Leave off to get them as one multi-frame latent, which is what the latent upsampler and a later Add Generated Keyframes expect. | BOOLEAN | No | default: False |
+
+### Notes on Inputs
+
+- `positive` must contain generated-keyframe metadata, otherwise the node raises an error telling you to add them with LTXV Add Generated Keyframes first.
+- `latent` must be a plain video latent (a 5D tensor). If the video and audio latents are still combined, split them with Separate AV Latent first.
+- The number of tokens per latent frame recorded when the keyframes were added must match the tokens per frame of the supplied `latent`. If the latent was rescaled after the keyframes were added, they no longer line up and the node raises an error — separate them before upscaling the latent.
+- The recorded keyframe frame range must fit inside the supplied `latent`, otherwise the node raises an error that the keyframes were recorded against a different latent.
+- The recorded guide attention entry index must still exist in the conditioning. If the conditioning was rebuilt after the keyframes were added, the node raises an error.
 
 ## Outputs
 

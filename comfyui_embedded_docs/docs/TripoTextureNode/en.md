@@ -8,38 +8,38 @@ The TripoTextureNode adds textures to an existing Tripo 3D model using the Tripo
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `model_task_id` | The Tripo task ID of the model to texture. Accepts model task IDs and segmentation task IDs. | MODEL_TASK_ID | Yes | - |
+| `model_task_id` | The Tripo task ID of the model to texture. Accepts model task IDs and segmentation task IDs. | MODEL_TASK_ID, SEGMENT_TASK_ID | Yes | - |
 | `texture` | Ignored: this node always generates textures. Kept for older workflows. (default: True) | BOOLEAN | No | true<br>false |
 | `pbr` | PBR material maps (base color, metallic, roughness, normal); off gives a plain color texture. (default: True) | BOOLEAN | No | true<br>false |
 | `texture_seed` | Random seed for texture generation. Using the same seed with the same inputs produces the same result. (default: 42) | INT | No | 0 – 2147483647 |
 | `texture_quality` | Texture resolution quality: detailed = HD textures, extreme = 8K Ultra textures. (default: "standard"). Approximate cost: standard $0.10, detailed $0.20, extreme $0.30. | COMBO | No | "standard"<br>"detailed"<br>"extreme" |
 | `texture_alignment` | Method used to align the generated textures to the model. (default: "original_image"). | COMBO | No | "original_image"<br>"geometry" |
 | `texture_prompt` | Optional text guidance for texturing. Required in practice for imported models (Tripo: Import Model), which carry no source image to infer colors from. Cannot be combined with reference images. (default: "") | STRING | No | - |
-| `model_version` | Texture model: v3.0 for meshes generated with v3.x, v2.5 for meshes generated with v2.5. (default: the latest v3.0 version) | COMBO | No | Multiple options available |
+| `model_version` | Texture model: v3.0 for meshes generated with v3.x, v2.5 for meshes generated with v2.5. (default: v3.0_20250812) | COMBO | No | Multiple options available |
 | `style_image` | Reference image for the artistic style of the textures. Only used together with `texture_prompt`. | IMAGE | No | - |
 | `reference` | Reference images guiding the textures. Cannot be combined with `texture_prompt` or `style_image`. (default: "none") | DYNAMIC_COMBO | No | "none"<br>"image"<br>"multiview" |
 | `part_names` | Comma-separated part names from Tripo: Segment Model to texture. Empty textures every part. (default: "") | STRING | No | - |
 
-### "image" Reference Inputs
+### `image` Reference Inputs
 
 These inputs are available when `reference` is set to `"image"`.
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `reference_image` | Single reference image the textures should follow. | IMAGE | No | - |
+| `reference_image` | Single reference image the textures should follow. Required when `reference` is set to `"image"`. | IMAGE | Yes | - |
 
-### "multiview" Reference Inputs
+### `multiview` Reference Inputs
 
 These inputs are available when `reference` is set to `"multiview"`.
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `image_front` | Front view (0°). | IMAGE | No | - |
-| `image_left` | Left view (90°). | IMAGE | No | - |
-| `image_back` | Back view (180°). | IMAGE | No | - |
-| `image_right` | Right view (270°). | IMAGE | No | - |
+| `image_front` | Front view (0°). Required when `reference` is set to `"multiview"`. | IMAGE | Yes | - |
+| `image_left` | Left view (90°). Required when `reference` is set to `"multiview"`. | IMAGE | Yes | - |
+| `image_back` | Back view (180°). Required when `reference` is set to `"multiview"`. | IMAGE | Yes | - |
+| `image_right` | Right view (270°). Required when `reference` is set to `"multiview"`. | IMAGE | Yes | - |
 
-**Note:** The `"image"` and `"multiview"` reference modes cannot be combined with a non-empty `texture_prompt` or with `style_image`. The `style_image` input requires a non-empty `texture_prompt`. When `texture_prompt` is left empty, the source model must already have its own source image (for example, models produced by text-to-model, image-to-model, multiview-to-model, or an earlier texturing task). Models that carry no source image — such as imported, segmented, completed, or retopologized models — must be textured with a `texture_prompt`; reference images are accepted only for models the Tripo API generated itself.
+**Note:** The `"image"` and `"multiview"` reference modes cannot be combined with a non-empty `texture_prompt` or with `style_image`. The `style_image` input requires a non-empty `texture_prompt`. When `texture_prompt` is left empty, the source model must already have its own source image (for example, models produced by text-to-model, image-to-model, multiview-to-model, or an earlier texturing task). Models that carry no source image — such as imported, segmented, completed, or retopologized models — must be textured with a `texture_prompt`; reference images are accepted only for models the Tripo API generated itself. The `part_names` input can be left empty to texture every part.
 
 ## Outputs
 
