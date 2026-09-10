@@ -947,10 +947,13 @@ def _normalize_mdx_content(content: str) -> str:
     content = content.replace("<br>", "<br />")
     content = re.sub(r"(<source\s+[^>]+)>", r"\1 />", content)
     content = re.sub(r"<(https?://[^>\s]+)>", r"[\1](\1)", content)
-    # Escape comparison-style angle brackets like <1.0, <100, <= 3840 that are NOT HTML/JSX tags.
-    # Must escape <= first, then <digit, then remaining bare <word (e.g. <br> already handled above).
+    # Escape comparison-style angle brackets like <1.0, <100, <= 3840, 1 << 20 that are NOT HTML/JSX tags.
+    # Must escape <= first, then <digit, then <<, then remaining bare <word (e.g. <br> already handled above).
     content = re.sub(r"<=", r"&lt;=", content)
     content = re.sub(r"<(\d)", r"&lt;\1", content)
+    # Bit-shift / doubled < ("1 << 20"): escape both; otherwise the second < becomes
+    # &lt; and the first stays raw, producing "<&" which MDX parses as a broken JSX tag.
+    content = re.sub(r"<(?=<)", r"&lt;", content)
     # Escape any remaining bare < that is not an HTML/JSX tag (e.g. "< 8,294,400").
     # Keep the original whitespace after the < (including newlines) intact.
     content = re.sub(r"<(\s)", r"&lt;\1", content)
