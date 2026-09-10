@@ -17,8 +17,8 @@ LTXV 分離生成キーフレームノードは、サンプリングされたラ
 
 | 出力名 | 説明 | データ型 |
 |--------|------|----------|
-| `ポジティブ` | 生成キーフレームのメタデータを削除したポジティブな条件付け。 | CONDITIONING |
-| `ネガティブ` | 生成キーフレームのメタデータを削除したネガティブな条件付け。 | CONDITIONING |
+| ``positive`` | 生成キーフレームのメタデータを削除したポジティブな条件付け。 | CONDITIONING |
+| ``negative`` | 生成キーフレームのメタデータを削除したネガティブな条件付け。 | CONDITIONING |
 | `潜在` | 生成キーフレームを削除したビデオラテント。 | LATENT |
 | `キーフレーム` | 削除されたキーフレーム、生成_keyframe_indicesと生成_keyframe_num_framesでラベル付けされています。これらを後の Add Generated Keyframesにフィードして新しいスロットを初期化するか、Frozen Image Guidesとしてフリーズするために Generated Keyframes To Guidesにフィードします（キャンバスの長さが変更された場合、インデックスがリマップされます）。 | LATENT |
 

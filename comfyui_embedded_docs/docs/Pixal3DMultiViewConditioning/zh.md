@@ -19,8 +19,8 @@ Pixal3D 多视图条件节点是一个固定轨道装置，以90度间隔生成�
 
 | 输出名称 | 描述 | 数据类型 |
 |-------------|-------------|-----------|
-| `正向` | Pixal3D 多视图条件节点的正条件输出。 | CONDITIONING |
-| `负向` | Pixal3D 多视图条件节点的负条件输出。 | CONDITIONING |
+| ``positive`` | Pixal3D 多视图条件节点的正条件输出。 | CONDITIONING |
+| ``negative`` | Pixal3D 多视图条件节点的负条件输出。 | CONDITIONING |
 
 ## 注意事项
 
