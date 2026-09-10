@@ -1,19 +1,21 @@
 # Parlaklığı Ayarla
 
-Adjust Brightness düğümü, bir girdi görüntüsünün parlaklığını değiştirir. Her pikselin değerini belirtilen bir faktörle çarparak ve ardından sonuç değerlerini geçerli bir aralıkta kalacak şekilde sınırlayarak çalışır. 1.0 faktörü görüntüyü değiştirmez, 1.0'ın altındaki değerler onu koyulaştırır ve 1.0'ın üzerindeki değerler onu aydınlatır. Girdi görüntüsü bir alfa kanalı içeriyorsa, şeffaflığı korumak için alfa kanalı değiştirilmeden aktarılır.
+Adjust Brightness düğümü, bir görüntünün ne kadar parlak göründüğünü değiştirir. Görüntünün renk değerlerini bir `factor` ile çarpar ve sonuçları geçerli 0.0 ile 1.0 aralığında tutar. 1.0 faktörü görüntüyü olduğu gibi bırakır; 1.0'ın altındaki değerler görüntüyü daha koyu, 1.0'ın üzerindeki değerler ise görüntüyü daha parlak yapar.
 
 ## Girdiler
 
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 | --- | --- | --- | --- | --- |
-| `image` | Ayarlanacak girdi görüntüsü. | IMAGE | Evet | - |
-| `faktör` | Parlaklık faktörü. 1.0 = değişiklik yok, <1.0 = koyulaştırır, >1.0 = aydınlatır. (varsayılan: 1.0) | FLOAT | Hayır | 0.0 - 2.0 |
+| `image` | Ayarlanacak girdi görüntüsü. Tek bir görüntü veya bir grup görüntü kabul eder. | IMAGE | Evet | - |
+| `faktör` | Parlaklık faktörü. 1.0 = değişiklik yok, <1.0 = daha koyu, >1.0 = daha parlak. (varsayılan: 1.0) | FLOAT | Hayır | 0.0 - 2.0 |
+
+Not: Girdi görüntüsünde bir alfa kanalı (RGBA) varsa yalnızca renk kanalları ayarlanır. Alfa kanalı, renk değil saydamlık bilgisi sakladığı için girdiden değiştirilmeden kopyalanır.
 
 ## Çıktılar
 
 | Çıktı Adı | Açıklama | Veri Türü |
 | --- | --- | --- |
-| `görseller` | Parlaklığı ayarlanmış çıktı görüntüsü. | IMAGE |
+| `görseller` | Parlaklığı ayarlanmış çıktı görüntüsü. Girdide alfa kanalı varsa, alfa değerleri değişmeden kalır. | IMAGE |
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/AdjustBrightness/tr.md)
 

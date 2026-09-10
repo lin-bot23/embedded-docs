@@ -1,19 +1,21 @@
 # Ajustar brillo
 
-El nodo Adjust Brightness modifica el brillo de una imagen de entrada. Funciona multiplicando el valor de cada píxel por un factor especificado y luego limitando los valores resultantes para que se mantengan dentro de un rango válido. Un factor de 1.0 deja la imagen sin cambios, los valores inferiores a 1.0 la oscurecen y los valores superiores a 1.0 la aclaran. Si la imagen de entrada tiene un canal alfa, este se mantiene sin cambios para preservar la transparencia.
+El nodo Adjust Brightness cambia el brillo de una imagen. Multiplica los valores de color de la imagen por un `factor` y mantiene los resultados dentro del rango válido de 0.0 a 1.0. Un factor de 1.0 deja la imagen sin cambios, los valores inferiores a 1.0 la oscurecen y los valores superiores a 1.0 la hacen más brillante.
 
 ## Entradas
 
 | Parámetro | Descripción | Tipo de datos | Requerido | Rango |
 | --- | --- | --- | --- | --- |
-| `image` | La imagen de entrada a ajustar. | IMAGE | Sí | - |
+| `image` | La imagen de entrada a ajustar. Acepta una sola imagen o un lote de imágenes. | IMAGE | Sí | - |
 | `factor` | Factor de brillo. 1.0 = sin cambios, <1.0 = más oscuro, >1.0 = más brillante. (predeterminado: 1.0) | FLOAT | No | 0.0 - 2.0 |
+
+Nota: Si la imagen de entrada tiene un canal alfa (RGBA), solo se ajustan los canales de color. El canal alfa se copia de la entrada sin cambios porque almacena transparencia, no color.
 
 ## Salidas
 
 | Nombre de salida | Descripción | Tipo de datos |
 | --- | --- | --- |
-| `imágenes` | La imagen de salida con el brillo ajustado. | IMAGE |
+| `imágenes` | La imagen de salida con el brillo ajustado. Si la entrada tiene un canal alfa, los valores alfa permanecen sin cambios. | IMAGE |
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/AdjustBrightness/es.md)
 

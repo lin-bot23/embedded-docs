@@ -1,31 +1,25 @@
 # OpenAI ChatGPT
 
-Este nodo genera respuestas de texto a partir de un modelo de OpenAI. Acepta un texto de entrada y, opcionalmente, imágenes o archivos como contexto, y luego envía esta información a un modelo de OpenAI para generar una respuesta de texto.
+Este nodo genera respuestas de texto a partir de un modelo OpenAI. Envía el prompt de texto y, opcionalmente, imágenes o archivos a un modelo OpenAI, y devuelve la respuesta de texto generada.
 
 ## Entradas
 
-| Parámetro | Descripción | Tipo de datos | Obligatorio | Rango |
-|-----------|-------------|-----------|----------|-------|
-| `prompt` | Entradas de texto al modelo, utilizadas para generar una respuesta. Este es el texto al que el modelo debe responder. | STRING | Sí | - |
-| `persistir_contexto` | Este parámetro está obsoleto y no tiene efecto. Se incluye por compatibilidad con versiones anteriores, pero no influye en el comportamiento del nodo. | BOOLEAN | No | - |
-| `modelo` | El modelo utilizado para generar la respuesta. Seleccione entre los modelos de OpenAI disponibles. | COMBO | Sí | gpt-6-astra<br>gpt-5.6-sol<br>gpt-5.6-terra<br>gpt-5.6-luna<br>gpt-5.5-pro<br>gpt-5.5<br>gpt-5<br>gpt-5-mini<br>gpt-5-nano<br>gpt-4.1<br>gpt-4.1-mini<br>gpt-4.1-nano<br>o4-mini<br>o3<br>o1-pro<br>o1 |
-| `imágenes` | Imágenes opcionales para utilizar como contexto para el modelo. Para incluir múltiples imágenes, utilice el nodo de Imágenes en lote. | IMAGE | No | - |
-| `archivos` | Archivos opcionales para utilizar como contexto para el modelo. Acepta entradas del nodo de Entradas de archivos de Chat de OpenAI. | OPENAI_INPUT_FILES | No | - |
-| `opciones_avanzadas` | Configuración opcional para el modelo. Acepta entradas del nodo de Opciones avanzadas de Chat de OpenAI. | OPENAI_CHAT_CONFIG | No | - |
+| Parámetro | Descripción | Tipo de dato | Obligatorio | Rango |
+|-----------|-------------|--------------|-------------|-------|
+| `prompt` | Entradas de texto para el modelo, utilizadas para generar una respuesta (por defecto: cadena vacía). | STRING | Sí | - |
+| `persistir_contexto` | Este parámetro está obsoleto y no tiene efecto (por defecto: False). | BOOLEAN | Sí | - |
+| `modelo` | El modelo utilizado para generar la respuesta (por defecto: `gpt-5`). | COMBO | Sí | `gpt-6-astra`<br>`gpt-5.6-sol`<br>`gpt-5.6-terra`<br>`gpt-5.6-luna`<br>`gpt-5.5-pro`<br>`gpt-5.5`<br>`gpt-5`<br>`gpt-5-mini`<br>`gpt-5-nano`<br>`gpt-4.1`<br>`gpt-4.1-mini`<br>`gpt-4.1-nano`<br>`o4-mini`<br>`o3`<br>`o1-pro`<br>`o1` |
+| `imágenes` | Opcional: imagen(es) para usar como contexto para el modelo. Para incluir varias imágenes, puedes usar el nodo Batch Images. | IMAGE | No | - |
+| `archivos` | Opcional: archivo(s) para usar como contexto para el modelo. Acepta entradas del nodo OpenAI Chat Input Files. | OPENAI_INPUT_FILES | No | - |
+| `opciones_avanzadas` | Opcional: configuración para el modelo. Acepta entradas del nodo OpenAI Chat Advanced Options. | OPENAI_CHAT_CONFIG | No | - |
+
+Nota: Cuando se conecta una configuración `advanced_options` que establece un esfuerzo de razonamiento, el `model` seleccionado debe admitir ese valor de esfuerzo. Por ejemplo, la familia de modelos gpt-4.1 no admite ningún esfuerzo de razonamiento; `gpt-5.5` admite none, low, medium, high y xhigh; y `gpt-5.5-pro` admite medium, high y xhigh. Si el esfuerzo de razonamiento no es compatible con el modelo seleccionado, el nodo genera un error.
 
 ## Salidas
 
-| Nombre de salida | Descripción | Tipo de datos |
-|-------------|-------------|-----------|
-| `output_text` | La respuesta de texto generada por el modelo de OpenAI. Este es el texto generado basado en el prompt de entrada y el contexto. | STRING |
-
-## Notas
-
-- El parámetro `persist_context` está obsoleto y no tiene efecto. Se incluye por compatibilidad con versiones anteriores, pero no debe utilizarse.
-- La entrada `images` puede utilizarse para proporcionar contexto adicional al modelo. Si se proporcionan múltiples imágenes, deben conectarse utilizando el nodo de Imágenes en lote.
-- La entrada `files` permite proporcionar contexto adicional en forma de archivos. Estos archivos deben conectarse desde el nodo de Entradas de archivos de Chat de OpenAI.
-- La entrada `advanced_options` permite una configuración más detallada del comportamiento del modelo. Esto debe conectarse desde el nodo de Opciones avanzadas de Chat de OpenAI.
-- El costo de usar este nodo depende del modelo seleccionado. El costo se calcula basado en el número de tokens utilizados por el modelo. El costo exacto se mostrará en la IU del nodo.
+| Nombre de salida | Descripción | Tipo de dato |
+|------------------|-------------|--------------|
+| `output_text` | La respuesta de texto generada por el modelo OpenAI. | STRING |
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/OpenAIChatNode/es.md)
 

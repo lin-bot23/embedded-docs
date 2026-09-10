@@ -1,20 +1,20 @@
 # 加载模型补丁
 
-ModelPatchLoader 节点从 `model_patches` 文件夹加载模型补丁文件，并准备在工作流中使用。它会自动检测文件中包含的补丁类型，构建匹配的架构，加载已保存的权重，并将所有内容包装在 ModelPatcher 中，以便应用到其他模型上。它支持许多专用补丁格式，包括额外的 ControlNet 分支、特征嵌入模型、适配器和类似模块。
+ModelPatchLoader 节点从 `model_patches` 文件夹加载模型补丁文件，并准备在工作流中使用。它会自动检测文件所含的补丁类型，构建匹配的架构，加载保存的权重，并将所有内容包装到一个模型补丁器（ModelPatcher）中，以便应用到其他模型上。它支持多种专用补丁格式，包括额外的 ControlNet 分支、特征嵌入模型、适配器及类似模块。
 
 ## 输入
 
-| 参数 | 描述 | 数据类型 | 是否必填 | 范围 |
+| 参数 | 描述 | 数据类型 | 必填 | 范围 |
 | --- | --- | --- | --- | --- |
-| `名称` | 要从 model_patches 目录加载的模型补丁文件名。从列表中选择一个可用的补丁文件。 | COMBO | 是 | 动态生成的列表，包含 model_patches 文件夹中找到的所有模型补丁文件 |
+| `名称` | 要从 model_patches 目录加载的模型补丁文件名。从列表中选择一个可用的补丁文件。 | COMBO | 是 | 动态生成的列表，包含 `model_patches` 文件夹中找到的所有模型补丁文件 |
 
-注意：此节点标记为实验性。补丁类型会根据文件内容自动检测，因此无需手动选择类型。
+注意：此节点标记为实验性。补丁类型会自动从文件内容中检测，因此无需手动选择类型。
 
 ## 输出
 
 | 输出名称 | 描述 | 数据类型 |
 | --- | --- | --- |
-| `MODEL_PATCH` | 已加载的模型补丁包装在 ModelPatcher 中，可供工作流中的模型使用 | MODEL_PATCH |
+| `MODEL_PATCH` | 加载的模型补丁包装在 ModelPatcher 中，可随时应用于工作流中的模型 | MODEL_PATCH |
 
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ModelPatchLoader/zh.md)
 

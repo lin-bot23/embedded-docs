@@ -1,29 +1,29 @@
 # ByteDance Görüntüden Videoya
 
-ByteDance Görüntüden Video düğümü, girdi görsel ve metin prompt kullanarak ByteDance'nin API'si ile video oluşturur. Sunulan açıklamayı görsel olarak temsil eden bir video sırası oluşturur. Çıktının çözünürlüğü, en boy oranı, süresi ve diğer parametreleri özelleştirmek için seçenekler sunar.
+ByteDance Image to Video düğümü; bir girdi görüntüsü ve metin istemine dayalı olarak, ByteDance modellerini bir API aracılığıyla kullanarak videolar üretir. Bir başlangıç görüntü karesi alır ve sağlanan açıklamayı izleyen bir video dizisi oluşturur. Düğüm; video çözünürlüğü, en-boy oranı, süre ve diğer üretim parametreleri için çeşitli özelleştirme seçenekleri sunar.
 
 ## Girdiler
 
-| Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
+| Parametre | Açıklama | Veri Türü | Zorunlu | Aralık |
 |-----------|-------------|-----------|----------|-------|
-| `model` | Video oluşturmak için kullanılacak ByteDance modeli. Kullanılabilir seçenekler: <br>`"seedance-1-5-pro-251215"`<br>`"seedance-1-0-pro-250528"`<br>`"seedance-1-0-pro-fast-251015"` | STRING | Evet | Yukarıda listelenenler |
-| `prompt` | Video oluşturmak için kullanılacak metin prompt. Boşlukları kesildikten sonra en az 1 karakter uzunluğunda olmalıdır. | STRING | Evet | - |
-| `görüntü` | Video için kullanılacak ilk kare. Görsel 300x300 ve 6000x6000 piksel arasında olmalı, en boy oranı 0.4 ve 2.5 arasında olmalıdır. | GÖRSEL | Evet | - |
-| `çözünürlük` | Çıktı videoyunun çözünürlüğü. Kullanılabilir seçenekler: <br>`"480p"`<br>`"720p"`<br>`"1080p"` | STRING | Evet | Yukarıda listelenenler |
-| `en-boy oranı` | Çıktı videoyunun en boy oranı. Kullanılabilir seçenekler: <br>`"adaptive"`<br>`"16:9"`<br>`"4:3"`<br>`"1:1"`<br>`"3:4"`<br>`"9:16"`<br>`"21:9"` | STRING | Evet | Yukarıda listelenenler |
-| `süre` | Çıktı videoyunun süresi saniye cinsinden. `seedance-1-5-pro-251215` modeli için en düşük desteklenen süre 4 saniyedir. | INT | Evet | 3 - 12 |
-| `seed` | Oluşturma için kullanılacak seed. Seçmeli, varsayılan değeri 0'dır. | INT | Hayır | 0 - 2147483647 |
-| `sabit kamera` | Kamerayı sabitlemeyi belirtir. Platform, promptınıza kamerayı sabitleme talimatı ekler, ancak gerçek etkisini garanti etmez. Seçmeli, varsayılan değeri False'dır. | BOOLEAN | Hayır | - |
-| `filigran` | Videoya "AI generated" su izi eklemeyi belirtir. Seçmeli, varsayılan değeri False'dır. | BOOLEAN | Hayır | - |
-| `ses_oluştur` | Bu parametre, `seedance-1-5-pro-251215` modeli dışındaki herhangi bir model için göz ardı edilir. Seçmeli, varsayılan değeri False'dır. | BOOLEAN | Hayır | - |
+| `model` | Video oluşturmada kullanılacak ByteDance modeli (varsayılan: `"seedance-1-0-pro-fast-251015"`). | COMBO | Evet | `"seedance-1-5-pro-251215"`<br>`"seedance-1-0-pro-250528"`<br>`"seedance-1-0-pro-fast-251015"` |
+| `prompt` | Videoyu oluşturmak için kullanılan metin istemi. Baştaki ve sondaki boşluklar temizlendikten sonra en az 1 karakter uzunluğunda olmalıdır. | STRING | Evet | - |
+| `görüntü` | Video için kullanılacak ilk kare. 300x300 ile 6000x6000 piksel arasında ve en-boy oranı 0,4 ile 2,5 arasında olmalıdır. | IMAGE | Evet | - |
+| `çözünürlük` | Çıktı videosunun çözünürlüğü. | COMBO | Evet | `"480p"`<br>`"720p"`<br>`"1080p"` |
+| `en-boy oranı` | Çıktı videosunun en-boy oranı. | COMBO | Evet | `"adaptive"`<br>`"16:9"`<br>`"4:3"`<br>`"1:1"`<br>`"3:4"`<br>`"9:16"`<br>`"21:9"` |
+| `süre` | Çıktı videosunun saniye cinsinden süresi (varsayılan: 5). `seedance-1-5-pro-251215` modeli için desteklenen en düşük süre 4 saniyedir. | INT | Evet | 3 - 12 |
+| `seed` | Üretimde kullanılacak tohum (varsayılan: 0). | INT | Hayır | 0 - 2147483647 |
+| `sabit kamera` | Kameranın sabitlenip sabitlenmeyeceğini belirtir. Platform, isteminize kamerayı sabitleme talimatını ekler ancak gerçek etkiyi garanti etmez (varsayılan: False). | BOOLEAN | Hayır | `False`<br>`True` |
+| `filigran` | Videoya "AI generated" filigranı eklenip eklenmeyeceğini belirtir (varsayılan: False). | BOOLEAN | Hayır | `False`<br>`True` |
+| `ses_oluştur` | Bu parametre, `seedance-1-5-pro-251215` dışındaki tüm modeller için yok sayılır (varsayılan: False). | BOOLEAN | Hayır | `False`<br>`True` |
 
-**Not:** Prompt, aşağıdaki kelimeleri (büyük/küçük harfe duyarlı olmaksızın) içermemelidir: `resolution`, `ratio`, `duration`, `seed`, `camerafixed`, `watermark`. Bu parametreler, ilgili girdiler aracılığıyla ayarlanır.
+**Not:** İstem, aşağıdaki sözcükleri içermemelidir (büyük/küçük harf ayrımı gözetmeksizin): `resolution`, `ratio`, `duration`, `seed`, `camerafixed`, `watermark`. Bu parametreler kendilerine ayrılmış girdiler aracılığıyla ayarlanır.
 
 ## Çıktılar
 
 | Çıktı Adı | Açıklama | Veri Türü |
 |-------------|-------------|-----------|
-| `output` | Girdi görsel ve prompt parametrelerine dayalı olarak oluşturulan çıktı video dosyası. | VIDEO |
+| `output` | Girdi görüntüsüne ve istem parametrelerine dayalı olarak oluşturulan video dosyası. | VIDEO |
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ByteDanceImageToVideoNode/tr.md)
 

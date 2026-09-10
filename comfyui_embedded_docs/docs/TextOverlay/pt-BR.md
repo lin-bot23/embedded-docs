@@ -1,25 +1,26 @@
 # Desenhar Sobreposição de Texto
 
-Este nó desenha texto sobre uma imagem ou um lote de imagens. Ele cria uma sobreposição de texto com tamanho de fonte, cor, posição, alinhamento e contorno opcional personalizáveis, e então compõe o texto sobre as imagens originais.
+Este nó desenha texto sobre uma imagem ou um lote de imagens. Ele constrói uma sobreposição de texto com tamanho de fonte, cor, posição vertical, alinhamento horizontal e contorno preto opcional configuráveis, e então compõe a sobreposição sobre as imagens originais.
 
 ## Entradas
 
-| Parâmetro | Descrição | Tipo de Dado | Obrigatório | Faixa |
-|-----------|-----------|--------------|-------------|-------|
-| `imagens` | A imagem de entrada ou lote de imagens para desenhar o texto | IMAGE | Sim | |
-| `texto` | O texto a ser sobreposto na imagem (padrão: ""). Suporta várias linhas; as sequências de escape `\n` e `\t` são convertidas em quebras de linha e tabulações, e o texto é automaticamente quebrado para caber na largura da imagem. | STRING | Sim | |
-| `tamanho_da_fonte` | Tamanho da fonte como porcentagem da altura da imagem (padrão: 5.0) | FLOAT | Sim | 0.5 a 50.0 (passo 0.5) |
+| Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
+|-----------|-------------|-----------|----------|-------|
+| `imagens` | A imagem de entrada ou lote de imagens sobre o qual desenhar o texto | IMAGE | Sim | |
+| `texto` | O texto a ser sobreposto na imagem (padrão: ""). Suporta múltiplas linhas: as sequências de escape `\n` e `\t` são convertidas em quebras de linha e tabulações, e linhas longas são quebradas automaticamente para caber dentro da largura da imagem. | STRING | Sim | |
+| `tamanho_da_fonte` | Tamanho da fonte como porcentagem da altura da imagem (padrão: 5.0) | FLOAT | Sim | 0.5 to 50.0 (step 0.5) |
 | `cor` | Cor do texto (padrão: "#ffffff") | STRING | Sim | |
-| `posição` | Posição vertical do texto na imagem (padrão: "top") | COMBO | Sim | `"top"`<br>`"bottom"` |
-| `alinhamento` | Alinhamento horizontal do texto (padrão: "left") | COMBO | Sim | `"left"`<br>`"center"`<br>`"right"` |
-| `contorno` | Desenhar um contorno preto ao redor do texto (padrão: True) | BOOLEAN | Sim | |
-Observação: se `text` estiver vazio ou contiver apenas espaços em branco, o nó retorna as imagens de entrada inalteradas. A mesma sobreposição de texto é aplicada a cada imagem do lote. Para imagens com canal alfa (RGBA), o texto é composto usando mesclagem alfa source-over, de modo que a transparência existente seja preservada.
+| `posição` | Posição vertical do texto na imagem (padrão: "top") | COMBO | Sim | "top"<br>"bottom" |
+| `alinhamento` | Alinhamento horizontal do texto (padrão: "left") | COMBO | Sim | "left"<br>"center"<br>"right" |
+| `contorno` | Desenha um contorno preto ao redor do texto (padrão: True) | BOOLEAN | Sim | |
+
+Observação: Se `text` estiver vazio ou contiver apenas espaços em branco, o nó retorna as imagens de entrada inalteradas. A sobreposição de texto é renderizada uma vez e aplicada a cada imagem do lote.
 
 ## Saídas
 
-| Nome da Saída | Descrição | Tipo de Dado |
-|---------------|-----------|--------------|
-| `imagens` | As imagens de entrada com a sobreposição de texto composta sobre elas | IMAGE |
+| Nome da Saída | Descrição | Tipo de Dados |
+|-------------|-------------|-----------|
+| `imagens` | As imagens de entrada com a sobreposição de texto composta por cima | IMAGE |
 
 > Esta documentação foi gerada por IA. Se você encontrar erros ou tiver sugestões de melhoria, sinta-se à vontade para contribuir! [Editar no GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TextOverlay/pt-BR.md)
 

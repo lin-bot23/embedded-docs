@@ -1,25 +1,23 @@
-# ModelAttentionBackend
+# الواجهة الخلفية لانتباه النموذج
 
-This node lets you choose which attention backend a model uses for its attention computations. It creates a copy of the model and swaps in the attention function you select, which can affect performance or behavior. If the chosen backend is not available, it automatically falls back to PyTorch attention and logs a warning.
-
-تسمح لك هذه العقدة باختيار الخلفية (backend) التي يستخدمها النموذج لعمليات الانتباه الخاصة به. وهي تنشئ نسخة من النموذج وتستبدل دالة الانتباه التي تختارها، مما قد يؤثر على الأداء أو السلوك. إذا لم تكن الخلفية المحددة متاحة، فإنها تتراجع تلقائيًا إلى انتباه PyTorch وتُسجّل تحذيرًا.
+تحدد هذه العقدة الخلفية (backend) المستخدمة في الانتباه الكثيف التي يعتمد عليها النموذج في عمليات حساب الانتباه. تستنسخ العقدة النموذج المُمرر إليها، وتطبّق الخلفية المختارة، ثم تُرجع النسخة المعدَّلة. عند استخدامها مع Block Sparse Attention، تُستخدم هذه الخلفية كلما كان الانتباه المتفرق غير نشط أو غير مدعوم. إذا كانت الخلفية المحددة غير متاحة، تعود العقدة تلقائيًا إلى انتباه PyTorch.
 
 ## المدخلات
 
-| المعامل | الوصف | نوع البيانات | إلزامي | النطاق |
+| المعامل | الوصف | نوع البيانات | مطلوب | النطاق |
 |-----------|-------------|-----------|----------|-------|
-| `النموذج` | النموذج الذي سيتم تطبيق خلفية الانتباه المحددة عليه. | MODEL | نعم |  |
-| `الانتباه` | خلفية الانتباه المستخدمة (الافتراضي: "pytorch attention"). إذا كانت الخلفية المحددة غير متاحة، يتم استخدام انتباه PyTorch كخيار احتياطي. | STRING | نعم | "pytorch attention"<br>"comfy kitchen attention" |
+| `النموذج` | النموذج المطلوب تعديله. | MODEL | نعم |  |
+| `الانتباه` | الخلفية (backend) المطلوب تطبيقها للانتباه الكثيف (الافتراضي: "pytorch attention"). خيار Comfy Kitchen attention يعتمد على انتباه مكمم بنطاق INT8، وهو متاح فقط على وحدات معالجة الرسوميات من Nvidia وAMD. إذا كانت الخلفية المحددة غير متاحة، يُستخدم انتباه PyTorch كخيار احتياطي. | COMBO | نعم | "pytorch attention"<br>"comfy kitchen attention" |
 
-ملاحظة: يُدرج خيار "comfy kitchen attention" فقط عندما تكون وحدة انتباه comfy kitchen int8 متاحة في البيئة الحالية.
+ملاحظة: يظهر خيار "comfy kitchen attention" فقط عندما تكون وحدة انتباه Comfy Kitchen INT8 متاحة في البيئة الحالية.
 
 ## المخرجات
 
 | اسم المخرج | الوصف | نوع البيانات |
-|-------------|-----------|-----------|
-| `MODEL` | نسخة طبق الأصل من نموذج الإدخال مع تطبيق خلفية الانتباه المحددة. | MODEL |
+|-------------|-------------|-----------|
+| `model` | نسخة مستنسخة من النموذج المُدخل مع تطبيق الخلفية المختارة للانتباه. | MODEL |
 
 > تم إنشاء هذه الوثيقة بواسطة الذكاء الاصطناعي. إذا وجدت أي أخطاء أو لديك اقتراحات للتحسين، فلا تتردد في المساهمة! [تحرير على GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ModelAttentionBackend/ar.md)
 
 ---
-**Source fingerprint (SHA-256):** `4ba613cc0bf5b3e7f9effa895b98b3a3bd302e5d20e9d7e18d1633906c783244`
+**Source fingerprint (SHA-256):** `4f6e4800c2a3bb09b47b7c8f0481e1b6de3070f57234e610df5d3ce60dfdb309`

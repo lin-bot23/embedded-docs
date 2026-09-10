@@ -1,19 +1,19 @@
 # Ajustar contraste
 
-El nodo Adjust Contrast modifica el nivel de contraste de una imagen de entrada. Funciona ajustando la diferencia entre las áreas claras y oscuras de la imagen. Un factor de 1.0 deja la imagen sin cambios, los valores por debajo de 1.0 reducen el contraste y los valores por encima de 1.0 lo aumentan. Si la imagen de entrada tiene un canal alfa, este se mantiene sin cambios para preservar la transparencia.
+El nodo Adjust Contrast ajusta el contraste de una imagen de entrada escalando la diferencia entre las áreas claras y oscuras alrededor del punto medio del rango de color. Un factor de 1.0 deja la imagen sin cambios, los valores inferiores a 1.0 reducen el contraste y los valores superiores a 1.0 lo aumentan.
 
 ## Entradas
 
-| Parámetro | Descripción | Tipo de dato | Requerido | Rango |
+| Parámetro | Descripción | Tipo de datos | Requerido | Rango |
 | --- | --- | --- | --- | --- |
 | `image` | La imagen de entrada cuyo contraste se ajustará. | IMAGE | Sí | - |
 | `factor` | Factor de contraste. 1.0 = sin cambios, <1.0 = menos contraste, >1.0 = más contraste. (por defecto: 1.0) | FLOAT | No | 0.0 - 2.0 |
 
 ## Salidas
 
-| Nombre de salida | Descripción | Tipo de dato |
+| Nombre de salida | Descripción | Tipo de datos |
 | --- | --- | --- |
-| `imágenes` | La imagen resultante con el contraste ajustado. Los valores de píxeles se limitan al rango 0.0–1.0. | IMAGE |
+| `imágenes` | La imagen resultante con el contraste ajustado. Los valores de píxeles se limitan al rango de 0.0 a 1.0. Si la imagen de entrada tiene un canal alfa, ese canal se conserva sin cambios. | IMAGE |
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/AdjustContrast/es.md)
 
