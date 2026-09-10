@@ -10,7 +10,7 @@ El nodo Guía de Añadir Latente LTXV fija un latente ya codificado como una gu�
 |-----------|-------------|-----------|----------|-------|
 | `positive` | Entrada de condicionamiento positivo. | CONDITIONING | Sí | N/A |
 | `negative` | Entrada de condicionamiento negativo. | CONDITIONING | Sí | N/A |
-| `vae` | El modelo VAE a usar. | MODELO | Sí | N/A |
+| `vae` | El modelo VAE a usar. | MODEL | Sí | N/A |
 | `latent` | Latente de video objetivo al que se fija la guía. | LATENTE | Sí | N/A |
 | `guiding_latent` | Latente de guía. Su tamaño espacial debe dividir el tamaño del objetivo por el mismo número entero en ambos ejes; un tamaño igual fija la guía tal cual, la mitad del tamaño se trata como una referencia IC-LoRA x2. | LATENTE | Sí | N/A |
 | `latent_idx` | Índice de cuadro de latente para comenzar la guía, contado en cuadros latentes en lugar de cuadros de píxeles. Valores negativos colocan la guía en cuadros antes del inicio del latente, no contados hacia atrás desde su final. | INT | Sí | -9999 a 9999 |

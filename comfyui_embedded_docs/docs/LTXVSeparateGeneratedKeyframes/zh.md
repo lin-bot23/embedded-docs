@@ -8,19 +8,19 @@ LTXV 分离生成的关键帧节点从采样的潜在和条件中移除生成的
 
 | 参数 | 描述 | 数据类型 | 必需 | 范围 |
 |-----------|-------------|-----------|----------|-------|
-| `positive` | 移除生成关键帧元数据的正条件。 | CONDITIONING | 是 | N/A |
-| `negative` | 移除生成关键帧元数据的负条件。 | CONDITIONING | 是 | N/A |
-| `latent` | 移除生成关键帧的视频潜在。 | LATENT | 是 | N/A |
+| `正面条件` | 移除生成关键帧元数据的正条件。 | CONDITIONING | 是 | N/A |
+| `负面条件` | 移除生成关键帧元数据的负条件。 | CONDITIONING | 是 | N/A |
+| `潜空间` | 移除生成关键帧的视频潜在。 | LATENT | 是 | N/A |
 | `keyframes_to_batch` | 将关键帧作为单帧潜在的一批返回。不使用则获取一个多帧潜在，这是潜在上采样器和稍后添加生成关键帧所期望的。 | BOOLEAN | 否 | 默认：False |
 
 ## 输出
 
 | 输出名称 | 描述 | 数据类型 |
 |-------------|-------------|-----------|
-| `positive` | 移除生成关键帧元数据的正条件。 | CONDITIONING |
-| `negative` | 移除生成关键帧元数据的负条件。 | CONDITIONING |
-| `latent` | 移除生成关键帧的视频潜在。 | LATENT |
-| `keyframes` | 被剥离的关键帧，带有 generated_keyframe_indices 和 generated_keyframe_num_frames 标签。将这些输入到稍后的添加生成关键帧以初始化新槽位，或到生成关键帧到引导以将其固定为冻结图像引导（如果画布长度改变，则索引会被重新映射）。 | LATENT |
+| `正面条件` | 移除生成关键帧元数据的正条件。 | CONDITIONING |
+| `负面条件` | 移除生成关键帧元数据的负条件。 | CONDITIONING |
+| `潜空间` | 移除生成关键帧的视频潜在。 | LATENT |
+| `关键帧` | 被剥离的关键帧，带有 generated_keyframe_indices 和 generated_keyframe_num_frames 标签。将这些输入到稍后的添加生成关键帧以初始化新槽位，或到生成关键帧到引导以将其固定为冻结图像引导（如果画布长度改变，则索引会被重新映射）。 | LATENT |
 
 ## 注意事项
 

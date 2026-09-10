@@ -19,8 +19,8 @@ Pixal3D Çoklu Görüntüleme Koşullandırma düğümü, nesnenin ön, sol, ark
 
 | Çıktı Adı | Açıklama | Veri Türü |
 |-------------|-------------|-----------|
-| `positive` | Pixal3D Çoklu Görüntüleme Koşullandırma düğümü için pozitif koşullandırma çıktısı. | KOŞULLANDIRMA |
-| `negative` | Pixal3D Çoklu Görüntüleme Koşullandırma düğümü için negatif koşullandırma çıktısı. | KOŞULLANDIRMA |
+| `pozitif` | Pixal3D Çoklu Görüntüleme Koşullandırma düğümü için pozitif koşullandırma çıktısı. | CONDITIONING |
+| `negatif` | Pixal3D Çoklu Görüntüleme Koşullandırma düğümü için negatif koşullandırma çıktısı. | CONDITIONING |
 
 ## Notlar
 

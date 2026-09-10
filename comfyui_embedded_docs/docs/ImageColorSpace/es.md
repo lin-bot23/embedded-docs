@@ -8,7 +8,7 @@ El nodo ImageColorSpace convierte imágenes entre diferentes espacios de color, 
 
 | Parámetro | Descripción | Tipo de datos | Requerido | Rango |
 |-----------|-------------|-----------|----------|-------|
-| `image` | La imagen de entrada que debe ser convertida. | IMAGEN | Sí | Cualquier formato de imagen válido. |
+| `image` | La imagen de entrada que debe ser convertida. | IMAGE | Sí | Cualquier formato de imagen válido. |
 | `source` | El espacio de color de los píxeles de entrada. | COMBO | Sí | <br> "sRGB" <br> "HDR" <br> "HDR PQ" |
 | `destination` | El espacio de color de los píxeles de salida. | COMBO | Sí | <br> "sRGB" <br> "HDR" <br> "HDR PQ" |
 
@@ -16,7 +16,7 @@ El nodo ImageColorSpace convierte imágenes entre diferentes espacios de color, 
 
 | Nombre de salida | Descripción | Tipo de datos |
 |-------------|-------------|-----------|
-| `image` | La imagen convertida en el espacio de color de salida especificado. | IMAGEN |
+| `image` | La imagen convertida en el espacio de color de salida especificado. | IMAGE |
 
 ## Notas
 

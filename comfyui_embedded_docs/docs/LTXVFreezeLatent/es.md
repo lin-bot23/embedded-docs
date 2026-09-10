@@ -9,7 +9,7 @@ El nodo LTXV Freeze Latent está diseñado para establecer el noise_mask en 0 pa
 | Parámetro | Descripción | Tipo de datos | Requerido | Rango |
 |-----------|-------------|-----------|----------|-------|
 | `latent` | Latente de video o audio que se debe congelar. El audio es de 4D; el video es de 5D. | LATENT | Sí | N/A |
-| `samples` | El tensores que contiene las muestras latentes. | TENSO | Sí | Audio: 4D (batch, canales, cuadros, muestras); Video: 5D (batch, canales, altura, anchura, cuadros) |
+| `samples` | El tensores que contiene las muestras latentes. | TENSOR | Sí | Audio: 4D (batch, canales, cuadros, muestras); Video: 5D (batch, canales, altura, anchura, cuadros) |
 
 ## Salidas
 

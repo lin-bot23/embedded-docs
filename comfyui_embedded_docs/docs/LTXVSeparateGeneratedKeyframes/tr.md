@@ -8,19 +8,19 @@ LTXV Ayrı Oluşturulan Anahtar Kırmızılar düğümü, örneklenen latent ve 
 
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 |-----------|-------------|-----------|----------|-------|
-| `positive` | Oluşturulan-anahtar-kırmızı metadata'sız pozitif koşullama. | KOŞULLAMA | Evet | N/A |
-| `negative` | Oluşturulan-anahtar-kırmızı metadata'sız negatif koşullama. | KOŞULLAMA | Evet | N/A |
+| `pozitif` | Oluşturulan-anahtar-kırmızı metadata'sız pozitif koşullama. | CONDITIONING | Evet | N/A |
+| `negatif` | Oluşturulan-anahtar-kırmızı metadata'sız negatif koşullama. | CONDITIONING | Evet | N/A |
 | `latent` | Oluşturulan anahtar kırmızıları çıkarılmış video latent. | LATENT | Evet | N/A |
-| `keyframes_to_batch` | Anahtar kırmızıları tek çerçeve latent'ler olarak bir grup olarak döndür. Grup olarak döndürmek için kaldırın, bu da latent yükseltici ve daha sonra Oluşturulan Anahtar Kırmızıları Ekle düğme tarafından beklenen tek çerçeve latent'tir. | BOOL | Hayır | varsayılan: False |
+| `keyframes_to_batch` | Anahtar kırmızıları tek çerçeve latent'ler olarak bir grup olarak döndür. Grup olarak döndürmek için kaldırın, bu da latent yükseltici ve daha sonra Oluşturulan Anahtar Kırmızıları Ekle düğme tarafından beklenen tek çerçeve latent'tir. | BOOLEAN | Hayır | varsayılan: False |
 
 ## Çıktılar
 
 | Çıktı Adı | Açıklama | Veri Türü |
 |-------------|-------------|-----------|
-| `positive` | Oluşturulan-anahtar-kırmızı metadata'sız pozitif koşullama. | KOŞULLAMA |
-| `negative` | Oluşturulan-anahtar-kırmızı metadata'sız negatif koşullama. | KOŞULLAMA |
+| `pozitif` | Oluşturulan-anahtar-kırmızı metadata'sız pozitif koşullama. | CONDITIONING |
+| `negatif` | Oluşturulan-anahtar-kırmızı metadata'sız negatif koşullama. | CONDITIONING |
 | `latent` | Oluşturulan anahtar kırmızıları çıkarılmış video latent. | LATENT |
-| `keyframes` | Çıkarılan anahtar kırmızılar, generated_keyframe_indices ve generated_keyframe_num_frames ile etiketlenmiş. Bu anahtar kırmızıları daha sonra Oluşturulan Anahtar Kırmızıları Ekle düğmesine beslemek için yeni slotlar oluşturmak veya dondurulmuş resim rehberleri olarak pinlemek için kullanın (çerçeve uzunluğu değiştiğinde indeksler yeniden haritalandırılır). | LATENT |
+| `anahtar kareler` | Çıkarılan anahtar kırmızılar, generated_keyframe_indices ve generated_keyframe_num_frames ile etiketlenmiş. Bu anahtar kırmızıları daha sonra Oluşturulan Anahtar Kırmızıları Ekle düğmesine beslemek için yeni slotlar oluşturmak veya dondurulmuş resim rehberleri olarak pinlemek için kullanın (çerçeve uzunluğu değiştiğinde indeksler yeniden haritalandırılır). | LATENT |
 
 ## Notlar
 

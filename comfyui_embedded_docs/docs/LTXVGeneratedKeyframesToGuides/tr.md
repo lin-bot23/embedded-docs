@@ -8,20 +8,20 @@ LTXV Oluşturulan Anahtar Kırmaların Rehberlere Dönüşüm düğümü, daha e
 
 | Parametre                 | Açıklama                                                                 | Veri Türü | Gerekli | Aralık |
 |---------------------------|-----------------------------------------------------------------------------|-----------|----------|-------|
-| `positive`                | Anahtar kırmaları olarak sabitlenen pozitif koşullandırma.                   | KOŞULLANDIRMA | Evet      |       |
-| `negative`                | Anahtar kırmaları olarak sabitlenen negatif koşullandırma.                   | KOŞULLANDIRMA | Evet      |       |
+| `pozitif` | Anahtar kırmaları olarak sabitlenen pozitif koşullandırma. | CONDITIONING | Evet |  |
+| `negatif` | Anahtar kırmaları olarak sabitlenen negatif koşullandırma. | CONDITIONING | Evet |  |
 | `vae`                     | Anahtar kırmaları çözümlemek için kullanılacak VAE modeli.                   | MODEL      | Evet      |       |
 | `latent`                  | Anahtar kırmaların eklenmesi istenen hedef video latenti, örneğin, zamanla yükseltilen bir tane. | LATENT     | Evet      |       |
-| `keyframes`               | LTXV Ayrı Oluşturulan Anahtar Kırmaların çıkışında, her anahtar kırmaya hangi pixel kare indeksinde oluşturulduğunu taşıyan anahtar kırmalar. | LATENT     | Evet      |       |
-| `strength`                | Rehber güçlüğü. 1.0, sert bir sabitleme oluşturur; daha düşük değerler sabitlemeyi gevşetir. | FLOAT      | Evet      | 0.0 - 10.0 |
+| `anahtar kareler` | LTXV Ayrı Oluşturulan Anahtar Kırmaların çıkışında, her anahtar kırmaya hangi pixel kare indeksinde oluşturulduğunu taşıyan anahtar kırmalar. | LATENT     | Evet      |       |
+| `güç` | Rehber güçlüğü. 1.0, sert bir sabitleme oluşturur; daha düşük değerler sabitlemeyi gevşetir. | FLOAT      | Evet      | 0.0 - 10.0 |
 | `override_frame_indices` | Seçmeli — bu pixel karelerde sabitlenmek yerine kaydedilen (veya otomatik olarak ölçeklendirilen) konumlar. Her anahtar kırmaya bir indeks sağlayın. Boş bırakarak kaydedilen konumları yeniden kullanmak veya hedef kanvanın farklı uzunluğunda (örneğin, zamanla 2 kat arttırdıktan sonra) ölçeklemek için boş bırakın. | STRING    | Hayır       |       |
 
 ## Çıktılar
 
 | Çıktı Adı | Açıklama                                                                 | Veri Türü |
 |-------------|-----------------------------------------------------------------------------|-----------|
-| `positive`  | Anahtar kırmaları olarak sabitlenen pozitif koşullandırma.             | KOŞULLANDIRMA |
-| `negative`  | Anahtar kırmaları olarak sabitlenen negatif koşullandırma.             | KOŞULLANDIRMA |
+| `pozitif` | Anahtar kırmaları olarak sabitlenen pozitif koşullandırma. | CONDITIONING |
+| `negatif` | Anahtar kırmaları olarak sabitlenen negatif koşullandırma. | CONDITIONING |
 | `latent`    | Anahtar kırmaların eklendiği ve dondurulmuş rehber olarak kullanılan hedef video latenti. | LATENT     |
 
 ## Notlar

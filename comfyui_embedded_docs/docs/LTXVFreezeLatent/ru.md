@@ -9,7 +9,7 @@
 | Параметр | Описание | Тип данных | Обязателен | Диапазон |
 |-----------|-------------|-----------|----------|-------|
 | `latent` | Видео или аудио латентное значение для замораживания. Аудио — 4D; видео — 5D. | LATENT | Да | N/A |
-| `samples` | Тензор, содержащий латентные образцы. | ТЕНЗОР | Да | Аудио: 4D (batch, channels, frames, samples); Видео: 5D (batch, channels, height, width, frames) |
+| `samples` | Тензор, содержащий латентные образцы. | TENSOR | Да | Аудио: 4D (batch, channels, frames, samples); Видео: 5D (batch, channels, height, width, frames) |
 
 ## Выходы
 

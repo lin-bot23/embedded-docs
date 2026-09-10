@@ -10,17 +10,17 @@ O nó Pixal3D Multi-View Conditioning é uma estrutura de órbita fixa que gera 
 |-----------|-------------|-----------|----------|-------|
 | `clip_vision_model` | DINOv3 ViT-L/16 ClipVision com pesos NAF embutidos. | MODEL | Sim | N/A |
 | `fov` | FOV horizontal em graus das vistas conforme molduradas. | FLOAT | Sim | 1.0 - 170.0 |
-| `front` | Vista quadrada do lado frontal do objeto, com alpha ou em fundo preto. | IMAGE | Sim | N/A |
-| `left` | Vista quadrada do lado esquerdo do objeto, com alpha ou em fundo preto. | IMAGE | Opcional | N/A |
-| `back` | Vista quadrada do lado traseiro do objeto, com alpha ou em fundo preto. | IMAGE | Opcional | N/A |
-| `right` | Vista quadrada do lado direito do objeto, com alpha ou em fundo preto. | IMAGE | Opcional | N/A |
+| `frente` | Vista quadrada do lado frontal do objeto, com alpha ou em fundo preto. | IMAGE | Sim | N/A |
+| `esquerda` | Vista quadrada do lado esquerdo do objeto, com alpha ou em fundo preto. | IMAGE | Opcional | N/A |
+| `trás` | Vista quadrada do lado traseiro do objeto, com alpha ou em fundo preto. | IMAGE | Opcional | N/A |
+| `direita` | Vista quadrada do lado direito do objeto, com alpha ou em fundo preto. | IMAGE | Opcional | N/A |
 
 ## Saídas
 
 | Nome da Saída | Descrição | Tipo de Dados |
 |-------------|-------------|-----------|
-| `positive` | Saída de condicionamento positivo para o nó Pixal3D Multi-View Conditioning. | CONDITIONING |
-| `negative` | Saída de condicionamento negativo para o nó Pixal3D Multi-View Conditioning. | CONDITIONING |
+| `positivo` | Saída de condicionamento positivo para o nó Pixal3D Multi-View Conditioning. | CONDITIONING |
+| `negativo` | Saída de condicionamento negativo para o nó Pixal3D Multi-View Conditioning. | CONDITIONING |
 
 ## Notas
 

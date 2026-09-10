@@ -11,7 +11,7 @@ Le nœud LTXV Séparer les Keyframes Générés supprime les keyframes généré
 | `positive` | Condition positive avec les métadonnées des keyframes générés supprimées. | CONDITIONING | Oui | N/A |
 | `negative` | Condition négative avec les métadonnées des keyframes générés supprimées. | CONDITIONING | Oui | N/A |
 | `latent` | Latent vidéo avec les keyframes générés enlevés. | LATENT | Oui | N/A |
-| `keyframes_to_batch` | Retourner les keyframes sous forme de lot de latents d'image unique. Laisser vide pour obtenir un latent multi-image, ce que le latent upsampler et un Add Generated Keyframes ultérieur attendent. | BOOLEEN | Non | par défaut : False |
+| `keyframes_to_batch` | Retourner les keyframes sous forme de lot de latents d'image unique. Laisser vide pour obtenir un latent multi-image, ce que le latent upsampler et un Add Generated Keyframes ultérieur attendent. | BOOLEAN | Non | par défaut : False |
 
 ## Sorties
 

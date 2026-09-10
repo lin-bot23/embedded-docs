@@ -8,7 +8,7 @@ O nó ImageColorSpace converte imagens entre diferentes espaços de cores, inclu
 
 | Parâmetro | Descrição | Tipo de Dados | Obrigatório | Intervalo |
 |-----------|-------------|-----------|----------|-------|
-| `image` | A imagem de entrada a ser convertida. | IMAGEM | Sim | Qualquer formato de imagem válido. |
+| `image` | A imagem de entrada a ser convertida. | IMAGE | Sim | Qualquer formato de imagem válido. |
 | `source` | O espaço de cores dos pixels de entrada. | COMBO | Sim | <br> "sRGB" <br> "HDR" <br> "HDR PQ" |
 | `destination` | O espaço de cores dos pixels de saída. | COMBO | Sim | <br> "sRGB" <br> "HDR" <br> "HDR PQ" |
 
@@ -16,7 +16,7 @@ O nó ImageColorSpace converte imagens entre diferentes espaços de cores, inclu
 
 | Nome da Saída | Descrição | Tipo de Dados |
 |-------------|-------------|-----------|
-| `image` | A imagem convertida no espaço de cores de saída especificado. | IMAGEM |
+| `image` | A imagem convertida no espaço de cores de saída especificado. | IMAGE |
 
 ## Notas
 
