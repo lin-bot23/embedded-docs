@@ -1,28 +1,22 @@
 # Image YUV to RGB
 
-The ImageYUVToRGB node is designed to convert images from the YUV color space to the RGB color space. It does this by taking three separate input images that represent the Y (luma), U (blue projection), and V (red projection) channels of the image. These channels are then combined into a single RGB image using a color space conversion technique.
-
-## Overview
-
-The ImageYUVToRGB node converts YUV images to RGB images by combining the Y, U, and V channels. This is useful for applications that require color space conversion between these two standards.
+The ImageYUVToRGB node converts YUV color space images to RGB color space. It takes three separate input images representing the Y (luma), U (blue projection), and V (red projection) components and combines them into a single RGB image.
 
 ## Inputs
 
 | Parameter | Description | Data Type | Required | Range |
-|-----------|-------------|-----------|----------|-------|
-| `Y`       | The Y channel input image, representing the luminance information. | IMAGE | Yes | - |
-| `U`       | The U channel input image, representing the blue color difference. | IMAGE | Yes | - |
-| `V`       | The V channel input image, representing the red color difference. | IMAGE | Yes | - |
+| --- | --- | --- | --- | --- |
+| `Y` | The Y (luminance) component input image | IMAGE | Yes | - |
+| `U` | The U (blue projection) component input image | IMAGE | Yes | - |
+| `V` | The V (red projection) component input image | IMAGE | Yes | - |
 
-**Note:** The Y, U, and V channels must be provided together and should have the same dimensions to ensure a correct conversion.
+**Note:** All three input images (Y, U, and V) must be provided together and should have compatible dimensions for proper conversion.
 
 ## Outputs
 
 | Output Name | Description | Data Type |
-|-------------|-------------|-----------|
-| `output`    | The resulting RGB image after the YUV to RGB conversion. | IMAGE |
-
-The output image will have the same dimensions as the input Y, U, and V images, but with the color information represented in the RGB color space.
+| --- | --- | --- |
+| `output` | The converted RGB image | IMAGE |
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ImageYUVToRGB/en.md)
 

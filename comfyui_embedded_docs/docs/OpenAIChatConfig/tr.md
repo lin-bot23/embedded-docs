@@ -1,32 +1,23 @@
 # OpenAI ChatGPT Gelişmiş Seçenekler
 
-OpenAI ChatGPT Gelişmiş Seçenekleri düğümü, OpenAI Chat Düğmeleri için ek ayarlar belirlemenize olanak tanır. Bu düğüm, modelin yanıtlarını oluşturma şeklini kontrol eden kesme davranışı, çıktı uzunluk sınırları ve özel talimatlar gibi ileri düzey ayarlar sağlar.
-
-## Genel Bakış
-
-OpenAI ChatGPT Gelişmiş Seçenekleri düğümü, kullanıcıların ileri düzey yapılandırma seçeneklerini belirtmesine olanak tanıyan ve OpenAI Chat Düğmeleri'nin işlevselliğini artıran bir yapıdadır. Bu ayarlar, modelin yanıtlarını belirli gereksinimlere uyacak şekilde özelleştirmek için yardımcı olabilir.
+OpenAIChatConfig düğümü, OpenAI Chat Node'un yanıtları nasıl oluşturacağını kontrol eden gelişmiş seçenekler tanımlamanızı sağlar. Kırpma stratejisini belirleyebilir, çıktı token sayısını sınırlayabilir, özel talimatlar sağlayabilir ve modelin yanıt vermeden önce ne kadar akıl yürüteceğini seçebilirsiniz.
 
 ## Girdiler
 
-| Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
+| Parameter | Açıklama | Veri Türü | Zorunlu | Aralık |
 |-----------|-------------|-----------|----------|-------|
-| `kırpma` | Model yanıtının kullanılacak kesme stratejisi. auto: Bu yanıtın ve önceki yanıtların bağlamın modelin bağlam pencere boyutunu aşması durumunda, model konuşmanın ortasında girdi öğelerini atarak bağlam pencereye sığacak şekilde yanıtını keser. disabled: Bir model yanıtı bağlam pencere boyutunu aşarsa, istek 400 hatası ile başarısız olur (varsayılan: "auto") | STRING | Evet | "auto"<br>"disabled" |
-| `maksimum_çıktı_tokenları` | Bir yanıt için oluşturulabilecek toplam token sayısının üst sınırları, görünen çıktı token'ları ve mantıksal token'ları içermektedir (varsayılan: 4096) | INT | Hayır | 16 ila 16384 |
-| `talimatlar` | Modelin yanıt oluşturma konusunda vereceği talimatlar (çok satırlı girdi desteklenmektedir) | STRING | Hayır | - |
-| `reasoning_effort` | Yanıta yanıt vermeden önce modelin ne kadar mantık yürüteceğini belirler. 'default' seçeneği modelin seçimine bırakır. Desteklenen seviyeler her model için farklıdır: GPT-6 Astra low-max, GPT-5.6 none-max (en az minimal), GPT-5.5 none-xhigh, GPT-5.5 Pro medium-xhigh, GPT-5 minimal-high, o-series low-high; GPT-4.1'de mantık yoktur. Desteklenmeyen seviyeler istek göndermeden önce reddedilir (varsayılan: "default") | STRING | Hayır | "default"<br>"none"<br>"minimal"<br>"low"<br>"medium"<br>"high"<br>"xhigh"<br>"max" |
+| `kırpma` | Model yanıtı için kullanılacak kırpma stratejisi. auto: Bu yanıtın ve önceki yanıtların bağlamı, modelin bağlam penceresi boyutunu aşarsa, model, konuşmanın ortasındaki girdi öğelerini atarak yanıtı bağlam penceresine sığacak şekilde kırpar. disabled: Bir model yanıtı, söz konusu model için bağlam penceresi boyutunu aşarsa istek 400 hatasıyla başarısız olur (varsayılan: "auto") | COMBO | Evet | "auto"<br>"disabled" |
+| `maksimum_çıktı_tokenları` | Bir yanıt için oluşturulabilecek token sayısının üst sınırı; görünür çıktı tokenleri ve akıl yürütme tokenleri dahildir (varsayılan: 4096) | INT | Hayır | 16 ile 16384 |
+| `talimatlar` | Modelin yanıtı nasıl oluşturacağına ilişkin talimatlar (çok satırlı girdi desteklenir) | STRING | Hayır | - |
+| `reasoning_effort` | Modelin yanıtlamadan önce ne kadar akıl yürüteceği. "default", seçimi modele bırakır. Desteklenen düzeyler modele göre farklılık gösterir: GPT-6 Astra low-max, GPT-5.6 none-max (minimal düzeyi yok), GPT-5.5 none-xhigh, GPT-5.5 Pro medium-xhigh, GPT-5 minimal-high, o-series low-high; GPT-4.1 akıl yürütmeyi desteklemez. Desteklenmeyen düzeyler, istek gönderilmeden önce reddedilir. (varsayılan: "default") | COMBO | Hayır | "default"<br>"none"<br>"minimal"<br>"low"<br>"medium"<br>"high"<br>"xhigh"<br>"max" |
+
+Not: `top_p` ve `temperature` API belirtiminde özellikler olarak listelenmiş olsa da tüm modellerde desteklenmez ve bu nedenle girdi olarak sunulmaz.
 
 ## Çıktılar
 
 | Çıktı Adı | Açıklama | Veri Türü |
 |-------------|-------------|-----------|
-| `OPENAI_CHAT_CONFIG` | Belirtilen ayarları OpenAI Chat Düğmeleri ile kullanmak için içeren yapılandırma nesnesi | OPENAI_CHAT_CONFIG |
-
-## Notlar
-
-- `max_output_tokens` parametresi, toplam token sayısının üst sınırlarını belirler, bu da görünen çıktı token'ları ve mantıksal token'ları içermektedir.
-- `reasoning_effort` parametresi, modelin yanıt oluşturma öncesinde ne kadar mantık yürüteceğini belirler. Desteklenen seviyeler her model için farklıdır.
-- `instructions` parametresi, modelin yanıt oluşturma sürecini yönlendirmek için ayrıntılı talimatlar sağlayabilir.
-- `truncation` parametresi, modelin bağlam pencere boyutunu aşarsa yanıtını otomatik olarak kesip kesmeyeceğini veya 400 hatası ile başarısız olacağını belirler.
+| `OPENAI_CHAT_CONFIG` | OpenAI Chat Node ile kullanım için belirtilen ayarları içeren yapılandırma nesnesi | OPENAI_CHAT_CONFIG |
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/OpenAIChatConfig/tr.md)
 

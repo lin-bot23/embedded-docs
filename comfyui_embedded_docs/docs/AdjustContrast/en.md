@@ -1,6 +1,6 @@
 # Adjust Contrast
 
-The Adjust Contrast node modifies the contrast level of an input image. It works by adjusting the difference between the light and dark areas of the image. A factor of 1.0 leaves the image unchanged, values below 1.0 reduce contrast, and values above 1.0 increase it. If the input image has an alpha channel, the alpha channel is passed through unchanged so transparency is preserved.
+The Adjust Contrast node adjusts the contrast of an input image by scaling the difference between light and dark areas around the midpoint of the color range. A factor of 1.0 leaves the image unchanged, values below 1.0 reduce contrast, and values above 1.0 increase contrast.
 
 ## Inputs
 
@@ -13,7 +13,7 @@ The Adjust Contrast node modifies the contrast level of an input image. It works
 
 | Output Name | Description | Data Type |
 | --- | --- | --- |
-| `image` | The resulting image with adjusted contrast. Pixel values are clamped to the 0.0–1.0 range. | IMAGE |
+| `image` | The resulting image with adjusted contrast. Pixel values are clamped to the 0.0–1.0 range. If the input image has an alpha channel, that channel is preserved unchanged. | IMAGE |
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/AdjustContrast/en.md)
 

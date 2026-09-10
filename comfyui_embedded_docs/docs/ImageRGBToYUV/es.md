@@ -1,24 +1,22 @@
 # ImageRGBToYUV
 
-# Conversión de Imagen RGB a YUV
-
-El nodo ImageRGBToYUV realiza una conversión de espacio de color desde RGB a YUV. Toma una imagen RGB como entrada y produce tres imágenes separadas que representan los canales YUV: Y (luminancia), U (diferencia de azul) y V (diferencia de rojo).
+El nodo ImageRGBToYUV convierte una imagen RGB al espacio de color YUV. Divide la imagen en tres componentes — Y (luminancia o brillo), U (crominancia de diferencia de azul) y V (crominancia de diferencia de rojo) — y devuelve cada componente como una imagen separada del mismo tamaño que la imagen de entrada.
 
 ## Entradas
 
-| Parámetro | Descripción | Tipo de Datos | Obligatorio | Rango |
-|-----------|-------------|-----------|----------|-------|
-| `imagen` | La imagen RGB de entrada que debe ser convertida al espacio de color YUV. Esta debe ser una imagen de 3 canales. | IMAGEN | Sí | - |
+| Parámetro | Descripción | Tipo de datos | Requerido | Rango |
+|-----------|-------------|---------------|-----------|-------|
+| `imagen` | La imagen RGB de entrada que se convertirá a YUV. Si la imagen contiene un canal alfa, solo se utilizan los primeros tres canales (RGB). | IMAGE | Sí | - |
 
 ## Salidas
 
-| Nombre de Salida | Descripción | Tipo de Datos |
-|-------------|-------------|-----------|
-| `Y`         | El canal Y representa la luminancia (brillo) de la imagen. | IMAGEN |
-| `U`         | El canal U representa el componente de croma de diferencia de azul. | IMAGEN |
-| `V`         | El canal V representa el componente de croma de diferencia de rojo. | IMAGEN |
+| Nombre de salida | Descripción | Tipo de datos |
+|------------------|-------------|---------------|
+| `Y` | El componente de luminancia (brillo) del espacio de color YUV. | IMAGE |
+| `U` | El componente de crominancia de diferencia de azul del espacio de color YUV. | IMAGE |
+| `V` | El componente de crominancia de diferencia de rojo del espacio de color YUV. | IMAGE |
 
-Las imágenes de salida tendrán las mismas dimensiones que la imagen de entrada.
+Cada salida tiene el mismo ancho, alto y número de canales que la imagen de entrada. El componente Y, U o V correspondiente se repite en todos los canales para que cada salida se devuelva como una imagen estándar.
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ImageRGBToYUV/es.md)
 

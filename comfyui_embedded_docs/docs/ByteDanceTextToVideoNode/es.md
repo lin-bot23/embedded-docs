@@ -1,55 +1,35 @@
 # ByteDance Texto a Video
 
-# Nodo de Texto a Vídeo de ByteDance
-
-El nodo de Texto a Vídeo de ByteDance genera videos utilizando modelos de ByteDance a través de una API basada en sugerencias de texto. Acepta una descripción de texto y varios ajustes de vídeo como entrada, luego crea un vídeo que coincida con las especificaciones proporcionadas. El nodo maneja la comunicación con la API y devuelve el vídeo generado como salida.
-
-## Resumen
-
-El nodo de Texto a Vídeo de ByteDance está diseñado para convertir sugerencias de texto en vídeos utilizando las capacidades de IA de ByteDance. Los usuarios pueden especificar el modelo, la resolución, el aspecto, la duración y otros parámetros para controlar el proceso de generación de vídeo.
+El nodo ByteDance Text to Video genera un video a partir de un prompt de texto mediante modelos de ByteDance a través de una API. Se proporciona un prompt y se eligen ajustes como el modelo, la resolución, la relación de aspecto y la duración; el nodo envía la solicitud de generación y devuelve el video generado.
 
 ## Entradas
 
-| Parámetro | Descripción | Tipo de Datos | Obligatorio | Rango |
+| Parámetro | Descripción | Tipo de datos | Requerido | Rango |
 |-----------|-------------|-----------|----------|-------|
-| `modelo` | El modelo de ByteDance a utilizar para la generación. | STRING | Sí | 
-  - "seedance-1-5-pro-251215"
-  - "seedance-1-0-pro-250528"
-  - "seedance-1-0-pro-fast-251015" |
-| `prompt` | La sugerencia de texto utilizada para generar el vídeo. | STRING | Sí | Entrada de texto multilinea |
-| `resolución` | La resolución del vídeo de salida. | STRING | Sí | 
-  - "480p"
-  - "720p"
-  - "1080p" |
-| `relación_de_aspecto` | El aspecto del vídeo de salida. | STRING | Sí | 
-  - "16:9"
-  - "4:3"
-  - "1:1"
-  - "3:4"
-  - "9:16"
-  - "21:9" |
-| `duración` | La duración del vídeo de salida en segundos. | INT | Sí | 3 a 12 segundos |
-| `semilla` | Semilla a utilizar para la generación. | INT | No | 0 a 2,147,483,647 |
-| `cámara_fija` | Especifica si se debe fijar la cámara. | BOOLEAN | No | - |
-| `marca_de_agua` | Si se debe agregar una marca de agua "Generado por IA" al vídeo. | BOOLEAN | No | - |
-| `generate_audio` | Este parámetro se ignora para cualquier modelo excepto `seedance-1-5-pro-251215`. | BOOLEAN | No | - |
+| `modelo` | El modelo de ByteDance utilizado para generar el video (por defecto: `"seedance-1-0-pro-fast-251015"`). | COMBO | Sí | `"seedance-1-5-pro-251215"`<br>`"seedance-1-0-pro-250528"`<br>`"seedance-1-0-pro-fast-251015"` |
+| `prompt` | El prompt de texto utilizado para generar el video. | STRING | Sí | - |
+| `resolución` | La resolución del video de salida. | COMBO | Sí | `"480p"`<br>`"720p"`<br>`"1080p"` |
+| `relación_de_aspecto` | La relación de aspecto del video de salida. | COMBO | Sí | `"16:9"`<br>`"4:3"`<br>`"1:1"`<br>`"3:4"`<br>`"9:16"`<br>`"21:9"` |
+| `duración` | La duración del video de salida en segundos (por defecto: 5). | INT | Sí | 3 a 12 |
+| `semilla` | Semilla que se utilizará para la generación (por defecto: 0). | INT | No | 0 a 2147483647 |
+| `cámara_fija` | Especifica si se debe fijar la cámara. La plataforma añade al prompt una instrucción para fijar la cámara, pero no garantiza el efecto real (por defecto: False). | BOOLEAN | No | - |
+| `marca_de_agua` | Indica si se debe añadir una marca de agua "AI generated" al video (por defecto: False). | BOOLEAN | No | - |
+| `generate_audio` | Este parámetro se ignora para cualquier modelo excepto `seedance-1-5-pro-251215` (por defecto: False). | BOOLEAN | No | - |
 
-**Restricciones del Parámetro:**
+**Restricciones de los parámetros:**
 
-- El `prompt` debe contener al menos 1 carácter después de la eliminación de espacios en blanco.
-- El `prompt` no puede contener los siguientes parámetros de texto: "resolution", "ratio", "duration", "seed", "camerafixed", "watermark".
-- La `duration` está limitada a valores entre 3 y 12 segundos.
-- Para el modelo `seedance-1-5-pro-251215`, la duración mínima admitida es de 4 segundos.
-- La `seed` acepta valores de 0 a 2,147,483,647.
-- El parámetro `generate_audio` solo tiene efecto cuando el `model` está configurado en `seedance-1-5-pro-251215`; se ignora para todos los otros modelos.
+- El parámetro `prompt` debe contener al menos 1 carácter después de eliminar los espacios en blanco.
+- El parámetro `prompt` no puede contener los siguientes parámetros de texto: "resolution", "ratio", "duration", "seed", "camerafixed", "watermark".
+- El nodo construye el prompt final añadiendo los ajustes seleccionados de `resolution`, `aspect_ratio`, `duration`, `seed`, `camera_fixed` y `watermark` al texto del prompt.
+- El parámetro `duration` está limitado a valores entre 3 y 12 segundos. Para el modelo `seedance-1-5-pro-251215`, la duración mínima admitida es de 4 segundos.
+- El parámetro `seed` acepta valores de 0 a 2,147,483,647.
+- El parámetro `generate_audio` solo tiene efecto cuando `model` está configurado como `seedance-1-5-pro-251215`; se ignora para todos los demás modelos.
 
 ## Salidas
 
-| Nombre de Salida | Descripción | Tipo de Datos |
+| Nombre de salida | Descripción | Tipo de datos |
 |-------------|-------------|-----------|
-| `output` | El archivo de vídeo generado. | VIDEO |
-
-**Nota:** El nodo de Texto a Vídeo de ByteDance es un nodo de API y requiere tokens de autenticación y claves de API para funcionar adecuadamente. Estos se proporcionan a través de las entradas ocultas `auth_token_comfy_org` y `api_key_comfy_org`.
+| `output` | El archivo de video generado | VIDEO |
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ByteDanceTextToVideoNode/es.md)
 

@@ -1,33 +1,33 @@
-# Load3DAdvanced
+# 3D Yükle (Gelişmiş)
 
-Bu düğüm, ComfyUI giriş dizininizden bir 3B model dosyası yükler ve model verilerini kamera ve görünüm alanı bilgileriyle birlikte sağlar. Yaygın 3B dosya biçimlerini destekler ve işleme için çıktı görüntü boyutlarını belirlemenize olanak tanır.
+Load 3D (Advanced) düğümü, ComfyUI'nin `input/3d` dizininden bir 3D model dosyası yükler ve model verilerini, 3D görüntüleyicinin görünüm alanı durumunda yakalanan model yerleşimi ve kamera bilgileriyle birlikte sağlar. Yaygın 3D dosya formatlarını destekler ve görünüm alanının işleme genişliğini ve yüksekliğini piksel cinsinden ayarlamanıza olanak tanır. Bu düğüm deneyseldir.
 
-## Girişler
+## Girdiler
 
 | Parametre | Açıklama | Veri Türü | Zorunlu | Aralık |
 |-----------|-------------|-----------|----------|-------|
-| `model_file` | Yüklenecek 3B model dosyası. Model yüklemeyi atlamak için "none" seçeneğini belirleyin. | STRING | Evet | `"none"`<br>input/3d dizinindeki mevcut 3B dosyaların listesi |
-| `viewport_state` | 3B görüntüleyiciden kamera ve model bilgilerini içeren mevcut görünüm alanı durumu. | LOAD3D | Evet | - |
-| `width` | Çıktı görüntüsünün piksel cinsinden genişliği (varsayılan: 1024) | INT | Evet | Min: 1<br>Maks: 4096<br>Adım: 1 |
-| `height` | Çıktı görüntüsünün piksel cinsinden yüksekliği (varsayılan: 1024) | INT | Evet | Min: 1<br>Maks: 4096<br>Adım: 1 |
+| `model_file` | Yüklenecek 3D model dosyası. Model dosyası yüklemeyi atlamak için "none" seçin. | COMBO | Evet | `"none"`<br>`input/3d` dizininde bulunan mevcut 3D model dosyaları |
+| `viewport_state` | 3D görüntüleyiciden kamera ve model bilgilerini içeren geçerli görünüm alanı durumu. | LOAD3D | Evet | - |
+| `width` | Görünüm alanının piksel cinsinden işleme genişliği (varsayılan: 1024). | INT | Evet | Min: 1<br>Max: 4096<br>Varsayılan: 1024<br>Adım: 1 |
+| `height` | Görünüm alanının piksel cinsinden işleme yüksekliği (varsayılan: 1024). | INT | Evet | Min: 1<br>Max: 4096<br>Varsayılan: 1024<br>Adım: 1 |
 
-**Parametrelerle İlgili Notlar:**
-- `model_file` parametresi yalnızca şu uzantılara sahip dosyaları gösterir: .gltf, .glb, .obj, .fbx, .stl
-- Dosyalar, ComfyUI kurulumunuzun `input/3d` dizinine yerleştirilmelidir
-- `model_file` "none" olarak ayarlanırsa, hiçbir 3B model verisi yüklenmez (`model_3d` çıktısı boş olur)
-- `model_file` mevcut olmayan bir dosyaya ayarlanırsa, düğüm bir doğrulama hatası döndürür: "Invalid 3D model file: {model_file}"
+**Parametrelere İlişkin Notlar:**
+- `model_file` parametresi yalnızca şu uzantılara sahip dosyaları listeler: .gltf, .glb, .obj, .fbx, .stl
+- Dosyalar ComfyUI kurulumunuzun `input/3d` dizinine yerleştirilmelidir; alt klasörler de taranır ve dosya yolları girdi dizinine göre gösterilir
+- `model_file` "none" ise hiçbir model verisi yüklenmez ve `model_3d` çıktısı boş olur
+- `model_file` mevcut olmayan bir dosyaya ayarlanırsa düğüm bir doğrulama hatası döndürür: "Invalid 3D model file: {model_file}"
 
 ## Çıktılar
 
 | Çıktı Adı | Açıklama | Veri Türü |
 |-------------|-------------|-----------|
-| `model_3d` | Yüklenen 3B model verisi veya hiçbir model dosyası seçilmediyse boş | FILE3DANY |
-| `model_3d_info` | Görünüm alanı durumundan yüklenen 3B model hakkında bilgi | LOAD3DMODELINFO |
-| `camera_info` | Görünüm alanı durumundan kamera bilgisi | LOAD3DCAMERA |
-| `width` | Belirtilen çıktı görüntü genişliği | INT |
-| `height` | Belirtilen çıktı görüntü yüksekliği | INT |
+| `model_3d` | Yüklenen 3D model dosyası (glb/obj/stl/vb.). Hiçbir model dosyası seçilmediyse boştur. | FILE3DANY |
+| `model_3d_info` | Her modelin sahnedeki yerleşimi: konum, dönüş ve ölçek (dünya uzayında Y yukarı). | LOAD3DMODELINFO |
+| `camera_info` | Görünüm alanı kamera bilgisi: konum, bakış hedefi, yakınlaştırma ve tür. | LOAD3DCAMERA |
+| `width` | Görünüm alanının piksel cinsinden işleme genişliği. | INT |
+| `height` | Görünüm alanının piksel cinsinden işleme yüksekliği. | INT |
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Load3DAdvanced/tr.md)
 
 ---
-**Source fingerprint (SHA-256):** `fdacea8abf627621150e1196743e36f61534333837c33cc9a7416a6d11700c4d`
+**Source fingerprint (SHA-256):** `c79c53dde0c8b3afb7df7b972df749f5040c92d48b47e355c4497d9b0cbf1c22`
