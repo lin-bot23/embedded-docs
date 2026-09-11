@@ -56,21 +56,72 @@ EN_RESIDUE_LANGS = {"zh", "zh-TW", "ja", "ko", "ru", "ar", "tr", "fa", "pt-BR"}
 
 FP_RE = re.compile(r"Source fingerprint[^\n]*`([a-f0-9]{64})`")
 
-FENCE_RE = re.compile(r"^\s*(```|~~~)")
+# Localized "Outputs" section headings observed in the repo (per language).
+# Matched against the exact heading text after "## ".
+OUTPUTS_HEADINGS = {
+    # en
+    "Outputs",
+    # es / fr / pt-BR
+    "Salidas", "Salida", "Sorties", "Saídas",
+    # ja / ko
+    "出力", "출력",
+    # zh / zh-TW
+    "输出", "輸出",
+    # ru (variants observed)
+    "Выходы", "Выходные параметры", "Выходные данные",
+    # ar
+    "المخرجات",
+    # tr
+    "Çıktılar",
+    # fa
+    "خروجی‌ها",
+}
+
+
+def is_outputs_heading(text: str) -> bool:
+    t = text.strip()
+    if t in OUTPUTS_HEADINGS:
+        return True
+    return "output" in t.lower()
+
+
+# Localized "Required" table-header words observed in the repo.
+REQUIRED_HEADERS = {"required", "必填", "必需", "必須", "обязательный",
+                    "obligatorio", "obrigatório", "requis", "zorunlu",
+                    "الإلزامية", "إلزامي", "필수"}
+
+
+def _is_required_header(cell: str) -> bool:
+    c = cell.strip().lower()
+    return c in REQUIRED_HEADERS or "required" in c
+
+FENCE_INFO_RE = re.compile(r"^\s*(`{3,}|~{3,})")
 
 
 def split_fenced(text: str):
     """Split text into (is_inside_fence, line) pairs.
 
-    Returns a list of (fenced: bool, line: str). Only ```/~~~ fence markers
-    toggle state; the fence marker line itself is marked as fenced content.
+    Returns a list of (fenced: bool, line: str). A block opened with N
+    backticks/tildes only closes with a run of the SAME character of at
+    least the same length (CommonMark rule), so a ``` example inside a
+    longer-backtick block cannot accidentally close it.
     """
     result = []
     inside = False
+    delim_char, delim_len = "", 0
     for line in text.splitlines():
-        if FENCE_RE.match(line):
+        m = FENCE_INFO_RE.match(line)
+        if not inside and m:
+            inside = True
+            delim_char, delim_len = m.group(1)[0], len(m.group(1))
             result.append((True, line))
-            inside = not inside
+            continue
+        if inside and m:
+            marker = m.group(1)
+            if marker[0] == delim_char and len(marker) >= delim_len:
+                inside = False
+                delim_char, delim_len = "", 0
+            result.append((True, line))
             continue
         result.append((inside, line))
     return result
@@ -156,7 +207,7 @@ def check_file(path: Path):
     in_outputs = False
     for i, line in unfenced:
         if line.startswith("## "):
-            in_outputs = "output" in line.lower() or "出力" in line or "输出" in line
+            in_outputs = is_outputs_heading(line[3:].strip())
             continue
         if in_outputs and line.startswith("|"):
             cells = [c.strip().strip("`") for c in line.split("|")[1:-1]]
@@ -169,12 +220,27 @@ def check_file(path: Path):
     if len(h1s) > 1:
         errors.append(f"{rel}: {len(h1s)} H1 headings (expected exactly 1)")
 
-    # 5. English Yes/No residue in the Required column of translations
+    # 5. English Yes/No residue in the Required column of translations.
+    # Track the current table header to find the Required column index;
+    # "Yes"/"No" in OTHER columns (e.g. COMBO option lists) are valid content.
     if lang in EN_RESIDUE_LANGS:
+        required_idx = None
         for i, line in unfenced:
-            if line.startswith("|") and re.search(r"\|\s*Yes\s*\|", line):
-                errors.append(f"{rel}:{i+1}: English 'Yes' in Required column "
-                              f"(translate: 是/はい/예/Да/نعم/...)")
+            if line.startswith("|"):
+                cells = [c.strip().lower() for c in line.split("|")[1:-1]]
+                if any(_is_required_header(c) for c in cells):
+                    required_idx = next(
+                        (j for j, c in enumerate(cells)
+                         if _is_required_header(c)), None)
+                    continue
+                if required_idx is not None and len(cells) > required_idx:
+                    if cells[required_idx] == "yes":
+                        errors.append(f"{rel}:{i+1}: English 'Yes' in Required "
+                                      f"column (translate: 是/はい/예/Да/نعم/...)")
+            else:
+                # table ended
+                if line.strip() and not line.startswith("|"):
+                    required_idx = None
 
     # 6. fingerprint footer (en.md only; translations inherit via sync)
     if lang == "en" and not FP_RE.search(text):
