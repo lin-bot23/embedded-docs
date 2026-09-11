@@ -77,7 +77,7 @@ def split_fenced(text: str):
 
 
 def find_outer_fence(text: str):
-    """Return True if a \`\`\`markdown fence wraps the whole document.
+    r"""Return True if a markdown fence (triple backtick) wraps the whole document.
 
     The known defect pattern (PR #142) is: H1 title, then \`\`\`markdown opener
     enclosing the whole body, then a closing fence, then only footer lines
@@ -203,16 +203,30 @@ def main():
     files = sorted(DOCS_DIR.rglob("*.md"))
 
     if args.changed_only:
-        changed = set(
-            l.strip() for l in subprocess.run(
-                ["git", "diff", "--name-only", f"{args.base}...HEAD", "--",
+        git_cmd = ["git", "diff", "--name-only", f"{args.base}...HEAD", "--",
+                   "comfyui_embedded_docs/docs/"]
+        git_res = subprocess.run(git_cmd, capture_output=True, text=True)
+        if git_res.returncode != 0:
+            print(f"git diff failed (rc={git_res.returncode}): "
+                  f"{git_res.stderr.strip()}", file=sys.stderr)
+            # fall back to full-repo scan rather than crashing the workflow
+            git_res2 = subprocess.run(
+                ["git", "diff", "--name-only", args.base, "HEAD", "--",
                  "comfyui_embedded_docs/docs/"],
-                capture_output=True, text=True, check=True,
-            ).stdout.splitlines()
-            if l.strip().endswith(".md")
-        )
-        files = [f for f in files
-                 if str(f.relative_to(Path.cwd())) in changed]
+                capture_output=True, text=True)
+            if git_res2.returncode != 0:
+                print("fallback two-dot diff also failed; checking all files",
+                      file=sys.stderr)
+                changed = None  # check everything
+            else:
+                changed = {l.strip() for l in git_res2.stdout.splitlines()
+                           if l.strip().endswith(".md")}
+        else:
+            changed = {l.strip() for l in git_res.stdout.splitlines()
+                       if l.strip().endswith(".md")}
+        if changed is not None:
+            files = [f for f in files
+                     if str(f.relative_to(Path.cwd())) in changed]
         print(f"Checking {len(files)} files changed vs {args.base}")
 
     all_errors, all_warnings = [], []
