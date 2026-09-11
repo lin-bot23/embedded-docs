@@ -13,8 +13,8 @@
 | `背面圖片` | 背面視圖（180°）。 | IMAGE | 否 | - |
 | `右側圖片` | 右側視圖（270°），即主體的右側。 | IMAGE | 否 | - |
 | `輸出模式` | 選擇要生成的模型類型。"Geometry only" 會傳回未貼紋理的網格。"Textured" 會加入色彩/PBR 貼圖。 | DYNAMIC_COMBO | 是 | "Geometry only"<br>"Textured" |
-| `面數上限` | 目標面數，48-20000。-1 讓 Tripo 自適應選擇。（預設：-1） | INT | 否 | -1 to 20000 |
-| `模型種子` | 用於可重現模型生成的種子。（預設：42） | INT | 否 | 0 to 2147483647 |
+| `面數上限` | 目標面數，48-20000。-1 讓 Tripo 自適應選擇。（預設：-1） | INT | 否 | -1 至 20000 |
+| `模型種子` | 用於可重現模型生成的種子。（預設：42） | INT | 否 | 0 至 2147483647 |
 | `自動尺寸` | 將輸出縮放至近似真實世界的公尺單位。（預設：False） | BOOLEAN | 否 | True<br>False |
 | `匯出 UV` | 生成期間進行 UV 展開。僅需幾何的執行可關閉以加快速度。（預設：True） | BOOLEAN | 否 | True<br>False |
 | `壓縮幾何` | 套用 meshopt 幾何壓縮（EXT_meshopt_compression）。檔案較小，但 ComfyUI 的 3D 預覽無法顯示這些檔案；編輯前請先解壓縮。（預設：False） | BOOLEAN | 否 | True<br>False |
@@ -33,7 +33,7 @@
 | `texture_quality` | 貼圖品質等級。`detailed` = HD 貼圖，`extreme` = 8K Ultra 貼圖。（預設："standard"） | COMBO | 是 | "standard"<br>"detailed"<br>"extreme" |
 | `texture_alignment` | 優先考慮對來源影像的視覺保真度，或與網格幾何的對齊。（預設："original_image"） | COMBO | 是 | "original_image"<br>"geometry" |
 | `orientation` | 旋轉輸出以符合來源影像。僅在貼圖模式下適用。（預設："default"） | COMBO | 是 | "default"<br>"align_image" |
-| `texture_seed` | 用於貼圖生成的種子。（預設：42） | INT | 是 | 0 to 2147483647 |
+| `texture_seed` | 用於貼圖生成的種子。（預設：42） | INT | 是 | 0 至 2147483647 |
 
 **注意：** 你必須至少提供 2 張影像：正面視圖（`image`）加上其他視圖中的至少一個（`image_left`、`image_back` 或 `image_right`）。如果提供的影像少於 2 張，節點會引發錯誤。
 

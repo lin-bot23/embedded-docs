@@ -13,8 +13,8 @@ Ces paramètres sont toujours disponibles.
 | `output_mode` | Choisit le type de résultat. "Geometry only" renvoie un maillage sans texture ; "Textured" ajoute des cartes de couleur/PBR et révèle des paramètres de texture supplémentaires. | DYNAMIC_COMBO | Oui | `"Geometry only"`<br>`"Textured"` |
 | `image` | L'image 2D source utilisée pour générer le modèle 3D. Une seule image est requise ; le nœud déclenche une erreur si aucune n'est fournie. | IMAGE | Oui | - |
 | `enable_image_autofix` | Prétraiter l'image d'entrée pour améliorer la qualité de génération. (par défaut : False) | BOOLEAN | Non | True<br>False |
-| `face_limit` | Nombre cible de faces, 48-20000. -1 laisse Tripo choisir de manière adaptative. (par défaut : -1) | INT | Non | -1 to 20000 |
-| `model_seed` | Graine utilisée pour la génération de la géométrie afin que les résultats puissent être reproduits. (par défaut : 42) | INT | Non | 0 to 2147483647 |
+| `face_limit` | Nombre cible de faces, 48-20000. -1 laisse Tripo choisir de manière adaptative. (par défaut : -1) | INT | Non | -1 à 20000 |
+| `model_seed` | Graine utilisée pour la génération de la géométrie afin que les résultats puissent être reproduits. (par défaut : 42) | INT | Non | 0 à 2147483647 |
 | `auto_size` | Mettre à l'échelle la sortie pour approximer des dimensions réelles en mètres. (par défaut : False) | BOOLEAN | Non | True<br>False |
 | `export_uv` | Dépliage UV pendant la génération. Désactivez cette option pour des exécutions plus rapides en mode géométrie uniquement. (par défaut : True) | BOOLEAN | Non | True<br>False |
 | `compress_geometry` | Appliquer la compression de géométrie meshopt (EXT_meshopt_compression). Fichiers plus petits, mais l'aperçu 3D de ComfyUI ne peut pas les afficher ; décompressez avant l'édition. (par défaut : False) | BOOLEAN | Non | True<br>False |
@@ -33,7 +33,7 @@ Ces paramètres apparaissent lorsque `output_mode` est défini sur "Textured".
 | `texture_quality` | detailed = textures HD, extreme = textures 8K Ultra. (par défaut : "standard") | COMBO | Oui | `"standard"`<br>`"detailed"`<br>`"extreme"` |
 | `texture_alignment` | Prioriser la fidélité visuelle à l'image source, ou l'alignement sur la géométrie du maillage. (par défaut : "original_image") | COMBO | Oui | `"original_image"`<br>`"geometry"` |
 | `orientation` | Faire pivoter la sortie pour correspondre à l'image source. S'applique uniquement lorsque le modèle est texturé. (par défaut : "default") | COMBO | Oui | `"default"`<br>`"align_image"` |
-| `texture_seed` | Graine utilisée pour la génération de la texture afin que les résultats texturés puissent être reproduits. (par défaut : 42) | INT | Oui | 0 to 2147483647 |
+| `texture_seed` | Graine utilisée pour la génération de la texture afin que les résultats texturés puissent être reproduits. (par défaut : 42) | INT | Oui | 0 à 2147483647 |
 
 Remarque : Lorsque `output_mode` est défini sur "Geometry only", la texturation est désactivée pour la requête. En mode "Textured", une texture de couleur est toujours demandée ; désactiver `pbr` supprime les cartes PBR mais conserve la texture de couleur de base, tandis qu'activer `pbr` force également la texture de base. `texture_alignment` et `orientation` ne sont disponibles qu'en mode "Textured".
 

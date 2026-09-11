@@ -6,7 +6,7 @@
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `原始模型任務ID` | 要製作骨架的原始 3D 模型 task ID。這通常是先前的 Tripo 模型生成節點所產生的 ID。 | MODEL_TASK_ID | Yes | - |
+| `原始模型任務ID` | 要製作骨架的原始 3D 模型 task ID。這通常是先前的 Tripo 模型生成節點所產生的 ID。 | MODEL_TASK_ID | 是 | - |
 | `model_version` | 要使用的 rig 模型版本。v1.0：僅支援人形（雙足）角色，內含 90 種以上的動畫預設。v2.5：非人形生物（四足、六足、八足、鳥類、蛇形、水生）。預設值：`v1.0-20240301`。 | COMBO | No | "v1.0-20240301"<br>"v2.5-20260210" |
 | `rig_type` | 骨架類型。"auto" 會先執行 Tripo 的免費 rig 檢查，並採用建議的類型。預設值："auto"。 | COMBO | No | "auto"<br>"biped"<br>"quadruped"<br>"hexapod"<br>"octopod"<br>"avian"<br>"serpentine"<br>"aquatic" |
 | `spec` | 骨骼命名方式：Tripo 原生或相容於 Mixamo。Tripo 無法將其動畫預設重定向（retarget）到使用 mixamo 規格的 v1.0 rig 上；若要搭配 Tripo 使用，請採用 tripo：Retarget rigged model。預設值："tripo"。 | COMBO | No | "tripo"<br>"mixamo" |

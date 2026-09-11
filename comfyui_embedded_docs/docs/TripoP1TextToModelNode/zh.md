@@ -11,9 +11,9 @@ Tripo P1 文本到 3D。此节点使用 Tripo P1 API 根据文本描述生成 3D
 | `输出模式` | 控制生成的模型是仅包含几何体还是也包含颜色/PBR 纹理。"Geometry only" 返回无纹理网格。"Textured" 添加颜色/PBR 贴图并显示下方的纹理选项。 | DYNAMIC_COMBO | 是 | `"Geometry only"`<br>`"Textured"` |
 | `提示词` | 想要生成的 3D 模型的文本描述。最多 1024 个字符。必填且不能为空。 | STRING | 是 | Up to 1024 characters |
 | `反向提示词` | 你不希望在生成模型中出现的文本描述。最多 255 个字符。默认：未设置。 | STRING | 否 | Up to 255 characters |
-| `图像种子` | 用于控制随机性的种子值。默认：42。 | INT | 否 | 0 to 2147483647 |
-| `面数限制` | 目标面数，48-20000。-1 让 Tripo 自适应选择。默认：-1。 | INT | 否 | -1 to 20000 |
-| `模型种子` | 用于控制随机性的种子值。默认：42。 | INT | 否 | 0 to 2147483647 |
+| `图像种子` | 用于控制随机性的种子值。默认：42。 | INT | 否 | 0 到 2147483647 |
+| `面数限制` | 目标面数，48-20000。-1 让 Tripo 自适应选择。默认：-1。 | INT | 否 | -1 到 20000 |
+| `模型种子` | 用于控制随机性的种子值。默认：42。 | INT | 否 | 0 到 2147483647 |
 | `自动缩放` | 将输出缩放至近似真实世界米数。默认：False。 | BOOLEAN | 否 | True / False |
 | `导出 UV` | 生成期间进行 UV 展开。关闭可加快仅几何体运行。默认：True。 | BOOLEAN | 否 | True / False |
 | `压缩几何体` | 应用 meshopt 几何压缩（EXT_meshopt_compression）。文件更小，但 ComfyUI 的 3D 预览无法显示它们；编辑前请先解压。默认：False。 | BOOLEAN | 否 | True / False |
@@ -30,7 +30,7 @@ Tripo P1 文本到 3D。此节点使用 Tripo P1 API 根据文本描述生成 3D
 |-----------|-------------|-----------|----------|-------|
 | `pbr` | 包含 PBR 贴图。开启时，基础纹理也会被强制开启。默认：True。 | BOOLEAN | 是 | True / False |
 | `texture_quality` | 纹理质量预设。detailed = HD 纹理，extreme = 8K 超高清纹理。默认："standard"。 | COMBO | 是 | `"standard"`<br>`"detailed"`<br>`"extreme"` |
-| `texture_seed` | 用于纹理生成的种子值，用于控制随机性。默认：42。 | INT | 是 | 0 to 2147483647 |
+| `texture_seed` | 用于纹理生成的种子值，用于控制随机性。默认：42。 | INT | 是 | 0 到 2147483647 |
 
 ## 输出
 

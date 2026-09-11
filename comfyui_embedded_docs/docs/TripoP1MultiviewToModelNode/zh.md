@@ -13,8 +13,8 @@
 | `背面图像` | 后视图（180°）。 | IMAGE | 否 | - |
 | `右侧图像` | 右视图（270°），即主体自身的右侧。 | IMAGE | 否 | - |
 | `输出模式` | 选择要生成的模型类型。"Geometry only" 返回无贴图的网格。"Textured" 会添加颜色/PBR 贴图。 | DYNAMIC_COMBO | 是 | "Geometry only"<br>"Textured" |
-| `面数限制` | 目标面数，介于 48-20000 之间。-1 表示由 Tripo 自适应选取。（默认值：-1） | INT | 否 | -1 to 20000 |
-| `模型种子` | 用于可复现模型生成的随机种子。（默认值：42） | INT | 否 | 0 to 2147483647 |
+| `面数限制` | 目标面数，介于 48-20000 之间。-1 表示由 Tripo 自适应选取。（默认值：-1） | INT | 否 | -1 到 20000 |
+| `模型种子` | 用于可复现模型生成的随机种子。（默认值：42） | INT | 否 | 0 到 2147483647 |
 | `自动缩放` | 将输出缩放至接近真实世界米制尺寸。（默认值：False） | BOOLEAN | 否 | True<br>False |
 | `导出 UV` | 在生成过程中进行 UV 展开。若只需几何体且追求更快速度，可将其关闭。（默认值：True） | BOOLEAN | 否 | True<br>False |
 | `压缩几何体` | 应用 meshopt 几何压缩（EXT_meshopt_compression）。文件更小，但 ComfyUI 的 3D 预览无法显示它们；编辑前请先解压。（默认值：False） | BOOLEAN | 否 | True<br>False |
@@ -33,7 +33,7 @@
 | `texture_quality` | 贴图质量级别。`detailed` = 高清贴图，`extreme` = 8K 超清贴图。（默认值："standard"） | COMBO | 是 | "standard"<br>"detailed"<br>"extreme" |
 | `texture_alignment` | 优先保证与源图像的视觉保真度，或优先与网格几何体对齐。（默认值："original_image"） | COMBO | 是 | "original_image"<br>"geometry" |
 | `orientation` | 旋转输出以匹配源图像。仅在启用贴图时适用。（默认值："default"） | COMBO | 是 | "default"<br>"align_image" |
-| `texture_seed` | 用于贴图生成的随机种子。（默认值：42） | INT | 是 | 0 to 2147483647 |
+| `texture_seed` | 用于贴图生成的随机种子。（默认值：42） | INT | 是 | 0 到 2147483647 |
 
 **注意：** 至少需要提供 2 张图像：正视图（`image`）加上其他视图（`image_left`、`image_back` 或 `image_right`）中的至少一张。如果提供的图像少于 2 张，节点将报错。
 

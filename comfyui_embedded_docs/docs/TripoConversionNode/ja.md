@@ -9,12 +9,12 @@
 | `original_model_task_id` | 変換する Tripo モデルのタスク ID。以前の Tripo モデル生成、リギング、リターゲティング、またはセグメンテーションのタスクから取得する必要があります。ID が欠落しているか空の場合、ノードはエラーを発生させます。 | STRING | はい | MODEL_TASK_ID<br>RIG_TASK_ID<br>RETARGET_TASK_ID<br>SEGMENT_TASK_ID |
 | `format` | 変換された 3D モデルのターゲットファイル形式。 | COMBO | はい | GLTF<br>USDZ<br>FBX<br>OBJ<br>STL<br>3MF |
 | `quad` | 有効にすると三角形を四角形に変換します（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
-| `face_limit` | 変換されたモデルの最大面数。-1 に設定すると無制限になります（デフォルト: -1）。 | INT | いいえ | -1 to 2000000 |
-| `texture_size` | 出力テクスチャの解像度（ピクセル単位）（デフォルト: 4096）。 | INT | いいえ | 128 to 8192 |
+| `face_limit` | 変換されたモデルの最大面数。-1 に設定すると無制限になります（デフォルト: -1）。 | INT | いいえ | -1〜2000000 |
+| `texture_size` | 出力テクスチャの解像度（ピクセル単位）（デフォルト: 4096）。 | INT | いいえ | 128〜8192 |
 | `texture_format` | エクスポートされるテクスチャに使用するファイル形式（デフォルト: JPEG）。 | COMBO | いいえ | BMP<br>DPX<br>HDR<br>JPEG<br>OPEN_EXR<br>PNG<br>TARGA<br>TIFF<br>WEBP |
 | `対称性を強制` | 有効にするとモデルを強制的に対称にします（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
 | `底面を平坦化` | 有効にするとモデルの底面を平らにします（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
-| `底面平坦化しきい値` | `flatten_bottom` と併用する平坦化の深さ（デフォルト: 0.01）。この値は `flatten_bottom` が有効な場合にのみ適用されます。 | FLOAT | いいえ | 0.01 to 1.0 |
+| `底面平坦化しきい値` | `flatten_bottom` と併用する平坦化の深さ（デフォルト: 0.01）。この値は `flatten_bottom` が有効な場合にのみ適用されます。 | FLOAT | いいえ | 0.01〜1.0 |
 | `ピボットを底面中央へ` | 有効にするとピボットポイントをモデルの底面中央に移動します（デフォルト: False）。 | BOOLEAN | いいえ | True or False |
 | `スケール係数` | 変換されたモデルに適用されるスケール係数（デフォルト: 1.0）。 | FLOAT | いいえ | 0.01 and above |
 | `アニメーション付き` | リギングまたはリターゲティングされたモデルのスケルトンとアニメーションを保持します（デフォルト: True）。 | BOOLEAN | いいえ | True or False |

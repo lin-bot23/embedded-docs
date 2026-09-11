@@ -7,7 +7,7 @@ Tripo: Retopology は、以前の Tripo ノードで生成されたハイポリ�
 | パラメータ | 説明 | データ型 | 必須 | 範囲 |
 |-----------|-------------|-----------|----------|-------|
 | `model_task_id` | ソースのハイポリゴンモデルのタスク ID。Tripo 生成ノードのモデルタスク ID、または Tripo: Segment Model のセグメントタスク ID を受け付けます。 | STRING | はい | Tripo task ID |
-| `face_limit` | 対象の面数: 500～20,000 三角形、または 500～10,000 四角形。-1 を指定すると Tripo が選択します。（デフォルト: -1） | INT | はい | -1 (automatic)<br>500 to 20,000 (triangles)<br>500 to 10,000 (quads) |
+| `face_limit` | 対象の面数: 500～20,000 三角形、または 500～10,000 四角形。-1 を指定すると Tripo が選択します。（デフォルト: -1） | INT | はい | -1 (automatic)<br>500〜20,000 (triangles)<br>500〜10,000 (quads) |
 | `quad` | 四角形メッシュ出力。Tripo は四角形メッシュを FBX として出力するため、結果は FBX 出力に渡され、GLB 出力は空のままです。（デフォルト: False） | BOOLEAN | はい | True<br>False (default) |
 | `bake` | ソーステクスチャをローポリゴンメッシュにベイクします。（デフォルト: True） | BOOLEAN | いいえ | True (default)<br>False |
 | `part_names` | Tripo: Segment Model からのカンマ区切りのパーツ名。空の場合はモデル全体を処理します。（デフォルト: ""） | STRING | いいえ | Model part names or empty |

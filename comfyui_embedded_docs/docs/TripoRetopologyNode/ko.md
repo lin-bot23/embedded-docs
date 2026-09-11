@@ -7,7 +7,7 @@ Tripo: Retopology는 이전 Tripo 노드에서 생성된 고폴리 3D 모델을 
 | 매개변수 | 설명 | 데이터 타입 | 필수 | 범위 |
 |-----------|-------------|-----------|----------|-------|
 | `model_task_id` | 원본 고폴리 모델의 작업 ID입니다. Tripo 생성 노드의 모델 작업 ID 또는 Tripo: Segment Model의 세그먼트 작업 ID를 받습니다. | STRING | 예 | Tripo task ID |
-| `face_limit` | 대상 면 수: 500-20,000개의 삼각형 또는 500-10,000개의 쿼드입니다. -1은 Tripo가 선택하도록 합니다. (기본값: -1) | INT | 예 | -1 (automatic)<br>500 to 20,000 (triangles)<br>500 to 10,000 (quads) |
+| `face_limit` | 대상 면 수: 500-20,000개의 삼각형 또는 500-10,000개의 쿼드입니다. -1은 Tripo가 선택하도록 합니다. (기본값: -1) | INT | 예 | -1 (automatic)<br>500 ~ 20,000 (triangles)<br>500 ~ 10,000 (quads) |
 | `quad` | 쿼드 메시 출력입니다. Tripo는 쿼드 메시를 FBX로 제공하므로 결과는 FBX 출력으로 전달되고 GLB 출력은 비어 있습니다. (기본값: False) | BOOLEAN | 예 | True<br>False (default) |
 | `bake` | 원본 텍스처를 저폴리 메시에 베이킹합니다. (기본값: True) | BOOLEAN | 아니요 | True (default)<br>False |
 | `part_names` | Tripo: Segment Model에서 가져온 쉼표로 구분된 파트 이름입니다. 비어 있으면 전체 모델을 처리합니다. (기본값: "") | STRING | 아니요 | Model part names or empty |

@@ -9,12 +9,12 @@ Ce nœud convertit un modèle 3D Tripo existant vers un autre format de fichier 
 | `id_tâche_modèle_original` | ID de tâche du modèle Tripo à convertir. Il doit provenir d'une tâche antérieure de génération de modèle, de rigging, de retargeting ou de segmentation Tripo. Si l'ID est manquant ou vide, le nœud génère une erreur. | STRING | Oui | MODEL_TASK_ID<br>RIG_TASK_ID<br>RETARGET_TASK_ID<br>SEGMENT_TASK_ID |
 | `format` | Format de fichier cible pour le modèle 3D converti. | COMBO | Oui | GLTF<br>USDZ<br>FBX<br>OBJ<br>STL<br>3MF |
 | `quad` | Convertit les triangles en quads lorsqu'activé (par défaut : False). | BOOLEAN | Non | True or False |
-| `limite_faces` | Nombre maximal de faces dans le modèle converti. Définir sur -1 pour aucune limite (par défaut : -1). | INT | Non | -1 to 2000000 |
-| `taille_texture` | Résolution des textures de sortie en pixels (par défaut : 4096). | INT | Non | 128 to 8192 |
+| `limite_faces` | Nombre maximal de faces dans le modèle converti. Définir sur -1 pour aucune limite (par défaut : -1). | INT | Non | -1 à 2000000 |
+| `taille_texture` | Résolution des textures de sortie en pixels (par défaut : 4096). | INT | Non | 128 à 8192 |
 | `format_texture` | Format de fichier utilisé pour les textures exportées (par défaut : JPEG). | COMBO | Non | BMP<br>DPX<br>HDR<br>JPEG<br>OPEN_EXR<br>PNG<br>TARGA<br>TIFF<br>WEBP |
 | `force_symmetry` | Impose la symétrie du modèle lorsqu'activé (par défaut : False). | BOOLEAN | Non | True or False |
 | `flatten_bottom` | Aplatit le bas du modèle lorsqu'activé (par défaut : False). | BOOLEAN | Non | True or False |
-| `flatten_bottom_threshold` | Profondeur d'aplatissement utilisée avec `flatten_bottom` (par défaut : 0.01). Cette valeur n'est appliquée que lorsque `flatten_bottom` est activé. | FLOAT | Non | 0.01 to 1.0 |
+| `flatten_bottom_threshold` | Profondeur d'aplatissement utilisée avec `flatten_bottom` (par défaut : 0.01). Cette valeur n'est appliquée que lorsque `flatten_bottom` est activé. | FLOAT | Non | 0.01 à 1.0 |
 | `pivot_to_center_bottom` | Déplace le point de pivot au centre inférieur du modèle lorsqu'activé (par défaut : False). | BOOLEAN | Non | True or False |
 | `scale_factor` | Facteur d'échelle appliqué au modèle converti (par défaut : 1.0). | FLOAT | Non | 0.01 and above |
 | `with_animation` | Conserve le squelette et l'animation des modèles riggés ou retargetés (par défaut : True). | BOOLEAN | Non | True or False |

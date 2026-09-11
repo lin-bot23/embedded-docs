@@ -9,12 +9,12 @@
 | `원본 모델 작업 ID` | 변환할 Tripo 모델의 작업 ID입니다. 이 ID는 이전 Tripo 모델 생성, 리깅, 리타게팅 또는 세그멘테이션 작업에서 가져와야 합니다. ID가 없거나 비어 있으면 노드에서 오류를 발생시킵니다. | STRING | 예 | MODEL_TASK_ID<br>RIG_TASK_ID<br>RETARGET_TASK_ID<br>SEGMENT_TASK_ID |
 | `형식` | 변환된 3D 모델의 대상 파일 형식입니다. | COMBO | 예 | GLTF<br>USDZ<br>FBX<br>OBJ<br>STL<br>3MF |
 | `쿼드` | 활성화하면 삼각형을 사각형으로 변환합니다(기본값: False). | BOOLEAN | 아니요 | True or False |
-| `면 제한` | 변환된 모델의 최대 면 수입니다. 제한이 없도록 설정하려면 -1로 지정합니다(기본값: -1). | INT | 아니요 | -1 to 2000000 |
-| `텍스처 크기` | 출력 텍스처의 해상도(픽셀)입니다(기본값: 4096). | INT | 아니요 | 128 to 8192 |
+| `면 제한` | 변환된 모델의 최대 면 수입니다. 제한이 없도록 설정하려면 -1로 지정합니다(기본값: -1). | INT | 아니요 | -1 ~ 2000000 |
+| `텍스처 크기` | 출력 텍스처의 해상도(픽셀)입니다(기본값: 4096). | INT | 아니요 | 128 ~ 8192 |
 | `텍스처 형식` | 내보낸 텍스처에 사용되는 파일 형식입니다(기본값: JPEG). | COMBO | 아니요 | BMP<br>DPX<br>HDR<br>JPEG<br>OPEN_EXR<br>PNG<br>TARGA<br>TIFF<br>WEBP |
 | `force_symmetry` | 활성화하면 모델을 대칭으로 강제합니다(기본값: False). | BOOLEAN | 아니요 | True or False |
 | `flatten_bottom` | 활성화하면 모델의 바닥을 평평하게 만듭니다(기본값: False). | BOOLEAN | 아니요 | True or False |
-| `flatten_bottom_threshold` | `flatten_bottom`과 함께 사용되는 평탄화 깊이입니다(기본값: 0.01). 이 값은 `flatten_bottom`이 활성화된 경우에만 적용됩니다. | FLOAT | 아니요 | 0.01 to 1.0 |
+| `flatten_bottom_threshold` | `flatten_bottom`과 함께 사용되는 평탄화 깊이입니다(기본값: 0.01). 이 값은 `flatten_bottom`이 활성화된 경우에만 적용됩니다. | FLOAT | 아니요 | 0.01 ~ 1.0 |
 | `pivot_to_center_bottom` | 활성화하면 피벗 지점을 모델의 중앙 하단으로 이동합니다(기본값: False). | BOOLEAN | 아니요 | True or False |
 | `scale_factor` | 변환된 모델에 적용되는 배율입니다(기본값: 1.0). | FLOAT | 아니요 | 0.01 and above |
 | `with_animation` | 리깅 또는 리타게팅된 모델의 스켈레톤과 애니메이션을 유지합니다(기본값: True). | BOOLEAN | 아니요 | True or False |

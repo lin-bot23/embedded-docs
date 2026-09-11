@@ -9,12 +9,12 @@
 | `原始模型任務ID` | 要轉換的 Tripo 模型任務 ID。它必須來自先前的 Tripo 模型生成、骨骼綁定、動作重定向或分割任務。如果 ID 缺少或為空，節點會引發錯誤。 | STRING | 是 | MODEL_TASK_ID<br>RIG_TASK_ID<br>RETARGET_TASK_ID<br>SEGMENT_TASK_ID |
 | `格式` | 轉換後 3D 模型的目標檔案格式。 | COMBO | 是 | GLTF<br>USDZ<br>FBX<br>OBJ<br>STL<br>3MF |
 | `四邊形` | 啟用時將三角形轉換為四邊形（預設：False）。 | BOOLEAN | 否 | True or False |
-| `面數限制` | 轉換後模型的最大面數。設為 -1 表示無限制（預設：-1）。 | INT | 否 | -1 to 2000000 |
-| `紋理尺寸` | 輸出紋理的解析度（像素）（預設：4096）。 | INT | 否 | 128 to 8192 |
+| `面數限制` | 轉換後模型的最大面數。設為 -1 表示無限制（預設：-1）。 | INT | 否 | -1 至 2000000 |
+| `紋理尺寸` | 輸出紋理的解析度（像素）（預設：4096）。 | INT | 否 | 128 至 8192 |
 | `紋理格式` | 匯出紋理所使用的檔案格式（預設：JPEG）。 | COMBO | 否 | BMP<br>DPX<br>HDR<br>JPEG<br>OPEN_EXR<br>PNG<br>TARGA<br>TIFF<br>WEBP |
 | `強制對稱` | 啟用時強制模型對稱（預設：False）。 | BOOLEAN | 否 | True or False |
 | `底部平整化` | 啟用時壓平模型底部（預設：False）。 | BOOLEAN | 否 | True or False |
-| `平整化閾值` | 與 `flatten_bottom` 搭配使用的壓平深度（預設：0.01）。此值僅在啟用 `flatten_bottom` 時套用。 | FLOAT | 否 | 0.01 to 1.0 |
+| `平整化閾值` | 與 `flatten_bottom` 搭配使用的壓平深度（預設：0.01）。此值僅在啟用 `flatten_bottom` 時套用。 | FLOAT | 否 | 0.01 至 1.0 |
 | `樞軸移至底部中心` | 啟用時將樞軸點移到模型底部中心（預設：False）。 | BOOLEAN | 否 | True or False |
 | `縮放係數` | 套用於轉換後模型的縮放係數（預設：1.0）。 | FLOAT | 否 | 0.01 and above |
 | `包含動畫` | 保留已綁定骨骼或已重定向模型的骨架與動畫（預設：True）。 | BOOLEAN | 否 | True or False |

@@ -13,8 +13,8 @@ Tripo P1: Image to Model 使用 Tripo P1 API 将单张 2D 图像转换为 3D 模
 | `输出模式` | 选择结果类型。`"Geometry only"` 返回未贴图的网格；`"Textured"` 会添加颜色/PBR 贴图，并显示额外的纹理设置。 | DYNAMIC_COMBO | 是 | `"Geometry only"`<br>`"Textured"` |
 | `图像` | 用于生成 3D 模型的源 2D 图像。必须提供单张图像；如果未提供，节点会报错。 | IMAGE | 是 | - |
 | `启用图像自动修复` | 预处理输入图像，以获得更好的生成质量。（默认：False） | BOOLEAN | 否 | True<br>False |
-| `面数限制` | 目标面数，48-20000。-1 表示让 Tripo 自适应选择。（默认：-1） | INT | 否 | -1 to 20000 |
-| `模型种子` | 用于几何生成的种子，以便复现结果。（默认：42） | INT | 否 | 0 to 2147483647 |
+| `面数限制` | 目标面数，48-20000。-1 表示让 Tripo 自适应选择。（默认：-1） | INT | 否 | -1 到 20000 |
+| `模型种子` | 用于几何生成的种子，以便复现结果。（默认：42） | INT | 否 | 0 到 2147483647 |
 | `自动缩放` | 将输出缩放到接近真实世界的米制尺寸。（默认：False） | BOOLEAN | 否 | True<br>False |
 | `导出 UV` | 生成期间进行 UV 展开。关闭可加快仅几何体生成速度。（默认：True） | BOOLEAN | 否 | True<br>False |
 | `压缩几何体` | 应用 meshopt 几何压缩（EXT_meshopt_compression）。文件更小，但 ComfyUI 的 3D 预览无法显示它们；编辑前请先解压。（默认：False） | BOOLEAN | 否 | True<br>False |
@@ -33,7 +33,7 @@ Tripo P1: Image to Model 使用 Tripo P1 API 将单张 2D 图像转换为 3D 模
 | `texture_quality` | `detailed` = HD 纹理，`extreme` = 8K Ultra 纹理。（默认：`"standard"`） | COMBO | 是 | `"standard"`<br>`"detailed"`<br>`"extreme"` |
 | `texture_alignment` | 优先考虑对源图像的视觉保真度，或与网格几何体对齐。（默认：`"original_image"`） | COMBO | 是 | `"original_image"`<br>`"geometry"` |
 | `orientation` | 旋转输出以匹配源图像。仅适用于带纹理模式。（默认：`"default"`） | COMBO | 是 | `"default"`<br>`"align_image"` |
-| `texture_seed` | 用于纹理生成的种子，以便复现带纹理结果。（默认：42） | INT | 是 | 0 to 2147483647 |
+| `texture_seed` | 用于纹理生成的种子，以便复现带纹理结果。（默认：42） | INT | 是 | 0 到 2147483647 |
 
 注意：当 `output_mode` 为 `"Geometry only"` 时，请求中会禁用纹理生成。在 `"Textured"` 模式下，始终会请求颜色纹理；禁用 `pbr` 会移除 PBR 贴图，但保留基础颜色纹理；而启用 `pbr` 会同时强制开启基础纹理。`texture_alignment` 和 `orientation` 仅在 `"Textured"` 模式下可用。
 

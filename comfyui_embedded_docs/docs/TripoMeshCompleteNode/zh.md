@@ -6,7 +6,7 @@
 
 | 参数 | 描述 | 数据类型 | 必填 | 范围 |
 |-----------|-------------|-----------|----------|-------|
-| `segment_task_id` | Tripo 网格分割任务的任务 ID。该任务所得分割模型的各个部件将被补全。请连接前一个 Tripo 网格分割节点的 SEGMENT_TASK_ID 输出。 | SEGMENT_TASK_ID | Yes | Single task ID |
+| `segment_task_id` | Tripo 网格分割任务的任务 ID。该任务所得分割模型的各个部件将被补全。请连接前一个 Tripo 网格分割节点的 SEGMENT_TASK_ID 输出。 | SEGMENT_TASK_ID | 是 | Single task ID |
 | `part_names` | 要补全的部件名称，以逗号分隔。留空则补全所有部件。默认值：空字符串。名称周围的多余空格会被移除，重复的名称会被忽略。 | STRING | No | Free text or empty |
 
 ## 输出

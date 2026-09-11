@@ -7,7 +7,7 @@ Tripo: Retopology 會接收由先前的 Tripo 節點所生成的高多邊形 3D 
 | 參數 | 說明 | 資料類型 | 必填 | 範圍 |
 |-----------|-------------|-----------|----------|-------|
 | `model_task_id` | 來源高多邊形模型的任務 ID。可接受來自 Tripo 生成節點的模型任務 ID，或來自 Tripo: Segment Model 的分割任務 ID。 | STRING | 是 | Tripo task ID |
-| `face_limit` | 目標面數：500-20,000 個三角形或 500-10,000 個四邊形。-1 讓 Tripo 自行選擇。（預設值：-1） | INT | 是 | -1 (automatic)<br>500 to 20,000 (triangles)<br>500 to 10,000 (quads) |
+| `face_limit` | 目標面數：500-20,000 個三角形或 500-10,000 個四邊形。-1 讓 Tripo 自行選擇。（預設值：-1） | INT | 是 | -1 (automatic)<br>500 至 20,000 (triangles)<br>500 至 10,000 (quads) |
 | `quad` | 四邊形網格輸出。Tripo 會以 FBX 格式交付四邊形網格，因此結果會出現在 FBX 輸出，而 GLB 輸出會保持空白。（預設值：False） | BOOLEAN | 是 | True<br>False (default) |
 | `bake` | 將來源紋理烘焙到低多邊形網格上。（預設值：True） | BOOLEAN | 否 | True (default)<br>False |
 | `part_names` | 來自 Tripo: Segment Model 的以逗號分隔的部件名稱。若為空，則處理整個模型。（預設值：""） | STRING | 否 | Model part names or empty |

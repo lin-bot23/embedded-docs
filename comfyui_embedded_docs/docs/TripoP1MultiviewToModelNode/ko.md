@@ -13,8 +13,8 @@
 | `image_back` | 후면 뷰(180°)입니다. | IMAGE | 아니요 | - |
 | `image_right` | 오른쪽 뷰(270°), 즉 대상의 오른쪽 면입니다. | IMAGE | 아니요 | - |
 | `output_mode` | 생성할 모델 유형을 선택합니다. "Geometry only"는 텍스처가 없는 메시를 반환합니다. "Textured"는 색상/PBR 맵을 추가합니다. | DYNAMIC_COMBO | 예 | "Geometry only"<br>"Textured" |
-| `face_limit` | 목표 면 수입니다. 48-20000 범위입니다. -1이면 Tripo가 적응형으로 선택합니다. (기본값: -1) | INT | 아니요 | -1 to 20000 |
-| `model_seed` | 재현 가능한 모델 생성을 위한 시드입니다. (기본값: 42) | INT | 아니요 | 0 to 2147483647 |
+| `face_limit` | 목표 면 수입니다. 48-20000 범위입니다. -1이면 Tripo가 적응형으로 선택합니다. (기본값: -1) | INT | 아니요 | -1 ~ 20000 |
+| `model_seed` | 재현 가능한 모델 생성을 위한 시드입니다. (기본값: 42) | INT | 아니요 | 0 ~ 2147483647 |
 | `auto_size` | 출력을 실제 미터 단위에 근사하도록 크기를 조정합니다. (기본값: False) | BOOLEAN | 아니요 | True<br>False |
 | `export_uv` | 생성 중 UV 언랩을 수행합니다. 지오메트리 전용 실행을 더 빠르게 하려면 끄십시오. (기본값: True) | BOOLEAN | 아니요 | True<br>False |
 | `compress_geometry` | meshopt 지오메트리 압축(EXT_meshopt_compression)을 적용합니다. 파일 크기는 작아지지만 ComfyUI의 3D 미리보기에서는 표시할 수 없으므로, 편집하기 전에 압축을 해제하십시오. (기본값: False) | BOOLEAN | 아니요 | True<br>False |
@@ -33,7 +33,7 @@
 | `texture_quality` | 텍스처 품질 수준입니다. `detailed` = HD 텍스처, `extreme` = 8K Ultra 텍스처입니다. (기본값: "standard") | COMBO | 예 | "standard"<br>"detailed"<br>"extreme" |
 | `texture_alignment` | 원본 이미지에 대한 시각적 충실도 또는 메시 지오메트리에 대한 정렬을 우선시합니다. (기본값: "original_image") | COMBO | 예 | "original_image"<br>"geometry" |
 | `orientation` | 출력을 원본 이미지에 맞게 회전합니다. 텍스처가 있는 경우에만 적용됩니다. (기본값: "default") | COMBO | 예 | "default"<br>"align_image" |
-| `texture_seed` | 텍스처 생성에 사용되는 시드입니다. (기본값: 42) | INT | 예 | 0 to 2147483647 |
+| `texture_seed` | 텍스처 생성에 사용되는 시드입니다. (기본값: 42) | INT | 예 | 0 ~ 2147483647 |
 
 **참고:** 최소 2개의 이미지를 제공해야 합니다. 정면 뷰(`image`)와 다른 뷰(`image_left`, `image_back` 또는 `image_right`) 중 최소 하나를 함께 제공하십시오. 이미지가 2개 미만으로 제공되면 노드에서 오류가 발생합니다.
 

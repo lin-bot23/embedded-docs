@@ -13,8 +13,8 @@ Este nodo genera un modelo 3D a partir de dos a cuatro imágenes de referencia d
 | `imagen_trasera` | Vista trasera (180°). | IMAGE | No | - |
 | `imagen_derecha` | Vista derecha (270°), es decir, el lado derecho del sujeto. | IMAGE | No | - |
 | `modo_de_salida` | Elija el tipo de modelo a generar. "Geometry only" devuelve una malla sin textura. "Textured" agrega mapas de color/PBR. | DYNAMIC_COMBO | Sí | "Geometry only"<br>"Textured" |
-| `límite_de_caras` | Cantidad objetivo de caras, 48-20000. -1 permite que Tripo elija de forma adaptativa. (predeterminado: -1) | INT | No | -1 to 20000 |
-| `semilla_modelo` | Semilla para la generación reproducible del modelo. (predeterminado: 42) | INT | No | 0 to 2147483647 |
+| `límite_de_caras` | Cantidad objetivo de caras, 48-20000. -1 permite que Tripo elija de forma adaptativa. (predeterminado: -1) | INT | No | -1 a 20000 |
+| `semilla_modelo` | Semilla para la generación reproducible del modelo. (predeterminado: 42) | INT | No | 0 a 2147483647 |
 | `auto_escala` | Escala la salida para aproximar metros del mundo real. (predeterminado: False) | BOOLEAN | No | True<br>False |
 | `exportar_uv` | Desenvuelve UV durante la generación. Desactívelo para ejecuciones más rápidas de solo geometría. (predeterminado: True) | BOOLEAN | No | True<br>False |
 | `comprimir_geometría` | Aplica compresión de geometría meshopt (EXT_meshopt_compression). Archivos más pequeños, pero la vista previa 3D de ComfyUI no puede mostrarlos; descomprima antes de editar. (predeterminado: False) | BOOLEAN | No | True<br>False |
@@ -33,7 +33,7 @@ Estas entradas aparecen cuando `output_mode` se establece en `"Textured"`.
 | `texture_quality` | Nivel de calidad de textura. `detailed` = texturas HD, `extreme` = texturas Ultra 8K. (predeterminado: "standard") | COMBO | Sí | "standard"<br>"detailed"<br>"extreme" |
 | `texture_alignment` | Prioriza la fidelidad visual a la imagen de origen, o la alineación con la geometría de la malla. (predeterminado: "original_image") | COMBO | Sí | "original_image"<br>"geometry" |
 | `orientation` | Rota la salida para que coincida con la imagen de origen. Solo se aplica cuando está texturizado. (predeterminado: "default") | COMBO | Sí | "default"<br>"align_image" |
-| `texture_seed` | Semilla utilizada para la generación de texturas. (predeterminado: 42) | INT | Sí | 0 to 2147483647 |
+| `texture_seed` | Semilla utilizada para la generación de texturas. (predeterminado: 42) | INT | Sí | 0 a 2147483647 |
 
 **Nota:** Debe proporcionar al menos 2 imágenes: la vista frontal (`image`) más al menos una de las otras vistas (`image_left`, `image_back` o `image_right`). Si se proporcionan menos de 2 imágenes, el nodo arrojará un error.
 
