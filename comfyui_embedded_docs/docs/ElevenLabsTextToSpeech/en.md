@@ -1,6 +1,6 @@
 # ElevenLabs Text to Speech
 
-The ElevenLabs Text to Speech node converts written text into spoken audio using the ElevenLabs API. It allows you to select a specific voice and fine-tune various speech characteristics like stability, speed, and style to generate a customized audio output.
+The ElevenLabs Text to Speech node converts written text into spoken audio using the ElevenLabs API. It allows you to select a specific voice and fine-tune various speech characteristics like stability, speed, and style to generate a customized audio output. The text must contain at least one character.
 
 ## Inputs
 

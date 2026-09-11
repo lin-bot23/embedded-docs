@@ -1,4 +1,4 @@
-# BriaGenFill
+# Bria Generative Fill
 
 This node generates objects or scenery inside a masked region of an image using the Bria API. It uploads the image and mask, sends the prompt to the Bria generative fill service, waits for the operation to complete, and returns the edited image. This is a paid API operation (US$0.0429 per request).
 

@@ -1,51 +1,56 @@
-# Block Sparse Attention
+# Model Sparse Attention
 
-## Overview
-
-The Block Sparse Attention node modifies a ComfyUI model to apply a block-sparse attention mechanism. This mechanism reduces the computational load by allowing each query block to focus on a subset of key blocks, rather than attending to all possible blocks, which is particularly beneficial for long sequences.
+The **Block Sparse Attention** node modifies a model so its attention layers focus on only the most relevant parts of the input instead of everything at once, which reduces the computing work needed for long sequences. The savings grow with sequence length, since short sequences are usually faster with normal (dense) attention.
 
 ## Inputs
 
+### Common Inputs
+
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `model` | The ComfyUI model to apply the block-sparse attention to. | MODEL | Yes | N/A |
-| `selection` | The method used to determine which key blocks to attend to. | DYNAMIC_COMBO | Yes | Options: sol-attn (adaptive tau), sla (top-k), vsa (Video Sparse Attention) |
-| `tau` | The threshold in score-distribution sigmas for the sol-attn method. | FLOAT | No | default: 1.3, min: 0.0, max: 4.0, step: 0.05 |
-| `keep_percent` | The percentage of key blocks each query block keeps exactly for the sla method. | FLOAT | No | default: 10.0, min: 0.5, max: 95.0, step: 0.5 |
-| `start_percent` | The percentage point when sparse attention begins. | FLOAT | No | default: 0.2, min: 0.0, max: 1.0, step: 0.01 |
-| `end_percent` | The percentage point when sparse attention ends. | FLOAT | No | default: 1.0, min: 0.0, max: 1.0, step: 0.01 |
-| `dense_blocks` | A string representing the transformer blocks that always run dense attention. | STRING | No | default: "" |
-| `min_tokens` | The minimum number of tokens in a sequence for which the model uses dense attention. | INT | No | default: 12288, min: 0, max: 1 << 20, step: 512 |
-| `extra_tokens` | The number of extra top-scoring tokens each query block attends beyond its selected blocks. | INT | No | default: 256, min: 0, max: 256, step: 64 |
-| `sink_conditioning` | The MiniMax-H3 conditioning rows to use for sink conditioning. | COMBO | No | Options: exact_kv, exact_kv_and_rows, off |
-| `verbose` | Enables verbose logging. | BOOLEAN | No | default: False |
+| `model` | The model to patch. | MODEL | Yes | N/A |
+| `selection` | Method used to choose key blocks for full token-level attention (displayed as `method`). <br>`sol-attn`: Sparsifying Online Attention uses a training-free adaptive threshold for each attention head and query block.<br>`sla`: Sparse-Linear Attention keeps a fixed percentage of the highest-scoring key blocks; use only with model weights trained for this pattern.<br>`vsa`: Video Sparse Attention (FastVideo) uses 3D video-cube tiling and a learned coarse attention branch; requires FastH3 model weights. | DYNAMIC_COMBO | Yes | `"sol-attn"`<br>`"sla"`<br>`"vsa"` |
+| `start_percent` | Percentage point when sparse attention begins. Before this point, attention stays dense. Default: 0.2. | FLOAT | No | min: 0.0, max: 1.0, step: 0.01 |
+| `end_percent` | Percentage point when sparse attention ends. After this point, attention returns to dense. Default: 1.0. | FLOAT | No | min: 0.0, max: 1.0, step: 0.01 |
+| `dense_blocks` | Transformer blocks that always run dense, e.g. '0, 1, 47-49'. Default: "" (empty). Advanced input. | STRING | No | Default: "" |
+| `min_tokens` | Sequences shorter than this stay dense. Default: 12288. Advanced input. | INT | No | min: 0, max: 1048576, step: 512 |
+| `extra_tokens` | Extra top-scoring tokens each query block attends beyond its selected blocks. Closer to dense for more attention time; 256 recommended, 0 disables. Ignored for VSA. Default: 256. Advanced input. | INT | No | min: 0, max: 256, step: 64 |
+| `sink_conditioning` | MiniMax-H3 only. `exact_kv`: every query attends the packed text/audio/reference rows exactly (about 3% cost). `exact_kv_and_rows`: additionally runs the target-audio query rows dense (keeps generated audio intact). `off` disables this behavior. Default: "exact_kv_and_rows". Advanced input. | COMBO | No | `"exact_kv"`<br>`"exact_kv_and_rows"`<br>`"off"` |
+| `verbose` | Logs whether each attention shape used sparse attention or why it stayed dense. Default: False. Advanced input. | BOOLEAN | No | Default: False |
 
-### Notes
+### sol-attn Inputs
 
-- The `selection` parameter allows you to choose between different methods for selecting key blocks:
-  - `sol-attn`: Uses an adaptive threshold to select key blocks based on the score distribution.
-  - `sla`: Keeps a fixed percentage of the highest-scoring key blocks.
-  - `vsa`: Applies Video Sparse Attention, which uses 3D video-cube tiling and a learned coarse attention branch.
-- The `dense_blocks` parameter can be used to specify transformer blocks that should always use dense attention.
-- The `min_tokens` parameter sets the minimum number of tokens in a sequence for which dense attention is used.
-- The `extra_tokens` parameter allows you to specify the number of additional top-scoring tokens that each query block should attend to.
-- The `sink_conditioning` parameter is relevant only for MiniMax-H3 models and determines how the conditioning rows are handled.
-- The `verbose` parameter enables detailed logging, which can be useful for debugging.
+| Parameter | Description | Data Type | Required | Range |
+|-----------|-------------|-----------|----------|-------|
+| `tau` | Threshold in score-distribution sigmas. Higher is sparser: 1.0 keeps about 16% of key blocks exact, 1.5 about 7%, 2.0 about 2.7%. Default: 1.3. | FLOAT | No | min: 0.0, max: 4.0, step: 0.05 |
+
+### sla Inputs
+
+| Parameter | Description | Data Type | Required | Range |
+|-----------|-------------|-----------|----------|-------|
+| `keep_percent` | Percent of key blocks each query block keeps exactly (sinks and the diagonal ride on top). The selection SLA-style LoRAs are distilled against; without such a LoRA higher is closer to dense. Default: 10.0. | FLOAT | No | min: 0.5, max: 95.0, step: 0.5 |
+
+### vsa Inputs
+
+| Parameter | Description | Data Type | Required | Range |
+|-----------|-------------|-----------|----------|-------|
+| `keep_percent` | Percent of video cubes each query cube keeps; FastH3-VSA checkpoints are trained at 10. Uses the model's `to_gate_compress` layers for the coarse branch when present. Default: 10.0. | FLOAT | No | min: 0.5, max: 95.0, step: 0.5 |
+
+**Note:** Only the parameters belonging to the currently selected method are shown in the interface.
 
 ## Outputs
 
 | Output Name | Description | Data Type |
 |-------------|-------------|-----------|
-| `model` | The ComfyUI model with block-sparse attention applied. | MODEL |
+| `model` | The model with block-sparse attention applied. | MODEL |
 
-### Constraints and Limitations
+## Constraints and Limitations
 
-- The `sol-attn` method requires a `tau` value between 0.0 and 4.0.
-- The `sla` method requires a `keep_percent` value between 0.5 and 95.0.
-- The `vsa` method is only compatible with MiniMax-H3 models and requires the model to have a `to_gate_compress` layer.
-- The `min_tokens` parameter must be a non-negative integer (setting it to 0 keeps attention fully dense).
-- The `extra_tokens` parameter must be a non-negative integer.
-- The `sink_conditioning` options are only applicable to MiniMax-H3 models.
+- Sequences shorter than `min_tokens`, blocks listed in `dense_blocks`, and sampling steps outside the `start_percent` to `end_percent` window fall back to the dense model attention backend selected by the Model Attention Backend node.
+- `extra_tokens` is ignored when the `vsa` method is selected. A message is logged because VSA weights were trained against their sparse pattern.
+- The `vsa` method requires a MiniMax-H3 model; any other model raises an error. If the model lacks `to_gate_compress` layers, the fine stage runs without the coarse branch and a warning is logged.
+- `dense_blocks` is ignored for models that do not report block indices, which is noted in the log when `verbose` is enabled.
+- `sink_conditioning` applies only to MiniMax-H3 models that report a layout matching the current sequence length.
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/BlockSparseAttention/en.md)
 

@@ -1,6 +1,6 @@
 # Tripo P1: Imagen a Modelo
 
-Tripo P1: Image to Model convierte una única imagen 2D en un modelo 3D mediante la API de Tripo P1. Está optimizado para generar mallas de baja poligonización listas para juegos y permite elegir entre una malla solo de geometría o un modelo texturizado con mapas PBR. El modelo final se devuelve como un archivo GLB.
+Tripo P1: Image to Model convierte una única imagen 2D en un modelo 3D mediante la API de Tripo P1. Está optimizado para generar mallas de bajo poligonaje listas para juegos y te permite elegir entre una malla solo de geometría o un modelo texturizado con mapas PBR. El modelo final se devuelve como un archivo GLB.
 
 ## Entradas
 
@@ -10,38 +10,42 @@ Estos parámetros están siempre disponibles.
 
 | Parámetro | Descripción | Tipo de datos | Obligatorio | Rango |
 |-----------|-------------|---------------|-------------|-------|
-| `modo_de_salida` | Selecciona el tipo de resultado. "Geometry only" devuelve una malla sin texturizar; "Textured" añade color y mapas PBR y muestra ajustes adicionales de textura. | DYNAMIC_COMBO | Sí | `"Geometry only"`<br>`"Textured"` |
-| `imagen` | La imagen 2D de origen utilizada para generar el modelo 3D. El nodo requiere una sola imagen y devuelve un error si no se proporciona ninguna. | IMAGE | Sí | - |
-| `activar_autocorrección_imagen` | Preprocesa la imagen de entrada para mejorar la calidad de generación. (por defecto: False) | BOOLEAN | No | True<br>False |
-| `límite_de_caras` | Número de caras objetivo, entre 48 y 20000. -1 permite que Tripo lo seleccione de forma adaptativa. (por defecto: -1) | INT | No | -1 a 20000 |
-| `semilla_modelo` | Semilla utilizada para la generación de geometría, de modo que los resultados puedan reproducirse. (por defecto: 42) | INT | No | 0 a 2147483647 |
-| `auto_escala` | Escala la salida para que se aproxime a los metros del mundo real. (por defecto: False) | BOOLEAN | No | True<br>False |
-| `exportar_uv` | Despliegue UV durante la generación. Se puede desactivar para acelerar las ejecuciones solo de geometría. (por defecto: True) | BOOLEAN | No | True<br>False |
-| `comprimir_geometría` | Aplica compresión de geometría meshopt (EXT_meshopt_compression). Genera archivos más pequeños, pero la vista previa 3D de ComfyUI no puede mostrarlos; deben descomprimirse antes de editarlos. (por defecto: False) | BOOLEAN | No | True<br>False |
+| `modo_de_salida` | Elige el tipo de resultado. "Geometry only" devuelve una malla sin textura; "Textured" agrega mapas de color/PBR y muestra ajustes de textura adicionales. | DYNAMIC_COMBO | Sí | `"Geometry only"`<br>`"Textured"` |
+| `imagen` | La imagen 2D de origen que se utiliza para generar el modelo 3D. Se requiere una única imagen; el nodo genera un error si no se proporciona ninguna. | IMAGE | Sí | - |
+| `activar_autocorrección_imagen` | Preprocesa la imagen de entrada para obtener una mejor calidad de generación. (predeterminado: False) | BOOLEAN | No | True<br>False |
+| `límite_de_caras` | Recuento objetivo de caras, 48-20000. -1 permite que Tripo elija de forma adaptativa. (predeterminado: -1) | INT | No | -1 a 20000 |
+| `semilla_modelo` | Semilla utilizada para la generación de geometría, de modo que los resultados puedan reproducirse. (predeterminado: 42) | INT | No | 0 a 2147483647 |
+| `auto_escala` | Escala la salida para aproximarla a metros del mundo real. (predeterminado: False) | BOOLEAN | No | True<br>False |
+| `exportar_uv` | Realiza el desplegado UV durante la generación. Desactívalo para ejecuciones más rápidas de solo geometría. (predeterminado: True) | BOOLEAN | No | True<br>False |
+| `comprimir_geometría` | Aplica compresión de geometría meshopt (EXT_meshopt_compression). Archivos más pequeños, pero la vista previa 3D de ComfyUI no puede mostrarlos; descomprímelos antes de editar. (predeterminado: False) | BOOLEAN | No | True<br>False |
 
-### Entradas de textura
+### Entradas de solo geometría
 
-Estos parámetros aparecen cuando `output_mode` está configurado como "Textured". El modo "Geometry only" no tiene parámetros adicionales.
+No hay parámetros adicionales. La salida es una malla sin textura.
+
+### Entradas de texturizado
+
+Estos parámetros aparecen cuando `output_mode` se establece en "Textured".
 
 | Parámetro | Descripción | Tipo de datos | Obligatorio | Rango |
 |-----------|-------------|---------------|-------------|-------|
-| `pbr` | Incluye mapas PBR. Cuando está activado, la textura base también se incluye forzosamente. (por defecto: True) | BOOLEAN | No | True<br>False |
-| `texture_quality` | Nivel de resolución de textura. "detailed" = texturas HD, "extreme" = texturas 8K Ultra. (por defecto: "standard") | COMBO | No | `"standard"`<br>`"detailed"`<br>`"extreme"` |
-| `texture_alignment` | Prioriza la fidelidad visual respecto a la imagen de origen o la alineación con la geometría de la malla. (por defecto: "original_image") | COMBO | No | `"original_image"`<br>`"geometry"` |
-| `orientation` | Rota la salida para que coincida con la imagen de origen. Solo se aplica cuando el resultado lleva textura. (por defecto: "default") | COMBO | No | `"default"`<br>`"align_image"` |
-| `texture_seed` | Semilla utilizada para la generación de texturas, de modo que los resultados texturizados puedan reproducirse. (por defecto: 42) | INT | No | 0 a 2147483647 |
+| `pbr` | Incluye mapas PBR. Cuando está activado, la textura base también se fuerza a activarse. (predeterminado: True) | BOOLEAN | Sí | True<br>False |
+| `texture_quality` | detailed = texturas HD, extreme = texturas Ultra 8K. (predeterminado: "standard") | COMBO | Sí | `"standard"`<br>`"detailed"`<br>`"extreme"` |
+| `texture_alignment` | Prioriza la fidelidad visual a la imagen de origen o la alineación con la geometría de la malla. (predeterminado: "original_image") | COMBO | Sí | `"original_image"`<br>`"geometry"` |
+| `orientation` | Rota la salida para que coincida con la imagen de origen. Solo se aplica cuando está texturizado. (predeterminado: "default") | COMBO | Sí | `"default"`<br>`"align_image"` |
+| `texture_seed` | Semilla utilizada para la generación de texturas, de modo que los resultados texturizados puedan reproducirse. (predeterminado: 42) | INT | Sí | 0 a 2147483647 |
 
-Nota: cuando `output_mode` es "Geometry only", la texturización está deshabilitada para la solicitud. En el modo "Textured", siempre se solicita una textura de color; desactivar `pbr` elimina los mapas PBR pero conserva la textura de color base, mientras que activar `pbr` fuerza también la textura base.
+Nota: Cuando `output_mode` es "Geometry only", el texturizado se desactiva para la solicitud. En el modo "Textured", siempre se solicita una textura de color; desactivar `pbr` elimina los mapas PBR pero mantiene la textura de color base, mientras que activar `pbr` también fuerza la activación de la textura base. `texture_alignment` y `orientation` solo están disponibles en el modo "Textured".
 
 ## Salidas
 
 | Nombre de salida | Descripción | Tipo de datos |
 |------------------|-------------|---------------|
-| `archivo_modelo` | El resultado del modelo 3D generado. Se mantiene únicamente por compatibilidad con versiones anteriores. | STRING |
+| `archivo_modelo` | Una cadena que contiene el nombre del archivo de modelo generado (`<task_id>.glb`). Se conserva solo por compatibilidad con versiones anteriores. | STRING |
 | `id_tarea_modelo` | El ID de tarea único devuelto por la API de Tripo para el trabajo de generación completado. | MODEL_TASK_ID |
 | `GLB` | El modelo 3D generado en formato GLB. | FILE3DGLB |
 
 > Esta documentación fue generada por IA. Si encuentra algún error o tiene sugerencias de mejora, ¡no dude en contribuir! [Editar en GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1ImageToModelNode/es.md)
 
 ---
-**Source fingerprint (SHA-256):** `db5dc76518a4efcd28d388dc00ad0810f619481482f20fa456c4ff2478192aa3`
+**Source fingerprint (SHA-256):** `1369da2ef732556896bce3415e7b99023f310544b8077ea4c6b1730bec59ee99`

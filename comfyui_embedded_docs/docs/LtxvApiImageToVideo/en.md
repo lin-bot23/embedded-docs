@@ -1,4 +1,4 @@
-# LTXV Image To Video
+# LtxvApiImageToVideo
 
 The LTXV Image To Video node generates a professional-quality video from a single starting image. It uses an external API to create a video sequence based on your text prompt, allowing you to customize the duration, resolution, and frame rate.
 
@@ -20,7 +20,7 @@ The LTXV Image To Video node generates a professional-quality video from a singl
 * The `prompt` must be between 1 and 10,000 characters long.
 * If you select a `duration` longer than 10 seconds, you must use the **"LTX-2 (Fast)"** model, a **"1920x1080"** resolution, and **25** FPS. This combination is required for longer videos.
 
-**Note:** This node is marked as deprecated.
+**Note:** This node is marked as deprecated. The estimated cost displayed on the node depends on the selected `model`, `duration`, and `resolution`.
 
 ## Outputs
 

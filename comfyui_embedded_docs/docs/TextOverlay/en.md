@@ -1,6 +1,6 @@
 # Draw Text Overlay
 
-This node draws text on top of an image or a batch of images. It builds a text overlay with a configurable font size, color, vertical position, horizontal alignment, and optional black outline, then composites the overlay onto the original images.
+This node draws text on top of an image or a batch of images. It creates a text overlay using a configurable font size, color, vertical position, horizontal alignment, and optional black outline, then combines the overlay with the original image pixels.
 
 ## Inputs
 
@@ -9,12 +9,12 @@ This node draws text on top of an image or a batch of images. It builds a text o
 | `images` | The input image or batch of images to draw text on | IMAGE | Yes | |
 | `text` | The text to overlay on the image (default: ""). Supports multiple lines: the `\n` and `\t` escape sequences are converted to newlines and tabs, and long lines are automatically wrapped to fit within the image width. | STRING | Yes | |
 | `font_size` | Font size as a percentage of the image height (default: 5.0) | FLOAT | Yes | 0.5 to 50.0 (step 0.5) |
-| `color` | Color of the text (default: "#ffffff") | STRING | Yes | |
+| `color` | Color of the text (default: "#ffffff") | COLOR | Yes | |
 | `position` | Vertical position of the text on the image (default: "top") | COMBO | Yes | "top"<br>"bottom" |
 | `align` | Horizontal alignment of the text (default: "left") | COMBO | Yes | "left"<br>"center"<br>"right" |
 | `outline` | Draw a black outline around the text (default: True) | BOOLEAN | Yes | |
 
-Note: If `text` is empty or contains only whitespace, the node returns the input images unchanged. The text overlay is rendered once and applied to every image in the batch.
+Note: If `text` is empty or contains only whitespace, the node returns the input images unchanged. The text overlay is rendered once and applied to every image in the batch. If the rendered text block is taller than the available image area, the font size is reduced automatically until it fits or reaches a minimum size.
 
 ## Outputs
 

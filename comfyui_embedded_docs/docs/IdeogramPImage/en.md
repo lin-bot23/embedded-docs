@@ -1,4 +1,4 @@
-# Ideogram P-Image
+# Ideogram & Pruna P-Image
 
 Ideogram & Pruna P-Image generates images from a text prompt using Ideogram's fast text-to-image model, which is known for strong typography and photorealism. It also supports Ideogram 4.0 structured JSON captions for exact control over text strings, colors, and layout. The node returns the generated image(s) along with the final prompt the image was actually generated from.
 

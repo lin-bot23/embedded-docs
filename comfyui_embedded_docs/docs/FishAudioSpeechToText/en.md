@@ -1,4 +1,4 @@
-# FishAudioSpeechToText
+# Fish Audio Speech to Text
 
 This node transcribes audio into text using the Fish Audio speech-to-text service. It automatically detects the language of the audio and can optionally return word-level timestamped segments as JSON.
 

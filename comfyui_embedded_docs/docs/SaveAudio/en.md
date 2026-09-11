@@ -1,6 +1,6 @@
 # Save Audio (FLAC) (DEPRECATED)
 
-This node saves audio data to a file in FLAC format. It takes an audio input and writes it to the output directory using the specified filename prefix. This node is deprecated and should be replaced with the current Save Audio node.
+This node saves audio data to a file in FLAC format. It takes an audio input and writes it to the output directory using the specified filename prefix, and also passes the audio through to its output. This node is deprecated and should be replaced with the current Save Audio node.
 
 ## Inputs
 

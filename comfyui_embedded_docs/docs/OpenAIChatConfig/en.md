@@ -1,6 +1,6 @@
 # OpenAI ChatGPT Advanced Options
 
-The OpenAIChatConfig node lets you define advanced options that control how the OpenAI Chat Node generates responses. You can set the truncation strategy, limit the number of output tokens, provide custom instructions, and choose how much the model should reason before answering.
+The OpenAIChatConfig node defines advanced options that control how the OpenAI Chat Node generates responses. It lets you set the truncation strategy, limit the number of output tokens, provide custom instructions, and choose how much reasoning effort the model should apply before answering.
 
 ## Inputs
 
@@ -17,7 +17,7 @@ Note: While `top_p` and `temperature` are listed as properties in the API specif
 
 | Output Name | Description | Data Type |
 |-------------|-------------|-----------|
-| `OPENAI_CHAT_CONFIG` | Configuration object containing the specified settings for use with OpenAI Chat Nodes | OPENAI_CHAT_CONFIG |
+| `OPENAI_CHAT_CONFIG` | Configuration object containing the specified advanced settings, for use with OpenAI Chat Nodes | OPENAI_CHAT_CONFIG |
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/OpenAIChatConfig/en.md)
 

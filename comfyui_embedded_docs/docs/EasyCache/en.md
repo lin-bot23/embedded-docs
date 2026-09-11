@@ -1,6 +1,6 @@
 # EasyCache
 
-The EasyCache node adds a native caching system to a diffusion model that speeds up sampling by reusing results from previously computed steps instead of recomputing every step. It activates only between a configurable start and end point of the sampling process, and skips steps when the estimated output change stays below a user-defined threshold. This is an experimental node intended for advanced debugging use.
+The EasyCache node adds a native caching system to a diffusion model that speeds up sampling by reusing results from previously computed steps instead of recomputing every step. It activates only between a configurable start and end point of the sampling process and skips steps when the estimated output change stays below a user-defined threshold. This is an experimental node intended for advanced debugging use.
 
 ## Inputs
 

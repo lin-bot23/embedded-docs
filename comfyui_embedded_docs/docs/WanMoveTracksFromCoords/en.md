@@ -1,6 +1,6 @@
 # WanMoveTracksFromCoords
 
-The WanMoveTracksFromCoords node creates motion tracks from a JSON-formatted string of coordinates. It converts the coordinate data into a tensor format that can be used by other video processing nodes, and can optionally apply a mask to control the visibility of tracks over time.
+The WanMoveTracksFromCoords node creates motion tracks from a JSON-formatted string of coordinates. It converts the coordinate data into a track format that can be used by other video processing nodes, and can optionally apply a mask to control the visibility of the tracks over time.
 
 ## Inputs
 

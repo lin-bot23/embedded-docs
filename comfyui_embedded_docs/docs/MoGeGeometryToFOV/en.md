@@ -1,4 +1,4 @@
-# MoGeGeometryToFOV
+# Get FoV from MoGe Geometry
 
 This node derives the field of view and focal length from the camera intrinsics stored in a MoGe geometry object. It can return the vertical, horizontal, or diagonal FOV, in degrees or radians. The vertical FOV output can be used, for example, to feed the SAM3DBody_Predict node.
 
@@ -6,11 +6,11 @@ This node derives the field of view and focal length from the camera intrinsics 
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `moge_geometry` | The MoGe geometry object. It must contain an intrinsics matrix and at least one of image, points, or depth data, which is used to read the pixel height for the focal-length conversion. | MOGE_GEOMETRY | Yes | — |
+| `moge_geometry` | The MoGe geometry object. It must contain an intrinsics matrix and at least one of `image`, `points`, or `depth` data, which is used to read the pixel height for the focal-length conversion. | MOGE_GEOMETRY | Yes | — |
 | `axis` | The axis along which the FOV is computed: "vertical" (fov_y), "horizontal" (fov_x), or "diagonal" (default: "vertical"). | COMBO | Yes | "vertical"<br>"horizontal"<br>"diagonal" |
 | `unit` | Output unit for the FOV (default: "degrees"). | COMBO | Yes | "degrees"<br>"radians" |
 
-Note: The node raises an error if `moge_geometry` contains no intrinsics (panorama geometry has none) or if it contains neither image, points, nor depth data.
+Note: The node raises an error if `moge_geometry` contains no intrinsics (panorama geometry has none) or if it contains neither `image`, `points`, nor `depth` data.
 
 ## Outputs
 

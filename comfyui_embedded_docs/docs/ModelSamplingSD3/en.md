@@ -1,6 +1,6 @@
 # ModelSamplingSD3
 
-The ModelSamplingSD3 node applies Stable Diffusion 3 sampling parameters to a model. It modifies the model's sampling behavior by adjusting the shift parameter, which controls the sampling distribution characteristics. The node creates a modified copy of the input model with the specified sampling configuration applied.
+This node applies Stable Diffusion 3 style sampling settings to a model. It makes a copy of the model and replaces its sampling method with a flow-based sampling configuration that uses the given `shift` value, which controls how the sampling distribution is shaped.
 
 ## Inputs
 
@@ -9,7 +9,7 @@ The ModelSamplingSD3 node applies Stable Diffusion 3 sampling parameters to a mo
 | `model` | The input model to apply SD3 sampling parameters to | MODEL | Yes | - |
 | `shift` | Controls the sampling shift parameter (default: 3.0) | FLOAT | Yes | 0.0 - 100.0 (step: 0.01) |
 
-Note: The node applies the `shift` value with a fixed internal multiplier of 1000. If the original model has a noise scale setting, it is preserved in the modified model.
+Note: The `shift` value is applied together with a fixed internal multiplier of 1000. If the original model has a noise scale setting, that value is carried over to the modified model. The original model is not changed; a cloned and patched copy is returned.
 
 ## Outputs
 

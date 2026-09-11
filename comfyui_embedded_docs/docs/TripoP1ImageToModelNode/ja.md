@@ -1,47 +1,51 @@
 # Tripo P1：画像からモデルへ
 
-Tripo P1: Image to Model は、Tripo P1 API を使用して単一の 2D 画像から 3D モデルを生成します。低ポリゴンでゲーム対応のメッシュ生成に最適化されており、ジオメトリのみのメッシュと PBR マップ付きテクスチャモデルのどちらかを選択できます。完成したモデルは GLB ファイルとして返されます。
+Tripo P1: Image to Model は、Tripo P1 API を使用して単一の2D画像を3Dモデルに変換します。低ポリゴンでゲーム向けのメッシュ生成に最適化されており、ジオメトリのみのメッシュか、PBRマップ付きのテクスチャモデルを選択できます。完成したモデルはGLBファイルとして返されます。
 
 ## 入力
 
 ### 共通入力
 
-これらのパラメータは常に利用可能です。
+これらのパラメータは常に使用できます。
 
-| Parameter | Description | Data Type | Required | Range |
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
 |-----------|-------------|-----------|----------|-------|
-| `出力モード` | 結果のタイプを選択します。"Geometry only" はテクスチャなしのメッシュを返し、"Textured" は色と PBR マップを追加して追加のテクスチャ設定を表示します。 | DYNAMIC_COMBO | はい | `"Geometry only"`<br>`"Textured"` |
-| `画像` | 3D モデルの生成に使用するソース 2D 画像です。このノードは単一の画像を必要とし、画像が提供されない場合はエラーを返します。 | IMAGE | はい | - |
-| `画像自動補正を有効化` | 生成品質を向上させるため、入力画像を前処理します。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
-| `面数制限` | 目標面数（48〜20000）です。-1 を指定すると Tripo が適応的に選択します。（デフォルト: -1） | INT | いいえ | -1 〜 20000 |
-| `モデルシード` | 結果を再現できるよう、ジオメトリ生成に使用するシードです。（デフォルト: 42） | INT | いいえ | 0 〜 2147483647 |
-| `自動サイズ調整` | 実世界のメートル単位に近づくように出力をスケールします。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
-| `UV展開を出力` | 生成中に UV 展開を行います。ジオメトリのみの実行を高速化するにはオフにします。（デフォルト: True） | BOOLEAN | いいえ | True<br>False |
-| `ジオメトリ圧縮` | meshopt ジオメトリ圧縮（EXT_meshopt_compression）を適用します。ファイルサイズは小さくなりますが、ComfyUI の 3D プレビューでは表示できません。編集前に解凍してください。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
+| `出力モード` | 結果のタイプを選択します。"Geometry only" はテクスチャなしメッシュを返し、"Textured" はカラー/PBRマップを追加して追加のテクスチャ設定を表示します。 | DYNAMIC_COMBO | はい | `"Geometry only"`<br>`"Textured"` |
+| `画像` | 3Dモデル生成に使用するソース2D画像。単一画像が必要で、指定がない場合ノードはエラーを発生させます。 | IMAGE | はい | - |
+| `画像自動補正を有効化` | 生成品質を高めるために入力画像を前処理します。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
+| `面数制限` | 目標フェイス数、48～20000。-1 にすると Tripo が適応的に選択します。（デフォルト: -1） | INT | いいえ | -1〜20000 |
+| `モデルシード` | ジオメトリ生成に使用するシードで、結果を再現できるようにします。（デフォルト: 42） | INT | いいえ | 0〜2147483647 |
+| `自動サイズ調整` | 出力を実世界のメートルに近づくようにスケーリングします。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
+| `UV展開を出力` | 生成中にUV展開を行います。より高速なジオメトリのみの実行にはオフにします。（デフォルト: True） | BOOLEAN | いいえ | True<br>False |
+| `ジオメトリ圧縮` | meshoptジオメトリ圧縮（EXT_meshopt_compression）を適用します。ファイルは小さくなりますが、ComfyUIの3Dプレビューでは表示できません。編集前に展開してください。（デフォルト: False） | BOOLEAN | いいえ | True<br>False |
 
-### テクスチャ付き入力
+### Geometry only 入力
 
-これらのパラメータは、`output_mode` が "Textured" に設定されている場合に表示されます。"Geometry only" モードには追加パラメータはありません。
+追加パラメータはありません。出力はテクスチャなしメッシュです。
 
-| Parameter | Description | Data Type | Required | Range |
+### Textured 入力
+
+これらのパラメータは `output_mode` が "Textured" に設定されている場合に表示されます。
+
+| パラメータ | 説明 | データ型 | 必須 | 範囲 |
 |-----------|-------------|-----------|----------|-------|
-| `pbr` | PBR マップを含めます。オンにすると、ベーステクスチャも強制的にオンになります。（デフォルト: True） | BOOLEAN | いいえ | True<br>False |
-| `texture_quality` | テクスチャ解像度レベルです。"detailed" は HD テクスチャ、"extreme" は 8K Ultra テクスチャです。（デフォルト: "standard"） | COMBO | いいえ | `"standard"`<br>`"detailed"`<br>`"extreme"` |
-| `texture_alignment` | ソース画像への視覚的な再現度と、メッシュジオメトリへの整合性のどちらを優先するかです。（デフォルト: "original_image"） | COMBO | いいえ | `"original_image"`<br>`"geometry"` |
-| `orientation` | 出力をソース画像に合わせて回転させます。テクスチャ付きの場合にのみ適用されます。（デフォルト: "default"） | COMBO | いいえ | `"default"`<br>`"align_image"` |
-| `texture_seed` | テクスチャ付きの結果を再現できるよう、テクスチャ生成に使用するシードです。（デフォルト: 42） | INT | いいえ | 0 〜 2147483647 |
+| `pbr` | PBRマップを含めます。オンの場合、ベーステクスチャも強制的にオンになります。（デフォルト: True） | BOOLEAN | はい | True<br>False |
+| `texture_quality` | detailed = HDテクスチャ、extreme = 8K Ultraテクスチャ。（デフォルト: "standard"） | COMBO | はい | `"standard"`<br>`"detailed"`<br>`"extreme"` |
+| `texture_alignment` | ソース画像への視覚的な忠実さを優先するか、メッシュジオメトリへの整合を優先します。（デフォルト: "original_image"） | COMBO | はい | `"original_image"`<br>`"geometry"` |
+| `orientation` | ソース画像に合わせて出力を回転します。テクスチャ付きの場合にのみ適用されます。（デフォルト: "default"） | COMBO | はい | `"default"`<br>`"align_image"` |
+| `texture_seed` | テクスチャ生成に使用するシードで、テクスチャ付き結果を再現できるようにします。（デフォルト: 42） | INT | はい | 0〜2147483647 |
 
-注：`output_mode` が "Geometry only" の場合、リクエストに対してテクスチャリングは無効になります。"Textured" モードでは、カラーテクスチャが常に要求されます。`pbr` を無効にすると PBR マップが削除されますが、ベースカラーテクスチャは保持されます。一方、`pbr` を有効にするとベーステクスチャも強制的にオンになります。
+注: `output_mode` が "Geometry only" の場合、リクエストではテクスチャ処理が無効になります。"Textured" モードではカラーテクスチャが常に要求されます。`pbr` を無効にするとPBRマップは削除されますがベースカラーテクスチャは保持され、`pbr` を有効にするとベーステクスチャも強制的にオンになります。`texture_alignment` と `orientation` は "Textured" モードでのみ使用できます。
 
 ## 出力
 
 | 出力名 | 説明 | データ型 |
-|--------|------|----------|
-| `モデルファイル` | 生成された 3D モデル結果です。後方互換性のためだけに保持されています。 | STRING |
-| `モデルタスクID` | 完了した生成ジョブに対して Tripo API が返す一意のタスク ID です。 | MODEL_TASK_ID |
-| `GLB` | 生成された 3D モデル（GLB 形式）です。 | FILE3DGLB |
+|-------------|-------------|-----------|
+| `モデルファイル` | 生成されたモデルファイル名（`<task_id>.glb`）を含む文字列。後方互換性のためだけに保持されています。 | STRING |
+| `モデルタスクID` | 完了した生成ジョブに対してTripo APIから返される一意のタスクID。 | MODEL_TASK_ID |
+| `GLB` | GLB形式で生成された3Dモデル。 | FILE3DGLB |
 
 > このドキュメントは AI によって生成されました。エラーを見つけた場合や改善のご提案がある場合は、ぜひ貢献してください！ [GitHub で編集](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1ImageToModelNode/ja.md)
 
 ---
-**Source fingerprint (SHA-256):** `db5dc76518a4efcd28d388dc00ad0810f619481482f20fa456c4ff2478192aa3`
+**Source fingerprint (SHA-256):** `1369da2ef732556896bce3415e7b99023f310544b8077ea4c6b1730bec59ee99`

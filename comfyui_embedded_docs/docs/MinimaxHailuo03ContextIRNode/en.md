@@ -1,4 +1,6 @@
-# MinimaxHailuo03ContextIRNode
+# MiniMax H3 Context IR (Prompt Enhancer)
+
+## Overview
 
 This node uses MiniMax H3 Context IR to analyze your text description and any attached media, then produces a stronger, structured video prompt. The returned prompt is designed to be connected to the prompt input of a MiniMax H3 video node; if you attach media there, attach the same media in the same order, because the enhanced prompt refers to media by position.
 

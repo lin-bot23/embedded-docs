@@ -10,7 +10,7 @@ LTXVAddGuide 节点通过编码输入图像或视频，并将其作为关键帧�
 | `负向` | 将使用关键帧引导修改的负向 conditioning 输入 | CONDITIONING | 是 | - |
 | `vae` | 用于编码输入图像/视频帧的 VAE 模型 | VAE | 是 | - |
 | `潜在空间` | 将接收 conditioning 帧的输入潜在序列 | LATENT | 是 | - |
-| `图像` | 用于对潜在视频进行条件化的图像或视频。必须为 8*n + 1 帧。如果视频不是 8*n + 1 帧，则会被裁剪到最接近的 8*n + 1 帧。 | IMAGE | 是 | - |
+| `IMAGE` | 用于对潜在视频进行条件化的图像或视频。必须为 8*n + 1 帧。如果视频不是 8*n + 1 帧，则会被裁剪到最接近的 8*n + 1 帧。 | IMAGE | 是 | - |
 | `帧索引` | 开始 condition 的帧索引。对于单帧图像或包含 1-8 帧的视频，任何 `frame_idx` 值均可接受。对于包含 9 帧及以上的视频，`frame_idx` 必须能被 8 整除，否则将向下舍入到最接近的 8 的倍数。负值从视频末尾开始计数。（默认值：0） | INT | 是 | -9999到9999 |
 | `强度` | conditioning 影响的强度，其中 1.0 表示应用完整 conditioning，0.0 表示不应用 conditioning（默认值：1.0） | FLOAT | 是 | 0.0到10.0 |
 | `attention_mask` | 可选的像素空间空间掩码。通过自注意力控制每个区域的 conditioning 影响，并与 `strength` 相乘。 | MASK | 否 | - |
@@ -28,8 +28,8 @@ LTXVAddGuide 节点通过编码输入图像或视频，并将其作为关键帧�
 
 | 输出名称 | 描述 | 数据类型 |
 | --- | --- | --- |
-| `正向` | 已使用关键帧引导信息更新的正向 conditioning | CONDITIONING |
-| `负向` | 已使用关键帧引导信息更新的负向 conditioning | CONDITIONING |
+| ``positive`` | 已使用关键帧引导信息更新的正向 conditioning | CONDITIONING |
+| ``negative`` | 已使用关键帧引导信息更新的负向 conditioning | CONDITIONING |
 | `潜在空间` | 已包含 conditioning 帧并更新噪声掩码的潜在序列 | LATENT |
 
 > 本文档由 AI 生成。如果您发现任何错误或有改进建议，欢迎贡献！ [在 GitHub 上编辑](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LTXVAddGuide/zh.md)

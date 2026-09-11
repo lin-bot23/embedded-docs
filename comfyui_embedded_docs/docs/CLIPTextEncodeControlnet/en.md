@@ -1,6 +1,6 @@
 # CLIP Text Encode (Controlnet)
 
-The CLIPTextEncodeControlnet node processes a text prompt using a CLIP model and combines the resulting text encoding with existing conditioning data. It adds the text-derived embeddings to each conditioning entry as controlnet cross-attention parameters, producing enhanced conditioning output for controlnet applications.
+The CLIP Text Encode (Controlnet) node encodes a text prompt with a CLIP model and adds the resulting text encoding to existing conditioning data. It stores the text embeddings as controlnet cross-attention parameters inside each conditioning entry, so the returned conditioning carries that extra controlnet information.
 
 ## Inputs
 

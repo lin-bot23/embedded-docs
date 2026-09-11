@@ -1,34 +1,32 @@
-# Pixal3DMultiViewConditioning
+# Pixal3D Multi-View Conditioning
 
-## Overview
-
-The Pixal3D Multi-View Conditioning node is a fixed orbit rig that generates front, left, back, and right views of an object at 90-degree intervals. It is used to create framed views for Pixal3D applications, where the object spans approximately 1/1.1 of the frame at its widest, maintaining the same scale in every view.
+The Pixal3D Multi-View Conditioning node builds conditioning data from a fixed orbit camera rig: front, left, back, and right views placed 90 degrees apart, used exactly as framed. Connect at least one square view of the object and it prepares matching positive and negative conditioning for Pixal3D models.
 
 ## Inputs
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `clip_vision_model` | DINOv3 ViT-L/16 ClipVision with bundled NAF weights. | MODEL | Yes | N/A |
-| `fov` | Horizontal FOV in degrees of the views as framed. | FLOAT | Yes | 1.0 - 170.0 |
-| `front` | Square view of the object's front side, with alpha or on a black background. | IMAGE | Yes | N/A |
-| `left` | Square view of the object's left side, with alpha or on a black background. | IMAGE | Optional | N/A |
-| `back` | Square view of the object's back side, with alpha or on a black background. | IMAGE | Optional | N/A |
-| `right` | Square view of the object's right side, with alpha or on a black background. | IMAGE | Optional | N/A |
+| `clip_vision_model` | DINOv3 ViT-L/16 ClipVision with bundled NAF weights. | CLIP_VISION | Yes | N/A |
+| `fov` | Horizontal FOV in degrees of the views as framed: 20 for rig renders and most multi-view generators, or MoGeGeometryToFOV on one of the views for photos. Default: 20.0. | FLOAT | Yes | 1.0 - 170.0 |
+| `front` | Square view of the object's front side, with alpha or on a black background, framed like the rig: the object spans about 1/1.1 of the frame at its widest, the same scale in every view. The first connected view (front, left, back, right order) is the front the mesh is posed to. | IMAGE | No | N/A |
+| `left` | Square view of the object's left side, with alpha or on a black background, framed like the rig: the object spans about 1/1.1 of the frame at its widest, the same scale in every view. The first connected view (front, left, back, right order) is the front the mesh is posed to. | IMAGE | No | N/A |
+| `back` | Square view of the object's back side, with alpha or on a black background, framed like the rig: the object spans about 1/1.1 of the frame at its widest, the same scale in every view. The first connected view (front, left, back, right order) is the front the mesh is posed to. | IMAGE | No | N/A |
+| `right` | Square view of the object's right side, with alpha or on a black background, framed like the rig: the object spans about 1/1.1 of the frame at its widest, the same scale in every view. The first connected view (front, left, back, right order) is the front the mesh is posed to. | IMAGE | No | N/A |
+
+### Notes
+
+- At least one view must be connected; the node raises an error if all four view inputs are empty.
+- The first connected view, in front, left, back, right order, is treated as the front, and the mesh is posed to that view. If the first connected view is not `front`, a warning is logged stating that the mesh will be posed with that view as its front.
+- Views are read in the order front, left, back, right, and are placed on the orbit at their fixed azimuths relative to the first connected view.
+- Input views with an alpha channel have the alpha applied over black. Views that are not 1024 x 1024 are resized to 1024 x 1024.
+- The batch size is taken from the first connected view. If the connected views have different batch sizes, the smaller ones are cycled to match.
 
 ## Outputs
 
 | Output Name | Description | Data Type |
 |-------------|-------------|-----------|
-| `positive` | The positive conditioning output for the Pixal3D Multi-View Conditioning node. | CONDITIONING |
-| `negative` | The negative conditioning output for the Pixal3D Multi-View Conditioning node. | CONDITIONING |
-
-## Notes
-
-- The `fov` parameter controls the horizontal field of view of the views as framed. A value of 20 degrees is typical for rig renders and most multi-view generators.
-- The first connected view (front, left, back, right order) is considered the front, and the mesh is posed to this view.
-- If no front view is provided, a warning is logged, and the mesh will be posed with the first connected view as its front.
-- The node assumes that the views are square and framed like the rig. The object should span about 1/1.1 of the frame at its widest, and the same scale should be maintained in every view.
-- The node outputs two Conditioning objects, one for the positive and one for the negative conditioning. These can be used to condition Pixal3D models or other nodes that accept Conditioning inputs.
+| `positive` | The positive conditioning output, built from the encoded views and their projected features. | CONDITIONING |
+| `negative` | The negative conditioning output, built from zeroed embeddings with the same projected features. | CONDITIONING |
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/Pixal3DMultiViewConditioning/en.md)
 

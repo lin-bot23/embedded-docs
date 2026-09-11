@@ -1,4 +1,4 @@
-# MetaMuseImageEditApi
+# Meta Muse Image Edit
 
 Edits or combines up to 10 reference images using a text prompt and Meta's Muse Image model. Describe the desired edit in the prompt and, when needed, refer to the reference images as `@Image1`, `@Image2`, and so on. The node uploads the reference images, calls the Meta Muse Image API, and returns the edited result as an image.
 

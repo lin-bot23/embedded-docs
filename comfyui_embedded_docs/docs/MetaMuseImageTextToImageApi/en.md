@@ -1,4 +1,4 @@
-# MetaMuseImageTextToImageApi
+# Meta Muse Image Text to Image
 
 Meta Muse Image Text to Image generates images from a text prompt using Meta's Muse Image model. The model reasons about the prompt before rendering, and can use web search, image search, and code execution while planning the image. The node calls the Muse Image API and returns the resulting image or images.
 

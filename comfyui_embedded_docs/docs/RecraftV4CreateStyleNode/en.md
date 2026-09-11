@@ -1,6 +1,6 @@
 # Recraft V4 Create Style
 
-This node creates a reusable Recraft V4 style from 1 to 10 reference images. The returned style ID works with every Recraft V4 and V4.1 model of the same output type (raster or vector), and can be reused in later image generation steps. The total size of all reference images is limited to 10 MB.
+This node creates a reusable Recraft V4 style from 1 to 10 reference images. The returned style ID works with every Recraft V4 and V4.1 model of the same output type (raster or vector) and can be reused in later image generation steps. The total size of all reference images is limited to 10 MB.
 
 ## Inputs
 

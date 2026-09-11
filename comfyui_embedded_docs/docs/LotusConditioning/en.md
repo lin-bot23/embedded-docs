@@ -1,6 +1,6 @@
 # LotusConditioning
 
-The LotusConditioning node provides pre-computed conditioning embeddings for the Lotus model. It uses a frozen encoder with null conditioning and returns hardcoded prompt embeddings to achieve parity with the reference implementation without requiring inference or loading large tensor files. This node outputs a fixed conditioning tensor that can be used directly in the generation pipeline.
+The LotusConditioning node supplies fixed, pre-computed conditioning embeddings for the Lotus model. Because Lotus uses a frozen encoder with null conditioning, the node inlines the resulting prompt embeddings directly instead of running inference or loading large tensor files, so its output never changes. The returned conditioning can be plugged straight into a generation pipeline that expects Lotus-compatible conditioning.
 
 ## Inputs
 
@@ -12,7 +12,7 @@ The LotusConditioning node provides pre-computed conditioning embeddings for the
 
 | Output Name | Description | Data Type |
 | --- | --- | --- |
-| `conditioning` | The pre-computed conditioning embeddings for the Lotus model, containing fixed prompt embeddings and an empty dictionary. | CONDITIONING |
+| `conditioning` | The pre-computed conditioning embeddings for the Lotus model. Returned as a conditioning list holding the fixed prompt embeddings together with an empty dictionary. | CONDITIONING |
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/LotusConditioning/en.md)
 

@@ -1,4 +1,4 @@
-# ByteDanceSeedreamNodeV3
+# ByteDance Seedream 4.5 & 5.0
 
 ByteDance Seedream 4.5 & 5.0 generates images from a text prompt (text-to-image) or generates/edits images guided by optional reference images, using ByteDance Seedream 4.0, 4.5, and 5.0 models at up to 4K resolution. The node sends the prompt and any reference images to the ByteDance API, waits for the generation task to complete, and returns the resulting image tensor or tensors.
 

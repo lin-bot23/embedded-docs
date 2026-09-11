@@ -1,5 +1,7 @@
 # CLIP Text Encode (Prompt)
 
+Encodes a text prompt using a CLIP model into an embedding that can be used to guide the diffusion model towards generating specific images.
+
 `CLIP Text Encode (CLIPTextEncode)` acts as a translator, converting your text descriptions into a format that AI can understand. This helps the AI interpret your input and generate the desired image.
 
 Think of it as communicating with an artist who speaks a different language. The CLIP model, trained on vast image-text pairs, bridges this gap by converting your descriptions into "instructions" that the AI model can follow.

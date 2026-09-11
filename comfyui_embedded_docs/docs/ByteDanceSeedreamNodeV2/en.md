@@ -1,4 +1,4 @@
-# ByteDance Seedream 4.5 & 5.0
+# ByteDance Seedream 4.5 & 5.0 (Legacy)
 
 This node generates or edits images using ByteDance's Seedream models (versions 4.0, 4.5, 5.0 Lite, and 5.0 Pro). It provides unified text-to-image generation and precise single-sentence image editing at up to 4K resolution. This is the legacy (V2) version of the Seedream node.
 

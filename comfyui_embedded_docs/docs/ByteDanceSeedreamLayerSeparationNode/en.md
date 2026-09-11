@@ -1,6 +1,6 @@
 # ByteDance Seedream 5.0 Pro Layer Separation
 
-ByteDance Seedream 5.0 Pro Layer Separation decomposes an image into a background plate plus up to 16 transparent layers, each with its own stacking order, bounding box, name, and description. It returns the background, per-layer images with masks, placement boxes, and a ready-to-edit layer stack.
+ByteDance Seedream 5.0 Pro Layer Separation decomposes an image into a background plate plus up to 16 repositionable transparent layers, each with stacking order, bounding box, name, and description. It returns the background, per-layer images with masks, placement boxes, and a ready-to-edit layer stack.
 
 ## Inputs
 

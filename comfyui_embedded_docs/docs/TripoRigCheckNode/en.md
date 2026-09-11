@@ -1,4 +1,4 @@
-# TripoRigCheckNode
+# Tripo: Rig Check
 
 This node sends the ID of a completed Tripo 3D model task to the Tripo API and checks whether that model can be rigged. It waits for the check to finish and then returns a yes/no result plus the skeleton type Tripo recommends for the model.
 
@@ -6,7 +6,7 @@ This node sends the ID of a completed Tripo 3D model task to the Tripo API and c
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `model_task_id` | The Tripo task ID of the model to analyze. It identifies a model that was previously generated, imported, or otherwise created through a Tripo task. | STRING | Yes | N/A |
+| `model_task_id` | The Tripo task ID of the model to analyze. It identifies a model that was previously generated, imported, or otherwise created through a Tripo task. | MODEL_TASK_ID | Yes | N/A |
 
 ## Outputs
 

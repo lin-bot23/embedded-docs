@@ -1,6 +1,6 @@
 # StableCascade_SuperResolutionControlnet
 
-The StableCascade_SuperResolutionControlnet node prepares inputs for Stable Cascade super-resolution processing. It takes an input image and encodes it using a VAE to create controlnet input, while also generating placeholder latent representations for stage C and stage B of the Stable Cascade pipeline.
+This node is part of the experimental Stable Cascade group. It prepares inputs for Stable Cascade super-resolution processing by encoding an input image with a VAE to create a controlnet input, and by generating empty (zero-filled) latent placeholders for stage C and stage B of the Stable Cascade pipeline.
 
 ## Inputs
 

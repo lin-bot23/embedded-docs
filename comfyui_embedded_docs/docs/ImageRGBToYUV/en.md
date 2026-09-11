@@ -1,22 +1,22 @@
 # Image RGB to YUV
 
-The ImageRGBToYUV node converts an RGB image into the YUV color space. It splits the image into three components — Y (luminance, or brightness), U (blue-difference chroma), and V (red-difference chroma) — and returns each component as a separate image of the same size as the input.
+The ImageRGBToYUV node converts an RGB image into YUV-style color components using an RGB-to-YCbCr color conversion. It splits the result into three separate images — Y (luminance, or brightness), U (blue-difference chroma), and V (red-difference chroma) — and returns each component at the same width and height as the input.
 
 ## Inputs
 
 | Parameter | Description | Data Type | Required | Range |
 |-----------|-------------|-----------|----------|-------|
-| `image` | The input RGB image to convert to YUV. If the image contains an alpha channel, only the first three (RGB) channels are used. | IMAGE | Yes | - |
+| `image` | The input RGB image to convert into Y, U, and V components. If the image contains an alpha channel, only the first three (RGB) channels are used. | IMAGE | Yes | - |
 
 ## Outputs
 
 | Output Name | Description | Data Type |
 |-------------|-------------|-----------|
-| `Y` | The luminance (brightness) component of the YUV color space | IMAGE |
-| `U` | The blue-difference chroma component of the YUV color space | IMAGE |
-| `V` | The red-difference chroma component of the YUV color space | IMAGE |
+| `Y` | The luminance (brightness) component of the YUV color space, returned as a three-channel image | IMAGE |
+| `U` | The blue-difference chroma component of the YUV color space, returned as a three-channel image | IMAGE |
+| `V` | The red-difference chroma component of the YUV color space, returned as a three-channel image | IMAGE |
 
-Each output has the same width, height, and number of channels as the input image. The corresponding Y, U, or V component is repeated across all channels so that every output is returned as a standard image.
+Each output has the same width and height as the input image. The corresponding Y, U, or V component is repeated across all three channels so that every output is returned as a standard three-channel image.
 
 > This documentation was AI-generated. If you find any errors or have suggestions for improvement, please feel free to contribute! [Edit on GitHub](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/ImageRGBToYUV/en.md)
 

@@ -1,5 +1,7 @@
 # T5 Tokenizer Options
 
+## Overview
+
 The T5TokenizerOptions node configures tokenizer settings for various T5 model types. It sets minimum padding and minimum length parameters for multiple T5 model variants including t5xxl, pile_t5xl, t5base, mt5xl, and umt5xxl. The node takes a CLIP input, applies the settings to a copy of it, and returns the modified CLIP.
 
 ## Inputs
@@ -10,7 +12,7 @@ The T5TokenizerOptions node configures tokenizer settings for various T5 model t
 | `min_padding` | Minimum padding value to set for all T5 model types (default: 0) | INT | Yes | 0 to 10000 |
 | `min_length` | Minimum length value to set for all T5 model types (default: 0) | INT | Yes | 0 to 10000 |
 
-Note: This node is marked as experimental in ComfyUI.
+Note: This node is marked as experimental in ComfyUI. The settings are applied to all supported T5 variants at once: t5xxl, pile_t5xl, t5base, mt5xl, and umt5xxl. The input `clip` is cloned before modification, so the original CLIP is not altered.
 
 ## Outputs
 

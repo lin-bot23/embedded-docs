@@ -1,51 +1,51 @@
 # Tripo P1: Çoklu Görünüşten Modele
 
-Bu node, bir nesnenin veya karakterin iki ila dört referans görüntüsünden 3D model oluşturur. Ön görünümü ve sol, arka, sağ görünümlerin herhangi bir kombinasyonunu sağlayın; node, yeniden oluşturulan nesneyi GLB mesh olarak döndürür.
+Bu düğüm, bir nesnenin veya karakterin iki ila dört referans görüntüsünden 3D model oluşturur. Ön görünümü ve sol, arka ve sağ görünümlerden herhangi bir kombinasyonu sağlayın; düğüm, yeniden oluşturulan özneyi GLB mesh olarak döndürür.
 
 ## Girdiler
 
 ### Ortak Girdiler
 
-| Parametre | Açıklama | Veri Türü | Zorunlu | Aralık |
+| Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 |-----------|-------------|-----------|----------|-------|
-| `görüntü` | Ön görünüm (0°). Zorunlu. | IMAGE | Evet | - |
-| `görüntü_sol` | Sol görünüm (90°), yani nesnenin sol tarafı. | IMAGE | Hayır | - |
+| `görüntü` | Ön görünüm (0°). Gerekli. | IMAGE | Evet | - |
+| `görüntü_sol` | Sol görünüm (90°), yani öznenin sol tarafı. | IMAGE | Hayır | - |
 | `görüntü_arka` | Arka görünüm (180°). | IMAGE | Hayır | - |
-| `görüntü_sağ` | Sağ görünüm (270°), yani nesnenin sağ tarafı. | IMAGE | Hayır | - |
-| `çıktı_modu` | Oluşturulacak modelin türünü seçin. "Geometry only" dokusuz bir ağ döndürür. "Textured" renk/PBR haritaları ekler. | DYNAMIC_COMBO | Evet | "Geometry only"<br>"Textured" |
-| `yüz_sınırı` | Hedef yüz sayısı, 48-20000. -1, Tripo'nun uyarlanabilir şekilde seçmesini sağlar. (varsayılan: -1) | INT | Hayır | -1 ile 20000 arası |
-| `model_tohumu` | Tekrarlanabilir model üretimi için tohum. (varsayılan: 42) | INT | Hayır | 0 ile 2147483647 arası |
-| `oto_boyut` | Çıktıyı gerçek dünya metrelerine yaklaşık olarak ölçeklendirir. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
-| `uv_dışa_aktar` | Üretim sırasında UV açılımı yapar. Yalnızca geometri çalıştırmaları için daha hızlı olması amacıyla kapatın. (varsayılan: True) | BOOLEAN | Hayır | True<br>False |
-| `geometriyi_sıkıştır` | Meshopt geometri sıkıştırması uygular (EXT_meshopt_compression). Dosyalar küçülür, ancak ComfyUI'nin 3D önizlemesi bunları görüntüleyemez; düzenlemeden önce sıkıştırmayı açın. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
+| `görüntü_sağ` | Sağ görünüm (270°), yani öznenin sağ tarafı. | IMAGE | Hayır | - |
+| `çıktı_modu` | Oluşturulacak model türünü seçin. `"Geometry only"` dokusuz bir mesh döndürür. `"Textured"` renk/PBR haritaları ekler. | DYNAMIC_COMBO | Evet | "Geometry only"<br>"Textured" |
+| `yüz_sınırı` | Hedef yüz sayısı, 48-20000. -1, Tripo'nun uyarlamalı seçim yapmasını sağlar. (varsayılan: -1) | INT | Hayır | -1 ile 20000 |
+| `model_tohumu` | Tekrarlanabilir model oluşturma için tohum. (varsayılan: 42) | INT | Hayır | 0 ile 2147483647 |
+| `oto_boyut` | Çıktıyı yaklaşık gerçek dünya metrelerine göre ölçeklendirir. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
+| `uv_dışa_aktar` | Oluşturma sırasında UV açımı uygular. Daha hızlı yalnızca geometri çalıştırmaları için kapatın. (varsayılan: True) | BOOLEAN | Hayır | True<br>False |
+| `geometriyi_sıkıştır` | meshopt geometri sıkıştırmasını uygular (EXT_meshopt_compression). Daha küçük dosyalar, ancak ComfyUI'nin 3D önizlemesi bunları görüntüleyemez; düzenlemeden önce sıkıştırmayı açın. (varsayılan: False) | BOOLEAN | Hayır | True<br>False |
 
 ### Yalnızca Geometri Girdileri
 
 Bu mod için ek girdi gösterilmez. Oluşturulan model doku olmadan döndürülür.
 
-### Dokulu Girdiler
+### Dokulu Girdileri
 
-Bu girdiler, `output_mode` `"Textured"` olarak ayarlandığında görünür.
+Bu girdiler `output_mode` değeri `"Textured"` olarak ayarlandığında görünür.
 
-| Parametre | Açıklama | Veri Türü | Zorunlu | Aralık |
+| Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 |-----------|-------------|-----------|----------|-------|
-| `pbr` | PBR haritalarını dahil eder. Açıkken temel doku da zorunlu olarak açılır. (varsayılan: True) | BOOLEAN | Evet | True<br>False |
-| `texture_quality` | Doku kalite seviyesi. `detailed` = HD dokular, `extreme` = 8K Ultra dokular. (varsayılan: "standard") | COMBO | Evet | "standard"<br>"detailed"<br>"extreme" |
-| `texture_alignment` | Kaynak görsele görsel doğruluğa mı yoksa ağ geometrisine hizalamaya mı öncelik verileceğini belirtir. (varsayılan: "original_image") | COMBO | Evet | "original_image"<br>"geometry" |
-| `orientation` | Çıktıyı kaynak görsele uyacak şekilde döndürür. Yalnızca doku eklendiğinde geçerlidir. (varsayılan: "default") | COMBO | Evet | "default"<br>"align_image" |
-| `texture_seed` | Doku üretimi için kullanılan tohum. (varsayılan: 42) | INT | Evet | 0 ile 2147483647 arası |
+| `pbr` | PBR haritalarını dahil et. Açık olduğunda temel doku da zorunlu olarak açılır. (varsayılan: True) | BOOLEAN | Evet | True<br>False |
+| `texture_quality` | Doku kalite düzeyi. `detailed` = HD dokular, `extreme` = 8K Ultra dokular. (varsayılan: "standard") | COMBO | Evet | "standard"<br>"detailed"<br>"extreme" |
+| `texture_alignment` | Kaynak görüntüye görsel sadakati ya da mesh geometrisine hizalamayı önceliklendirir. (varsayılan: "original_image") | COMBO | Evet | "original_image"<br>"geometry" |
+| `orientation` | Çıktıyı kaynak görüntüyle eşleşecek şekilde döndürür. Yalnızca dokulu olduğunda geçerlidir. (varsayılan: "default") | COMBO | Evet | "default"<br>"align_image" |
+| `texture_seed` | Doku oluşturmada kullanılan tohum. (varsayılan: 42) | INT | Evet | 0 ile 2147483647 |
 
-**Not:** En az 2 görsel sağlamalısınız: ön görünüm (`image`) ve diğer görünümlerden en az biri (`image_left`, `image_back` veya `image_right`). 2'den az görsel sağlanırsa node bir hata verir.
+**Not:** En az 2 görüntü sağlamalısınız: ön görünüm (`image`) artı diğer görünümlerden (`image_left`, `image_back` veya `image_right`) en az biri. 2'den az görüntü sağlanırsa düğüm bir hata verir.
 
 ## Çıktılar
 
 | Çıktı Adı | Açıklama | Veri Türü |
 |-------------|-------------|-----------|
-| `model_dosyası` | Oluşturulan GLB modelinin dosya adı (yalnızca geriye dönük uyumluluk içindir). | STRING |
-| `model_task_id` | Bu model üretim isteği için benzersiz görev kimliği. | MODEL_TASK_ID |
-| `GLB` | GLB biçiminde oluşturulan 3B model. | FILE3DGLB |
+| `model_dosyası` | Oluşturulan GLB modelinin dosya adı (yalnızca geriye dönük uyumluluk için). | STRING |
+| `model_task_id` | Bu model oluşturma isteği için benzersiz görev kimliği. | MODEL_TASK_ID |
+| `GLB` | GLB biçiminde oluşturulan 3D model. | FILE3DGLB |
 
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoP1MultiviewToModelNode/tr.md)
 
 ---
-**Source fingerprint (SHA-256):** `c26bf9d46f6b95ec57e4eb663cb6c602035c3ad00682e7f9622ce575ff54d228`
+**Source fingerprint (SHA-256):** `1153f74ac76603829142959844e701f3c8f16be080e3de849951cffdda322d12`

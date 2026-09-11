@@ -1,18 +1,20 @@
-# TripoEditMultiviewNode
+# Tripo: Çoklu Görünümü Düzenle
 
-Tripo: Edit Multiview, Tripo: Image to Multiview sonucunun dört görünümünü, her görünüm için ayrı bir metin talimatı kullanarak düzenler. Talimat içermeyen görünümler değişmeden kalır. Düzenlenen görüntüler, bir 3D model oluşturmak için Tripo: Multiview to Model düğümüne bağlanmak üzere tasarlanmıştır.
+Tripo: Image to Multiview sonucunun görünümlerini, her görünüm için ayrı bir metin talimatı kullanarak düzenler. Talimatı olmayan görünümler değişmeden kalır. Düzenlenen görüntülerin, 3B model oluşturmak için Tripo: Multiview to Model düğümüne bağlanması amaçlanmıştır; düzenlenmiş bir çoklu görünüm kümesi tekrar düzenlenemez.
 
 ## Girdiler
 
-| Parametre | Açıklama | Veri Türü | Zorunlu | Aralık |
+| Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 |-----------|-------------|-----------|----------|-------|
-| `multiview_task_id` | Görünümleri düzenlenecek olan Tripo: Image to Multiview sonucunun Görev Kimliği. | MULTIVIEW_TASK_ID | Evet | Görev Kimliği |
-| `front_prompt` | Ön görünüme uygulanacak düzenlemeyi tanımlayan metin talimatı. Boş olduğunda ön görünüm değişmeden kalır. Varsayılan: boş. | STRING | Hayır | Çok satırlı metin |
-| `left_prompt` | Sol görünüme uygulanacak düzenlemeyi tanımlayan metin talimatı. Boş olduğunda sol görünüm değişmeden kalır. Varsayılan: boş. | STRING | Hayır | Çok satırlı metin |
-| `back_prompt` | Arka görünüme uygulanacak düzenlemeyi tanımlayan metin talimatı. Boş olduğunda arka görünüm değişmeden kalır. Varsayılan: boş. | STRING | Hayır | Çok satırlı metin |
-| `right_prompt` | Sağ görünüme uygulanacak düzenlemeyi tanımlayan metin talimatı. Boş olduğunda sağ görünüm değişmeden kalır. Varsayılan: boş. | STRING | Hayır | Çok satırlı metin |
+| `multiview_task_id` | Görünümleri düzenlenecek Tripo: Image to Multiview sonucunun görev kimliği. Tripo: Image to Multiview düğümünden gelmelidir. | MULTIVIEW_TASK_ID | Evet | Görev Kimliği |
+| `front_prompt` | Ön görünüme uygulanacak düzenlemeyi açıklayan metin talimatı. Boş olduğunda ön görünüm değişmeden kalır. Varsayılan: boş dize. | STRING | Hayır | Çok satırlı metin |
+| `left_prompt` | Sol görünüme uygulanacak düzenlemeyi açıklayan metin talimatı. Boş olduğunda sol görünüm değişmeden kalır. Varsayılan: boş dize. | STRING | Hayır | Çok satırlı metin |
+| `back_prompt` | Arka görünüme uygulanacak düzenlemeyi açıklayan metin talimatı. Boş olduğunda arka görünüm değişmeden kalır. Varsayılan: boş dize. | STRING | Hayır | Çok satırlı metin |
+| `right_prompt` | Sağ görünüme uygulanacak düzenlemeyi açıklayan metin talimatı. Boş olduğunda sağ görünüm değişmeden kalır. Varsayılan: boş dize. | STRING | Hayır | Çok satırlı metin |
 
-Not: Dört talimattan (`front_prompt`, `left_prompt`, `back_prompt`, `right_prompt`) en az biri boş olmayan metin içermelidir; aksi takdirde düğüm bir hata verir. `multiview_task_id`, Tripo: Image to Multiview düğümünden gelmelidir. Düzenlenmiş bir multiview seti yeniden düzenlenemez.
+Not: Dört istemden (`front_prompt`, `left_prompt`, `back_prompt`, `right_prompt`) en az biri boş olmayan metin içermelidir; yalnızca boşluk içeren metin boş kabul edilir ve tüm istemler boşsa düğüm bir hata verir.
+
+Not: Maliyet, düzenleme talimatı bulunan her görünüm için yaklaşık 0,05 USD'dir.
 
 ## Çıktılar
 
@@ -26,4 +28,4 @@ Not: Dört talimattan (`front_prompt`, `left_prompt`, `back_prompt`, `right_prom
 > Bu belge yapay zeka tarafından oluşturulmuştur. Herhangi bir hata bulursanız veya iyileştirme önerileriniz varsa, katkıda bulunmaktan çekinmeyin! [GitHub'da Düzenle](https://github.com/Comfy-Org/embedded-docs/blob/main/comfyui_embedded_docs/docs/TripoEditMultiviewNode/tr.md)
 
 ---
-**Source fingerprint (SHA-256):** `7a25f3867776c01ab606d43a988b5491e543b72d3eedac1779fa170453c1ca21`
+**Source fingerprint (SHA-256):** `db8b0a3ffe4332fcbcaac4da0d7b07217d01d2f05526750540f6036293e013ab`
