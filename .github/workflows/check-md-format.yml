@@ -1,0 +1,37 @@
+name: Check Markdown Format
+
+on:
+  pull_request:
+    paths:
+      - 'comfyui_embedded_docs/docs/**/*.md'
+      - '.github/scripts/check_md_format.py'
+      - '.github/workflows/check-md-format.yml'
+  schedule:
+    # Weekly full-repo scan (catches defects already on main)
+    - cron: '0 21 * * 5'
+
+permissions:
+  contents: read
+
+jobs:
+  check-format:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0  # full history: the checker needs a merge-base for A...B diff
+          persist-credentials: false  # checker runs on PR-controlled content; do not expose the token
+      - name: Set up Python
+        uses: actions/setup-python@0b93645e9fea7318ecaed2b359559ac225c90a2b # v5.3.0
+      - name: Fetch base ref for changed-files scope
+        if: github.event_name == 'pull_request'
+        run: git fetch --no-tags origin main:refs/remotes/origin/main
+      - name: Run markdown format checks - PR changed files only
+        if: github.event_name == 'pull_request'
+        run: |
+          python .github/scripts/check_md_format.py --changed-only --base origin/main
+      - name: Run markdown format checks - scheduled full repo
+        if: github.event_name == 'schedule'
+        run: |
+          python .github/scripts/check_md_format.py || echo "::warning::Pre-existing format defects found on main - open a cleanup PR"
