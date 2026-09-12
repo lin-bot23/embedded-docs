@@ -7,7 +7,7 @@ Birden çok video segmentini, bağlanma sırasını koruyarak tek bir videoda bi
 | Parametre | Açıklama | Veri Türü | Gerekli | Aralık |
 |-----------|-------------|-----------|----------|-------|
 | `videos` | Girdi sırasına göre birleştirilecek video segmentleri. 1 ile 100 arasında video bağlayın; her video `video_1`, `video_2` vb. etiketli ayrı bir girdi yuvası olarak görünür. | VIDEO | Evet | 1 ile 100 segment |
-| `codec` | Video tensörlerini kodlamak için kullanılan codec. Auto, H.264 kullanır; zaten kodlanmış videolar değişmeden kalır. Varsayılan: "auto" | COMBO | Evet | `"auto"`<br>Diğer seçenekler kullanılabilir video codec türleri tarafından tanımlanır. |
+| `codec` | Video tensörlerini kodlamak için kullanılan codec. Auto, H.264 kullanır; uyumlu, önceden kodlanmış girdiler değişmeden kalır. Varsayılan: "auto" | COMBO | Evet | `"auto"`<br>Diğer seçenekler kullanılabilir video codec türleri tarafından tanımlanır. |
 | `complete_audio` | Birleştirilmiş video için isteğe bağlı tam ses parçası. Girdi videolarının taşıdığı sesin üzerine yazar. | AUDIO | Hayır | N/A |
 
 **Not:** `videos` girdisi 1 ile 100 arasında video segmenti kabul eder. `complete_audio` sağlanırsa, tüm girdi videolarının sesinin yerini alır. `codec` "auto" olarak ayarlandığında, uyumlu kodlanmış girdiler kod çözülmeden birleştirilir.

@@ -1,6 +1,6 @@
 # Görüntü Renk Uzayını Dönüştür
 
-ImageColorSpace düğümü, görüntüleri sRGB (Rec.709), doğrusal Rec.709, HDR (Rec.2020 HLG) ve HDR PQ (Rec.2020 PQ) renk uzayları arasında dönüştürür. Renk uzayını daraltırken, toplu iş boyunca fazla parlaklığı ton eşler ve gam dışı renkleri sıkıştırır. Dönüşümler float32'de hesaplanır ve varsa alfa kanalı değiştirilmeden geçirilir.
+ImageColorSpace düğümü, görüntüleri sRGB (Rec.709), doğrusal Rec.709, HDR (Rec.2020 HLG) ve HDR PQ (Rec.2020 PQ) renk uzayları arasında dönüştürür. SDR çıktısına dönüştürürken veya HDR PQ'dan HDR'a dönüştürürken, toplu iş boyunca fazla parlaklığı ton eşler ve gam dışı renkleri sıkıştırır; linear çıktı ve linear-to-HDR dönüşümleri genişletilmiş değerleri ton eşleme olmadan korur. Dönüşümler float32'de hesaplanır ve varsa alfa kanalı değiştirilmeden geçirilir.
 
 ## Girdiler
 

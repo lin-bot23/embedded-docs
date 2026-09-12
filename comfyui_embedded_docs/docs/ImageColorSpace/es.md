@@ -1,6 +1,6 @@
 # Convertir espacio de color de imagen
 
-El nodo ImageColorSpace convierte imágenes entre los espacios de color sRGB (Rec.709), Rec.709 lineal, HDR (Rec.2020 HLG) y HDR PQ (Rec.2020 PQ). Al reducir el espacio de color, aplica tone mapping a la luminancia excedente en todo el lote y comprime los colores fuera de gamut. Las conversiones se calculan en float32 y cualquier canal alfa se pasa sin cambios.
+El nodo ImageColorSpace convierte imágenes entre los espacios de color sRGB (Rec.709), Rec.709 lineal, HDR (Rec.2020 HLG) y HDR PQ (Rec.2020 PQ). Al convertir a salida SDR, o de HDR PQ a HDR, aplica tone mapping a la luminancia excedente en todo el lote y comprime los colores fuera de gamut; las conversiones a lineal y de lineal a HDR preservan los valores extendidos sin tone mapping. Las conversiones se calculan en float32 y cualquier canal alfa se pasa sin cambios.
 
 ## Entradas
 
@@ -18,7 +18,7 @@ El nodo ImageColorSpace convierte imágenes entre los espacios de color sRGB (Re
 
 ## Notas
 
-- El lineal 1.0 usa el mismo blanco de referencia de 203 nits que sRGB; HLG usa una pantalla de referencia de 1000 nits.
+- El valor lineal 1.0 usa el mismo blanco de referencia de 203 nits que sRGB; HLG usa una pantalla de referencia de 1000 nits.
 - La salida lineal y las conversiones de lineal a HDR conservan valores extendidos sin aplicar tone mapping.
 - La salida SDR y la conversión de PQ a HLG aplican tone mapping a la luminancia excedente en todo el lote (compartiendo un único punto de blanco para que la exposición no cambie fotograma a fotograma) y comprimen los colores fuera de gamut.
 - Las conversiones se calculan en float32 y devuelven el dispositivo y dtype intermedios.

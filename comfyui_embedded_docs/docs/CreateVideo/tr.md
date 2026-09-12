@@ -9,7 +9,7 @@ Create Video düğümü, bir görüntü dizisini bir videoda birleştirir. Oynat
 | `görüntüler` | Video oluşturmak için kullanılacak görüntüler. | IMAGE | Evet | - |
 | `fps` | Video oynatma hızı için saniyedeki kare sayısı (varsayılan: 30.0). | FLOAT | Evet | 1.0 - 120.0 |
 | `ses` | Videoya eklenecek ses. | AUDIO | Hayır | - |
-| `bit_depth` | `"auto"` sRGB için 8 bit, HDR için 10 bit kullanır. Açık 8 bit ve 10 bit seçimleri renk uzayından bağımsızdır. (varsayılan: "auto") | COMBO | Hayır | `"auto"`<br>8<br>10 |
+| `bit_depth` | `"auto"` sRGB için 8 bit, HDR ve HDR PQ için 10 bit kullanır. Açık 8 bit ve 10 bit seçimleri renk uzayından bağımsızdır. (varsayılan: "auto") | COMBO | Hayır | `"auto"`<br>8<br>10 |
 | `color_space` | Girdi görüntülerinin renk uzayı. HDR, BT.2020/HLG'yi seçer; HDR PQ ise BT.2020/PQ'yu seçer. (varsayılan: "sRGB") | COMBO | Hayır | `"sRGB"`<br>`"HDR"`<br>`"HDR PQ"` |
 | `codec` | Videoyu isteğe bağlı olarak hemen kodlayın. `"none"` görüntüleri tensör biçiminde tutar; `"auto"` ise H.264 kullanır. (varsayılan: "none") | COMBO | Hayır | `"none"`<br>Video kodek listesinden kullanılabilir video kodek seçenekleri (örn. `"auto"` ve desteklenen diğer kodekler) |
 

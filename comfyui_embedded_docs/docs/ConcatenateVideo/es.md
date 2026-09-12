@@ -7,7 +7,7 @@ Concatena varios segmentos de video en un solo video, preservando el orden en qu
 | Parámetro | Descripción | Tipo de datos | Obligatorio | Rango |
 |-----------|-------------|---------------|-------------|-------|
 | `videos` | Segmentos de video que se concatenarán en el orden de entrada. Conecte de 1 a 100 videos; cada video aparece como una ranura de entrada separada etiquetada `video_1`, `video_2`, etc. | VIDEO | Sí | 1 a 100 segmentos |
-| `codec` | Códec utilizado para codificar tensores de video. La opción Auto usa H.264; los videos ya codificados permanecen sin cambios. Valor predeterminado: `"auto"` | COMBO | Sí | `"auto"`<br>Otras opciones se definen según los tipos de códec de video disponibles. |
+| `codec` | Códec utilizado para codificar tensores de video. La opción Auto usa H.264; los videos ya codificados compatibles permanecen sin cambios. Valor predeterminado: `"auto"` | COMBO | Sí | `"auto"`<br>Otras opciones se definen según los tipos de códec de video disponibles. |
 | `complete_audio` | Banda sonora completa opcional para el video concatenado. Anula el audio que llevan los videos de entrada. | AUDIO | No | N/A |
 
 **Nota:** La entrada `videos` acepta entre 1 y 100 segmentos de video. Si se proporciona `complete_audio`, reemplaza el audio de todos los videos de entrada. Cuando `codec` se establece en `"auto"`, las entradas codificadas compatibles se concatenan sin decodificación.

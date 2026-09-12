@@ -9,7 +9,7 @@ El nodo Create Video combina una secuencia de imágenes en un video. Puedes esta
 | `imágenes` | Las imágenes con las que se creará un video. | IMAGE | Sí | - |
 | `fps` | Los fotogramas por segundo para la velocidad de reproducción del video (valor predeterminado: 30.0). | FLOAT | Sí | 1.0 - 120.0 |
 | `audio` | El audio que se agregará al video. | AUDIO | No | - |
-| `bit_depth` | `"auto"` usa 8 bits para sRGB y 10 bits para HDR. Las opciones explícitas de 8 bits y 10 bits son independientes del espacio de color. (valor predeterminado: `"auto"`) | COMBO | No | `"auto"`<br>8<br>10 |
+| `bit_depth` | `"auto"` usa 8 bits para sRGB y 10 bits para HDR y HDR PQ. Las opciones explícitas de 8 bits y 10 bits son independientes del espacio de color. (valor predeterminado: `"auto"`) | COMBO | No | `"auto"`<br>8<br>10 |
 | `color_space` | Espacio de color de las imágenes de entrada. `"HDR"` selecciona BT.2020/HLG y `"HDR PQ"` selecciona BT.2020/PQ. (valor predeterminado: `"sRGB"`) | COMBO | No | `"sRGB"`<br>`"HDR"`<br>`"HDR PQ"` |
 | `codec` | Opcionalmente, codifica el video de inmediato. `"none"` mantiene las imágenes en forma de tensor; `"auto"` usa H.264. (valor predeterminado: `"none"`) | COMBO | No | `"none"`<br>Opciones de códec de video disponibles en la lista de códecs de video (p. ej. `"auto"` y otros códecs compatibles) |
 

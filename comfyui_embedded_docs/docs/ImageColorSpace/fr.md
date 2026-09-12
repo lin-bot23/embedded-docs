@@ -1,6 +1,6 @@
 # Convertir l’espace colorimétrique de l’image
 
-Le nœud ImageColorSpace convertit les images entre les espaces colorimétriques sRGB (Rec.709), Rec.709 linéaire, HDR (Rec.2020 HLG) et HDR PQ (Rec.2020 PQ). Lorsqu'il restreint l'espace colorimétrique, il applique un mappage tonal à la luminance excédentaire sur l'ensemble du lot et compresse les couleurs hors gamut. Les conversions sont calculées en float32, et tout canal alpha est transmis sans modification.
+Le nœud ImageColorSpace convertit les images entre les espaces colorimétriques sRGB (Rec.709), Rec.709 linéaire, HDR (Rec.2020 HLG) et HDR PQ (Rec.2020 PQ). Lors de la conversion vers une sortie SDR ou de HDR PQ vers HDR, il applique un mappage tonal à la luminance excédentaire sur l'ensemble du lot et comprime les couleurs hors gamut ; les conversions vers linéaire et de linéaire vers HDR préservent les valeurs étendues sans mappage tonal. Les conversions sont calculées en float32, et tout canal alpha est transmis sans modification.
 
 ## Entrées
 

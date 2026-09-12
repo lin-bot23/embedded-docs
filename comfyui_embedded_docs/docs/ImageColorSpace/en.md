@@ -1,6 +1,6 @@
 # Convert Image Color Space
 
-The ImageColorSpace node converts images between sRGB (Rec.709), linear Rec.709, HDR (Rec.2020 HLG), and HDR PQ (Rec.2020 PQ) color spaces. When narrowing the color space, it tone-maps excess luminance across the batch and compresses out-of-gamut colors. Conversions are computed in float32, and any alpha channel is passed through unchanged.
+The ImageColorSpace node converts images between sRGB (Rec.709), linear Rec.709, HDR (Rec.2020 HLG), and HDR PQ (Rec.2020 PQ) color spaces. When converting to SDR output, or from HDR PQ to HDR, it tone-maps excess luminance across the batch and compresses out-of-gamut colors; linear output and linear-to-HDR conversions preserve extended values without tone mapping. Conversions are computed in float32, and any alpha channel is passed through unchanged.
 
 ## Inputs
 

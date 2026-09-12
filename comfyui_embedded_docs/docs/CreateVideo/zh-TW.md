@@ -9,7 +9,7 @@ Create Video 節點會將一系列影像結合成影片。你可以設定播放�
 | `影像` | 要據以建立影片的影像。 | IMAGE | 是 | - |
 | `每秒影格數` | 影片播放速度的每秒影格數（預設：30.0）。 | FLOAT | 是 | 1.0 - 120.0 |
 | `音訊` | 要加入影片的音訊。 | AUDIO | 否 | - |
-| `bit_depth` | Auto 會針對 sRGB 使用 8 位元、針對 HDR 使用 10 位元。明確選擇 8 位元與 10 位元時，會與色彩空間無關。（預設："auto"） | COMBO | 否 | `"auto"`<br>8<br>10 |
+| `bit_depth` | Auto 會針對 sRGB 使用 8 位元、針對 HDR 與 HDR PQ 使用 10 位元。明確選擇 8 位元與 10 位元時，會與色彩空間無關。（預設："auto"） | COMBO | 否 | `"auto"`<br>8<br>10 |
 | `color_space` | 輸入影像的色彩空間。HDR 會選用 BT.2020/HLG，HDR PQ 會選用 BT.2020/PQ。（預設："sRGB"） | COMBO | 否 | `"sRGB"`<br>`"HDR"`<br>`"HDR PQ"` |
 | `codec` | 可選擇立即編碼影片。None 會將影像保持為張量形式；Auto 會使用 H.264。（預設："none"） | COMBO | 否 | `"none"`<br>可從視訊編碼器清單取得的可用視訊編碼器選項（例如 `"auto"` 及其他支援的編碼器） |
 

@@ -1,6 +1,6 @@
 # Converter Espaço de Cor da Imagem
 
-O nó ImageColorSpace converte imagens entre os espaços de cor sRGB (Rec.709), Rec.709 linear, HDR (Rec.2020 HLG) e HDR PQ (Rec.2020 PQ). Ao estreitar o espaço de cor, ele aplica mapeamento de tons à luminância excedente em todo o lote e comprime cores fora da gama. As conversões são calculadas em float32, e qualquer canal alfa é repassado sem alterações.
+O nó ImageColorSpace converte imagens entre os espaços de cor sRGB (Rec.709), Rec.709 linear, HDR (Rec.2020 HLG) e HDR PQ (Rec.2020 PQ). Ao converter para saída SDR, ou de HDR PQ para HDR, ele aplica mapeamento de tons à luminância excedente em todo o lote e comprime cores fora da gama; conversões para linear e de linear para HDR preservam os valores estendidos sem mapeamento de tons. As conversões são calculadas em float32, e qualquer canal alfa é repassado sem alterações.
 
 ## Entradas
 

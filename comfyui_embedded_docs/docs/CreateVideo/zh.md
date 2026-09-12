@@ -9,7 +9,7 @@ Create Video 节点将一系列图像合成为视频。您可以设置播放速�
 | `图像` | 用于创建视频的图像。 | IMAGE | 是 | - |
 | `帧率` | 视频播放速度的帧/秒（默认值：30.0）。 | FLOAT | 是 | 1.0 - 120.0 |
 | `音频` | 要添加到视频的音频。 | AUDIO | 否 | - |
-| `bit_depth` | 自动模式对 sRGB 使用 8 位，对 HDR 使用 10 位。显式选择 8 位和 10 位与色彩空间无关。（默认值："auto"） | COMBO | 否 | `"auto"`<br>8<br>10 |
+| `bit_depth` | 自动模式对 sRGB 使用 8 位，对 HDR 和 HDR PQ 使用 10 位。显式选择 8 位和 10 位与色彩空间无关。（默认值："auto"） | COMBO | 否 | `"auto"`<br>8<br>10 |
 | `color_space` | 输入图像的色彩空间。HDR 选择 BT.2020/HLG，HDR PQ 选择 BT.2020/PQ。（默认值："sRGB"） | COMBO | 否 | `"sRGB"`<br>`"HDR"`<br>`"HDR PQ"` |
 | `codec` | 可选地立即编码视频。None 将图像保持为张量形式；Auto 使用 H.264。（默认值："none"） | COMBO | 否 | `"none"`<br>视频编解码器列表中可用的视频编解码器选项（例如 `"auto"` 和其他受支持的编解码器） |
 

@@ -1,6 +1,6 @@
 # 轉換影像色彩空間
 
-ImageColorSpace 節點會在 sRGB (Rec.709)、linear Rec.709、HDR (Rec.2020 HLG) 與 HDR PQ (Rec.2020 PQ) 色彩空間之間轉換影像。當縮小色彩空間時，它會對整個批次中多餘的亮度進行色調映射，並壓縮超出色域的色彩。轉換以 float32 計算，任何 alpha 通道都會保持不變地傳遞。
+ImageColorSpace 節點會在 sRGB (Rec.709)、linear Rec.709、HDR (Rec.2020 HLG) 與 HDR PQ (Rec.2020 PQ) 色彩空間之間轉換影像。轉換為 SDR 輸出或從 HDR PQ 轉換為 HDR 時，它會對整個批次中多餘的亮度進行色調映射，並壓縮超出色域的色彩；linear 輸出與 linear 轉 HDR 的轉換則會在不做色調映射的情況下保留擴展值。轉換以 float32 計算，任何 alpha 通道都會保持不變地傳遞。
 
 ## 輸入
 

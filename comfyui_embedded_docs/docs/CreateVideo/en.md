@@ -9,7 +9,7 @@ The Create Video node combines a sequence of images into a video. You can set th
 | `images` | The images to create a video from. | IMAGE | Yes | - |
 | `fps` | The frames per second for the video playback speed (default: 30.0). | FLOAT | Yes | 1.0 - 120.0 |
 | `audio` | The audio to add to the video. | AUDIO | No | - |
-| `bit_depth` | Auto uses 8-bit for sRGB and 10-bit for HDR. Explicit 8-bit and 10-bit choices are independent of colorspace. (default: "auto") | COMBO | No | `"auto"`<br>8<br>10 |
+| `bit_depth` | Auto uses 8-bit for sRGB and 10-bit for HDR and HDR PQ. Explicit 8-bit and 10-bit choices are independent of colorspace. (default: "auto") | COMBO | No | `"auto"`<br>8<br>10 |
 | `color_space` | Colorspace of the input images. HDR selects BT.2020/HLG and HDR PQ selects BT.2020/PQ. (default: "sRGB") | COMBO | No | `"sRGB"`<br>`"HDR"`<br>`"HDR PQ"` |
 | `codec` | Optionally encode the video immediately. None keeps the images in tensor form; Auto uses H.264. (default: "none") | COMBO | No | `"none"`<br>Available video codec options from the video codec list (e.g. `"auto"` and other supported codecs) |
 
