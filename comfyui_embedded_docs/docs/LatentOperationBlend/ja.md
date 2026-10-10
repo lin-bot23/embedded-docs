@@ -1,6 +1,6 @@
 # Latent Operation Blend
 
-このノードは、latent を参照 latent に向けてブレンドする latent 操作を作成し、その操作を返します。これにより、Latent Apply Operation や Latent Apply Operation CFG などのノードに接続できます。参照の空間サイズが異なる場合は、最近傍補間を用いて対象の latent にリサイズされ、保持しているフレーム数が少ない参照は対象のバッチサイズに合わせて繰り返されます。strength が 0 の場合、latent は変更されません。このノードは実験的としてマークされています。
+このノードは、latent を参照 latent に向けてブレンドする latent 操作を作成し、その操作を返します。これにより、Latent Apply Operation や Latent Apply Operation CFG などのノードに接続できます。参照の空間サイズが異なる場合は、最近傍補間を用いて対象の latent にリサイズされ、バッチ数が少ない参照は対象のバッチサイズに合わせて繰り返されます。strength が 0 の場合、latent は変更されません。このノードは実験的としてマークされています。
 
 ## 入力
 

@@ -1,6 +1,6 @@
 # Latent Operation Blend
 
-Bu düğüm, bir latent'i bir referans latent'e doğru harmanlayan bir latent işlemi oluşturur ve bu işlemi Latent Apply Operation veya Latent Apply Operation CFG gibi düğümlere takılabilecek şekilde döndürür. Referans farklı bir uzamsal boyuta sahip olduğunda, hedef latent'e en yakın komşu enterpolasyonuyla yeniden boyutlandırılır ve daha az kare tutan bir referans, hedef grup boyutuyla eşleşmesi için tekrarlanır. 0 `strength` değeri, latent'i değiştirmeden bırakır. Bu düğüm deneysel olarak işaretlenmiştir.
+Bu düğüm, bir latent'i bir referans latent'e doğru harmanlayan bir latent işlemi oluşturur ve bu işlemi Latent Apply Operation veya Latent Apply Operation CFG gibi düğümlere takılabilecek şekilde döndürür. Referans farklı bir uzamsal boyuta sahip olduğunda, hedef latent'e en yakın komşu enterpolasyonuyla yeniden boyutlandırılır ve daha küçük bir gruba sahip referans, hedef grup boyutuyla eşleşmesi için tekrarlanır. 0 `strength` değeri, latent'i değiştirmeden bırakır. Bu düğüm deneysel olarak işaretlenmiştir.
 
 ## Girdiler
 

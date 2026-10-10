@@ -11,7 +11,7 @@ The LatentApplyOperationCFG düğümü, bir modelin örnekleme sürecinin sını
 | `start_percent` | İşlemin uygulanmaya başladığı gürültü giderme çizelgesi oranı; 0, çizelgenin başlangıcıdır (varsayılan: 0.0) | FLOAT | Hayır | 0.0 ila 1.0 (adım 0.001) |
 | `end_percent` | İşlemin uygulanmayı bıraktığı gürültü giderme çizelgesi oranı; 1, çizelgenin sonudur (varsayılan: 1.0) | FLOAT | Hayır | 0.0 ila 1.0 (adım 0.001) |
 
-Not: Bu düğüm deneysel olarak işaretlenmiştir. İşlem, CFG örnekleme sürecinde modelin koşullandırma çıktılarına uygulanır. İki koşullandırma çıktısı mevcut olduğunda, işlem birinci ve ikinci çıktı arasındaki farka uygulanır ve ikinci çıktı sonuca geri eklenir. Yalnızca bir koşullandırma çıktısı mevcut olduğunda, işlem doğrudan ona uygulanır. İşlem yalnızca geçerli sigma `start_percent` ile `end_percent` arasında olduğu sürece uygulanır; bu aralığın dışında koşullandırma çıktıları değiştirilmeden döndürülür.
+Not: Bu düğüm deneysel olarak işaretlenmiştir. İşlem, CFG örnekleme sürecinde modelin koşullandırma çıktılarına uygulanır. İki koşullandırma çıktısı mevcut olduğunda, işlem birinci ve ikinci çıktı arasındaki farka uygulanır ve ikinci çıktı sonuca geri eklenir. Yalnızca bir koşullandırma çıktısı mevcut olduğunda, işlem doğrudan ona uygulanır. İşlem yalnızca gürültü giderme çizelgesinin `start_percent` ile `end_percent` noktaları arasında çalışır, bu nedenle çizelgenin bir bölümüyle sınırlandırılabilir; bu aralığın dışında koşullandırma çıktıları değiştirilmeden döndürülür.
 
 ## Çıktılar
 

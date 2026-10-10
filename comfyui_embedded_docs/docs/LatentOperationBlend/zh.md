@@ -1,6 +1,6 @@
 # Latent Operation Blend
 
-此节点创建一个 latent 操作，用于将 latent 向参考 latent 混合，并返回该操作，以便将其接入 Latent Apply Operation 或 Latent Apply Operation CFG 等节点。当参考 latent 的空间尺寸不同时，会使用最近邻插值将其调整为目标 latent 的尺寸；如果参考 latent 的帧数较少，则会重复以匹配目标批次大小。`strength` 为 0 时，latent 保持不变。此节点被标记为实验性节点。
+此节点创建一个 latent 操作，用于将 latent 向参考 latent 混合，并返回该操作，以便将其接入 Latent Apply Operation 或 Latent Apply Operation CFG 等节点。当参考 latent 的空间尺寸不同时，会使用最近邻插值将其调整为目标 latent 的尺寸；如果参考 latent 的批次较小，则会重复以匹配目标批次大小。`strength` 为 0 时，latent 保持不变。此节点被标记为实验性节点。
 
 ## 输入
 

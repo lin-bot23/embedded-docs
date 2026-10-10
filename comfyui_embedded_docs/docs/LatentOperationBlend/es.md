@@ -1,6 +1,6 @@
 # Latent Operation Blend
 
-Este nodo crea una operación sobre latentes que mezcla un latente hacia un latente de referencia, y devuelve esa operación para que pueda conectarse en nodos como Latent Apply Operation o Latent Apply Operation CFG. Cuando la referencia tiene un tamaño espacial diferente, se redimensiona al latente objetivo con interpolación de vecino más cercano, y una referencia que contiene menos fotogramas se repite para coincidir con el tamaño de lote objetivo. Una fuerza de 0 deja el latente sin cambios. Este nodo está marcado como experimental.
+Este nodo crea una operación sobre latentes que mezcla un latente hacia un latente de referencia, y devuelve esa operación para que pueda conectarse en nodos como Latent Apply Operation o Latent Apply Operation CFG. Cuando la referencia tiene un tamaño espacial diferente, se redimensiona al latente objetivo con interpolación de vecino más cercano, y una referencia con un lote más pequeño se repite para coincidir con el tamaño de lote objetivo. Una fuerza de 0 deja el latente sin cambios. Este nodo está marcado como experimental.
 
 ## Entradas
 

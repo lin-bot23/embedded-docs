@@ -11,7 +11,7 @@ O nó LatentApplyOperationCFG aplica uma operação latente dentro da etapa de c
 | `start_percent` | Fração do agendamento de denoising em que a operação começa a ser aplicada; 0 é o início do agendamento (padrão: 0.0) | FLOAT | Não | 0.0 a 1.0 (passo 0.001) |
 | `end_percent` | Fração do agendamento de denoising em que a operação deixa de ser aplicada; 1 é o fim do agendamento (padrão: 1.0) | FLOAT | Não | 0.0 a 1.0 (passo 0.001) |
 
-Nota: Este nó está marcado como experimental. A operação é aplicada às saídas de condicionamento do modelo durante o processo de amostragem CFG. Quando duas saídas de condicionamento estão presentes, a operação é aplicada à diferença entre a primeira e a segunda saída, e a segunda saída é adicionada de volta ao resultado. Quando apenas uma saída de condicionamento está presente, a operação é aplicada diretamente a ela. A operação só é aplicada enquanto o sigma atual estiver entre `start_percent` e `end_percent`; fora dessa janela, as saídas de condicionamento são retornadas sem alterações.
+Nota: Este nó está marcado como experimental. A operação é aplicada às saídas de condicionamento do modelo durante o processo de amostragem CFG. Quando duas saídas de condicionamento estão presentes, a operação é aplicada à diferença entre a primeira e a segunda saída, e a segunda saída é adicionada de volta ao resultado. Quando apenas uma saída de condicionamento está presente, a operação é aplicada diretamente a ela. A operação só é executada entre os pontos `start_percent` e `end_percent` do agendamento de denoising, portanto pode ser limitada a uma parte do agendamento; fora dessa janela, as saídas de condicionamento são retornadas sem alterações.
 
 ## Saídas
 

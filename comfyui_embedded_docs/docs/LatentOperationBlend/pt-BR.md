@@ -1,6 +1,6 @@
 # Latent Operation Blend
 
-Este nó cria uma operação de latent que mescla um latent em direção a um latent de referência e retorna essa operação para que ela possa ser conectada a nós como Latent Apply Operation ou Latent Apply Operation CFG. Quando a referência tem um tamanho espacial diferente, ela é redimensionada para o latent de destino com interpolação por vizinho mais próximo, e uma referência que contém menos quadros é repetida para corresponder ao tamanho do lote de destino. Um valor de `strength` de 0 deixa o latent inalterado. Este nó está marcado como experimental.
+Este nó cria uma operação de latent que mescla um latent em direção a um latent de referência e retorna essa operação para que ela possa ser conectada a nós como Latent Apply Operation ou Latent Apply Operation CFG. Quando a referência tem um tamanho espacial diferente, ela é redimensionada para o latent de destino com interpolação por vizinho mais próximo, e uma referência com um lote menor é repetida para corresponder ao tamanho do lote de destino. Um valor de `strength` de 0 deixa o latent inalterado. Este nó está marcado como experimental.
 
 ## Entradas
 

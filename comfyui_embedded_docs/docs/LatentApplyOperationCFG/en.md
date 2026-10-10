@@ -11,7 +11,7 @@ The LatentApplyOperationCFG node applies a latent operation inside the classifie
 | `start_percent` | Fraction of the denoising schedule at which the operation starts being applied; 0 is the beginning of the schedule (default: 0.0) | FLOAT | No | 0.0 to 1.0 (step 0.001) |
 | `end_percent` | Fraction of the denoising schedule at which the operation stops being applied; 1 is the end of the schedule (default: 1.0) | FLOAT | No | 0.0 to 1.0 (step 0.001) |
 
-Note: This node is marked as experimental. The operation is applied to the model's conditioning outputs during the CFG sampling process. When two conditioning outputs are present, the operation is applied to the difference between the first and second output, and the second output is added back to the result. When only one conditioning output is present, the operation is applied directly to it. The operation only runs while the current sigma lies between `start_percent` and `end_percent`, so it can be limited to part of the denoising schedule; outside that window the conditioning outputs are returned unchanged.
+Note: This node is marked as experimental. The operation is applied to the model's conditioning outputs during the CFG sampling process. When two conditioning outputs are present, the operation is applied to the difference between the first and second output, and the second output is added back to the result. When only one conditioning output is present, the operation is applied directly to it. The operation only runs between the `start_percent` and `end_percent` points of the denoising schedule, so it can be limited to part of the schedule; outside that window the conditioning outputs are returned unchanged.
 
 ## Outputs
 

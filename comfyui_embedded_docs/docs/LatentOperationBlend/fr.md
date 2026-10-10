@@ -1,6 +1,6 @@
 # Latent Operation Blend
 
-Ce nœud crée une opération sur latent qui mélange un latent vers un latent de référence, puis renvoie cette opération afin qu’elle puisse être branchée dans des nœuds tels que Latent Apply Operation ou Latent Apply Operation CFG. Lorsque la référence a une taille spatiale différente, elle est redimensionnée vers le latent cible avec une interpolation du plus proche voisin, et une référence contenant moins d’images est répétée pour correspondre à la taille de lot cible. Une valeur de `strength` de 0 laisse le latent inchangé. Ce nœud est marqué comme expérimental.
+Ce nœud crée une opération sur latent qui mélange un latent vers un latent de référence, puis renvoie cette opération afin qu’elle puisse être branchée dans des nœuds tels que Latent Apply Operation ou Latent Apply Operation CFG. Lorsque la référence a une taille spatiale différente, elle est redimensionnée vers le latent cible avec une interpolation du plus proche voisin, et une référence dont le lot est plus petit est répétée pour correspondre à la taille de lot cible. Une valeur de `strength` de 0 laisse le latent inchangé. Ce nœud est marqué comme expérimental.
 
 ## Entrées
 

@@ -1,6 +1,6 @@
 # Latent Operation Blend
 
-This node creates a latent operation that blends a latent toward a reference latent, and returns that operation so it can be plugged into nodes such as Latent Apply Operation or Latent Apply Operation CFG. When the reference is a different spatial size, it is resized to the target latent with nearest-neighbor interpolation, and a reference holding fewer frames is repeated to match the target batch size. A strength of 0 leaves the latent unchanged. This node is marked as experimental.
+This node creates a latent operation that blends a latent toward a reference latent, and returns that operation so it can be plugged into nodes such as Latent Apply Operation or Latent Apply Operation CFG. When the reference is a different spatial size, it is resized to the target latent with nearest-neighbor interpolation, and a reference with a smaller batch is repeated to match the target batch size. A strength of 0 leaves the latent unchanged. This node is marked as experimental.
 
 ## Inputs
 
